@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dentistry.Models
 {
-    class User
+   public class User
     {
         public int Id { get; set; }
         public string TypeUser { get; set; }
@@ -14,8 +14,8 @@ namespace Dentistry.Models
         public string Password { get; set; }
         public string Email { get; set; }
 
-        //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-        public virtual Patient Patients { get; set; }
-        public virtual Doctor Doctors { get;set; }
+        
+        public Patient PatientProfile { get; set; }
+        public Doctor DoctorProfile { get; set; }
     }
 }

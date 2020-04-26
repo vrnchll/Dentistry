@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dentistry.Models
 {
-    class Reception
+    public class Reception
     {
         public int Id { get; set; }
 

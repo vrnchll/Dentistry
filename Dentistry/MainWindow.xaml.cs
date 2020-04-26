@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dentistry.Context;
+using Dentistry.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,7 @@ namespace Dentistry
         public MainWindow()
         {
             InitializeComponent();
+          
         }
     }
 }

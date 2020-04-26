@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dentistry.Models
 {
-    class Compoun
+    public class Compoun
     {
         public int Id { get; set; }
 
@@ -25,7 +25,6 @@ namespace Dentistry.Models
         public Patient Patient { get; set; }
 
         public int? DoctorId { get; set; }
-        public int? DoctorCabinet { get; set; }
         public Doctor Doctor { get; set; }
     }
 }

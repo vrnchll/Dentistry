@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Dentistry.Models
 {
-    class Patient
+    public class Patient
     {
+        [Key]
+        [ForeignKey("User")]
         public int Id { get; set; }
         public string FirstName { get; set; }
   
@@ -17,12 +21,12 @@ namespace Dentistry.Models
         public string Gender { get; set; }
         public string City { get; set; }
         public string Street { get; set;}
-        public string House { get; set; }
-        public string Flat { get; set; }
+        public int House { get; set; }
+        public int Flat { get; set; }
         public int NumberOfPhone { get; set; }
 
-        public int? UserId { get; set; }
-        public virtual User User { get; set; }
+        
+        public User User { get; set; }
 
 
         public virtual ICollection<Compoun> Compouns { get; set;}
