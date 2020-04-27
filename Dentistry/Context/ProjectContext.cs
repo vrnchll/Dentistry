@@ -18,7 +18,7 @@ namespace Dentistry.Context
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Reception> Receptions { get; set; }
-        public DbSet<Services> Services { get; set; }
+        public DbSet<Service> Services { get; set; }
         public DbSet<User> Users { get; set; }
     }
 }

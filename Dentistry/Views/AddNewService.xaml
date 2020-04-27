@@ -1,0 +1,24 @@
+﻿<Window x:Class="Dentistry.Views.AddNewService"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dentistry.Views"
+        mc:Ignorable="d"
+        Title="AddNewService" Height="300" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="59*"/>
+            <RowDefinition Height="114*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Adding a new service" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Grid.Row="1" Content="Name" Margin="93,20,300,28"/>
+        <Label Grid.Row="1" Content="Cost" Margin="93,58,300,136" Grid.RowSpan="2"/>
+        <Label Grid.Row="2" Content="Doctor" Margin="93,32,323,83"/>
+        <TextBox Grid.Row="1" Margin="170,18,167,28" Height="30"/>
+        <TextBox Grid.Row="1" Margin="170,58,167,136" Height="30" Grid.RowSpan="2"/>
+        <ComboBox Grid.Row="2" Margin="170,32,167,96"/>
+        <Button Content="Add" Grid.Row="2" Margin="197,85,197,35"/>
+    </Grid>
+</Window>

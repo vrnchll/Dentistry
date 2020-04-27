@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\App.xaml
-41438305753
+101841778245
 
-25-1732175384
+32430939101
 16-884075308
-MainWindow.xaml;Resourses\Current.xaml;Views\Authorization.xaml;Views\Registration.xaml;
+MainWindow.xaml;Resourses\Current.xaml;Views\AddNewCompoun.xaml;Views\AddNewReception.xaml;Views\AddNewService.xaml;Views\Authorization.xaml;Views\Compouns.xaml;Views\Receptions.xaml;Views\Registration.xaml;Views\Services.xaml;
 
-False
+True
 

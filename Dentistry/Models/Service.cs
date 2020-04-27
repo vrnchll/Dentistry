@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Dentistry.Models
 {
-   public  class Services
+   public  class Service
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public int Cost { get; set; }
 
        public ICollection<Doctor> Doctors { get; set; } 
-        public Services()
+        public Service()
         {
             Doctors = new List<Doctor>();
         }

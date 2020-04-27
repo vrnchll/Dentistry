@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Dentistry.Services;
+using Dentistry.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Dentistry.ViewModels
 {
@@ -45,7 +48,20 @@ namespace Dentistry.ViewModels
                   }));
             }
         }
+        private RelayCommands signUpCommand;
+        private RelayCommands SignUpCommand
+        {
+            get
+            {
+                return signUpCommand ??
+                  (signUpCommand = new RelayCommands(obj =>
+                  {
+                      Registration registration = new Registration();
+                      registration.Show();
 
+                  }));
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName = "")
         {

@@ -26,12 +26,12 @@ namespace Dentistry.Models
         public int Cabinet { get; set; }
 
         public ICollection<Reception> Receptions { get; set; }
-        public ICollection<Services> Services { get; set; }
+        public ICollection<Service> Services { get; set; }
         public ICollection<Compoun> Compouns { get; set; }
         public Doctor()
         {
             Receptions = new List<Reception>();
-            Services = new List<Services>();
+            Services = new List<Service>();
             Compouns = new List<Compoun>();
         }
         public User User { get; set; }

@@ -14,10 +14,10 @@ namespace Dentistry.Models
         public DateTime DateOfEndReception { get; set; }
 
         //?
-        public virtual ICollection<Services> Services { get; set; }
+        public virtual ICollection<Service> Services { get; set; }
         public Reception()
         {
-            Services = new List<Services>();
+            Services = new List<Service>();
         }
 
         public int? PatientId { get; set; }

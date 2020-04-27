@@ -1,0 +1,33 @@
+﻿<Window x:Class="Dentistry.Views.Services"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dentistry.Views"
+        mc:Ignorable="d"
+        Title="Services" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="396*"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Margin="0,0,0,394" Grid.RowSpan="2">
+            <MenuItem Header="">
+                <MenuItem.Background>
+                    <ImageBrush ImageSource="back--v1.png"/>
+                </MenuItem.Background>
+            </MenuItem>
+            <MenuItem Header="Add new service"/>
+            <MenuItem Header="Edit"/>
+            <MenuItem Header="Delete"/>
+        </Menu>
+        <DataGrid Margin="0,2,0,0" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Width="200"/>
+                <DataGridTextColumn Header="Cost" Width="50"/>
+                <DataGridTextColumn Header="Doctor" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

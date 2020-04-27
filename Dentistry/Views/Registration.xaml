@@ -7,6 +7,87 @@
         mc:Ignorable="d"
         Title="Registration" Height="450" Width="800">
     <Grid>
+        <TabControl>
+            <TabItem x:Name="UserType">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="7" Width="7" Fill="Black" />
+                        <TextBlock Margin="3">Type Of User</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="123*"></RowDefinition>
+                            <RowDefinition Height="9*"/>
+                            <RowDefinition Height="253*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="Пожалуйста, выберите тип пользователя!" Margin="192,103,208,0" FontSize="16" FontWeight="Bold" Grid.RowSpan="2"></Label>
+                        <ComboBox Grid.Row="2" Margin="262,10,249,205">
+                            <ComboBoxItem Content="Patient"/>
+                            <ComboBoxItem Content="Doctor"/>
+                        </ComboBox>
+                        <Button Grid.Row="2" Margin="535,66,208,163">
+                            <Button.Background>
+                                <ImageBrush ImageSource="fwd-arrows_2696.png"/>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
 
+
+            <TabItem x:Name="Patient">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="7" Width="7" Fill="Black" />
+                        <TextBlock Margin="3">Patient</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="First Name" Grid.Row="0"/>
+                        <Label Content="Middle Name" Grid.Row="1"/>
+                        <Label Content="Last Name" Grid.Row="2"/>
+                        <Label Content="Date Of Birthday" Grid.Row="3"/>
+                        <Label Content="Gender" Grid.Row="4"/>
+                        <Label Content="Address" Grid.Row="5"/>
+                        <Label Content="Number of Phone" Grid.Row="6"/>
+                        <Label Content="Login" Grid.Row="7"/>
+                        <Label Content="Password" Grid.Row="8"/>
+                        <Label Content="Confirm Password" Grid.Row="9"/>
+                        <Label Content="Email" Grid.Row="10"/>
+                        <Button x:Name="SignUpButt"  Content="Sign Up" Grid.Row="11" HorizontalAlignment="Center" Margin="338,0,347,0" Width="101"/>
+
+                        <TextBox x:Name="FN" Grid.Row="0" Margin="98,0,484,0"/>
+
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+
+
+            <TabItem x:Name="Doctor">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="7" Width="7" Fill="Black" />
+                        <TextBlock Margin="3">Doctor</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
