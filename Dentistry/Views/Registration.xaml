@@ -17,17 +17,21 @@
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="133*"/>
+                            <ColumnDefinition Width="653*"/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="123*"></RowDefinition>
                             <RowDefinition Height="9*"/>
                             <RowDefinition Height="253*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Content="Пожалуйста, выберите тип пользователя!" Margin="192,103,208,0" FontSize="16" FontWeight="Bold" Grid.RowSpan="2"></Label>
-                        <ComboBox Grid.Row="2" Margin="262,10,249,205">
+                        <Label Grid.Row="0" Content="Please, choose the type of user!" Margin="59.239,103,208,0" FontSize="16" FontWeight="Bold" Grid.RowSpan="2" Grid.Column="1"></Label>
+                        <ComboBox Grid.Row="2" Margin="129.239,10,249,205" Grid.Column="1">
                             <ComboBoxItem Content="Patient"/>
                             <ComboBoxItem Content="Doctor"/>
                         </ComboBox>
-                        <Button Grid.Row="2" Margin="535,66,208,163">
+                        <Button Grid.Row="2" Margin="402.239,66,208,163" Grid.Column="1">
                             <Button.Background>
                                 <ImageBrush ImageSource="fwd-arrows_2696.png"/>
                             </Button.Background>
@@ -37,7 +41,7 @@
             </TabItem>
 
 
-            <TabItem x:Name="Patient">
+            <TabItem x:Name="Patient" Margin="-2,0,-22,-2">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Ellipse Height="7" Width="7" Fill="Black" />
@@ -73,20 +77,94 @@
                         <Label Content="Email" Grid.Row="10"/>
                         <Button x:Name="SignUpButt"  Content="Sign Up" Grid.Row="11" HorizontalAlignment="Center" Margin="338,0,347,0" Width="101"/>
 
-                        <TextBox x:Name="FN" Grid.Row="0" Margin="98,0,484,0"/>
+                        <TextBox x:Name="FN" Grid.Row="0" Margin="155,0,427,0"/>
+                        <TextBox x:Name="MN" Grid.Row="1" Margin="155,0,427,0"/>
+                        <TextBox x:Name="LN" Grid.Row="2" Margin="155,0,427,0"/>
+                        <DatePicker Grid.Row="3" Margin="155,0,427,0"/>
+                        <StackPanel x:Name="Gen" Grid.Row="4" Orientation="Vertical" Margin="155,0,427,0">
+                            <RadioButton Content="Male"></RadioButton>
+                            <RadioButton Content="Female"></RadioButton>
+                        </StackPanel>
 
+                        <ListBox x:Name="City" Width="106" Grid.Row="5" Margin="155,0,525,0"/>
+                        <ListBox x:Name="Street" Grid.Row="5" Margin="279,0,398,0"/>
+                        <Label Content="House" Grid.Row="4" Width="100" Margin="393,5,293,27" Grid.RowSpan="2"></Label>
+                        <Slider Grid.Row="5" Margin="406,5,253,0"/>
+                        <Label Content="Flat" Grid.Row="4" Width="100" Margin="557,5,129,27" Grid.RowSpan="2"></Label>
+                        <Slider Grid.Row="5" Margin="557,5,102,0"/>
+
+                        <TextBox x:Name="NumOfPh" Grid.Row="6" Margin="155,0,427,0"/>
+                        <TextBox x:Name="Login" Grid.Row="7" Margin="155,0,427,0"/>
+                        <TextBox x:Name="Password" Grid.Row="8" Margin="155,0,427,0"/>
+                        <TextBox x:Name="ConfPass" Grid.Row="9" Margin="155,0,427,0"/>
+                        <TextBox x:Name="Email" Grid.Row="10" Margin="155,0,427,0"/>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
 
 
-            <TabItem x:Name="Doctor">
+            <TabItem x:Name="Doctor" Margin="21,0,-63,-2">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Ellipse Height="7" Width="7" Fill="Black" />
                         <TextBlock Margin="3">Doctor</TextBlock>
                     </StackPanel>
                 </TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="31*"/>
+                            <ColumnDefinition Width="42*"/>
+                            <ColumnDefinition Width="713*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="First Name" Grid.Row="0" Grid.ColumnSpan="3"/>
+                        <Label Content="Middle Name" Grid.Row="1" Grid.ColumnSpan="3"/>
+                        <Label Content="Last Name" Grid.Row="2" Grid.ColumnSpan="3"/>
+                        <Label Content="Date Of Birthday" Grid.Row="3" Grid.ColumnSpan="3"/>
+                        <Label Content="Gender" Grid.Row="4" Grid.ColumnSpan="3"/>
+                        <Label Content="Position" Grid.Row="5" Grid.ColumnSpan="3"/>
+                        <Label Content="Experience" Grid.Row="5" Margin="286.137,0,-359,0" Grid.Column="2"/>
+                        <Label Content="Number of Phone" Grid.Row="6" Grid.ColumnSpan="3"/>
+                        <Label Content="Login" Grid.Row="7" Grid.ColumnSpan="3"/>
+                        <Label Content="Password" Grid.Row="8" Grid.ColumnSpan="3"/>
+                        <Label Content="Confirm Password" Grid.Row="9" Grid.ColumnSpan="3"/>
+                        <Label Content="Email" Grid.Row="10" Grid.ColumnSpan="3"/>
+                        <Button x:Name="SignUpButt2"  Content="Sign Up" Grid.Row="11" HorizontalAlignment="Center" Margin="265.137,0,347,0" Width="101" Grid.Column="2"/>
+
+                        <TextBox x:Name="FN2" Grid.Row="0" Margin="82.137,0,427,0" Grid.Column="2"/>
+                        <TextBox x:Name="MN2" Grid.Row="1" Margin="82.137,0,427,0" Grid.Column="2"/>
+                        <TextBox x:Name="LN2" Grid.Row="2" Margin="82.137,0,427,0" Grid.Column="2"/>
+                        <DatePicker Grid.Row="3" Margin="82.137,0,427,0" Grid.Column="2"/>
+                        <StackPanel x:Name="Gen2" Grid.Row="4" Orientation="Vertical" Margin="82.137,0,427,0" Grid.Column="2">
+                            <RadioButton Content="Male"></RadioButton>
+                            <RadioButton Content="Female"></RadioButton>
+                        </StackPanel>
+
+                        <ComboBox x:Name="Posotoin" Grid.Row="5" Margin="82.137,0,432,0" Grid.Column="2">
+                        </ComboBox>
+                        <Slider Grid.Row="5" Width="150" Margin="369.137,5,194,5" Grid.Column="2"></Slider>
+
+                        <TextBox x:Name="NumOfPh2" Grid.Row="6" Margin="82.137,0,427,0" Grid.Column="2"/>
+                        <TextBox x:Name="Login2" Grid.Row="7" Margin="82.137,0,427,0" Grid.Column="2"/>
+                        <TextBox x:Name="Password2" Grid.Row="8" Margin="82.137,0,427,0" Grid.Column="2"/>
+                        <TextBox x:Name="ConfPass2" Grid.Row="9" Margin="82.137,0,427,0" Grid.Column="2"/>
+                        <TextBox x:Name="Email2" Grid.Row="10" Margin="82.137,0,427,0" Grid.Column="2"/>
+                    </Grid>
+                </TabItem.Content>
             </TabItem>
         </TabControl>
     </Grid>

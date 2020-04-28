@@ -12,7 +12,7 @@ namespace Dentistry.Models
 
         public DateTime DateOfReception { get; set; }
 
-        //?
+        
         public virtual ICollection<Service> Services { get; set; }
         public Compoun()
         {
