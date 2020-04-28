@@ -6,27 +6,27 @@
         xmlns:local="clr-namespace:Dentistry.Views"
         mc:Ignorable="d"
         Title="Compouns" Height="400" Width="800">
-    <Grid>
+    <Grid Background="{DynamicResource Back}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="36*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="103*"/>
         </Grid.RowDefinitions>
-        <Menu>
-            <MenuItem Header="" Height="35" Width="35">
+        <Menu Style="{DynamicResource TheMainMenu}" Margin="0,0,0,10">
+            <MenuItem Header="" Height="33" Width="35" Style="{DynamicResource Items}">
                 <MenuItem.Background>
                     <ImageBrush ImageSource="back--v1.png"/>
                 </MenuItem.Background>
             </MenuItem>
-            <MenuItem Header="Add new compoun"/>
-            <MenuItem Header="Edit"/>
-            <MenuItem Header="Delete"/>
+            <MenuItem Header="Add new compoun" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Edit" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Delete" Style="{DynamicResource Items}"/>
         </Menu>
-        <DataGrid Grid.Row="2">
+        <DataGrid Margin="0,32,0,0" Grid.RowSpan="2" Style="{DynamicResource DataGridsStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id"/>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Date of Reseption"/>
+                        <TextBlock Text="Date of Reception"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

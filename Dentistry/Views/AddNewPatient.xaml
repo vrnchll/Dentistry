@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Dentistry.Views"
         mc:Ignorable="d"
         Title="AddNewPatient" Height="450" Width="800">
-    <Grid>
+    <Grid Background="{DynamicResource Back}">
         <Grid.RowDefinitions>
             <RowDefinition Height="28*"/>
             <RowDefinition Height="46*"/>
@@ -19,29 +19,29 @@
             <RowDefinition Height="0*"/>
             <RowDefinition Height="43*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Add new patient" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Content="First Name" Grid.Row="1" Margin="82,10,643,10" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="67" />
-        <TextBox Grid.Row="1" Margin="231,0,301,0"></TextBox>
-        <Label Content="Middle Name" Grid.Row="2" Margin="74,0,636,0" HorizontalAlignment="Center" Width="82"/>
-        <TextBox Grid.Row="2" Margin="231,0,301,0"></TextBox>
-        <Label Grid.Row="3" Content="Last Name" Margin="82,0,644,0" HorizontalAlignment="Center" Width="66"/>
-        <TextBox Grid.Row="3" Margin="231,0,301,0"/>
-        <Label Grid.Row="4" Content="Date Of Birthday" Margin="81,0,613,0" HorizontalAlignment="Center" Width="98"></Label>
-        <DatePicker Grid.Row="4" Margin="231,0,301,0"/>
-        <Label Grid.Row="5" Content="Gender" Margin="106,0,638,0" HorizontalAlignment="Center" Width="48"/>
-        <StackPanel Orientation="Vertical" Grid.Row="5" Margin="236,0,301,0">
-            <RadioButton Content="Male"></RadioButton>
-            <RadioButton Content="Female"/>
+        <Label Grid.Row="0" Style="{DynamicResource Heading}" FontSize="20" Content="Add new patient" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="First Name" Grid.Row="1" Margin="10,5,657,15" Style="{DynamicResource All}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="125" />
+        <TextBox Grid.Row="1" Margin="141,5,391,5" Style="{DynamicResource Input}"></TextBox>
+        <Label Content="Middle Name" Grid.Row="2" Style="{DynamicResource All}" Margin="10,10,657,10" HorizontalAlignment="Center" Width="125"/>
+        <TextBox Grid.Row="2" Margin="141,5,391,5" Style="{DynamicResource Input}"></TextBox>
+        <Label Grid.Row="3" Content="Last Name" Margin="10,10,657,9" Style="{DynamicResource All}" HorizontalAlignment="Center" Width="125"/>
+        <TextBox Grid.Row="3" Margin="141,1,391,9" Style="{DynamicResource Input}"/>
+        <Label Grid.Row="4" Content="Date Of Birthday" Margin="10,1,657,9" Style="{DynamicResource All}" HorizontalAlignment="Center" Width="125"/>
+        <DatePicker Grid.Row="4" Margin="141,2,391,40" Grid.RowSpan="2"/>
+        <Label Grid.Row="5" Content="Gender" Style="{DynamicResource All}" Margin="10,1,662,78" HorizontalAlignment="Center" Width="120" Grid.RowSpan="2"/>
+        <StackPanel Orientation="Vertical" Grid.Row="5" Margin="141,2,391,1">
+            <RadioButton Content="Male" Style="{DynamicResource RadioBttn}" IsChecked="True"/>
+            <RadioButton Content="Female" Style="{DynamicResource RadioBttn}"/>
         </StackPanel>
-        <Label Grid.Row="6" Content="Address" Margin="86,0,613,27"></Label>
-        <ListBox x:Name="City" Grid.Row="6" Margin="154,0,505,27"/>
-        <ListBox x:Name="Street" Grid.Row="6" Margin="312,0,322,27"/>
-        <Label Content="House" Grid.Row="5" Width="100" Margin="491,10,201,74" Grid.RowSpan="2"/>
-        <Slider Grid.Row="6" Margin="492,5,167,27"/>
-        <Label Content="Flat" Grid.Row="5" Width="100" Margin="649,10,43,74" Grid.RowSpan="2"/>
-        <Slider Grid.Row="6" Margin="649,5,10,27"/>
-        <Label Content="Number of Phone" Grid.Row="7" HorizontalContentAlignment="Center" Margin="0,0,561,0" Width="231"/>
-        <TextBox Grid.Row="7" Margin="236,0,301,0"/>
-        <Button Content="Add" Grid.Row="9" Margin="231,0,301,0"/>
+        <Label Grid.Row="5" Content="Address" Style="{DynamicResource All}" Margin="10,41,689,28" Grid.RowSpan="2"></Label>
+        <ListBox x:Name="City" Grid.Row="5" Margin="141,41,498,48" Style="{DynamicResource InpList}" Grid.RowSpan="2"/>
+        <ListBox x:Name="Street" Grid.Row="6" Margin="312,0,322,47" Style="{DynamicResource InpList}"/>
+        <Label Content="House"  Style="{DynamicResource All}" Grid.Row="5" Width="100" Margin="491,22,201,62" Grid.RowSpan="2"/>
+        <Slider Grid.Row="6" Margin="491,3,168,42"/>
+        <Label Content="Flat" Grid.Row="5" Width="100" Style="{DynamicResource All}" Margin="649,22,43,62" Grid.RowSpan="2"/>
+        <Slider Grid.Row="6" Margin="649,3,10,42"/>
+        <Label Content="Number of Phone" Style="{DynamicResource All}" Grid.Row="7"  Margin="10,0,657,0"/>
+        <TextBox Grid.Row="7" Margin="141,0,391,15" Style="{DynamicResource Input}"/>
+        <Button Content="Add" Grid.Row="9" Margin="331,0,331,10" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}"/>
     </Grid>
 </Window>

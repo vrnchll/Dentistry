@@ -6,19 +6,19 @@
         xmlns:local="clr-namespace:Dentistry.Views"
         mc:Ignorable="d"
         Title="AddNewService" Height="300" Width="500">
-    <Grid>
+    <Grid Background="{DynamicResource Back}">
         <Grid.RowDefinitions>
             <RowDefinition Height="35*"/>
             <RowDefinition Height="59*"/>
             <RowDefinition Height="114*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Adding a new service" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Grid.Row="1" Content="Name" Margin="93,20,300,28"/>
-        <Label Grid.Row="1" Content="Cost" Margin="93,58,300,136" Grid.RowSpan="2"/>
-        <Label Grid.Row="2" Content="Doctor" Margin="93,32,323,83"/>
-        <TextBox Grid.Row="1" Margin="170,18,167,28" Height="30"/>
-        <TextBox Grid.Row="1" Margin="170,58,167,136" Height="30" Grid.RowSpan="2"/>
-        <ComboBox Grid.Row="2" Margin="170,32,167,96"/>
-        <Button Content="Add" Grid.Row="2" Margin="197,85,197,35"/>
+        <Label Grid.Row="0" Content="Add new service"  Style="{DynamicResource Heading}" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Grid.Row="1" Content="Name" Margin="93,20,300,28" Style="{DynamicResource All}"/>
+        <Label Grid.Row="1" Content="Cost" Margin="93,58,300,136" Grid.RowSpan="2" Style="{DynamicResource All}"/>
+        <Label Grid.Row="2" Content="Doctor" Margin="93,32,323,83" Style="{DynamicResource All}"/>
+        <TextBox Grid.Row="1" Margin="170,18,167,28" Height="30" Style="{DynamicResource Input}"/>
+        <TextBox Grid.Row="1" Margin="170,58,167,136" Height="30" Grid.RowSpan="2" Style="{DynamicResource Input}"/>
+        <ComboBox Grid.Row="2" Margin="170,36,167,89"/>
+        <Button Content="Add" Grid.Row="2" Margin="197,77,197,43" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}"/>
     </Grid>
 </Window>

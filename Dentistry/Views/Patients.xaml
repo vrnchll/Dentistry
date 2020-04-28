@@ -11,17 +11,17 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="36*"/>
         </Grid.RowDefinitions>
-        <Menu>
-            <MenuItem Header="" Height="35" Width="35">
+        <Menu Style="{DynamicResource TheMainMenu}" Margin="0,0,0,15">
+            <MenuItem Header="" Height="35" Width="35" Style="{DynamicResource Items}">
                 <MenuItem.Background>
                     <ImageBrush ImageSource="back--v1.png"/>
                 </MenuItem.Background>
             </MenuItem>
-            <MenuItem Header="Add new patient"/>
-            <MenuItem Header="Edit"/>
-            <MenuItem Header="Delete"/>
+            <MenuItem Header="Add new patient" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Edit" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Delete" Style="{DynamicResource Items}"/>
         </Menu>
-        <DataGrid Grid.Row="2">
+        <DataGrid Margin="0,36,0,0" Grid.RowSpan="2" Style="{DynamicResource DataGridsStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id"/>
                 <DataGridTextColumn Header="Fist Name"/>

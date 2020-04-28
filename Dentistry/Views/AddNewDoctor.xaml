@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Dentistry.Views"
         mc:Ignorable="d"
         Title="AddNewDoctor" Height="450" Width="800">
-    <Grid>
+    <Grid Background="{DynamicResource Back}">
         <Grid.RowDefinitions>
             <RowDefinition Height="28*"/>
             <RowDefinition Height="46*"/>
@@ -20,28 +20,37 @@
             <RowDefinition Height="38*"/>
             <RowDefinition Height="38*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Add new Doctor" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Content="First Name" Grid.Row="1" Margin="82,10,643,10" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="67" />
-        <TextBox Grid.Row="1" Margin="231,0,301,0"></TextBox>
-        <Label Content="Middle Name" Grid.Row="2" Margin="74,0,636,0" HorizontalAlignment="Center" Width="82"/>
-        <TextBox Grid.Row="2" Margin="231,0,301,0"></TextBox>
-        <Label Grid.Row="3" Content="Last Name" Margin="82,0,644,0" HorizontalAlignment="Center" Width="66"/>
-        <TextBox Grid.Row="3" Margin="231,0,301,0"/>
-        <Label Grid.Row="4" Content="Date Of Birthday" Margin="81,0,613,0" HorizontalAlignment="Center" Width="98"></Label>
-        <DatePicker Grid.Row="4" Margin="231,0,301,0"/>
-        <Label Grid.Row="5" Content="Gender" Margin="106,0,638,0" HorizontalAlignment="Center" Width="48"/>
-        <StackPanel Orientation="Vertical" Grid.Row="5" Margin="236,0,301,0">
-            <RadioButton Content="Male"></RadioButton>
-            <RadioButton Content="Female"/>
+        <Label Grid.Row="0" Content="Add new Doctor " FontSize="16" Style="{DynamicResource Heading}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="First Name" Grid.Row="1" Margin="146,5,526,11" Style="{DynamicResource All}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="120" />
+        <TextBox Grid.Row="1" Margin="266,0,266,8" Style="{DynamicResource Input}"></TextBox>
+        <Label Content="Middle Name" Grid.Row="2" Margin="146,0,526,10" HorizontalAlignment="Center"  Style="{DynamicResource All}" Width="120"/>
+        <TextBox Grid.Row="2" Margin="266,0,266,10" Style="{DynamicResource Input}"></TextBox>
+        <Label Grid.Row="3" Content="Last Name" Margin="146,0,531,5" Style="{DynamicResource All}" HorizontalAlignment="Center" Width="115"/>
+        <TextBox Grid.Row="3" Margin="266,0,266,5" Style="{DynamicResource Input}"/>
+        <Label Grid.Row="4" Content="Date Of Birthday" Margin="146,0,526,0" Style="{DynamicResource All}" HorizontalAlignment="Center" Width="120"></Label>
+        <DatePicker Grid.Row="4" Margin="266,1,266,10" RenderTransformOrigin="0.508,0.795"/>
+        <Label Grid.Row="5" Content="Gender"  Style="{DynamicResource All}" Margin="146,0,526,0" HorizontalAlignment="Center" Width="120"/>
+        <StackPanel Orientation="Vertical" Grid.Row="5" Margin="266,0">
+            <RadioButton Content="Male" Style="{DynamicResource RadioBttn}" IsChecked="True"></RadioButton>
+            <RadioButton Content="Female" Style="{DynamicResource RadioBttn}"/>
         </StackPanel>
-        <Label Grid.Row="6" Content="Position" Margin="0,0,561,0"></Label>
-        <ComboBox Grid.Row="6" Margin="231,0,301,0"></ComboBox>
-        <Label Grid.Row="7" Content="Experience" Margin="0,0,561,0"></Label>
-        <TextBox Grid.Row="7" Margin="231,0,301,0"/>
-        <Label Content="Number of Phone" Grid.Row="8" HorizontalContentAlignment="Center" Margin="0,0,561,0"/>
-        <TextBox Grid.Row="8" Margin="231,0,301,0"/>
-        <Label Grid.Row="9" Content="Cabinet" Margin="0,0,561,0"></Label>
-        <ListBox Grid.Row="9" Margin="231,0,301,0"/>
-        <Button Content="Add" Grid.Row="10" Margin="231,0,301,0"/>
+        <Label Grid.Row="6" Content="Position" Style="{DynamicResource All}" Margin="146,0,530,10">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.246"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.496"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <ComboBox Grid.Row="6" Margin="266,0,266,5"/>
+        <Label Grid.Row="7" Content="Experience" Style="{DynamicResource All}" Margin="146,0,526,0"></Label>
+        <TextBox Grid.Row="7" Margin="266,0,266,5" Style="{DynamicResource Input}"/>
+        <Label Content="Number of Phone" Grid.Row="8" Style="{DynamicResource All}"  Margin="146,0,526,0"/>
+        <TextBox Grid.Row="8" Margin="266,0,266,5" Style="{DynamicResource Input}"/>
+        <Label Grid.Row="9" Content="Cabinet" Style="{DynamicResource All}" Margin="146,0,526,0"></Label>
+        <ListBox Grid.Row="9" Margin="266,0" Style="{DynamicResource InpList}"/>
+        <Button Content="Add" Grid.Row="10" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}" Margin="341,2,345,3"/>
     </Grid>
 </Window>

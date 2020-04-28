@@ -28,7 +28,7 @@
         <PasswordBox  Grid.Row="2" VerticalAlignment="Center" Margin="105,40,123,0" Height="39" Background="{DynamicResource Password}" FontSize="16" Foreground="White" />
 
         <Button x:Name="BttnLog" Grid.Row="3" Margin="105,10,227,34" HorizontalAlignment="Center" Width="60" Content="Sign in" Style="{DynamicResource Buttons}" Command="{Binding SignInCommand}"/>
-        <Button x:Name="BttnRegistr" Grid.Row="3" Margin="209,10,123,32" HorizontalAlignment="Center" Width="60" Content="Sign up" Style="{DynamicResource Buttons}" Command="{Binding SignUpCommand}"/>
+        <Button x:Name="BttnRegistr" Grid.Row="3" Margin="209,10,123,34" HorizontalAlignment="Center" Width="60" Content="Sign up" Style="{DynamicResource Buttons}" Command="{Binding SignUpCommand}"/>
         
     </Grid>
 </Window>

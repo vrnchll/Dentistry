@@ -2,17 +2,32 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Dentistry.Resourses">
 
-    
+    <!--Labels-->
     <Style TargetType="Label" x:Key="Labels">
         <Setter Property="FontSize" Value="25"></Setter>
         <Setter Property="FontFamily" Value="Monotype Corsiva"></Setter>
         <Setter Property="Foreground" Value="#D3D3D3"></Setter>
     </Style>
+    
+    <Style TargetType="Label" x:Key="Heading">
+        <Setter Property="FontSize" Value="25"></Setter>
+        <Setter Property="FontFamily" Value="Monotype Corsiva"></Setter>
+        <Setter Property="Foreground" Value="#2F4F4F"></Setter>
+    </Style>
 
-    <!--<Style TargetType="TextBox" x:Key="TextIn">
-        <Setter Property="Background" Value="#DCDCDC"></Setter>
-    </Style>-->
-
+    <Style TargetType="Label" x:Key="All">
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="Foreground" Value="#2F4F4F"></Setter>
+        <Setter Property="FontFamily" Value="Candara"></Setter>
+    </Style>
+    
+    
+    
+    <!--Gradient-->
+    <LinearGradientBrush x:Key="Butt" EndPoint="0,1" StartPoint="1,1">
+        <GradientStop Color="#D3D3D3" Offset="1"/>
+        <GradientStop Color="#778899"/>
+    </LinearGradientBrush>
     <LinearGradientBrush x:Key="TextIn" EndPoint="0,1" StartPoint="1,1">
         <GradientStop Color="#778899" Offset="1"/>
         <GradientStop Color="#696969"/>
@@ -24,17 +39,30 @@
         <GradientStop Color="#696969"/>
 
     </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Back" EndPoint="0,1" StartPoint="1,1">
+        <GradientStop Color="#DCDCDC" Offset="1"/>
+        <GradientStop Color="#A9A9A9"/>
 
+    </LinearGradientBrush>
+   
     <LinearGradientBrush x:Key="Grid" EndPoint="0,1" StartPoint="1,1">
         <GradientStop Color="#696969" Offset="1"/>
         <GradientStop Color="#778899"/>
     </LinearGradientBrush>
 
+   <!--Buttons-->
+    <Style TargetType="Button" x:Key="AddButt">
+        <Setter Property="BorderBrush" Value="#D3D3D3"></Setter>
+        <Setter Property="Foreground" Value="#2F4F4F"></Setter>
+        <Setter Property="FontFamily" Value="Candara"></Setter>
+    </Style>
     <Style TargetType="Button" x:Key="Buttons">
         <Style.Setters>
             <Setter Property="Background" Value="#778899"></Setter>
             <Setter Property="Foreground" Value="#D3D3D3"></Setter>
             <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Candara"></Setter>
+            <Setter Property="BorderBrush" Value="#D3D3D3"></Setter>
         </Style.Setters>
        
         <Style.Triggers>
@@ -68,4 +96,51 @@
         </Style.Triggers>
     </Style>
     
+    <!--TabControl-->
+    <Style TargetType="TabControl" x:Key="Tab">
+        <Setter Property="Background" Value="#DCDCDC"></Setter>
+    </Style>
+    <Style TargetType="TabItem" x:Key="TabIt">
+        <Setter Property="Background" Value="#D3D3D3"/>
+        <Setter Property="Foreground" Value="#2F4F4F"></Setter>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    
+    
+    
+    <!--DataGrid-->
+    <Style TargetType="DataGrid" x:Key="DataGridsStyle">
+        <Setter Property="Background" Value="#DCDCDC"></Setter>
+        <Setter Property="Foreground" Value="#2F4F4F"></Setter>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    
+    <!--Menu and MenuItem-->
+    <Style TargetType="Menu" x:Key="TheMainMenu">
+        <Setter Property="Background" Value="#D3D3D3"></Setter>
+    </Style>
+    <Style x:Key="Items" TargetType="MenuItem">
+        <Setter Property="Foreground" Value="#2F4F4F"></Setter>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="BorderBrush" Value="#C0C0C0"></Setter>
+    </Style>
+    
+    <!--RadiuButton-->
+    <Style TargetType="RadioButton" x:Key="RadioBttn">
+        <Setter Property="Foreground" Value="#2F4F4F"></Setter>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <!--ListBox-->
+    <Style TargetType="ListBox" x:Key="InpList">
+        <Setter Property="Background" Value="#F5F5F5"></Setter>
+        <Setter Property="Foreground" Value="#2F4F4F"></Setter>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    <!--TextBox-->
+    <Style TargetType="TextBox" x:Key="Input">
+        <Setter Property="Background" Value="#F5F5F5"></Setter>
+        <Setter Property="Foreground" Value="#2F4F4F"></Setter>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
 </ResourceDictionary>

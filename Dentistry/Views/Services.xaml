@@ -6,22 +6,22 @@
         xmlns:local="clr-namespace:Dentistry.Views"
         mc:Ignorable="d"
         Title="Services" Height="450" Width="800">
-    <Grid>
+    <Grid Background="{DynamicResource Back}">
         <Grid.RowDefinitions>
             <RowDefinition Height="23*"/>
             <RowDefinition Height="396*"/>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0" Margin="0,0,0,394" Grid.RowSpan="2">
-            <MenuItem Header="">
+        <Menu Grid.Row="0" Margin="0,0,0,394" Grid.RowSpan="2" Style="{DynamicResource TheMainMenu}">
+            <MenuItem Header="" Style="{DynamicResource Items}" Height="25" Width="33">
                 <MenuItem.Background>
                     <ImageBrush ImageSource="back--v1.png"/>
                 </MenuItem.Background>
             </MenuItem>
-            <MenuItem Header="Add new service"/>
-            <MenuItem Header="Edit"/>
-            <MenuItem Header="Delete"/>
+            <MenuItem Header="Add new service" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Edit" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Delete" Style="{DynamicResource Items}"/>
         </Menu>
-        <DataGrid Margin="0,2,0,0" Grid.Row="1">
+        <DataGrid Margin="0,2,0,0" Grid.Row="1" Style="{DynamicResource DataGridsStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id"></DataGridTextColumn>
                 <DataGridTextColumn Header="Name" Width="200"/>

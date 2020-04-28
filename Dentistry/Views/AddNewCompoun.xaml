@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry.Views"
         mc:Ignorable="d"
-        Title="AddNewCompoun" Height="350" Width="700">
-    <Grid>
+        Title="AddNewCompoun" Height="350" Width="600">
+    <Grid Background="{DynamicResource Back}">
         <Grid.RowDefinitions>
             <RowDefinition Height="40*"/>
             <RowDefinition Height="65*"/>
@@ -15,15 +15,15 @@
             <RowDefinition Height="60*"/>
             <RowDefinition Height="60*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Add new compoun" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Content="Date of Reception" Grid.Row="1" Margin="86,5,436,26"/>
-        <DatePicker Grid.Row="1" Margin="231,7,301,26"></DatePicker>
-        <Label Grid.Row="2" Content="Last Name Patient" Margin="86,0,466,22"/>
-        <TextBox Grid.Row="2" Margin="231,0,301,22"/>
-        <Label Grid.Row="3" Content="Service" Margin="86,0,466,10"></Label>
-        <ComboBox Grid.Row="3" Margin="231,0,301,27"></ComboBox>
-        <Label Grid.Row="4" Content="Doctor" Margin="86,0,466,27"/>
-        <ComboBox Grid.Row="4" Margin="231,0,301,27"></ComboBox>
-        <Button Content="Add" Grid.Row="5" Margin="231,0,301,10"/>
+        <Label Grid.Row="0" Content="Add new compoun" Style="{DynamicResource Heading}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Date of Reception" Grid.Row="1" Margin="97,7,366,24" Style="{DynamicResource All}"/>
+        <DatePicker Grid.Row="1" Margin="226,7,225,26"></DatePicker>
+        <Label Grid.Row="2" Content="Last Name Patient" Margin="97,0,366,31" Style="{DynamicResource All}"/>
+        <TextBox Grid.Row="2" Margin="226,0,225,31" Style="{DynamicResource Input}"/>
+        <Label Grid.Row="3" Content="Service" Margin="97,0,366,27" Style="{DynamicResource All}"></Label>
+        <ComboBox Grid.Row="3" Margin="226,0,225,27"></ComboBox>
+        <Label Grid.Row="4" Content="Doctor" Margin="97,0,366,27" Style="{DynamicResource All}"/>
+        <ComboBox Grid.Row="4" Margin="226,0,225,27"></ComboBox>
+        <Button Content="Add" Grid.Row="5" Margin="254,0,250,27" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}"/>
     </Grid>
 </Window>

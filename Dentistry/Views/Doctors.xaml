@@ -8,20 +8,21 @@
         Title="Doctors" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="36*"/>
+            <RowDefinition Height="57*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="355*"/>
         </Grid.RowDefinitions>
-        <Menu>
-            <MenuItem Header="" Height="35" Width="35">
+        <Menu Style="{DynamicResource TheMainMenu}" Margin="0,0,0,22">
+            <MenuItem Header="" Height="35" Width="35" Style="{DynamicResource Items}">
                 <MenuItem.Background>
                     <ImageBrush ImageSource="back--v1.png"/>
                 </MenuItem.Background>
             </MenuItem>
-            <MenuItem Header="Add new doctor"/>
-            <MenuItem Header="Edit"/>
-            <MenuItem Header="Delete"/>
+            <MenuItem Header="Add new doctor" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Edit" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Delete" Style="{DynamicResource Items}"/>
         </Menu>
-        <DataGrid Grid.Row="2">
+        <DataGrid Style="{DynamicResource DataGridsStyle}" Margin="0,35,0,0" Grid.RowSpan="3">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id"/>
                 <DataGridTextColumn Header="Fist Name"/>
