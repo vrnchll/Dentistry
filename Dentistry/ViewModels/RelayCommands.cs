@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Dentistry.ViewModels
 {
-    class RelayCommands : ICommand
+    public class RelayCommands : ICommand
     {
         private Action<object> execute;
         private Func<object, bool> canExecute;
@@ -17,11 +17,13 @@ namespace Dentistry.ViewModels
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
+
         public RelayCommands(Action<object> execute, Func<object, bool> canExecute = null)
         {
             this.execute = execute;
             this.canExecute = canExecute;
         }
+
         public bool CanExecute(object parameter)
         {
             return this.canExecute == null || this.canExecute(parameter);

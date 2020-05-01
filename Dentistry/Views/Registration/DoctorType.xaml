@@ -1,0 +1,62 @@
+﻿<Page x:Class="Dentistry.Views.Registration.DoctorType"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dentistry.Views.Registration"
+        mc:Ignorable="d"
+        Title="DoctorType" Height="450" Width="800">
+    <Grid Background="{DynamicResource Back}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="42*"/>
+            <ColumnDefinition Width="713*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+        </Grid.RowDefinitions>
+        <Label Content="First Name" Grid.Row="0" Grid.ColumnSpan="3" Style="{DynamicResource All}" />
+        <Label Content="Middle Name" Grid.Row="1" Grid.ColumnSpan="3" Style="{DynamicResource All}" />
+        <Label Content="Last Name" Grid.Row="2" Grid.ColumnSpan="3" Style="{DynamicResource All}" />
+        <Label Content="Date Of Birthday" Grid.Row="3" Grid.ColumnSpan="3" Style="{DynamicResource All}" />
+        <Label Content="Gender" Grid.Row="4" Grid.ColumnSpan="3" Style="{DynamicResource All}" />
+        <Label Content="Position" Grid.Row="5" Grid.ColumnSpan="3" Style="{DynamicResource All}" />
+        <Label Content="Experience" Grid.Row="5" Margin="286.137,0,-359,0" Grid.Column="2" Style="{DynamicResource All}" />
+        <Label Content="Number of Phone" Grid.Row="6" Grid.ColumnSpan="3" Style="{DynamicResource All}" />
+        <Label Content="Login" Grid.Row="7" Grid.ColumnSpan="3" Style="{DynamicResource All}"/>
+        <Label Content="Password" Grid.Row="8" Grid.ColumnSpan="3" Style="{DynamicResource All}" />
+        <Label Content="Confirm Password" Grid.Row="9" Grid.ColumnSpan="3" Style="{DynamicResource All}" />
+        <Label Content="Email" Grid.Row="10" Grid.ColumnSpan="3" Style="{DynamicResource All}" />
+        <Button x:Name="SignUpButt2"  Content="Sign Up" Grid.Row="11" HorizontalAlignment="Center" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}" Margin="265.137,0,347,0" Width="101" Grid.Column="2"/>
+
+        <TextBox x:Name="FN2" Grid.Row="0" Margin="82.137,0,427,0" Grid.Column="2" Style="{DynamicResource Input}" />
+        <TextBox x:Name="MN2" Grid.Row="1" Margin="82.137,0,427,0" Grid.Column="2" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="LN2" Grid.Row="2" Margin="82.137,0,427,0" Grid.Column="2" Style="{DynamicResource Input}"/>
+        <DatePicker Grid.Row="3" Margin="82.137,0,427,0" Grid.Column="2" />
+        <StackPanel x:Name="Gen2" Grid.Row="4" Orientation="Vertical" Margin="82.137,0,427,0" Grid.Column="2">
+            <RadioButton Content="Male" Style="{DynamicResource RadioBttn}" IsChecked="True"></RadioButton>
+            <RadioButton Content="Female" Style="{DynamicResource RadioBttn}" Height="18"></RadioButton>
+        </StackPanel>
+
+        <ComboBox x:Name="Posotoin" Grid.Row="5" Margin="82,5,427,0" Grid.Column="2">
+        </ComboBox>
+        <Slider Grid.Row="5" Width="150" Margin="369.137,5,194,5" Grid.Column="2"></Slider>
+
+        <TextBox x:Name="NumOfPh2" Grid.Row="6" Margin="82.137,0,427,0" Grid.Column="2" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="Login2" Grid.Row="7" Margin="82.137,0,427,0" Grid.Column="2" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="Password2" Grid.Row="8" Margin="82.137,0,427,0" Grid.Column="2" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="ConfPass2" Grid.Row="9" Margin="82.137,0,427,0" Grid.Column="2" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="Email2" Grid.Row="10" Margin="82.137,0,427,0" Grid.Column="2" Style="{DynamicResource Input}"/>
+    </Grid>
+</Page>

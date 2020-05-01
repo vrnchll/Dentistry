@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dentistry.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace Dentistry.Views
         public Authorization()
         {
             InitializeComponent();
+            DataContext = new AuthorizationView();
           
         }
     }

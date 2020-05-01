@@ -1,0 +1,59 @@
+﻿<Page x:Class="Dentistry.Views.Registration.PatientType"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dentistry.Views.Registration"
+        mc:Ignorable="d"
+        Title="PatientType" Height="450" Width="800">
+    <Grid Background="{DynamicResource Back}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+        </Grid.RowDefinitions>
+        <Label Content="First Name" Grid.Row="0" Style="{DynamicResource All}"/>
+        <Label Content="Middle Name" Grid.Row="1" Style="{DynamicResource All}"/>
+        <Label Content="Last Name" Grid.Row="2" Style="{DynamicResource All}"/>
+        <Label Content="Date Of Birthday" Grid.Row="3" Style="{DynamicResource All}"/>
+        <Label Content="Gender" Grid.Row="4" Style="{DynamicResource All}"/>
+        <Label Content="Address" Grid.Row="5" Style="{DynamicResource All}"/>
+        <Label Content="Number of Phone" Grid.Row="6" Style="{DynamicResource All}"/>
+        <Label Content="Login" Grid.Row="7" Style="{DynamicResource All}"/>
+        <Label Content="Password" Grid.Row="8" Style="{DynamicResource All}"/>
+        <Label Content="Confirm Password" Grid.Row="9" Style="{DynamicResource All}"/>
+        <Label Content="Email" Grid.Row="10" Style="{DynamicResource All}"/>
+        <Button x:Name="SignUpButt"  Content="Sign Up" Grid.Row="11" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}" HorizontalAlignment="Center" Margin="287,0,398,0" Width="101"/>
+
+        <TextBox x:Name="FN" Grid.Row="0" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="MN" Grid.Row="1" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="LN" Grid.Row="2" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <DatePicker Grid.Row="3" Margin="155,0,427,0"/>
+        <StackPanel x:Name="Gen" Grid.Row="4" Orientation="Vertical" Margin="155,0,427,0">
+            <RadioButton Content="Male" Style="{DynamicResource RadioBttn}" IsChecked="True"></RadioButton>
+            <RadioButton Content="Female" Style="{DynamicResource RadioBttn}"></RadioButton>
+        </StackPanel>
+
+        <ListBox x:Name="City" Width="106" Grid.Row="5" Margin="155,0,525,0" Style="{DynamicResource InpList}"/>
+        <ListBox x:Name="Street" Grid.Row="5" Margin="279,0,398,0" Style="{DynamicResource InpList}"/>
+        <Label Content="House" Grid.Row="4" Width="100" Margin="393,5,293,27" Grid.RowSpan="2" Style="{DynamicResource All}"></Label>
+        <Slider Grid.Row="5" Margin="406,5,253,0"/>
+        <Label Content="Flat" Grid.Row="4" Width="100" Margin="557,5,129,27" Grid.RowSpan="2" Style="{DynamicResource All}"></Label>
+        <Slider Grid.Row="5" Margin="557,5,102,0"/>
+
+        <TextBox x:Name="NumOfPh" Grid.Row="6" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="Login" Grid.Row="7" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="Password" Grid.Row="8" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="ConfPass" Grid.Row="9" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="Email" Grid.Row="10" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+    </Grid>
+</Page>

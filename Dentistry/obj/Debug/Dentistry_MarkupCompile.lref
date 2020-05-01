@@ -2,6 +2,19 @@
 FD:\2k2s\курсовой ооп\Dentistry\Dentistry\App.xaml;;
 FD:\2k2s\курсовой ооп\Dentistry\Dentistry\MainWindow.xaml;;
 FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Resourses\Current.xaml;;
+FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AddNewCompoun.xaml;;
+FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AddNewDoctor.xaml;;
+FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AddNewPatient.xaml;;
+FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AddNewReception.xaml;;
+FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AddNewService.xaml;;
 FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\Authorization.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\Registration.xaml;;
+FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\Compouns.xaml;;
+FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\Doctors.xaml;;
+FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\Patients.xaml;;
+FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\Receptions.xaml;;
+FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\Registration\ChoiceType.xaml;;
+FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\Registration\DoctorType.xaml;;
+FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\Registration\PatientType.xaml;;
+FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\Registration\Registration.xaml;;
+FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\Services.xaml;;
 

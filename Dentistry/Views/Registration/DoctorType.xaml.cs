@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Dentistry.Views
+namespace Dentistry.Views.Registration
 {
     /// <summary>
-    /// Логика взаимодействия для Registration.xaml
+    /// Логика взаимодействия для DoctorType.xaml
     /// </summary>
-    public partial class Registration : Window
+    public partial class DoctorType : Page
     {
-        public Registration()
+        public DoctorType()
         {
             InitializeComponent();
         }

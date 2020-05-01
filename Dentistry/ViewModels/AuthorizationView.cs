@@ -1,5 +1,6 @@
 ﻿using Dentistry.Services;
 using Dentistry.Views;
+using Dentistry.Views.Registration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,7 +34,7 @@ namespace Dentistry.ViewModels
         }
 
         private RelayCommands signInCommand;
-        private RelayCommands SignInCommand
+        public RelayCommands SignInCommand
         {
             get
             {
@@ -49,7 +50,7 @@ namespace Dentistry.ViewModels
             }
         }
         private RelayCommands signUpCommand;
-        private RelayCommands SignUpCommand
+        public RelayCommands SignUpCommand
         {
             get
             {

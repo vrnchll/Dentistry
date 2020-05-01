@@ -75,6 +75,7 @@
     <Compile Include="Services\Account.cs" />
     <Compile Include="Services\UnitOfWork.cs" />
     <Compile Include="ViewModels\AuthorizationView.cs" />
+    <Compile Include="ViewModels\RegistrationViewModel.cs" />
     <Compile Include="ViewModels\RelayCommands.cs" />
     <Compile Include="Views\AddNewCompoun.xaml.cs">
       <DependentUpon>AddNewCompoun.xaml</DependentUpon>
@@ -106,7 +107,16 @@
     <Compile Include="Views\Receptions.xaml.cs">
       <DependentUpon>Receptions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Registration.xaml.cs">
+    <Compile Include="Views\Registration\ChoiceType.xaml.cs">
+      <DependentUpon>ChoiceType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Registration\DoctorType.xaml.cs">
+      <DependentUpon>DoctorType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Registration\PatientType.xaml.cs">
+      <DependentUpon>PatientType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Registration\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Services.xaml.cs">
@@ -169,7 +179,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Registration.xaml">
+    <Page Include="Views\Registration\ChoiceType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Registration\DoctorType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Registration\PatientType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Registration\Registration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -213,7 +235,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\fwd-arrows_2696.png" />
+    <Resource Include="Views\Registration\fwd-arrows_2696.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\back--v1.png" />

@@ -1,0 +1,33 @@
+﻿<Page x:Class="Dentistry.Views.Registration.ChoiceType"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dentistry.Views.Registration"
+        mc:Ignorable="d"
+        Title="ChoiceType" Height="450" Width="800">
+    <Grid Background="{DynamicResource Back}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="133*"/>
+            <ColumnDefinition Width="653*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="123*"></RowDefinition>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="253*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Please, choose the type of user!" Style="{DynamicResource All}" Margin="161,112,106,244" FontSize="16" FontWeight="Bold" Grid.RowSpan="3" Grid.Column="1"></Label>
+        <ComboBox Grid.Row="1" Margin="133,5,245,244" Grid.Column="1" Grid.RowSpan="2" SelectedItem="{Binding SelectedItem}">
+            <ComboBoxItem Content="Patient"/>
+            <ComboBoxItem Content="Doctor"/>
+        </ComboBox>
+        <Button Grid.Row="2" Margin="385,57.481,216,199.519" Content="Next" Grid.Column="1" Command="{Binding ShowPage}">
+            
+        </Button>
+    </Grid>
+
+
+
+
+
+</Page>
