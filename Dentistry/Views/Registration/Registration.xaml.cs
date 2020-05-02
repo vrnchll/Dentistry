@@ -24,6 +24,7 @@ namespace Dentistry.Views.Registration
         {
             InitializeComponent();
             DataContext = new RegistrationViewModel();
+          
         }
     }
 }

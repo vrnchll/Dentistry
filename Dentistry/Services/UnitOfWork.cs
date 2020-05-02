@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Dentistry.Services
 {
-    class UnitOfWork : IDisposable
+    public class UnitOfWork : IDisposable
     {
         private ProjectContext db = new ProjectContext();
         private CompounRepository compounRepository;
@@ -34,8 +34,12 @@ namespace Dentistry.Services
                 this.disposed = true;
             }
         }
-
-        public CompounRepository Compoun
+        public void Save()
+        {
+            db.SaveChanges();
+        }
+       
+        public CompounRepository Compouns
         {
             get
             {
@@ -45,7 +49,7 @@ namespace Dentistry.Services
             }
         }
 
-        public DoctorRepository Doctor
+        public DoctorRepository Doctors
         {
             get
             {
@@ -55,7 +59,7 @@ namespace Dentistry.Services
             }
         }
 
-        public PatientRepository Patient
+        public PatientRepository Patients
         {
             get
             {
@@ -65,7 +69,7 @@ namespace Dentistry.Services
             }
         }
 
-        public ReceptionRepository Reception
+        public ReceptionRepository Receptions
         {
             get
             {
@@ -75,7 +79,7 @@ namespace Dentistry.Services
             }
         }
 
-        public ServicesRepository Service
+        public ServicesRepository Services
         {
             get
             {
@@ -85,7 +89,7 @@ namespace Dentistry.Services
             }
         }
 
-        public  UserRepository User
+        public  UserRepository Users
         {
             get
             {

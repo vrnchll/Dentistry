@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Dentistry.Services
 {
@@ -12,13 +13,13 @@ namespace Dentistry.Services
         private Account() { }
 
 
-        private static Account _instance;
+        private static User _instance;
 
-        public static Account GetInstance()
+        public static User GetInstance()
         {
             if (_instance == null)
             {
-                _instance = new Account();
+                _instance = new User();
             }
             return _instance;
         }
@@ -27,27 +28,38 @@ namespace Dentistry.Services
         {
             //Логика взаимодействия таблиц с пользователями и нашими данными введенными
 
-            //Проверяем есть ли в бд такой пользователь
-            if (false)
+            UnitOfWork unitOfWork = new UnitOfWork();
+            var user = unitOfWork.Users.GetAll().FirstOrDefault(x => x.UserName == username && x.Password == password);
+            if (user != null)
             {
-
+                _instance = user;
+                MainWindow MainWindow = new MainWindow();
+                MainWindow.Topmost = true;
+                MainWindow.Show();
             }
-            //если нет, то выводим сообщение об ошибке
             else
             {
-
+                MessageBox.Show("Пользователь не найден, повторите попытку");
             }
 
             //
 
         }
 
-        public static void Registration(string username, string password, string email)
+        public static void RegistrationPatient(User user,Patient person)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
-            User user = new User();
-            unitOfWork.User.Create(new User { UserName = username, Password = password, Email = email, TypeUser = "User" });
+            unitOfWork.Users.Create(user);
+            unitOfWork.Patients.Create(person);
         }
 
+        public static void RegistrationDoctor(User user, Doctor person)
+        {
+            UnitOfWork unitOfWork = new UnitOfWork();
+            unitOfWork.Users.Create(user);
+            unitOfWork.Doctors.Create(person);
+            unitOfWork.Save();
+        }
     }
-}
+    }
+

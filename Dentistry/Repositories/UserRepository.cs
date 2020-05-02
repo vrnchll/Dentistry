@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Dentistry.Repositories
 {
-    class UserRepository : IRepository<User>
+    public class UserRepository : IRepository<User>
     {
         private ProjectContext db;
         public UserRepository(ProjectContext context)
@@ -20,7 +20,10 @@ namespace Dentistry.Repositories
         {
             db.Users.Add(user);
         }
-
+        public void Attach(User user)
+        {
+            db.Users.Attach(user);
+        }
         public void Delete(int id)
         {
             User user = db.Users.Find(id);

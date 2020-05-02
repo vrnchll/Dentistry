@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Dentistry.Repositories
 {
-    class DoctorRepository:IRepository<Doctor>
+    public class DoctorRepository:IRepository<Doctor>
     {
         private ProjectContext db;
         public DoctorRepository(ProjectContext context)

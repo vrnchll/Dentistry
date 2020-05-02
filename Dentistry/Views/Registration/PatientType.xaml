@@ -32,28 +32,28 @@
         <Label Content="Password" Grid.Row="8" Style="{DynamicResource All}"/>
         <Label Content="Confirm Password" Grid.Row="9" Style="{DynamicResource All}"/>
         <Label Content="Email" Grid.Row="10" Style="{DynamicResource All}"/>
-        <Button x:Name="SignUpButt"  Content="Sign Up" Grid.Row="11" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}" HorizontalAlignment="Center" Margin="287,0,398,0" Width="101"/>
+        <Button x:Name="SignUpButt"  Content="Sign Up" Grid.Row="11" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}" HorizontalAlignment="Center" Margin="287,0,398,0" Width="101" Command="{Binding RegistrationCommand}"/>
 
-        <TextBox x:Name="FN" Grid.Row="0" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
-        <TextBox x:Name="MN" Grid.Row="1" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
-        <TextBox x:Name="LN" Grid.Row="2" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="FN" Text="{Binding FirstName}" Grid.Row="0" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="MN" Text="{Binding MiddleName}" Grid.Row="1" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="LN" Text="{Binding LastName}" Grid.Row="2" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
         <DatePicker Grid.Row="3" Margin="155,0,427,0"/>
         <StackPanel x:Name="Gen" Grid.Row="4" Orientation="Vertical" Margin="155,0,427,0">
-            <RadioButton Content="Male" Style="{DynamicResource RadioBttn}" IsChecked="True"></RadioButton>
-            <RadioButton Content="Female" Style="{DynamicResource RadioBttn}"></RadioButton>
+            <RadioButton Content="Male" Style="{DynamicResource RadioBttn}" IsChecked="{Binding Path=Gender[0], Mode=TwoWay}"></RadioButton>
+            <RadioButton Content="Female" Style="{DynamicResource RadioBttn}" IsChecked="{Binding Path=Gender[1], Mode=TwoWay}"></RadioButton>
         </StackPanel>
 
-        <ListBox x:Name="City" Width="106" Grid.Row="5" Margin="155,0,525,0" Style="{DynamicResource InpList}"/>
-        <ListBox x:Name="Street" Grid.Row="5" Margin="279,0,398,0" Style="{DynamicResource InpList}"/>
-        <Label Content="House" Grid.Row="4" Width="100" Margin="393,5,293,27" Grid.RowSpan="2" Style="{DynamicResource All}"></Label>
-        <Slider Grid.Row="5" Margin="406,5,253,0"/>
-        <Label Content="Flat" Grid.Row="4" Width="100" Margin="557,5,129,27" Grid.RowSpan="2" Style="{DynamicResource All}"></Label>
-        <Slider Grid.Row="5" Margin="557,5,102,0"/>
+        <ListBox x:Name="City" SelectedItem="{Binding City}" Grid.Row="5" Margin="155,0,520,0" Style="{DynamicResource InpList}"/>
+        <ListBox x:Name="Street" SelectedItem="{Binding Street}" Grid.Row="5" Margin="294,0,378,0" Style="{DynamicResource InpList}"/>
+        <Label Content="House" Grid.Row="4" Width="100" Margin="438,5,262,27" Grid.RowSpan="2" Style="{DynamicResource All}"></Label>
+        <ListBox Style="{DynamicResource InpList}" SelectedItem="{Binding House}" Grid.Row="5" Margin="438,0,222,0"/>
+        <Label Content="Flat" Grid.Row="4" Width="100" Margin="594,5,106,27" Grid.RowSpan="2" Style="{DynamicResource All}"></Label>
+        <ListBox Style="{DynamicResource InpList}" SelectedItem="{Binding Flat}" Grid.Row="5" Margin="594,0,72,0"/>
 
-        <TextBox x:Name="NumOfPh" Grid.Row="6" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
-        <TextBox x:Name="Login" Grid.Row="7" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
-        <TextBox x:Name="Password" Grid.Row="8" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
-        <TextBox x:Name="ConfPass" Grid.Row="9" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
-        <TextBox x:Name="Email" Grid.Row="10" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="NumOfPh" Text="{Binding NumberOfPhone}" Grid.Row="6" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="Login" Text="{Binding Login}" Grid.Row="7" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="Password" Text="{Binding Password}" Grid.Row="8" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="ConfPass" Text="{Binding ConfirmPassword}" Grid.Row="9" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="Email" Text="{Binding Email}" Grid.Row="10" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
     </Grid>
 </Page>

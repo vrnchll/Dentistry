@@ -75,6 +75,8 @@
     <Compile Include="Services\Account.cs" />
     <Compile Include="Services\UnitOfWork.cs" />
     <Compile Include="ViewModels\AuthorizationView.cs" />
+    <Compile Include="ViewModels\DoctorViewModel.cs" />
+    <Compile Include="ViewModels\PatientViewModel.cs" />
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
     <Compile Include="ViewModels\RelayCommands.cs" />
     <Compile Include="Views\AddNewCompoun.xaml.cs">
@@ -106,9 +108,6 @@
     </Compile>
     <Compile Include="Views\Receptions.xaml.cs">
       <DependentUpon>Receptions.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Registration\ChoiceType.xaml.cs">
-      <DependentUpon>ChoiceType.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Registration\DoctorType.xaml.cs">
       <DependentUpon>DoctorType.xaml</DependentUpon>
@@ -176,10 +175,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Receptions.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Registration\ChoiceType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

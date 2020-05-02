@@ -31,7 +31,6 @@ D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Compouns.g.c
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Doctors.g.cs
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Patients.g.cs
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Receptions.g.cs
-D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Registration\ChoiceType.g.cs
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Registration\DoctorType.g.cs
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Registration\PatientType.g.cs
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Services.g.cs
@@ -45,7 +44,6 @@ D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Compouns.bam
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Doctors.baml
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Patients.baml
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Receptions.baml
-D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Registration\ChoiceType.baml
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Registration\DoctorType.baml
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Registration\PatientType.baml
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Views\Registration\Registration.baml

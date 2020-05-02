@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry.Views.Registration"
         mc:Ignorable="d"
-        Title="Registration" Height="450" Width="800">
-    <Grid>
-        <Grid Visibility="{Binding Visible}" Margin="0,0,0,346" >
+        Title="Registration" Height="500" Width="800">
+    <Grid Background="{DynamicResource Back}">
+        <Grid Visibility="{Binding Visible}" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="133*"/>
                 <ColumnDefinition Width="653*"/>
@@ -17,18 +17,17 @@
                 <RowDefinition Height="9*"/>
                 <RowDefinition Height="253*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Content="Please, choose the type of user!" Style="{DynamicResource All}" FontSize="16" FontWeight="Bold" Grid.RowSpan="2" Grid.Column="1" Margin="154,0,0,0"></Label>
-            <ComboBox Grid.Row="1"  Grid.Column="1" Grid.RowSpan="2"  SelectedValue="{Binding Path= SelectedItem}" Margin="154,0,287,23">
+            <Label Grid.Row="0" Content="Please, choose the type of user!" Style="{DynamicResource All}" FontSize="16" FontWeight="Bold" Grid.RowSpan="3" Grid.Column="1" Margin="145,115,278,0" ></Label>
+            <ComboBox Grid.Row="1"  Grid.Column="1" Grid.RowSpan="2"  SelectedValue="{Binding Path= SelectedItem}" Margin="145,0,287,293" >
                 <ComboBoxItem Content="Patient"/>
                 <ComboBoxItem Content="Doctor"/>
             </ComboBox>
-            <Button Grid.Row="2"  Content="Next" Grid.Column="1" Command="{Binding ShowPage}" Margin="376,26,215,0" >
+            <Button Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}" Grid.Row="2"  Content="Next" Grid.Column="1" Command="{Binding ShowPage}" Margin="330,20,230,262"  >
 
             </Button>
         </Grid>
-        <Frame
-
+        <Frame x:Name="frame" 
             Content="{Binding CurrentPage}"
-            NavigationUIVisibility="Hidden" Margin="0,73,0,0" />
+            NavigationUIVisibility="Automatic" />
     </Grid>
 </Window>

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Dentistry.Repositories
 {
-    class ReceptionRepository:IRepository<Reception>
+   public class ReceptionRepository:IRepository<Reception>
     {
         private ProjectContext db;
         public ReceptionRepository(ProjectContext context)

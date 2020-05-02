@@ -18,7 +18,18 @@ namespace Dentistry.ViewModels
         private Page DoctorType;
         private Visibility _Visible;
         private Page _currentPage;
-        public Page CurrentPage { get => _currentPage; set => _currentPage = value; }
+        public Page CurrentPage
+        {
+            get { return _currentPage; }
+            set
+            {
+                if (_currentPage == value)
+                    return;
+
+                _currentPage = value;
+                OnPropertyChanged("CurrentPage");
+            }
+        }
         public Visibility Visible { get =>_Visible; set
             {
                 _Visible = value;
