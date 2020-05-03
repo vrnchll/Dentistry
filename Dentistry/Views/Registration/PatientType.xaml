@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry.Views.Registration"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="PatientType" Height="450" Width="800">
     <Grid Background="{DynamicResource Back}">
@@ -37,18 +38,19 @@
         <TextBox x:Name="FN" Text="{Binding FirstName}" Grid.Row="0" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
         <TextBox x:Name="MN" Text="{Binding MiddleName}" Grid.Row="1" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
         <TextBox x:Name="LN" Text="{Binding LastName}" Grid.Row="2" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
-        <DatePicker Grid.Row="3" Margin="155,0,427,0"/>
+        <DatePicker Grid.Row="3" Margin="155,0,427,0"  DisplayDate = "12/12/2000"  DisplayDateStart = "12/12/1960"  DisplayDateEnd="12/12/2020">
+        </DatePicker>
         <StackPanel x:Name="Gen" Grid.Row="4" Orientation="Vertical" Margin="155,0,427,0">
             <RadioButton Content="Male" Style="{DynamicResource RadioBttn}" IsChecked="{Binding Path=Gender[0], Mode=TwoWay}"></RadioButton>
             <RadioButton Content="Female" Style="{DynamicResource RadioBttn}" IsChecked="{Binding Path=Gender[1], Mode=TwoWay}"></RadioButton>
         </StackPanel>
 
-        <ListBox x:Name="City" SelectedItem="{Binding City}" Grid.Row="5" Margin="155,0,520,0" Style="{DynamicResource InpList}"/>
-        <ListBox x:Name="Street" SelectedItem="{Binding Street}" Grid.Row="5" Margin="294,0,378,0" Style="{DynamicResource InpList}"/>
+        <ComboBox x:Name="City" SelectedItem="{Binding City}" Grid.Row="5" Margin="155,0,520,0" />
+        <ComboBox x:Name="Street" SelectedItem="{Binding Street}" Grid.Row="5" Margin="294,0,378,0" />
         <Label Content="House" Grid.Row="4" Width="100" Margin="438,5,262,27" Grid.RowSpan="2" Style="{DynamicResource All}"></Label>
-        <ListBox Style="{DynamicResource InpList}" SelectedItem="{Binding House}" Grid.Row="5" Margin="438,0,222,0"/>
+        <TextBox  Text="{Binding House}" Grid.Row="5" Margin="438,0,222,0"/>
         <Label Content="Flat" Grid.Row="4" Width="100" Margin="594,5,106,27" Grid.RowSpan="2" Style="{DynamicResource All}"></Label>
-        <ListBox Style="{DynamicResource InpList}" SelectedItem="{Binding Flat}" Grid.Row="5" Margin="594,0,72,0"/>
+        <TextBox  Text="{Binding Flat}" Grid.Row="5" Margin="594,0,72,0"/>
 
         <TextBox x:Name="NumOfPh" Text="{Binding NumberOfPhone}" Grid.Row="6" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
         <TextBox x:Name="Login" Text="{Binding Login}" Grid.Row="7" Margin="155,0,427,0" Style="{DynamicResource Input}"/>

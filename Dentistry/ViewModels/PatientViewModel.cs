@@ -94,8 +94,8 @@ namespace Dentistry.ViewModels
             }
         }
 
-        private int _NumberOfPhone;
-        public int NumberOfPhone
+        private string _NumberOfPhone;
+        public string NumberOfPhone
         {
             get => _NumberOfPhone; set
             {
@@ -152,7 +152,7 @@ namespace Dentistry.ViewModels
                     if (Password == ConfirmPassword)
                     {
                         User user = new User() { UserName = Login, Password = Password, Email = Email, TypeUser = "Patient" };
-                        Patient person = new Patient() { FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth.ToString(), Gender = SelectedGender == 1 ? "Male" : "Female", City = City, Street = Street, House = House, Flat = Flat, NumberOfPhone = NumberOfPhone };
+                        Patient person = new Patient() {Id = user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth.ToString("MM/dd/yyyy"), Gender = SelectedGender == 1 ? "Male" : "Female", City = City, Street = Street, House = House, Flat = Flat, NumberOfPhone = NumberOfPhone };
                         Account.RegistrationPatient(user,person);
                     }
                     else

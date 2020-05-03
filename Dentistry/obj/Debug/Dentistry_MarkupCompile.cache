@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\
+D:\temp\Dentistry\Dentistry\obj\Debug\
 Dentistry
 none
 false
 DEBUG;TRACE
-D:\2k2s\курсовой ооп\Dentistry\Dentistry\App.xaml
+D:\temp\Dentistry\Dentistry\App.xaml
 16929040614
 
 40-601487859
-16-884075308
+161086201724
 MainWindow.xaml;Resourses\Current.xaml;Views\AddNewCompoun.xaml;Views\AddNewDoctor.xaml;Views\AddNewPatient.xaml;Views\AddNewReception.xaml;Views\AddNewService.xaml;Views\Authorization.xaml;Views\Compouns.xaml;Views\Doctors.xaml;Views\Patients.xaml;Views\Receptions.xaml;Views\Registration\DoctorType.xaml;Views\Registration\PatientType.xaml;Views\Registration\Registration.xaml;Views\Services.xaml;
 
 False

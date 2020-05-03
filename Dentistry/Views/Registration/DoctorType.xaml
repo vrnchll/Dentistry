@@ -43,7 +43,7 @@
         <TextBox x:Name="FN2" Grid.Row="0" Text="{Binding FirstName}" Margin="82.137,0,427,0" Grid.Column="2" Style="{DynamicResource Input}" />
         <TextBox x:Name="MN2" Grid.Row="1" Text="{Binding MiddleName}" Margin="82.137,0,427,0" Grid.Column="2" Style="{DynamicResource Input}"/>
         <TextBox x:Name="LN2" Grid.Row="2" Text="{Binding LastName}" Margin="82.137,0,427,0" Grid.Column="2" Style="{DynamicResource Input}"/>
-        <DatePicker Grid.Row="3" Margin="82.137,0,427,0" Grid.Column="2" />
+        <DatePicker Grid.Row="3" Margin="82.137,0,427,0" Grid.Column="2" DisplayDate = "12/12/2000"  DisplayDateStart = "12/12/1960"  DisplayDateEnd="12/12/2010" />
         <StackPanel x:Name="Gen2" Grid.Row="4" Orientation="Vertical" Margin="82.137,0,427,0" Grid.Column="2">
             <RadioButton Content="Male" Style="{DynamicResource RadioBttn}" IsChecked="{Binding Path=Gender[0], Mode=TwoWay}"></RadioButton>
             <RadioButton Content="Female" Style="{DynamicResource RadioBttn}" IsChecked="{Binding Path=Gender[1], Mode=TwoWay}" Height="18"></RadioButton>

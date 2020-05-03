@@ -1,6 +1,7 @@
 ﻿using Dentistry.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,17 +49,57 @@ namespace Dentistry.Services
 
         public static void RegistrationPatient(User user,Patient person)
         {
-            UnitOfWork unitOfWork = new UnitOfWork();
-            unitOfWork.Users.Create(user);
-            unitOfWork.Patients.Create(person);
+            var resultsUser = new List<ValidationResult>();
+            var contextUser = new ValidationContext(user);
+            var resultsPerson = new List<ValidationResult>();
+            var contextPerson = new ValidationContext(person);
+            if (!Validator.TryValidateObject(user, contextUser, resultsUser, true) && !Validator.TryValidateObject(person, contextPerson, resultsPerson, true))
+            {
+                foreach (var error in resultsUser)
+                {
+                    MessageBox.Show(error.ErrorMessage);
+                }
+                foreach (var error in resultsPerson)
+                {
+                    MessageBox.Show(error.ErrorMessage);
+                }
+            }
+            else
+            {
+                UnitOfWork unitOfWork = new UnitOfWork();
+                unitOfWork.Users.Create(user);
+                unitOfWork.Patients.Create(person);
+                unitOfWork.Save();
+            }
+          
+          
+          
         }
 
         public static void RegistrationDoctor(User user, Doctor person)
         {
-            UnitOfWork unitOfWork = new UnitOfWork();
-            unitOfWork.Users.Create(user);
-            unitOfWork.Doctors.Create(person);
-            unitOfWork.Save();
+            var resultsUser = new List<ValidationResult>();
+            var contextUser = new ValidationContext(user);
+            var resultsPerson = new List<ValidationResult>();
+            var contextPerson = new ValidationContext(person);
+            if (!Validator.TryValidateObject(user, contextUser, resultsUser, true) && !Validator.TryValidateObject(person, contextPerson, resultsPerson, true))
+            {
+                foreach (var error in resultsUser)
+                {
+                    MessageBox.Show(error.ErrorMessage);
+                }
+                foreach (var error in resultsPerson)
+                {
+                    MessageBox.Show(error.ErrorMessage);
+                }
+            }
+            else
+            {
+                UnitOfWork unitOfWork = new UnitOfWork();
+                unitOfWork.Users.Create(user);
+                unitOfWork.Doctors.Create(person);
+                unitOfWork.Save();
+            }
         }
     }
     }

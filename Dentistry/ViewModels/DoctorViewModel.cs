@@ -59,8 +59,8 @@ namespace Dentistry.ViewModels
             }
         }
 
-        private int _NumberOfPhone;
-        public int NumberOfPhone { get=>_NumberOfPhone; set
+        private string _NumberOfPhone;
+        public string NumberOfPhone { get=>_NumberOfPhone; set
             {
                 _NumberOfPhone = value;
                 OnPropertyChanged("NumberOfPhone");
@@ -118,7 +118,7 @@ namespace Dentistry.ViewModels
                     if (Password == ConfirmPassword)
                     {
                         User user = new User() { UserName = Login, Password = Password, Email = Email, TypeUser = "Doctor" };
-                        Doctor person = new Doctor() { FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = "12.12.12", Gender = SelectedGender == 1 ? "Male" : "Female",Experience=Experience,Position=Position,Cabinet=Cabinet, NumberOfPhone = NumberOfPhone };
+                        Doctor person = new Doctor() {Id=user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = "12.12.12", Gender = SelectedGender == 1 ? "Male" : "Female",Experience=Experience,Position=Position,Cabinet=Cabinet, NumberOfPhone = NumberOfPhone };
                         Account.RegistrationDoctor(user, person);
                     }
                     else

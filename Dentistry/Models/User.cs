@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,14 @@ namespace Dentistry.Models
         [Index]
         public int Id { get; set; }
         public string TypeUser { get; set; }
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "Недопустимая длина логина")]
+        [Required(ErrorMessage = "Не указано логин пользователя")]
         public string UserName { get; set; }
+        [Required(ErrorMessage = "Не указано пароль")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "Недопустимая длина пароля")]
         public string Password { get; set; }
+        [Required]
+        [RegularExpression(@"[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+", ErrorMessage = "Неверный формат логина")]
         public string Email { get; set; }
 
         

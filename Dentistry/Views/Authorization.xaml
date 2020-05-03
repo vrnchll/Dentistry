@@ -22,13 +22,13 @@
         <Label Grid.Row="0" Content="Login" VerticalAlignment="Center" HorizontalAlignment="Center" Height="55" Width="109" Style="{StaticResource Labels}" FontSize="35" Margin="144,0,139,57" Grid.RowSpan="2"/>
 
         <Label Content="UserName" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="48,28,0,37" Width="140" Style="{StaticResource Labels}" Grid.RowSpan="2"/>
-        <TextBox x:Name="UserNameBox" Grid.Row="1" Background="{StaticResource TextIn}" Margin="105,32,123,0" FontSize="16" Foreground="White"></TextBox>
+        <TextBox x:Name="UserNameBox" Grid.Row="1" Background="{StaticResource TextIn}" Margin="105,32,123,0" FontSize="16" Foreground="White" Text="{Binding UserName}"></TextBox>
 
         <Label Grid.Row="2" Content="Password" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="48,0,0,39" Width="140" Style="{StaticResource Labels}"/>
-        <PasswordBox  Grid.Row="2" VerticalAlignment="Center" Margin="105,40,123,0" Height="39" Background="{DynamicResource Password}" FontSize="16" Foreground="White" />
+        <PasswordBox Name="txtPassword"   Grid.Row="2" VerticalAlignment="Center" Margin="105,40,123,0" Height="39" Background="{DynamicResource Password}" FontSize="16" Foreground="White" />
 
-        <Button x:Name="BttnLog" Grid.Row="3" Margin="105,10,227,34" HorizontalAlignment="Center" Width="60" Content="Sign in" Style="{DynamicResource Buttons}" Command="{Binding SignInCommand}"/>
-        <Button x:Name="BttnRegistr" Grid.Row="3" Margin="209,10,123,34" HorizontalAlignment="Center" Width="60" Content="Sign up" Style="{DynamicResource Buttons}" Command="{Binding SignUpCommand}"/>
+        <Button x:Name="BttnLog" Grid.Row="3" Margin="105,10,227,34" HorizontalAlignment="Center" Width="60" Content="Sign in" Style="{DynamicResource Buttons}" Command="{Binding SignInCommand}" CommandParameter="{Binding ElementName=txtPassword}"/>
+        <Button x:Name="BttnRegistr" Grid.Row="3" Margin="209,10,123,34" HorizontalAlignment="Center" Width="60" Content="Sign up" Style="{DynamicResource Buttons}" Command="{Binding SignUpCommand}" />
         
     </Grid>
 </Window>
