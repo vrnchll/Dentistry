@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dentistry.Views.Registration;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -43,8 +44,8 @@ namespace Dentistry.ViewModels
         public RegistrationViewModel()
         {
           
-            PatientType = new Views.Registration.PatientType();
-            DoctorType = new Views.Registration.DoctorType();
+            PatientType = new PatientType();
+            DoctorType = new DoctorType();
             Visible = Visibility.Visible;
         }
 

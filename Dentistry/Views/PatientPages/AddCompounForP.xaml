@@ -1,0 +1,27 @@
+﻿<Page x:Class="Dentistry.Views.PatientPages.AddCompounForP"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dentistry.Views.PatientPages"
+        mc:Ignorable="d"
+        Title="AddCompounForP" Height="450" Width="800">
+    <Grid Background="{DynamicResource Back}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="65*"/>
+            <RowDefinition Height="66*"/>
+            <RowDefinition Height="61*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="60*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Order the compoun" Style="{DynamicResource Heading}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Date of Reception" Grid.Row="1" Margin="97,7,366,24" Style="{DynamicResource All}"/>
+        <DatePicker Grid.Row="1" Margin="226,7,225,26"></DatePicker>
+        <Label Grid.Row="2" Content="Service" Margin="97,0,366,27" Style="{DynamicResource All}"></Label>
+        <ComboBox Grid.Row="2" Margin="226,0,225,45"></ComboBox>
+        <Label Grid.Row="3" Content="Doctor" Margin="97,0,366,27" Style="{DynamicResource All}"/>
+        <ComboBox Grid.Row="3" Margin="226,0,225,40"></ComboBox>
+        <Button Content="Order" Grid.Row="4" Margin="324,0,325,27" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}"/>
+    </Grid>
+</Page>

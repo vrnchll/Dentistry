@@ -1,0 +1,48 @@
+﻿<Page x:Class="Dentistry.Views.Compouns"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dentistry.Views"
+        mc:Ignorable="d"
+        Title="Compouns" Height="400" Width="800">
+    <Grid Background="{DynamicResource Back}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="103*"/>
+        </Grid.RowDefinitions>
+        <Menu Style="{DynamicResource TheMainMenu}" Margin="0,0,0,10">
+            <MenuItem Header="" Height="33" Width="35" Style="{DynamicResource Items}">
+                <MenuItem.Background>
+                    <ImageBrush ImageSource="back--v1.png"/>
+                </MenuItem.Background>
+            </MenuItem>
+            <MenuItem Header="Add new compoun" Style="{DynamicResource Items}" Command="{Binding Add}"/>
+            <MenuItem Header="Edit" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Delete" Style="{DynamicResource Items}"/>
+        </Menu>
+        <DataGrid Margin="0,32,0,0" Grid.RowSpan="2" Style="{DynamicResource DataGridsStyle}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"/>
+                <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock Text="Date of Reception"/>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=DateOfRes, StringFormat='dd MMM yyyy' }"  />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker Name="DatePicker"  SelectedDate="{Binding Path=DateOfRes}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridComboBoxColumn Header="Service"></DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Patient Id"/>
+                <DataGridTextColumn Header="Doctor Id"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

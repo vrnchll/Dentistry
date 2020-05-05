@@ -1,4 +1,5 @@
 ﻿using Dentistry.Models;
+using Dentistry.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -33,10 +34,30 @@ namespace Dentistry.Services
             var user = unitOfWork.Users.GetAll().FirstOrDefault(x => x.UserName == username && x.Password == password);
             if (user != null)
             {
-                _instance = user;
-                MainWindow MainWindow = new MainWindow();
-                MainWindow.Topmost = true;
-                MainWindow.Show();
+                switch (user.TypeUser)
+                {
+                    case "Admin": {
+                            _instance = user;
+                            AdminMainWindow AdminMainWindow = new AdminMainWindow();
+                            AdminMainWindow.Topmost = true;
+                            AdminMainWindow.Show();
+                        }break;
+                    case "Doctor":
+                        {
+                            _instance = user;
+                            DoctorMainWindow DMainWindow = new DoctorMainWindow();
+                            DMainWindow.Topmost = true;
+                            DMainWindow.Show();
+                        }break;
+                    case "Patient":
+                        {
+                            _instance = user;
+                            PatientMainWindow PatientMainWindow = new PatientMainWindow();
+                            PatientMainWindow.Topmost = true;
+                            PatientMainWindow.Show();
+                        }break;
+                    default: break;
+                }
             }
             else
             {

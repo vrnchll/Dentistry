@@ -74,40 +74,78 @@
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Services\Account.cs" />
     <Compile Include="Services\UnitOfWork.cs" />
+    <Compile Include="ViewModels\Admin_CompounsViewModel.cs" />
+    <Compile Include="ViewModels\Admin_DoctorsViewModel.cs" />
+    <Compile Include="ViewModels\Admin_PatientsViewModel.cs" />
+    <Compile Include="ViewModels\Admin_ReceptionsViewModel.cs" />
+    <Compile Include="ViewModels\Admin_ServicesViewModel.cs" />
     <Compile Include="ViewModels\AuthorizationView.cs" />
     <Compile Include="ViewModels\DoctorViewModel.cs" />
+    <Compile Include="ViewModels\MainWindows\AdminMainViewModel.cs" />
+    <Compile Include="ViewModels\MainWindows\DoctorMainViewModel.cs" />
+    <Compile Include="ViewModels\MainWindows\PatientMainViewModel.cs" />
     <Compile Include="ViewModels\PatientViewModel.cs" />
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
     <Compile Include="ViewModels\RelayCommands.cs" />
-    <Compile Include="Views\AddNewCompoun.xaml.cs">
+    <Compile Include="Views\AddNew\AddNewCompoun.xaml.cs">
       <DependentUpon>AddNewCompoun.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddNewDoctor.xaml.cs">
+    <Compile Include="Views\AddNew\AddNewDoctor.xaml.cs">
       <DependentUpon>AddNewDoctor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddNewPatient.xaml.cs">
+    <Compile Include="Views\AddNew\AddNewPatient.xaml.cs">
       <DependentUpon>AddNewPatient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddNewReception.xaml.cs">
+    <Compile Include="Views\AddNew\AddNewReception.xaml.cs">
       <DependentUpon>AddNewReception.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddNewService.xaml.cs">
+    <Compile Include="Views\AddNew\AddNewService.xaml.cs">
       <DependentUpon>AddNewService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminMainWindow.xaml.cs">
+      <DependentUpon>AdminMainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Authorization.xaml.cs">
       <DependentUpon>Authorization.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Compouns.xaml.cs">
+    <Compile Include="Views\AdminPages\Compouns.xaml.cs">
       <DependentUpon>Compouns.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Doctors.xaml.cs">
+    <Compile Include="Views\DoctorMainWindow.xaml.cs">
+      <DependentUpon>DoctorMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminPages\Doctors.xaml.cs">
       <DependentUpon>Doctors.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Patients.xaml.cs">
+    <Compile Include="Views\AdminPages\Patients.xaml.cs">
       <DependentUpon>Patients.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Receptions.xaml.cs">
+    <Compile Include="Views\AdminPages\Receptions.xaml.cs">
       <DependentUpon>Receptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DoctorPages\AddNewReceptionForDoctor.xaml.cs">
+      <DependentUpon>AddNewReceptionForDoctor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DoctorPages\CompounsForD.xaml.cs">
+      <DependentUpon>CompounsForD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DoctorPages\ProfileD.xaml.cs">
+      <DependentUpon>ProfileD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DoctorPages\ReceptionsForD.xaml.cs">
+      <DependentUpon>ReceptionsForD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PatientPages\AddCompounForP.xaml.cs">
+      <DependentUpon>AddCompounForP.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PatientPages\DoctorsForP.xaml.cs">
+      <DependentUpon>DoctorsForP.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PatientPages\Profile.xaml.cs">
+      <DependentUpon>Profile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PatientPages\ServicesForP.xaml.cs">
+      <DependentUpon>ServicesForP.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Registration\DoctorType.xaml.cs">
       <DependentUpon>DoctorType.xaml</DependentUpon>
@@ -118,10 +156,34 @@
     <Compile Include="Views\Registration\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Services.xaml.cs">
+    <Compile Include="Views\AdminPages\Services.xaml.cs">
       <DependentUpon>Services.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\AdminMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DoctorMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DoctorPages\AddNewReceptionForDoctor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DoctorPages\CompounsForD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DoctorPages\ProfileD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DoctorPages\ReceptionsForD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PatientMainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -130,31 +192,31 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Context\ProjectContext.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Views\PatientMainWindow.xaml.cs">
+      <DependentUpon>PatientMainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Resourses\Current.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddNewCompoun.xaml">
+    <Page Include="Views\AddNew\AddNewCompoun.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddNewDoctor.xaml">
+    <Page Include="Views\AddNew\AddNewDoctor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddNewPatient.xaml">
+    <Page Include="Views\AddNew\AddNewPatient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddNewReception.xaml">
+    <Page Include="Views\AddNew\AddNewReception.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddNewService.xaml">
+    <Page Include="Views\AddNew\AddNewService.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,19 +224,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Compouns.xaml">
+    <Page Include="Views\AdminPages\Compouns.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Doctors.xaml">
+    <Page Include="Views\AdminPages\Doctors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Patients.xaml">
+    <Page Include="Views\AdminPages\Patients.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Receptions.xaml">
+    <Page Include="Views\AdminPages\Receptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PatientPages\AddCompounForP.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PatientPages\DoctorsForP.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PatientPages\Profile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PatientPages\ServicesForP.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -190,7 +268,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Services.xaml">
+    <Page Include="Views\AdminPages\Services.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -234,6 +312,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\back--v1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\DoctorPages\back--v1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\AdminPages\back--v1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
