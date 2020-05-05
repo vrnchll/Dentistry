@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\
+D:\Dentistry\Dentistry\obj\Debug\
 Dentistry
 none
 false
 DEBUG;TRACE
-D:\2k2s\курсовой ооп\Dentistry\Dentistry\App.xaml
+D:\Dentistry\Dentistry\App.xaml
 26-1820699833
 
-58806510844
-16-884075308
+59188014854
+16-1352963732
 Views\AdminMainWindow.xaml;Views\DoctorMainWindow.xaml;Views\DoctorPages\AddNewReceptionForDoctor.xaml;Views\DoctorPages\CompounsForD.xaml;Views\DoctorPages\ProfileD.xaml;Views\DoctorPages\ReceptionsForD.xaml;Views\PatientMainWindow.xaml;Resourses\Current.xaml;Views\AddNew\AddNewCompoun.xaml;Views\AddNew\AddNewDoctor.xaml;Views\AddNew\AddNewPatient.xaml;Views\AddNew\AddNewReception.xaml;Views\AddNew\AddNewService.xaml;Views\Authorization.xaml;Views\AdminPages\Compouns.xaml;Views\AdminPages\Doctors.xaml;Views\AdminPages\Patients.xaml;Views\AdminPages\Receptions.xaml;Views\PatientPages\AddCompounForP.xaml;Views\PatientPages\DoctorsForP.xaml;Views\PatientPages\Profile.xaml;Views\PatientPages\ServicesForP.xaml;Views\Registration\DoctorType.xaml;Views\Registration\PatientType.xaml;Views\Registration\Registration.xaml;Views\AdminPages\Services.xaml;
 
 False

@@ -13,6 +13,9 @@ namespace Dentistry.ViewModels.MainWindows
 {
     class DoctorMainViewModel : INotifyPropertyChanged
     {
+       
+
+        
         private Page AddReception;
         private Page Receptions;
         private Page Compouns;
@@ -36,11 +39,15 @@ namespace Dentistry.ViewModels.MainWindows
         }
         public DoctorMainViewModel()
         {
+
             AddReception = new AddNewReceptionForDoctor();
             Receptions = new ReceptionsForD();
             Compouns = new CompounsForD();
             Profile = new ProfileD();
             CurrentPage = AddReception;
+
+            
+         
         }
 
         private RelayCommands _addReception;
@@ -94,6 +101,7 @@ namespace Dentistry.ViewModels.MainWindows
                 _ShowProfile ?? (
                _ShowProfile = new RelayCommands(obj =>
                {
+                   
                    CurrentPage = Profile;
                }));
             }

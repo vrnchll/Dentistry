@@ -1,4 +1,5 @@
 ﻿using Dentistry.Models;
+using Dentistry.ViewModels.DoctorPagesViewModel;
 using Dentistry.Views;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,7 @@ namespace Dentistry.Services
                     case "Doctor":
                         {
                             _instance = user;
+                            ProfileDoctorInfo();
                             DoctorMainWindow DMainWindow = new DoctorMainWindow();
                             DMainWindow.Topmost = true;
                             DMainWindow.Show();
@@ -52,6 +54,7 @@ namespace Dentistry.Services
                     case "Patient":
                         {
                             _instance = user;
+                            
                             PatientMainWindow PatientMainWindow = new PatientMainWindow();
                             PatientMainWindow.Topmost = true;
                             PatientMainWindow.Show();
@@ -121,6 +124,10 @@ namespace Dentistry.Services
                 unitOfWork.Doctors.Create(person);
                 unitOfWork.Save();
             }
+        }
+        public static void ProfileDoctorInfo()
+        {
+            DoctorProfileViewModel.FirstName = _instance.DoctorProfile.FirstName;
         }
     }
     }

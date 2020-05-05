@@ -80,6 +80,7 @@
     <Compile Include="ViewModels\Admin_ReceptionsViewModel.cs" />
     <Compile Include="ViewModels\Admin_ServicesViewModel.cs" />
     <Compile Include="ViewModels\AuthorizationView.cs" />
+    <Compile Include="ViewModels\DoctorPagesViewModel\DoctorProfileViewModel.cs" />
     <Compile Include="ViewModels\DoctorViewModel.cs" />
     <Compile Include="ViewModels\MainWindows\AdminMainViewModel.cs" />
     <Compile Include="ViewModels\MainWindows\DoctorMainViewModel.cs" />
