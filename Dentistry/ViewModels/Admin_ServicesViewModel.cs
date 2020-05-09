@@ -1,4 +1,5 @@
-﻿using Dentistry.Views;
+﻿using Dentistry.Models;
+using Dentistry.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,34 @@ namespace Dentistry.ViewModels
 {
     class Admin_ServicesViewModel : INotifyPropertyChanged
     {
+        public static BindingList<Service> Services;
+        public static BindingList<string> DoctorsName;
+        public Admin_ServicesViewModel()
+        {
+            Services = new BindingList<Service>();
+            DoctorsName = new BindingList<string>();
+        }
+        private string _Name;
+        public string Name
+        {
+            get => _Name; set
+            {
+                _Name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+        private string _Cost;
+        public string Cost
+        {
+            get => _Cost; set
+            {
+                _Cost = value;
+                OnPropertyChanged("Cost");
+            }
+        }
+     
+        
         private RelayCommands _Add;
         public RelayCommands Add
         {

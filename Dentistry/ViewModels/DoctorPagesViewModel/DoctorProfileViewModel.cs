@@ -12,7 +12,14 @@ namespace Dentistry.ViewModels.DoctorPagesViewModel
     {
 
         public static string FirstName;
-      
-      
+        public static string MiddleName;
+        public static string LastName;
+        public static string Gender;
+        public static string DateOfBirthday;
+        public static string NumberOfPhone;
+        public static string Position;
+        public static string Experience;
+        public static string Cabinet;
+        public static string Login;
     }
 }

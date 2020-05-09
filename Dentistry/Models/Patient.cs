@@ -28,8 +28,8 @@ namespace Dentistry.Models
         public string Gender { get; set; }
         public string City { get; set; }
         public string Street { get; set;}
-        public int House { get; set; }
-        public int Flat { get; set; }
+        public string House { get; set; }
+        public string Flat { get; set; }
         [Required(ErrorMessage = "Не указан телефон пользователя")]
         [RegularExpression(@"^[+]375[0-9]{2}[0-9]{3}[0-9]{2}[0-9]{2}$", ErrorMessage = "Неверный формат телефона,\nВведите данные в формате +375(33)333-33-33")]
         public string NumberOfPhone { get; set; }

@@ -7,12 +7,18 @@
         mc:Ignorable="d"
         Title="AdminMainWindow" Height="450" Width="800">
     <Grid>
-        <StackPanel Margin="0,0,640,0" Orientation="Vertical">
-            <Button Height="42" Content="Patients" Command="{Binding ShowPatients}"/>
-            <Button Height="42" Content="Doctors" Command="{Binding ShowDoctors}"/>
-            <Button Height="42" Content="Receptions" Command="{Binding ShowReceptions}"/>
-            <Button Height="42" Content="Compouns" Command="{Binding ShowCompouns}"/>
-            <Button Height="42" Content="Services" Command="{Binding ShowServices}"/>
+        <StackPanel Margin="0,0,640,0" Orientation="Vertical" >
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0.16"/>
+                    <GradientStop Color="#FF607D8B" Offset="0.961"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <Button Height="42" Content="Пациенты" Command="{Binding ShowPatients}"/>
+            <Button Height="42" Content="Доктора" Command="{Binding ShowDoctors}"/>
+            <Button Height="42" Content="Посещения" Command="{Binding ShowReceptions}"/>
+            <Button Height="42" Content="Талоны" Command="{Binding ShowCompoun}"/>
+            <Button Height="42" Content="Услуги" Command="{Binding ShowServices}"/>
         </StackPanel>
         <Frame Margin="152,0,0,0" 
                Content="{Binding CurrentPage}"

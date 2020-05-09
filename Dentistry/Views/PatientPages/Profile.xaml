@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Dentistry.Views.PatientPages"
+      xmlns:local="clr-namespace:Dentistry.ViewModels.PatientPagesViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="800"
       Title="Profile">
@@ -27,36 +27,35 @@
 
 
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Profile" Style="{DynamicResource Heading}" VerticalAlignment="Center" Height="38" Margin="0,4,10,24" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <Label Grid.Row="1" Grid.Column="0" Content="First Name" Style="{DynamicResource All}"/>
-        <Label Grid.Row="2" Grid.Column="0" Content="Middle Name" Style="{DynamicResource All}"/>
-        <Label Grid.Row="3" Grid.Column="0" Content="Last Name" Style="{DynamicResource All}"/>
-        <Label Grid.Row="4" Grid.Column="0" Content="Date Of Birthday" Style="{DynamicResource All}"/>
-        <Label Grid.Row="5" Grid.Column="0" Content="Gender" Style="{DynamicResource All}"/>
-        <Label Grid.Row="6" Grid.Column="0" Content="Number of Phone" Style="{DynamicResource All}"/>
-        <Label Grid.Row="7" Grid.Column="0" Content="Address" Style="{DynamicResource All}"/>
-        <Label Grid.Row="9" Grid.Column="0" Content="Login" Style="{DynamicResource All}"/>
-        <Label Grid.Row="9" Content="History of orders" Style="{DynamicResource All}" Margin="0,42,0,0"/>
+        <Label Grid.Row="0" Content="Профиль" Style="{DynamicResource Heading}" VerticalAlignment="Center" Height="38" Margin="0,4,10,24" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="Имя" Style="{DynamicResource All}"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="Отчество" Style="{DynamicResource All}"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Фамилия" Style="{DynamicResource All}"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="Дата Рождения" Style="{DynamicResource All}"/>
+        <Label Grid.Row="5" Grid.Column="0" Content="Пол" Style="{DynamicResource All}"/>
+        <Label Grid.Row="6" Grid.Column="0" Content="Номер телефона" Style="{DynamicResource All}"/>
+        <Label Grid.Row="7" Grid.Column="0" Content="Адрес" Style="{DynamicResource All}"/>
+        <Label Grid.Row="9" Grid.Column="0" Content="Имя пользователя" Style="{DynamicResource All}"/>
+        <Label Grid.Row="9" Content="История заказов" Style="{DynamicResource All}" Margin="0,42,0,0"/>
         <DataGrid Grid.Row="9" Background="{DynamicResource Back}" Grid.ColumnSpan="2" Margin="0,70,0,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id"/>
-                <DataGridTextColumn Header="Date Of Reception" Width="140"></DataGridTextColumn>
-                <DataGridTextColumn Header="Service" Width="200"></DataGridTextColumn>
-                <DataGridTextColumn Header="Doctor" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата заказа" Width="140"></DataGridTextColumn>
+                <DataGridTextColumn Header="Услуга" Width="200"></DataGridTextColumn>
+                <DataGridTextColumn Header="Врач" Width="100"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Grid.Row="1" Grid.Column="1" x:Name="First" Content="First Name" Style="{DynamicResource All}"/>
-        <Label Grid.Row="2" Grid.Column="1" x:Name="Middle" Content="Middle Name" Style="{DynamicResource All}"/>
-        <Label Grid.Row="3" Grid.Column="1" x:Name="Last" Content="Last Name" Style="{DynamicResource All}"/>
-        <Label Grid.Row="4" Grid.Column="1" x:Name="Date" Content="Date Of Birthday" Style="{DynamicResource All}"/>
-        <Label Grid.Row="5" Grid.Column="1" x:Name="Gender" Content="Gender" Style="{DynamicResource All}"/>
-        <Label Grid.Row="6" Grid.Column="1" x:Name="Number" Content="Number of Phone" Style="{DynamicResource All}"/>
-        <Label Grid.Row="7" Grid.Column="1" x:Name="City" Content="City" Style="{DynamicResource All}"/>
-        <Label Grid.Row="7" Grid.Column="1" x:Name="Street" Content="Street" Style="{DynamicResource All}" Margin="202,0,142,35"/>
-        <Label Grid.Row="7" Grid.Column="1" x:Name="House" Content="House" Style="{DynamicResource All}" Margin="0,32,394,0"/>
-        <Label Grid.Row="7" Grid.Column="1" x:Name="Flat" Content="Flat" Style="{DynamicResource All}" Margin="207,32,0,0"/>
-        <Label Grid.Row="9" Grid.Column="1" x:Name="Login" Content="Login" Style="{DynamicResource All}"/>
+        <Label Grid.Row="1" Grid.Column="1" x:Name="First" Content="{x:Static local:PatientProfileViewModel.FirstName}" Style="{DynamicResource All}"/>
+        <Label Grid.Row="2" Grid.Column="1" x:Name="Middle" Content="{x:Static local:PatientProfileViewModel.MiddleName}" Style="{DynamicResource All}"/>
+        <Label Grid.Row="3" Grid.Column="1" x:Name="Last" Content="{x:Static local:PatientProfileViewModel.LastName}"  Style="{DynamicResource All}"/>
+        <Label Grid.Row="4" Grid.Column="1" x:Name="Date" Content="{x:Static local:PatientProfileViewModel.DateOfBirthday}" Style="{DynamicResource All}"/>
+        <Label Grid.Row="5" Grid.Column="1" x:Name="Gender" Content="{x:Static local:PatientProfileViewModel.Gender}" Style="{DynamicResource All}"/>
+        <Label Grid.Row="6" Grid.Column="1" x:Name="Number" Content="{x:Static local:PatientProfileViewModel.NumberOfPhone}" Style="{DynamicResource All}"/>
+        <Label Grid.Row="7" Grid.Column="1" x:Name="City" Content="{x:Static local:PatientProfileViewModel.City}" Style="{DynamicResource All}"/>
+        <Label Grid.Row="7" Grid.Column="1" x:Name="Street" Content="{x:Static local:PatientProfileViewModel.Street}" Style="{DynamicResource All}" Margin="202,0,142,35"/>
+        <Label Grid.Row="7" Grid.Column="1" x:Name="House" Content="{x:Static local:PatientProfileViewModel.House}" Style="{DynamicResource All}" Margin="0,32,394,0"/>
+        <Label Grid.Row="7" Grid.Column="1" x:Name="Flat" Content="{x:Static local:PatientProfileViewModel.Flat}" Style="{DynamicResource All}" Margin="207,32,0,0"/>
+        <Label Grid.Row="9" Grid.Column="1" x:Name="Login" Content="{x:Static local:PatientProfileViewModel.Login}" Style="{DynamicResource All}"/>
 
     </Grid>
 </Page>

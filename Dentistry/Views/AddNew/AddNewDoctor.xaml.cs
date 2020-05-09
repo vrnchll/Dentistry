@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dentistry.ViewModels;
+using Dentistry.ViewModels.AdminPagesViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,7 @@ namespace Dentistry.Views
         public AddNewDoctor()
         {
             InitializeComponent();
+            DataContext = new DoctorViewModel();
         }
     }
 }

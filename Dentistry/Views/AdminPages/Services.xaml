@@ -17,16 +17,29 @@
                     <ImageBrush ImageSource="back--v1.png"/>
                 </MenuItem.Background>
             </MenuItem>
-            <MenuItem Header="Add new service" Style="{DynamicResource Items}" Command="{Binding Add}"/>
-            <MenuItem Header="Edit" Style="{DynamicResource Items}"/>
-            <MenuItem Header="Delete" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Добавить новую услугу" Style="{DynamicResource Items}" Command="{Binding Add}"/>
+            <MenuItem Header="Редактировать" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Удалить" Style="{DynamicResource Items}"/>
         </Menu>
-        <DataGrid Margin="0,2,0,0" Grid.Row="1" Style="{DynamicResource DataGridsStyle}">
+        <DataGrid Margin="0,2,0,0" Grid.Row="1" Style="{DynamicResource DataGridsStyle}" x:Name="ServiceList" AutoGenerateColumns="False" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id"></DataGridTextColumn>
-                <DataGridTextColumn Header="Name" Width="200"/>
-                <DataGridTextColumn Header="Cost" Width="50"/>
-                <DataGridTextColumn Header="Doctor" Width="100"/>
+               
+                <DataGridTextColumn Header="Наименование услуги" Width="200" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Header="Стоимость" Binding="{Binding Path=Cost}"/>
+                
+                <DataGridTemplateColumn Header="Врачи">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ListView ItemsSource="{Binding DoctorsName}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding DoctorsName}" />
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

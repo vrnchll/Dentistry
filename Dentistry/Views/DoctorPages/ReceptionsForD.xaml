@@ -17,16 +17,16 @@
                     <ImageBrush ImageSource="back--v1.png"/>
                 </MenuItem.Background>
             </MenuItem>
-            <MenuItem Header="Add new reception" Style="{DynamicResource Items}"/>
-            <MenuItem Header="Edit" Style="{DynamicResource Items}"/>
-            <MenuItem Header="Delete" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Добавить новое посещение" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Редактировать" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Удалить" Style="{DynamicResource Items}"/>
         </Menu>
         <DataGrid Style="{DynamicResource DataGridsStyle}" Margin="0,35,0,0" Grid.RowSpan="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id"/>
+               
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Time of Beginning Reseption"/>
+                        <TextBlock Text="Время начала приема"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -41,7 +41,7 @@
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn  IsReadOnly="False">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Time of Ending Reseption"/>
+                        <TextBlock Text="Время окончания приема" />
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -54,9 +54,9 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                <DataGridComboBoxColumn Header="Service"></DataGridComboBoxColumn>
-                <DataGridTextColumn Header="Cost"></DataGridTextColumn>
-                <DataGridTextColumn Header="Patient Id"/>
+                <DataGridComboBoxColumn Header="Услуга"></DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Стоимость "></DataGridTextColumn>
+                <DataGridTextColumn Header="Пациент"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

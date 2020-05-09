@@ -15,13 +15,13 @@
             <RowDefinition Height="60*"/>
             <RowDefinition Height="60*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Order the compoun" Style="{DynamicResource Heading}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Content="Date of Reception" Grid.Row="1" Margin="97,7,366,24" Style="{DynamicResource All}"/>
+        <Label Grid.Row="0" Content="Заказ талона" Style="{DynamicResource Heading}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Дата приема" Grid.Row="1" Margin="97,7,366,24" Style="{DynamicResource All}"/>
         <DatePicker Grid.Row="1" Margin="226,7,225,26"></DatePicker>
-        <Label Grid.Row="2" Content="Service" Margin="97,0,366,27" Style="{DynamicResource All}"></Label>
+        <Label Grid.Row="2" Content="Услуга" Margin="97,0,366,27" Style="{DynamicResource All}"></Label>
         <ComboBox Grid.Row="2" Margin="226,0,225,45"></ComboBox>
-        <Label Grid.Row="3" Content="Doctor" Margin="97,0,366,27" Style="{DynamicResource All}"/>
+        <Label Grid.Row="3" Content="Врач" Margin="97,0,366,27" Style="{DynamicResource All}"/>
         <ComboBox Grid.Row="3" Margin="226,0,225,40"></ComboBox>
-        <Button Content="Order" Grid.Row="4" Margin="324,0,325,27" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}"/>
+        <Button Content="Заказать" Grid.Row="4" Margin="324,0,325,27" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}"/>
     </Grid>
 </Page>

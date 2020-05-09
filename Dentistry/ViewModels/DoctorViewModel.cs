@@ -15,6 +15,7 @@ namespace Dentistry.ViewModels
     public class DoctorViewModel : INotifyPropertyChanged
     {
         private string _FirstName;
+        public DateTime _ReportPlanningDate = DateTime.Today;
         public string FirstName { get => _FirstName; set
             {
                 _FirstName = value;
@@ -37,7 +38,8 @@ namespace Dentistry.ViewModels
         private DateTime _DateOfBirth;
         public DateTime DateOfBirth { get => _DateOfBirth; set
             {
-                _DateOfBirth = value;
+                if (_DateOfBirth == DateTime.MinValue) _DateOfBirth= DateTime.Today;
+                else _DateOfBirth = value;
                 OnPropertyChanged("DateOfBirth");
             } }
 
@@ -51,8 +53,8 @@ namespace Dentistry.ViewModels
                 _Position = value;
                 OnPropertyChanged("Position");
             } }
-        private int _Experience;
-        public int Experience { get=>_Experience; set
+        private string _Experience;
+        public string Experience { get=>_Experience; set
             {
                 _Experience = value;
                 OnPropertyChanged("Experience");
@@ -67,8 +69,8 @@ namespace Dentistry.ViewModels
             }
         }
 
-        private int _Cabinet;
-        public int Cabinet { get=>_Cabinet; set
+        private string _Cabinet;
+        public string Cabinet { get=>_Cabinet; set
             {
                 _Cabinet = value;
                 OnPropertyChanged("Cabinet");
@@ -118,7 +120,8 @@ namespace Dentistry.ViewModels
                     if (Password == ConfirmPassword)
                     {
                         User user = new User() { UserName = Login, Password = Password, Email = Email, TypeUser = "Doctor" };
-                        Doctor person = new Doctor() {Id=user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = "12.12.12", Gender = SelectedGender == 1 ? "Male" : "Female",Experience=Experience,Position=Position,Cabinet=Cabinet, NumberOfPhone = NumberOfPhone };
+                        Doctor person = new Doctor() {Id=user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth.ToString("MM/dd/yyyy"), Gender = SelectedGender == 0 ? "Mужской" : "Женский",Experience=Experience,Position=Position,Cabinet=Cabinet, NumberOfPhone = NumberOfPhone };
+                        user.DoctorProfile = person;
                         Account.RegistrationDoctor(user, person);
                     }
                     else

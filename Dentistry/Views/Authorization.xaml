@@ -3,10 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dentistry.Views"
+        xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
         mc:Ignorable="d"
-        Title="Authorization" Height="300" Width="400">
-    <Grid Background="{DynamicResource Grid}" RenderTransformOrigin="0.507,0.813">
+        Title="Authorization" Height="327.334" Width="400" ResizeMode="NoResize">
+    <Grid Background="{DynamicResource PrimaryHueDarkBrush}" RenderTransformOrigin="0.507,0.813">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="123*"/>
+            <ColumnDefinition Width="271*"/>
+        </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="43*"></RowDefinition>
@@ -15,20 +20,31 @@
             <RowDefinition Height="78*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+        <Rectangle Fill="{DynamicResource MaterialDesignDarkBackground}" Grid.ColumnSpan="2" Margin="59,0,42,0" Grid.Row="1" Grid.RowSpan="2">
+            <Rectangle.Effect>
+                <DropShadowEffect Color="Black" Opacity="90"/>
+            </Rectangle.Effect>
+        </Rectangle>
 
-        <Label Grid.Row="0" Content="Login" VerticalAlignment="Center" HorizontalAlignment="Center" Height="55" Width="109" Style="{StaticResource Labels}" FontSize="35" Margin="144,0,139,57" Grid.RowSpan="2"/>
+        <Label Grid.Row="0" Foreground="{DynamicResource MaterialDesignLightBackground}" Content="Вход" VerticalAlignment="Center" HorizontalAlignment="Center" Height="36" Width="108"  FontSize="24" Margin="44,7,119,0" Grid.Column="1" FontFamily="Script MT Bold" Opacity="0.49">
 
-        <Label Content="UserName" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="48,28,0,37" Width="140" Style="{StaticResource Labels}" Grid.RowSpan="2"/>
-        <TextBox x:Name="UserNameBox" Grid.Row="1" Background="{StaticResource TextIn}" Margin="105,32,123,0" FontSize="16" Foreground="White" Text="{Binding UserName}"></TextBox>
+        </Label>
 
-        <Label Grid.Row="2" Content="Password" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="48,0,0,39" Width="140" Style="{StaticResource Labels}"/>
-        <PasswordBox Name="txtPassword"   Grid.Row="2" VerticalAlignment="Center" Margin="105,40,123,0" Height="39" Background="{DynamicResource Password}" FontSize="16" Foreground="White" />
 
-        <Button x:Name="BttnLog" Grid.Row="3" Margin="105,10,227,34" HorizontalAlignment="Center" Width="60" Content="Sign in" Style="{DynamicResource Buttons}" Command="{Binding SignInCommand}" CommandParameter="{Binding ElementName=txtPassword}"/>
-        <Button x:Name="BttnRegistr" Grid.Row="3" Margin="209,10,123,34" HorizontalAlignment="Center" Width="60" Content="Sign up" Style="{DynamicResource Buttons}" Command="{Binding SignUpCommand}" />
-        
+        <TextBox  x:Name="UserNameBox" Grid.Row="1" materialDesign:HintAssist.Hint=" Имя пользователя"  Background="{DynamicResource PrimaryHueDarkBrush}" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  Margin="105,22,94,4" FontSize="16" Foreground="White" Text="{Binding UserName}" Grid.ColumnSpan="2"/>
+        <StackPanel Orientation="Vertical" Margin="79,17,201,30" Grid.RowSpan="2" Grid.Row="1" Grid.ColumnSpan="2">
+            <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryHueDarkBrush}" Margin="5 10 0 0" RenderTransformOrigin="-1,0.812" ></materialDesign:PackIcon>
+            <materialDesign:PackIcon Kind="Key" VerticalAlignment="Center" Margin="5,50,0,0" Foreground="{DynamicResource PrimaryHueDarkBrush}" RenderTransformOrigin="-1,0.812" Height="36" />
+        </StackPanel>
+
+        <PasswordBox VerticalAlignment="Center" Name="txtPassword" materialDesign:HintAssist.Hint=" Пароль" Style="{DynamicResource MaterialDesignFloatingHintPasswordBox}"  Grid.Row="2" Margin="105,22,94,20" Height="46" Background="{DynamicResource PrimaryHueDarkBrush}" FontSize="16" Foreground="White" Grid.ColumnSpan="2" />
+
+        <Button x:Name="BttnLog" Grid.Row="3" Margin="21,5,136,42" HorizontalAlignment="Center" Width="114" Content="Войти" Style="{DynamicResource MaterialDesignRaisedButton}" Background="{DynamicResource MaterialDesignDarkBackground }" Command="{Binding SignInCommand}" CommandParameter="{Binding ElementName=txtPassword}" Grid.Column="1" BorderBrush="{x:Null}">
+
+        </Button>
+        <Button x:Name="BttnRegistr" Grid.Row="3" Margin="105,42,94,5" Style="{DynamicResource MaterialDesignRaisedButton}" HorizontalAlignment="Center" Width="195" Content="Зарегистрироваться" Background="{DynamicResource MaterialDesignDarkBackground}" Command="{Binding SignUpCommand}" Grid.ColumnSpan="2" BorderBrush="{x:Null}" >
+
+        </Button>
+
     </Grid>
 </Window>

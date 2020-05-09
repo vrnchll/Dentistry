@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dentistry.Views.Registration"
+        xmlns:local="clr-namespace:Dentistry.Views.Registration" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Registration" Height="500" Width="800">
-    <Grid Background="{DynamicResource Back}">
+        Title="Registration" Height="500" Width="612" ResizeMode="NoResize">
+    <Grid Background="{DynamicResource PrimaryHueDarkBrush}">
         <Grid Visibility="{Binding Visible}" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="133*"/>
@@ -17,13 +17,14 @@
                 <RowDefinition Height="9*"/>
                 <RowDefinition Height="253*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Content="Please, choose the type of user!" Style="{DynamicResource All}" FontSize="16" FontWeight="Bold" Grid.RowSpan="3" Grid.Column="1" Margin="145,115,278,0" ></Label>
-            <ComboBox Grid.Row="1"  Grid.Column="1" Grid.RowSpan="2"  SelectedValue="{Binding Path= SelectedItem}" Margin="145,0,287,293" >
-                <ComboBoxItem Content="Patient"/>
-                <ComboBoxItem Content="Doctor"/>
+            <Label  HorizontalAlignment="Center" Grid.Row="0" Content="Пожалуйста, выберите тип пользователя!" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" FontWeight="Bold" Grid.RowSpan="3" Margin="0,91,0,0" Grid.ColumnSpan="2" />
+            <ComboBox  Foreground="{DynamicResource PrimaryHueMidBrush}" FontSize="16"  Grid.Column="1" Grid.RowSpan="2" SelectedValue="{Binding Path= SelectedItem}" Margin="31,0,133,239" Height="34" Grid.Row="1" >
+                <ComboBoxItem Content="Пациент" />
+                <ComboBoxItem Content="Доктор"/>
             </ComboBox>
-            <Button Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}" Grid.Row="2"  Content="Next" Grid.Column="1" Command="{Binding ShowPage}" Margin="330,20,230,262"  >
-
+            <Button Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Grid.Row="2"  Grid.Column="1" Command="{Binding ShowPage}" Margin="304,25,94,203" Height="Auto"   >
+                <materialDesign:PackIcon Kind="PageNext" Foreground="White" FontSize="40" VerticalAlignment="Center" RenderTransformOrigin="-1,0.812" >
+                </materialDesign:PackIcon>
             </Button>
         </Grid>
         <Frame x:Name="frame" 

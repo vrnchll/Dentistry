@@ -1,6 +1,9 @@
-﻿using Dentistry.ViewModels;
+﻿using Dentistry.Models;
+using Dentistry.Services;
+using Dentistry.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,8 +25,13 @@ namespace Dentistry.Views
     {
         public Patients()
         {
+            Admin_PatientsViewModel admincontext =  new Admin_PatientsViewModel();
+            UnitOfWork unitOfWork = new UnitOfWork();
+            Admin_PatientsViewModel.Patients= new BindingList<Patient>(unitOfWork.Patients.GetAll().ToList());
             InitializeComponent();
-            DataContext = new Admin_PatientsViewModel();
+            DataContext = admincontext;
+            PatientsList.ItemsSource = Admin_PatientsViewModel.Patients;
+
         }
     }
 }

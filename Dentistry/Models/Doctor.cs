@@ -26,12 +26,13 @@ namespace Dentistry.Models
         public string DateOfBirth { get; set; }
         public string Gender { get; set; }
         public string Position { get; set; }
-        public int Experience { get; set; }
+        public string Experience { get; set; }
         [Required(ErrorMessage = "Не указан телефон пользователя")]
         [RegularExpression(@"^[+]375[0-9]{2}[0-9]{3}[0-9]{2}[0-9]{2}$", ErrorMessage = "Неверный формат телефона,\nВведите данные в формате +375(33)333-33-33")]
         public string NumberOfPhone { get; set; }
 
-        public int Cabinet { get; set; }
+        public string Cabinet { get; set; }
+    
 
         public ICollection<Reception> Receptions { get; set; }
         public ICollection<Service> Services { get; set; }

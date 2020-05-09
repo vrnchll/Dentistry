@@ -75,8 +75,8 @@ namespace Dentistry.ViewModels
                 OnPropertyChanged("Street");
             }
         }
-        private int _House;
-        public int House
+        private string _House;
+        public string House
         {
             get => _House; set
             {
@@ -84,8 +84,8 @@ namespace Dentistry.ViewModels
                 OnPropertyChanged("House");
             }
         }
-        private int _Flat;
-        public int Flat
+        private string _Flat;
+        public string Flat
         {
             get => _Flat; set
             {
@@ -152,7 +152,8 @@ namespace Dentistry.ViewModels
                     if (Password == ConfirmPassword)
                     {
                         User user = new User() { UserName = Login, Password = Password, Email = Email, TypeUser = "Patient" };
-                        Patient person = new Patient() {Id = user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth.ToString("MM/dd/yyyy"), Gender = SelectedGender == 1 ? "Male" : "Female", City = City, Street = Street, House = House, Flat = Flat, NumberOfPhone = NumberOfPhone };
+                        Patient person = new Patient() {Id = user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth.ToString("MM/dd/yyyy"), Gender = SelectedGender == 0 ? "Мужской" : "Женский", City = City, Street = Street, House = House, Flat = Flat, NumberOfPhone = NumberOfPhone };
+                        user.PatientProfile = person;
                         Account.RegistrationPatient(user,person);
                     }
                     else

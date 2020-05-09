@@ -67,14 +67,14 @@ namespace Dentistry.ViewModels
         public Page GetPage()
         {
          
-            if ( SelectedItem.Contains("Doctor"))
+            if ( SelectedItem.Contains("Доктор"))
             {
                 Visible = Visibility.Hidden;
                 return DoctorType;
             }
             else
             {
-                if (SelectedItem.Contains("Patient"))
+                if (SelectedItem.Contains("Пациент"))
                 {
                     Visible = Visibility.Hidden;
                     return PatientType;

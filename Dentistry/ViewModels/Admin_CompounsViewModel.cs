@@ -1,4 +1,6 @@
-﻿using Dentistry.Views;
+﻿using Dentistry.Services;
+using Dentistry.ViewModels.AdminPagesViewModel;
+using Dentistry.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +22,23 @@ namespace Dentistry.ViewModels
                 _Add ?? (
                _Add = new RelayCommands(obj =>
                {
+                   UnitOfWork unitOfWork = new UnitOfWork();
+                   var patients = unitOfWork.Patients.GetAll().ToList();
+                   var doctors = unitOfWork.Doctors.GetAll().ToList();
+                   var services = unitOfWork.Services.GetAll().ToList();
+                   
+                   foreach (var i in patients)
+                   {
+                       AddNewCompounViewModel.LastNamePatients.Add(i.LastName);
+                   }
+                   foreach (var i in doctors)
+                   {
+                       AddNewCompounViewModel.LastNameDoctors.Add(i.LastName);
+                   }
+                   foreach (var i in services)
+                   {
+                       AddNewCompounViewModel.Services.Add(i.Name);
+                   }
                    AddNewCompoun newCompoun = new AddNewCompoun();
                    newCompoun.Show();
                }));

@@ -23,6 +23,7 @@ namespace Dentistry.Views
         {
             InitializeComponent();
             DataContext = new Admin_ServicesViewModel();
+            ServiceList.ItemsSource = Admin_ServicesViewModel.Services;
         }
     }
 }

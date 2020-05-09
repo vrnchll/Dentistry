@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry.Views.Registration"
-      xmlns:System="clr-namespace:System;assembly=mscorlib"
+      xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
         mc:Ignorable="d"
-        Title="PatientType" Height="450" Width="800">
-    <Grid Background="{DynamicResource Back}">
+        Title="PatientType" Height="450" Width="612">
+    <Grid Background="{DynamicResource PrimaryHueDarkBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="35*"/>
             <RowDefinition Height="35*"/>
@@ -22,40 +23,27 @@
             <RowDefinition Height="35*"/>
             <RowDefinition Height="35*"/>
         </Grid.RowDefinitions>
-        <Label Content="First Name" Grid.Row="0" Style="{DynamicResource All}"/>
-        <Label Content="Middle Name" Grid.Row="1" Style="{DynamicResource All}"/>
-        <Label Content="Last Name" Grid.Row="2" Style="{DynamicResource All}"/>
-        <Label Content="Date Of Birthday" Grid.Row="3" Style="{DynamicResource All}"/>
-        <Label Content="Gender" Grid.Row="4" Style="{DynamicResource All}"/>
-        <Label Content="Address" Grid.Row="5" Style="{DynamicResource All}"/>
-        <Label Content="Number of Phone" Grid.Row="6" Style="{DynamicResource All}"/>
-        <Label Content="Login" Grid.Row="7" Style="{DynamicResource All}"/>
-        <Label Content="Password" Grid.Row="8" Style="{DynamicResource All}"/>
-        <Label Content="Confirm Password" Grid.Row="9" Style="{DynamicResource All}"/>
-        <Label Content="Email" Grid.Row="10" Style="{DynamicResource All}"/>
-        <Button x:Name="SignUpButt"  Content="Sign Up" Grid.Row="11" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}" HorizontalAlignment="Center" Margin="287,0,398,0" Width="101" Command="{Binding RegistrationCommand}"/>
+        <Button x:Name="SignUpButt"  Content="Зарегистрироваться" Grid.Row="11" Style="{DynamicResource MaterialDesignRaisedDarkButton}"  HorizontalAlignment="Center" Width="168" Command="{Binding RegistrationCommand}"/>
 
-        <TextBox x:Name="FN" Text="{Binding FirstName}" Grid.Row="0" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
-        <TextBox x:Name="MN" Text="{Binding MiddleName}" Grid.Row="1" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
-        <TextBox x:Name="LN" Text="{Binding LastName}" Grid.Row="2" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
-        <DatePicker Grid.Row="3" Margin="155,0,427,0"  DisplayDate = "12/12/2000"  DisplayDateStart = "12/12/1960"  DisplayDateEnd="12/12/2020">
+        <TextBox x:Name="FN" Text="{Binding FirstName}" materialDesign:HintAssist.Hint=" Имя" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.Row="0" Margin="10,0,427,0" />
+        <TextBox x:Name="MN" Text="{Binding MiddleName}" Grid.Row="1" Margin="10,0,427,0" materialDesign:HintAssist.Hint=" Отчество" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
+        <TextBox x:Name="LN" Text="{Binding LastName}" Grid.Row="2" Margin="10,0,427,0" materialDesign:HintAssist.Hint=" Фамилия" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
+        <DatePicker Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.Row="3" Margin="10,4,427,4"  DisplayDate = "12/12/2000"  DisplayDateStart = "12/12/1960"  DisplayDateEnd="12/12/2020" materialDesign:HintAssist.Hint=" Дата рождения">
         </DatePicker>
-        <StackPanel x:Name="Gen" Grid.Row="4" Orientation="Vertical" Margin="155,0,427,0">
-            <RadioButton Content="Male" Style="{DynamicResource RadioBttn}" IsChecked="{Binding Path=Gender[0], Mode=TwoWay}"></RadioButton>
-            <RadioButton Content="Female" Style="{DynamicResource RadioBttn}" IsChecked="{Binding Path=Gender[1], Mode=TwoWay}"></RadioButton>
+        <StackPanel x:Name="Gen" Grid.Row="4" Orientation="Vertical" Margin="10,0,427,0" >
+            <RadioButton Content="Мужской" FontSize="14"  Foreground="{DynamicResource PrimaryHueLightBrush}" IsChecked="{Binding Path=Gender[0], Mode=TwoWay}" Height="19"></RadioButton>
+            <RadioButton Content="Женский"  FontSize="14"  Foreground="{DynamicResource PrimaryHueLightBrush}" IsChecked="{Binding Path=Gender[1], Mode=TwoWay}"></RadioButton>
         </StackPanel>
 
-        <ComboBox x:Name="City" SelectedItem="{Binding City}" Grid.Row="5" Margin="155,0,520,0" />
-        <ComboBox x:Name="Street" SelectedItem="{Binding Street}" Grid.Row="5" Margin="294,0,378,0" />
-        <Label Content="House" Grid.Row="4" Width="100" Margin="438,5,262,27" Grid.RowSpan="2" Style="{DynamicResource All}"></Label>
-        <TextBox  Text="{Binding House}" Grid.Row="5" Margin="438,0,222,0"/>
-        <Label Content="Flat" Grid.Row="4" Width="100" Margin="594,5,106,27" Grid.RowSpan="2" Style="{DynamicResource All}"></Label>
-        <TextBox  Text="{Binding Flat}" Grid.Row="5" Margin="594,0,72,0"/>
+        <ComboBox materialDesign:HintAssist.Hint=" Город" x:Name="City" SelectedItem="{Binding City}" Grid.Row="5" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Margin="10,3,416,3"  />
+        <ComboBox materialDesign:HintAssist.Hint=" Улица" x:Name="Street" SelectedItem="{Binding Street}" Grid.Row="5" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Margin="206,3,264,3"  />
+        <TextBox  materialDesign:HintAssist.Hint=" Дом" Text="{Binding House}" Grid.Row="5"  Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Margin="353,3,185,3"/>
+        <TextBox  materialDesign:HintAssist.Hint=" Квартира" Text="{Binding Flat}" Grid.Row="5"  Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Margin="432,3,103,3"/>
 
-        <TextBox x:Name="NumOfPh" Text="{Binding NumberOfPhone}" Grid.Row="6" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
-        <TextBox x:Name="Login" Text="{Binding Login}" Grid.Row="7" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
-        <TextBox x:Name="Password" Text="{Binding Password}" Grid.Row="8" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
-        <TextBox x:Name="ConfPass" Text="{Binding ConfirmPassword}" Grid.Row="9" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
-        <TextBox x:Name="Email" Text="{Binding Email}" Grid.Row="10" Margin="155,0,427,0" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="NumOfPh" materialDesign:HintAssist.Hint=" Номер телефона" Text="{Binding NumberOfPhone}" Grid.Row="6" Margin="10,0,416,0" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
+        <TextBox x:Name="Login"  materialDesign:HintAssist.Hint=" Имя пользователя" Text="{Binding Login}" Grid.Row="7" Margin="10,0,416,0"  Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
+        <TextBox x:Name="Password" materialDesign:HintAssist.Hint=" Пароль" Text="{Binding Password}" Grid.Row="8" Margin="10,0,416,0"  Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
+        <TextBox x:Name="ConfPass" materialDesign:HintAssist.Hint=" Подтверждение пароля" Text="{Binding ConfirmPassword}" Grid.Row="9" Margin="10,0,416,0"  Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
+        <TextBox x:Name="Email" materialDesign:HintAssist.Hint=" Email" Text="{Binding Email}" Grid.Row="10" Margin="10,0,416,0" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
     </Grid>
 </Page>

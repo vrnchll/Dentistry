@@ -17,37 +17,40 @@
                     <ImageBrush ImageSource="back--v1.png"/>
                 </MenuItem.Background>
             </MenuItem>
-            <MenuItem Header="Add new patient" Style="{DynamicResource Items}" Command="{Binding Add}"/>
-            <MenuItem Header="Edit" Style="{DynamicResource Items}"/>
-            <MenuItem Header="Delete" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Добавить нового пациента" Style="{DynamicResource Items}" Command="{Binding Add}"/>
+            <MenuItem Header="Редактировать" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Удалить" Style="{DynamicResource Items}"/>
         </Menu>
-        <DataGrid Margin="0,36,0,0" Grid.RowSpan="2" Style="{DynamicResource DataGridsStyle}">
+        <DataGrid AutoGenerateColumns="False" Margin="0,36,0,0" x:Name="PatientsList" Grid.RowSpan="2" Style="{DynamicResource DataGridsStyle}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id"/>
-                <DataGridTextColumn Header="Fist Name"/>
-                <DataGridTextColumn Header="Middle Name"/>
-                <DataGridTextColumn Header="Last Name"/>
+              
+                <DataGridTextColumn Header="Имя" Binding="{Binding Path= FirstName}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Path= MiddleName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Path= LastName}"/>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="Birth">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Date Of Birthday"/>
+                        <TextBlock Text="Дата Рождения"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Path=DateOfBurth, StringFormat='dd MMM yyyy' }"  />
+                            <TextBlock Text="{Binding Path=DateOfBirthday, StringFormat='dd MMM yyyy' }"  />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <DatePicker Name="DatePicker"  SelectedDate="{Binding Path=DateOfRes}"/>
+                            <DatePicker Name="DatePicker"  SelectedDate="{Binding Path=DateOfBirth}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                <DataGridComboBoxColumn Header="Gender"></DataGridComboBoxColumn>
-                <DataGridTextColumn Header="City"></DataGridTextColumn>
-                <DataGridTextColumn Header="Street"/>
-                <DataGridTextColumn Header="House"/>
-                <DataGridTextColumn Header="Flat"/>
-                <DataGridTextColumn Header="Number of phone"/>
+                <DataGridComboBoxColumn Header="Пол" SelectedValueBinding="{Binding Gender}"></DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Город" Binding="{Binding Path=City}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Улица" Binding="{Binding Path=Street}"/>
+                <DataGridTextColumn Header="Дом" Binding="{Binding Path=House}"/>
+                <DataGridTextColumn Header="Квартира" Binding="{Binding Path=Flat}"/>
+                <DataGridTextColumn Header="Номер телефона" Binding="{Binding Path=NumberOfPhone}"/>
+                <DataGridTextColumn Header="Логин" Binding="{Binding Path=Login}"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding Path=Password}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Path=Email}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

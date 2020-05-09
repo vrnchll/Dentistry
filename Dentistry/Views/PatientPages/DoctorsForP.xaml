@@ -11,13 +11,12 @@
     <Grid Background="{DynamicResource Back}">
         <DataGrid Style="{DynamicResource DataGridsStyle}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id"/>
-                <DataGridTextColumn Header="Fist Name"/>
-                <DataGridTextColumn Header="Middle Name"/>
-                <DataGridTextColumn Header="Last Name"/>
+                <DataGridTextColumn Header="Имя"/>
+                <DataGridTextColumn Header="Отчество"/>
+                <DataGridTextColumn Header="Фамилия"/>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="Birth">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Date Of Birthday"/>
+                        <TextBlock Text="Дата рождения"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -30,12 +29,12 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                <DataGridComboBoxColumn Header="Gender"></DataGridComboBoxColumn>
-                <DataGridTextColumn Header="Position"></DataGridTextColumn>
-                <DataGridTextColumn Header="Experience"/>
-                <DataGridTextColumn Header="Cabinet"/>
-                <DataGridTextColumn Header="Number of phone"/>
-                <DataGridTextColumn Header="Services"/>
+                <DataGridComboBoxColumn Header="Пол"></DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Должность"></DataGridTextColumn>
+                <DataGridTextColumn Header="Стаж работы"/>
+                <DataGridTextColumn Header="Кабинет"/>
+                <DataGridTextColumn Header="Номер телефона"/>
+                <DataGridTextColumn Header="Услуги"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

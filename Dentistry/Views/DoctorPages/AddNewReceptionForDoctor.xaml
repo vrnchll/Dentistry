@@ -19,18 +19,18 @@
             <RowDefinition Height="60*"/>
             <RowDefinition Height="60*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Style="{DynamicResource Heading}" FontSize="20" Content="Add new reception" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Content="Time of Begining Reception" Grid.Row="1" Style="{DynamicResource All}" VerticalAlignment="Center"/>
+        <Label Grid.Row="0" Style="{DynamicResource Heading}" FontSize="20" Content="Добавление нового посещения" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Время начала посещения" Grid.Row="1" Style="{DynamicResource All}" VerticalAlignment="Center"/>
         <DatePicker Grid.Row="1" Width="260" Height="40"></DatePicker>
-        <Label Content="Time of Ending Reception" Grid.Row="2" Style="{DynamicResource All}" VerticalAlignment="Center" />
+        <Label Content="Время окончания посещения" Grid.Row="2" Style="{DynamicResource All}" VerticalAlignment="Center" />
         <DatePicker Grid.Row="2" Width="260" Height="40"></DatePicker>
-        <Label Grid.Row="3" Content="Last Name Patient" Style="{DynamicResource All}" VerticalAlignment="Center" />
+        <Label Grid.Row="3" Content="Фамилия пациента" Style="{DynamicResource All}" VerticalAlignment="Center" />
         <TextBox Grid.Row="3" Width="260" Height="40" Style="{DynamicResource Input}"/>
-        <Label Grid.Row="4" Content="Service" Style="{DynamicResource All}" VerticalAlignment="Center"></Label>
+        <Label Grid.Row="4" Content="Услуга" Style="{DynamicResource All}" VerticalAlignment="Center"></Label>
         <ComboBox Grid.Row="4" Width="260" Height="40"></ComboBox>
-        <Label Grid.Row="5" Content="Cost"  Style="{DynamicResource All}" VerticalAlignment="Center"></Label>
+        <Label Grid.Row="5" Content="Стоимость"  Style="{DynamicResource All}" VerticalAlignment="Center"></Label>
         <TextBox Grid.Row="5" Width="260" Height="40" Style="{DynamicResource Input}"/>
-        <Button Content="Add" Grid.Row="6" Width="100" Height="60" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}"/>
+        <Button Content="Добавить" Grid.Row="6" Width="100" Height="60" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}"/>
 
     </Grid>
 </Page>

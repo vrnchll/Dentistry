@@ -17,16 +17,15 @@
                     <ImageBrush ImageSource="back--v1.png"/>
                 </MenuItem.Background>
             </MenuItem>
-            <MenuItem Header="Add new compoun" Style="{DynamicResource Items}" Command="{Binding Add}"/>
-            <MenuItem Header="Edit" Style="{DynamicResource Items}"/>
-            <MenuItem Header="Delete" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Добавить талон" Style="{DynamicResource Items}" Command="{Binding Add}"/>
+            <MenuItem Header="Редактировать" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Удалить" Style="{DynamicResource Items}"/>
         </Menu>
-        <DataGrid Margin="0,32,0,0" Grid.RowSpan="2" Style="{DynamicResource DataGridsStyle}">
+        <DataGrid Margin="0,32,0,0" x:Name="CompounsList" Grid.RowSpan="2" Style="{DynamicResource DataGridsStyle}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id"/>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Date of Reception"/>
+                        <TextBlock Text="Дата приема"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -39,9 +38,9 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                <DataGridComboBoxColumn Header="Service"></DataGridComboBoxColumn>
-                <DataGridTextColumn Header="Patient Id"/>
-                <DataGridTextColumn Header="Doctor Id"/>
+                <DataGridComboBoxColumn Header="Услуга"></DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Пациент"/>
+                <DataGridTextColumn Header="Врач"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -11,10 +11,10 @@
     <Grid Background="{DynamicResource Back}">
         <DataGrid Style="{DynamicResource DataGridsStyle}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id"/>
+              
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Date of Reception"/>
+                        <TextBlock Text="Дата приема"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -27,8 +27,8 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                <DataGridComboBoxColumn Header="Service" Width="150"></DataGridComboBoxColumn>
-                <DataGridTextColumn Header="Patient Last Name"/>
+                <DataGridComboBoxColumn Header="Услуга" Width="150"></DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Пациент"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

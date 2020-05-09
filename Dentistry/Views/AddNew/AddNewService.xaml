@@ -12,13 +12,13 @@
             <RowDefinition Height="59*"/>
             <RowDefinition Height="114*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Add new service"  Style="{DynamicResource Heading}" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Grid.Row="1" Content="Name" Margin="93,20,300,28" Style="{DynamicResource All}"/>
-        <Label Grid.Row="1" Content="Cost" Margin="93,58,300,136" Grid.RowSpan="2" Style="{DynamicResource All}"/>
-        <Label Grid.Row="2" Content="Doctor" Margin="93,32,323,83" Style="{DynamicResource All}"/>
-        <TextBox Grid.Row="1" Margin="170,18,167,28" Height="30" Style="{DynamicResource Input}"/>
-        <TextBox Grid.Row="1" Margin="170,58,167,136" Height="30" Grid.RowSpan="2" Style="{DynamicResource Input}"/>
-        <ComboBox Grid.Row="2" Margin="170,36,167,89"/>
-        <Button Content="Add" Grid.Row="2" Margin="197,77,197,43" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}"/>
+        <Label Grid.Row="0" Content="Добавление новой услуги"  Style="{DynamicResource Heading}" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Grid.Row="1" Content="Наименование услуги" Margin="26,20,300,28" Style="{DynamicResource All}"/>
+        <Label Grid.Row="1" Content="Стоимость" Margin="26,58,300,136" Grid.RowSpan="2" Style="{DynamicResource All}"/>
+        <Label Grid.Row="2" Content="Врач" Margin="26,32,323,83" Style="{DynamicResource All}"/>
+        <TextBox Grid.Row="1" Margin="170,18,167,28" Height="30" Style="{DynamicResource Input}" Text="{Binding Name}"/>
+        <TextBox Grid.Row="1" Margin="170,58,167,136" Text="{Binding Cost}" Height="30" Grid.RowSpan="2" Style="{DynamicResource Input}"/>
+        <ComboBox Grid.Row="2" Margin="170,36,167,89" SelectedValue="{Binding SelectedItem}" x:Name="docList"/>
+        <Button Content="Добавить" Grid.Row="2" Margin="197,77,197,43" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}" Command="{Binding add}"/>
     </Grid>
 </Window>

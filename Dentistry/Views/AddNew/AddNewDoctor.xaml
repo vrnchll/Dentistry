@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry.Views"
         mc:Ignorable="d"
-        Title="AddNewDoctor" Height="450" Width="800">
+        Title="AddNewDoctor" Height="700" Width="800">
     <Grid Background="{DynamicResource Back}">
         <Grid.RowDefinitions>
             <RowDefinition Height="28*"/>
@@ -19,22 +19,28 @@
             <RowDefinition Height="42*"/>
             <RowDefinition Height="38*"/>
             <RowDefinition Height="38*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="38*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Add new Doctor " FontSize="16" Style="{DynamicResource Heading}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Content="First Name" Grid.Row="1" Margin="146,5,526,11" Style="{DynamicResource All}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="120" />
-        <TextBox Grid.Row="1" Margin="266,0,266,8" Style="{DynamicResource Input}"></TextBox>
-        <Label Content="Middle Name" Grid.Row="2" Margin="146,0,526,10" HorizontalAlignment="Center"  Style="{DynamicResource All}" Width="120"/>
-        <TextBox Grid.Row="2" Margin="266,0,266,10" Style="{DynamicResource Input}"></TextBox>
-        <Label Grid.Row="3" Content="Last Name" Margin="146,0,531,5" Style="{DynamicResource All}" HorizontalAlignment="Center" Width="115"/>
-        <TextBox Grid.Row="3" Margin="266,0,266,5" Style="{DynamicResource Input}"/>
-        <Label Grid.Row="4" Content="Date Of Birthday" Margin="146,0,526,0" Style="{DynamicResource All}" HorizontalAlignment="Center" Width="120"></Label>
-        <DatePicker Grid.Row="4" Margin="266,1,266,10" RenderTransformOrigin="0.508,0.795"/>
-        <Label Grid.Row="5" Content="Gender"  Style="{DynamicResource All}" Margin="146,0,526,0" HorizontalAlignment="Center" Width="120"/>
-        <StackPanel Orientation="Vertical" Grid.Row="5" Margin="266,0">
-            <RadioButton Content="Male" Style="{DynamicResource RadioBttn}" IsChecked="True"></RadioButton>
-            <RadioButton Content="Female" Style="{DynamicResource RadioBttn}"/>
+
+        <Label Grid.Row="0"  Content="Добавление нового доктора" FontSize="16" Style="{DynamicResource Heading}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Имя" Grid.Row="1" Margin="0,5,526,11" Style="{DynamicResource All}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="266" />
+        <TextBox Grid.Row="1" Text="{Binding FirstName}" Margin="146,5,386,3" Style="{DynamicResource Input}"></TextBox>
+        <Label Content="Отчество" Grid.Row="2" Margin="0,0,526,10" HorizontalAlignment="Center"  Style="{DynamicResource All}" Width="266"/>
+        <TextBox Grid.Row="2" Text="{Binding MiddleName}" Margin="146,5,386,5" Style="{DynamicResource Input}"></TextBox>
+        <Label Grid.Row="3" Content="Фамилия" Margin="0,0,531,5" Style="{DynamicResource All}" HorizontalAlignment="Center" Width="261"/>
+        <TextBox Grid.Row="3"  Text="{Binding LastName}" Margin="146,1,386,4" Style="{DynamicResource Input}"/>
+        <Label Grid.Row="4" Content="Дата Рождения" Margin="0,0,526,0" Style="{DynamicResource All}" HorizontalAlignment="Center" Width="266"></Label>
+        <DatePicker Grid.Row="4" Margin="146,1,386,10" SelectedDate="{Binding DateOfBirth}" RenderTransformOrigin="0.508,0.795"/>
+        <Label Grid.Row="5" Content="Пол"  Style="{DynamicResource All}" Margin="0,0,526,0" HorizontalAlignment="Center" Width="266"/>
+        <StackPanel Orientation="Vertical" Grid.Row="5" Margin="146,0,386,0" RenderTransformOrigin="-0.306,0.462">
+            <RadioButton Content="Мужской" Style="{DynamicResource RadioBttn}" IsChecked="{Binding Path=Gender[0], Mode=TwoWay}"></RadioButton>
+            <RadioButton Content="Женский" Style="{DynamicResource RadioBttn}" IsChecked="{Binding Path=Gender[1], Mode=TwoWay}"/>
         </StackPanel>
-        <Label Grid.Row="6" Content="Position" Style="{DynamicResource All}" Margin="146,0,530,10">
+        <Label Grid.Row="5" Content="Должность" Style="{DynamicResource All}" Margin="0,38,530,11" Grid.RowSpan="2">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -44,13 +50,40 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <ComboBox Grid.Row="6" Margin="266,0,266,5"/>
-        <Label Grid.Row="7" Content="Experience" Style="{DynamicResource All}" Margin="146,0,526,0"></Label>
-        <TextBox Grid.Row="7" Margin="266,0,266,5" Style="{DynamicResource Input}"/>
-        <Label Content="Number of Phone" Grid.Row="8" Style="{DynamicResource All}"  Margin="146,0,526,0"/>
-        <TextBox Grid.Row="8" Margin="266,0,266,5" Style="{DynamicResource Input}"/>
-        <Label Grid.Row="9" Content="Cabinet" Style="{DynamicResource All}" Margin="146,0,526,0"></Label>
-        <ListBox Grid.Row="9" Margin="266,0" Style="{DynamicResource InpList}"/>
-        <Button Content="Add" Grid.Row="10" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}" Margin="341,2,345,3"/>
+        <ComboBox Grid.Row="6" Margin="146,0,386,5" Text="{Binding Position}">
+            <ComboBoxItem>Врач стоматолог- терапевт</ComboBoxItem>
+            <ComboBoxItem>Врач стоматолог- хирург</ComboBoxItem>
+            <ComboBoxItem>Врач стоматолог- ортодонт</ComboBoxItem>
+            <ComboBoxItem>Врач стоматолог- хирург</ComboBoxItem>
+            <ComboBoxItem>Врач хирург-имплантолог</ComboBoxItem>
+            <ComboBoxItem>Врач стоматолог-ортопед</ComboBoxItem>
+        </ComboBox>
+        <Label Grid.Row="7" Content="Стаж работы" Style="{DynamicResource All}" Margin="0,0,526,0"></Label>
+        <TextBox Grid.Row="7" Text="{Binding Experience}" Margin="146,0,386,5" Style="{DynamicResource Input}"/>
+        <Label Content="Номер телефона" Grid.Row="8" Style="{DynamicResource All}"  Margin="0,0,526,0"/>
+        <TextBox Grid.Row="8" Text="{Binding NumberOfPhone}" Margin="146,0,386,5" Style="{DynamicResource Input}"/>
+        <Label Grid.Row="9" Content="Кабинет" Style="{DynamicResource All}" Margin="0,0,526,0"></Label>
+        <ComboBox Grid.Row="9" Margin="146,2,386,0" Text="{Binding Cabinet}">
+            <ComboBoxItem>100</ComboBoxItem>
+            <ComboBoxItem>102</ComboBoxItem>
+            <ComboBoxItem>102a</ComboBoxItem>
+            <ComboBoxItem>105</ComboBoxItem>
+            <ComboBoxItem>107</ComboBoxItem>
+            <ComboBoxItem>107a</ComboBoxItem>
+            <ComboBoxItem>200</ComboBoxItem>
+            <ComboBoxItem>202</ComboBoxItem>
+            <ComboBoxItem>203</ComboBoxItem>
+            <ComboBoxItem>205</ComboBoxItem>
+        </ComboBox>
+        <Label Grid.Row="10" Content="Пользователь" Style="{DynamicResource Heading}" HorizontalAlignment="Center"/>
+        <Label Content="Имя пользователя" Grid.Row="11" Grid.ColumnSpan="3" Style="{DynamicResource All}"/>
+        <Label Content="Пароль" Grid.Row="12" Grid.ColumnSpan="3" Style="{DynamicResource All}" />
+        <Label Content="Подтверждение пароля" Grid.Row="13" Grid.ColumnSpan="3" Style="{DynamicResource All}" />
+        <Label Content="Email" Grid.Row="14" Grid.ColumnSpan="3" Style="{DynamicResource All}" />
+        <TextBox x:Name="Login2" Margin="166,0,386,5" Grid.Row="11" Text="{Binding Login}" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="Password2" Grid.Row="12" Text="{Binding Password}" Margin="166,0,386,5" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="ConfPass2" Grid.Row="13"  Text="{Binding ConfirmPassword}"  Margin="166,0,386,5" Style="{DynamicResource Input}"/>
+        <TextBox x:Name="Email2" Grid.Row="14" Text="{Binding Email}" Margin="166,0,386,5" Style="{DynamicResource Input}"/>
+        <Button Content="Add" Command="{Binding RegistrationCommand}" Grid.Row="15" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}" Margin="341,2,345,3"/>
     </Grid>
 </Window>

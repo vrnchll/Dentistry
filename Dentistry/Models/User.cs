@@ -19,8 +19,9 @@ namespace Dentistry.Models
         [Required(ErrorMessage = "Не указано пароль")]
         [StringLength(20, MinimumLength = 6, ErrorMessage = "Недопустимая длина пароля")]
         public string Password { get; set; }
-        [Required]
-        [RegularExpression(@"[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+", ErrorMessage = "Неверный формат логина")]
+       
+        [RegularExpression(@"[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+", ErrorMessage = "Неверный формат почты")]
+        [Required(ErrorMessage = "Не указана почта")]
         public string Email { get; set; }
 
         

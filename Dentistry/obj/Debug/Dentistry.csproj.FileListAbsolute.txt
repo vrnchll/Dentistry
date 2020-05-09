@@ -189,3 +189,9 @@ D:\Dentistry\Dentistry\obj\Debug\Dentistry.csproj.CopyComplete
 D:\Dentistry\Dentistry\obj\Debug\Dentistry.exe
 D:\Dentistry\Dentistry\obj\Debug\Dentistry.pdb
 D:\Dentistry\Dentistry\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\bin\Debug\MaterialDesignColors.dll
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\bin\Debug\MaterialDesignColors.pdb
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\bin\Debug\MaterialDesignThemes.Wpf.xml

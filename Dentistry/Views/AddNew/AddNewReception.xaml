@@ -17,20 +17,20 @@
             <RowDefinition Height="60*"/>
             <RowDefinition Height="60*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Style="{DynamicResource Heading}" FontSize="20" Content="Add new reception" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Content="Time of Begining Reception" Grid.Row="1" Style="{DynamicResource All}" Margin="86,5,526,26"/>
+        <Label Grid.Row="0" Style="{DynamicResource Heading}" FontSize="20" Content="Добавление нового посещения" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Время начала" Grid.Row="1" Style="{DynamicResource All}" Margin="86,5,526,26"/>
         <DatePicker Grid.Row="1" Margin="266,7,266,26"></DatePicker>
-        <Label Content="Time of Ending Reception" Grid.Row="2" Style="{DynamicResource All}" Margin="86,5,526,26"/>
+        <Label Content="Время окончания" Grid.Row="2" Style="{DynamicResource All}" Margin="86,5,526,26"/>
         <DatePicker Grid.Row="2" Margin="266,7,266,26"></DatePicker>
-        <Label Grid.Row="3" Content="Last Name Patient" Style="{DynamicResource All}" Margin="86,0,526,22"/>
+        <Label Grid.Row="3" Content="Фамилия пациента" Style="{DynamicResource All}" Margin="86,0,526,22"/>
         <TextBox Grid.Row="3" Margin="266,0,266,22" Style="{DynamicResource Input}"/>
-        <Label Grid.Row="4" Content="Service" Style="{DynamicResource All}" Margin="86,0,526,27"></Label>
+        <Label Grid.Row="4" Content="Услуга" Style="{DynamicResource All}" Margin="86,0,526,27"></Label>
         <ComboBox Grid.Row="4" Margin="266,0,266,27"></ComboBox>
-        <Label Grid.Row="5" Content="Doctor" Style="{DynamicResource All}" Margin="86,0,526,27"/>
+        <Label Grid.Row="5" Content="Врач" Style="{DynamicResource All}" Margin="86,0,526,27"/>
         <ComboBox Grid.Row="5" Margin="266,0,266,27"></ComboBox>
-        <Label Grid.Row="6" Content="Cost" Margin="86,0,526,20" Style="{DynamicResource All}"></Label>
+        <Label Grid.Row="6" Content="Стоимость" Margin="86,0,526,20" Style="{DynamicResource All}"></Label>
         <TextBox Grid.Row="6" Margin="266,0,266,20" Style="{DynamicResource Input}"/>
-        <Button Content="Add" Grid.Row="7" Margin="326,0,324,19" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}"/>
+        <Button Content="Добавить" Grid.Row="7" Margin="326,0,324,19" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}"/>
 
     </Grid>
 </Window>

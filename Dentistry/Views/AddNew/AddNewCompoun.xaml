@@ -3,9 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dentistry.Views"
+        xmlns:local="clr-namespace:Dentistry.Views" xmlns:me="clr-namespace:Dentistry.ViewModels.AdminPagesViewModel"
         mc:Ignorable="d"
         Title="AddNewCompoun" Height="350" Width="600">
+    <Window.Resources>
+        <me:AddNewCompounViewModel x:Key="model"/>
+    </Window.Resources>
     <Grid Background="{DynamicResource Back}">
         <Grid.RowDefinitions>
             <RowDefinition Height="40*"/>
@@ -15,15 +18,15 @@
             <RowDefinition Height="60*"/>
             <RowDefinition Height="60*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Add new compoun" Style="{DynamicResource Heading}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Content="Date of Reception" Grid.Row="1" Margin="97,7,366,24" Style="{DynamicResource All}"/>
+        <Label Grid.Row="0" Content="Добавление нового талона" Style="{DynamicResource Heading}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Дата приема" Grid.Row="1" Margin="97,7,366,24" Style="{DynamicResource All}"/>
         <DatePicker Grid.Row="1" Margin="226,7,225,26"></DatePicker>
-        <Label Grid.Row="2" Content="Last Name Patient" Margin="97,0,366,31" Style="{DynamicResource All}"/>
-        <TextBox Grid.Row="2" Margin="226,0,225,31" Style="{DynamicResource Input}"/>
-        <Label Grid.Row="3" Content="Service" Margin="97,0,366,27" Style="{DynamicResource All}"></Label>
-        <ComboBox Grid.Row="3" Margin="226,0,225,27"></ComboBox>
-        <Label Grid.Row="4" Content="Doctor" Margin="97,0,366,27" Style="{DynamicResource All}"/>
-        <ComboBox Grid.Row="4" Margin="226,0,225,27"></ComboBox>
-        <Button Content="Add" Grid.Row="5" Margin="254,0,250,27" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}"/>
+        <Label Grid.Row="2" Content="Фамилия пациента" Margin="97,0,366,31" Style="{DynamicResource All}"/>
+        <ComboBox Grid.Row="2" Margin="226,0,225,31" Text="{Binding LastNamePatient}" ItemsSource="{Binding Source={x:Static me:AddNewCompounViewModel.LastNamePatients}, Mode=OneWay}" />
+        <Label Grid.Row="3" Content="Услуга" Margin="97,0,366,27" Style="{DynamicResource All}"></Label>
+        <ComboBox Grid.Row="3" Margin="226,0,225,27" Text="{Binding Service}" ItemsSource="{Binding Source={x:Static me:AddNewCompounViewModel.Services}, Mode=OneWay}"></ComboBox>
+        <Label Grid.Row="4" Content="Врач" Margin="97,0,366,27" Style="{DynamicResource All}"/>
+        <ComboBox Grid.Row="4" Margin="226,0,225,27" Text="{Binding LastNameDoctor}" ItemsSource="{Binding Source={x:Static me:AddNewCompounViewModel.LastNameDoctors}, Mode=OneWay}"></ComboBox>
+        <Button Content="Добавить" Grid.Row="5" Margin="254,0,250,27" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}" Command="{Binding Add}"/>
     </Grid>
 </Window>

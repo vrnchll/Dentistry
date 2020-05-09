@@ -11,10 +11,10 @@
     <Grid Background="{DynamicResource Back}">
         <DataGrid Margin="0,2,0,0" Grid.Row="1" Style="{DynamicResource DataGridsStyle}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id"></DataGridTextColumn>
-                <DataGridTextColumn Header="Name" Width="200"/>
-                <DataGridTextColumn Header="Cost" Width="50"/>
-                <DataGridTextColumn Header="Doctor" Width="100"/>
+                
+                <DataGridTextColumn Header="Название услуги" Width="200"/>
+                <DataGridTextColumn Header="Цена" Width="50"/>
+                <DataGridTextColumn Header="Врач" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
