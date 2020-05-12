@@ -6,24 +6,25 @@
         xmlns:local="clr-namespace:Dentistry.Views"
         mc:Ignorable="d"
         Title="ReceptionsForD" Height="450" Width="800">
-    <Grid Background="{DynamicResource Back}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="36*"/>
         </Grid.RowDefinitions>
-        <Menu Style="{DynamicResource TheMainMenu}" Margin="0,0,0,16">
-            <MenuItem Header="" Height="35" Width="35" Style="{DynamicResource Items}">
+        <Menu Margin="0,0,0,16" Background="{DynamicResource PrimaryHueDarkBrush}">
+            <MenuItem Header="" Height="35" Width="35" Foreground="{DynamicResource PrimaryHueLightBrush}">
                 <MenuItem.Background>
                     <ImageBrush ImageSource="back--v1.png"/>
                 </MenuItem.Background>
             </MenuItem>
-            <MenuItem Header="Добавить новое посещение" Style="{DynamicResource Items}"/>
-            <MenuItem Header="Редактировать" Style="{DynamicResource Items}"/>
-            <MenuItem Header="Удалить" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Добавить новое посещение" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}" Height="39"/>
+            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39" />
+            <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39"/>
         </Menu>
-        <DataGrid Style="{DynamicResource DataGridsStyle}" Margin="0,35,0,0" Grid.RowSpan="2">
+        <DataGrid AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
+                              ScrollViewer.IsDeferredScrollingEnabled="True" 
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Margin="0,35,0,0" Grid.RowSpan="2">
             <DataGrid.Columns>
-               
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="Время начала приема"/>
@@ -41,7 +42,7 @@
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn  IsReadOnly="False">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Время окончания приема" />
+                        <TextBlock Text="Время окончания приема"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -55,7 +56,7 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
                 <DataGridComboBoxColumn Header="Услуга"></DataGridComboBoxColumn>
-                <DataGridTextColumn Header="Стоимость "></DataGridTextColumn>
+                <DataGridTextColumn Header="Стоимость"></DataGridTextColumn>
                 <DataGridTextColumn Header="Пациент"/>
             </DataGrid.Columns>
         </DataGrid>

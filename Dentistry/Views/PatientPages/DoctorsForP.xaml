@@ -3,15 +3,20 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Dentistry.Views.PatientPages"
+      xmlns:local="clr-namespace:Dentistry.Views.PatientPages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="900"
-      Title="DoctorsForP">
+      Title="DoctorsForP" ScrollViewer.HorizontalScrollBarVisibility="Visible">
 
-    <Grid Background="{DynamicResource Back}">
-        <DataGrid Style="{DynamicResource DataGridsStyle}">
+    <Grid Background="{DynamicResource PrimaryHueMidBrush}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DataGrid  ScrollViewer.CanContentScroll="True"         
+                              ScrollViewer.IsDeferredScrollingEnabled="True" 
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Grid.Row="0" AutoGenerateColumns="False" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Имя"/>
+                <DataGridTextColumn Header="Имя" />
                 <DataGridTextColumn Header="Отчество"/>
                 <DataGridTextColumn Header="Фамилия"/>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="Birth">

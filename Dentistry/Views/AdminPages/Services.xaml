@@ -3,25 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dentistry.Views"
+        xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Services" Height="450" Width="800">
-    <Grid Background="{DynamicResource Back}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="23*"/>
             <RowDefinition Height="396*"/>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0" Margin="0,0,0,394" Grid.RowSpan="2" Style="{DynamicResource TheMainMenu}">
-            <MenuItem Header="" Style="{DynamicResource Items}" Height="25" Width="33">
+        <Menu Grid.Row="0" Margin="0,0,0,423" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueDarkBrush}">
+            <MenuItem Header="" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="25" Width="33">
                 <MenuItem.Background>
                     <ImageBrush ImageSource="back--v1.png"/>
                 </MenuItem.Background>
             </MenuItem>
-            <MenuItem Header="Добавить новую услугу" Style="{DynamicResource Items}" Command="{Binding Add}"/>
-            <MenuItem Header="Редактировать" Style="{DynamicResource Items}"/>
-            <MenuItem Header="Удалить" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Добавить новую услугу" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}" Height="27"/>
+            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="27"/>
+            <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="26"/>
         </Menu>
-        <DataGrid Margin="0,2,0,0" Grid.Row="1" Style="{DynamicResource DataGridsStyle}" x:Name="ServiceList" AutoGenerateColumns="False" >
+        <DataGrid Margin="0,2,0,0" Grid.Row="1" x:Name="ServiceList" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
+                              ScrollViewer.IsDeferredScrollingEnabled="True" 
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16">
             <DataGrid.Columns>
                
                 <DataGridTextColumn Header="Наименование услуги" Width="200" Binding="{Binding Path=Name}"/>

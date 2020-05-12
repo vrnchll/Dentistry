@@ -7,7 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Validation;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -43,27 +45,34 @@ namespace Dentistry.Services
                 {
                     case "Admin": {
                             _instance = user;
-                            AdminMainWindow AdminMainWindow = new AdminMainWindow();
-                            AdminMainWindow.Show();
-                        }break;
+                            
+                            App.adminWindow = new AdminMainWindow();
+                            App.adminWindow.Show();
+                            App.Current.MainWindow.Visibility = Visibility.Hidden;
+                        }
+                        break;
                     case "Doctor":
                         {
                             var person = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.Id == user.Id);
                             user.DoctorProfile = person;
                             _instance = user;
                             ProfileDoctorInfo();
-                            DoctorMainWindow DMainWindow = new DoctorMainWindow();
-                            DMainWindow.Show();
-                        }break;
+                            App.DoctormainWindow = new DoctorMainWindow();
+                            App.DoctormainWindow.Show();
+                            App.Current.MainWindow.Visibility = Visibility.Hidden;
+                        }
+                        break;
                     case "Patient":
                         {
                             var person = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.Id == user.Id);
                             user.PatientProfile = person;
                             _instance = user;
                             ProfilePatientInfo();
-                            PatientMainWindow PatientMainWindow = new PatientMainWindow();
-                            PatientMainWindow.Show();
-                        }break;
+                            App.PatientmainWindow = new PatientMainWindow();
+                            App.PatientmainWindow.Show();
+                            App.Current.MainWindow.Visibility = Visibility.Hidden;
+                        }
+                        break;
                     default: break;
                 }
             }
@@ -95,32 +104,15 @@ namespace Dentistry.Services
             }
             else
             {
+                String tmp = Encrypt(user.Password, user.UserName);
+                user.Password = tmp;
                 UnitOfWork unitOfWork = new UnitOfWork();
                 unitOfWork.Users.Create(user);
                 unitOfWork.Patients.Create(person);
-                try
-                {
-                    // Your code...
-                    // Could also be before try if you know the exception occurs in SaveChanges
-
-                    unitOfWork.Save();
-                }
-                catch (DbEntityValidationException e)
-                {
-                    foreach (var eve in e.EntityValidationErrors)
-                    {
-                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                        foreach (var ve in eve.ValidationErrors)
-                        {
-                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                                ve.PropertyName, ve.ErrorMessage);
-                        }
-                    }
-                    throw;
-                }
-                
+                unitOfWork.Save();
                 Admin_PatientsViewModel.Patients.Add(person);
+                App.RegistrationWindow.Visibility = Visibility.Hidden;
+                App.Current.MainWindow.Visibility = Visibility.Visible;
             }
           
           
@@ -146,11 +138,15 @@ namespace Dentistry.Services
             }
             else
             {
+                String tmp = Encrypt(user.Password, user.UserName);
+                user.Password = tmp;
                 UnitOfWork unitOfWork = new UnitOfWork();
                 unitOfWork.Users.Create(user);
                 unitOfWork.Doctors.Create(person);
                 unitOfWork.Save();
                 Admin_DoctorsViewModel.Doctors.Add(person);
+                App.RegistrationWindow.Visibility = Visibility.Hidden;
+                App.Current.MainWindow.Visibility = Visibility.Visible;
             }
         }
         public static void ProfileDoctorInfo()
@@ -180,6 +176,42 @@ namespace Dentistry.Services
             PatientProfileViewModel.NumberOfPhone = _instance.PatientProfile.NumberOfPhone;
             PatientProfileViewModel.Login = _instance.PatientProfile.User.UserName;
         }
+        public static string Encrypt(string ishText, string pass, string sol = "dentistry", string cryptographicAlgorithm = "SHA1", int passIter = 2, string initVec = "a8doSuDitOz1hZe#", int keySize = 256)
+        {
+            if (string.IsNullOrEmpty(ishText))
+                return "";
+
+            byte[] initVecB = Encoding.ASCII.GetBytes(initVec);
+            byte[] solB = Encoding.ASCII.GetBytes(sol);
+            byte[] ishTextB = Encoding.UTF8.GetBytes(ishText);
+
+            PasswordDeriveBytes derivPass = new PasswordDeriveBytes(pass, solB, cryptographicAlgorithm, passIter);
+            byte[] keyBytes = derivPass.GetBytes(keySize / 8);
+            RijndaelManaged symmK = new RijndaelManaged();
+            symmK.Mode = CipherMode.CBC;
+
+            byte[] cipherTextBytes = null;
+
+            using (ICryptoTransform encryptor = symmK.CreateEncryptor(keyBytes, initVecB))
+            {
+                using (MemoryStream memStream = new MemoryStream())
+                {
+                    using (CryptoStream cryptoStream = new CryptoStream(memStream, encryptor, CryptoStreamMode.Write))
+                    {
+                        cryptoStream.Write(ishTextB, 0, ishTextB.Length);
+                        cryptoStream.FlushFinalBlock();
+                        cipherTextBytes = memStream.ToArray();
+                        memStream.Close();
+                        cryptoStream.Close();
+                    }
+                }
+            }
+
+            symmK.Clear();
+            return Convert.ToBase64String(cipherTextBytes);
+        }
+        
+
     }
-    }
+}
 

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Dentistry.ViewModels
@@ -57,8 +58,9 @@ namespace Dentistry.ViewModels
                 return signUpCommand ??
                   (signUpCommand = new RelayCommands(obj =>
                   {
-                      Registration registration = new Registration();
-                      registration.Show();
+                    App.RegistrationWindow = new Registration();
+                      App.RegistrationWindow.Show();
+                      App.Current.MainWindow.Visibility = Visibility.Hidden;
 
                   }));
             }

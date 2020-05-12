@@ -7,7 +7,13 @@
         mc:Ignorable="d"
         Title="DoctorMainWindow" Height="450" Width="800">
     <Grid>
-        <StackPanel Margin="0,0,609,0" Orientation="Vertical">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="190">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0.16"/>
+                    <GradientStop Color="#FF607D8B" Offset="0.961"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
             <Button Height="42" Command="{Binding AddNewReception}">
                 <Grid Width="166">
                     <materialDesign:PackIcon Kind="Edit" RenderTransformOrigin="-1,0.812" Height="12" Margin="-1,4,0,0" Width="11" ></materialDesign:PackIcon>
@@ -33,7 +39,7 @@
                 </Grid>
             </Button>
         </StackPanel>
-        <Frame Margin="183,0,0,0" 
+        <Frame Margin="190,0,0,0"   Background="{DynamicResource PrimaryHueLightBrush}"
                Content="{Binding CurrentPage}"
                />
     </Grid>

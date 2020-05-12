@@ -14,6 +14,10 @@ namespace Dentistry.ViewModels
     {
         public static BindingList<Doctor> Doctors;
         private string _FirstName;
+        static Admin_DoctorsViewModel()
+        {
+            Doctors = new BindingList<Doctor>();
+        }
         public string FirstName
         {
             get => _FirstName; set

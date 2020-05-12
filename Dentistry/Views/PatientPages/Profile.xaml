@@ -8,7 +8,7 @@
       d:DesignHeight="500" d:DesignWidth="800"
       Title="Profile">
 
-    <Grid Background="{DynamicResource Back}">
+    <Grid Background="{DynamicResource PrimaryHueMidBrush}" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="51*"/>
             <ColumnDefinition Width="149*"/>
@@ -27,17 +27,17 @@
 
 
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Профиль" Style="{DynamicResource Heading}" VerticalAlignment="Center" Height="38" Margin="0,4,10,24" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <Label Grid.Row="1" Grid.Column="0" Content="Имя" Style="{DynamicResource All}"/>
-        <Label Grid.Row="2" Grid.Column="0" Content="Отчество" Style="{DynamicResource All}"/>
-        <Label Grid.Row="3" Grid.Column="0" Content="Фамилия" Style="{DynamicResource All}"/>
-        <Label Grid.Row="4" Grid.Column="0" Content="Дата Рождения" Style="{DynamicResource All}"/>
-        <Label Grid.Row="5" Grid.Column="0" Content="Пол" Style="{DynamicResource All}"/>
-        <Label Grid.Row="6" Grid.Column="0" Content="Номер телефона" Style="{DynamicResource All}"/>
-        <Label Grid.Row="7" Grid.Column="0" Content="Адрес" Style="{DynamicResource All}"/>
-        <Label Grid.Row="9" Grid.Column="0" Content="Имя пользователя" Style="{DynamicResource All}"/>
-        <Label Grid.Row="9" Content="История заказов" Style="{DynamicResource All}" Margin="0,42,0,0"/>
-        <DataGrid Grid.Row="9" Background="{DynamicResource Back}" Grid.ColumnSpan="2" Margin="0,70,0,0">
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="0" Content="Профиль" FontFamily="Bodoni MT Black" FontSize="22" VerticalAlignment="Center" Height="38" Margin="0,4,10,24" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="1" Grid.Column="0" Content="Имя" FontFamily="Bodoni MT Black"/>
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="2" Grid.Column="0" Content="Отчество" FontFamily="Bodoni MT Black" />
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="3" Grid.Column="0" Content="Фамилия" FontFamily="Bodoni MT Black" />
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="4" Grid.Column="0" Content="Дата Рождения" FontFamily="Bodoni MT Black" />
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="5" Grid.Column="0" Content="Пол" FontFamily="Bodoni MT Black" />
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="6" Grid.Column="0" Content="Номер телефона" FontFamily="Bodoni MT Black" />
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="7" Grid.Column="0" Content="Адрес" FontFamily="Bodoni MT Black" />
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="9" Grid.Column="0" Content="Имя пользователя" FontFamily="Bodoni MT Black" />
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="9" Content="История заказов" FontFamily="Bodoni MT Black"  Margin="0,42,0,0"/>
+        <DataGrid Grid.Row="9" Background="{DynamicResource PrimaryHueLightBrush}" Grid.ColumnSpan="2" Margin="0,70,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Дата заказа" Width="140"></DataGridTextColumn>
                 <DataGridTextColumn Header="Услуга" Width="200"></DataGridTextColumn>
@@ -45,17 +45,17 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Grid.Row="1" Grid.Column="1" x:Name="First" Content="{x:Static local:PatientProfileViewModel.FirstName}" Style="{DynamicResource All}"/>
-        <Label Grid.Row="2" Grid.Column="1" x:Name="Middle" Content="{x:Static local:PatientProfileViewModel.MiddleName}" Style="{DynamicResource All}"/>
-        <Label Grid.Row="3" Grid.Column="1" x:Name="Last" Content="{x:Static local:PatientProfileViewModel.LastName}"  Style="{DynamicResource All}"/>
-        <Label Grid.Row="4" Grid.Column="1" x:Name="Date" Content="{x:Static local:PatientProfileViewModel.DateOfBirthday}" Style="{DynamicResource All}"/>
-        <Label Grid.Row="5" Grid.Column="1" x:Name="Gender" Content="{x:Static local:PatientProfileViewModel.Gender}" Style="{DynamicResource All}"/>
-        <Label Grid.Row="6" Grid.Column="1" x:Name="Number" Content="{x:Static local:PatientProfileViewModel.NumberOfPhone}" Style="{DynamicResource All}"/>
-        <Label Grid.Row="7" Grid.Column="1" x:Name="City" Content="{x:Static local:PatientProfileViewModel.City}" Style="{DynamicResource All}"/>
-        <Label Grid.Row="7" Grid.Column="1" x:Name="Street" Content="{x:Static local:PatientProfileViewModel.Street}" Style="{DynamicResource All}" Margin="202,0,142,35"/>
-        <Label Grid.Row="7" Grid.Column="1" x:Name="House" Content="{x:Static local:PatientProfileViewModel.House}" Style="{DynamicResource All}" Margin="0,32,394,0"/>
-        <Label Grid.Row="7" Grid.Column="1" x:Name="Flat" Content="{x:Static local:PatientProfileViewModel.Flat}" Style="{DynamicResource All}" Margin="207,32,0,0"/>
-        <Label Grid.Row="9" Grid.Column="1" x:Name="Login" Content="{x:Static local:PatientProfileViewModel.Login}" Style="{DynamicResource All}"/>
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="1" Grid.Column="1" x:Name="First" Content="{x:Static local:PatientProfileViewModel.FirstName}" FontFamily="Bodoni MT Black"/>
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="2" Grid.Column="1" x:Name="Middle" Content="{x:Static local:PatientProfileViewModel.MiddleName}" FontFamily="Bodoni MT Black"/>
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="3" Grid.Column="1" x:Name="Last" Content="{x:Static local:PatientProfileViewModel.LastName}"  FontFamily="Bodoni MT Black"/>
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="4" Grid.Column="1" x:Name="Date" Content="{x:Static local:PatientProfileViewModel.DateOfBirthday}" FontFamily="Bodoni MT Black"/>
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="5" Grid.Column="1" x:Name="Gender" Content="{x:Static local:PatientProfileViewModel.Gender}" FontFamily="Bodoni MT Black"/>
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="6" Grid.Column="1" x:Name="Number" Content="{x:Static local:PatientProfileViewModel.NumberOfPhone}" FontFamily="Bodoni MT Black"/>
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="7" Grid.Column="1" x:Name="City" Content="{x:Static local:PatientProfileViewModel.City}" FontFamily="Bodoni MT Black"/>
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="7" Grid.Column="1" x:Name="Street" Content="{x:Static local:PatientProfileViewModel.Street}" FontFamily="Bodoni MT Black" Margin="202,0,142,35"/>
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="7" Grid.Column="1" x:Name="House" Content="{x:Static local:PatientProfileViewModel.House}" FontFamily="Bodoni MT Black" Margin="0,32,394,0"/>
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="7" Grid.Column="1" x:Name="Flat" Content="{x:Static local:PatientProfileViewModel.Flat}" FontFamily="Bodoni MT Black" Margin="207,32,0,0"/>
+        <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="9" Grid.Column="1" x:Name="Login" Content="{x:Static local:PatientProfileViewModel.Login}" FontFamily="Bodoni MT Black"/>
 
     </Grid>
 </Page>

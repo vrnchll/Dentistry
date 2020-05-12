@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800">
     <Grid>
-        <StackPanel Margin="0,0,640,0" Orientation="Vertical">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="159">
             <StackPanel.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="0.16"/>
@@ -39,8 +39,8 @@
                 </Grid>
             </Button>
         </StackPanel>
-        <Frame Margin="152,0,0,0" 
-               Content="{Binding CurrentPage}"
+        <Frame Margin="159,0,0,0"  Background="{DynamicResource PrimaryHueLightBrush}"
+               Content="{Binding CurrentPage}" 
                />
     </Grid>
 </Window>

@@ -3,22 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dentistry.Views"
+        xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AddNewService" Height="300" Width="500">
-    <Grid Background="{DynamicResource Back}">
+        Title="AddNewService" Height="356" Width="500">
+    <Grid Background="{DynamicResource PrimaryHueMidBrush }">
         <Grid.RowDefinitions>
             <RowDefinition Height="35*"/>
             <RowDefinition Height="59*"/>
             <RowDefinition Height="114*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Добавление новой услуги"  Style="{DynamicResource Heading}" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Grid.Row="1" Content="Наименование услуги" Margin="26,20,300,28" Style="{DynamicResource All}"/>
-        <Label Grid.Row="1" Content="Стоимость" Margin="26,58,300,136" Grid.RowSpan="2" Style="{DynamicResource All}"/>
-        <Label Grid.Row="2" Content="Врач" Margin="26,32,323,83" Style="{DynamicResource All}"/>
-        <TextBox Grid.Row="1" Margin="170,18,167,28" Height="30" Style="{DynamicResource Input}" Text="{Binding Name}"/>
-        <TextBox Grid.Row="1" Margin="170,58,167,136" Text="{Binding Cost}" Height="30" Grid.RowSpan="2" Style="{DynamicResource Input}"/>
-        <ComboBox Grid.Row="2" Margin="170,36,167,89" SelectedValue="{Binding SelectedItem}" x:Name="docList"/>
-        <Button Content="Добавить" Grid.Row="2" Margin="197,77,197,43" Style="{DynamicResource AddButt}" Background="{DynamicResource Butt}" Command="{Binding add}"/>
+        <Label Grid.Row="0" Content="Добавление новой услуги"  Foreground="{DynamicResource PrimaryHueLightBrush}"  FontFamily="Bodoni MT Black" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Row="1" Margin="153,0,167,41" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}"  Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name}" materialDesign:HintAssist.Hint=" Наименование услуги"/>
+        <TextBox Grid.Row="1" Margin="153,75,167,144" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}"  Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Text="{Binding Cost}" materialDesign:HintAssist.Hint=" Стоимость" Grid.RowSpan="2"/>
+        <ComboBox Grid.Row="2" Margin="153,52,167,97" Background="{DynamicResource PrimaryHueDarkBrush}"  Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" SelectedValue="{Binding SelectedItem}" materialDesign:HintAssist.Hint=" Врач" x:Name="docList" Height="29"/>
+        <Button Content="Добавить" Grid.Row="2" Margin="180,105,206,41" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Command="{Binding add}"/>
     </Grid>
 </Window>

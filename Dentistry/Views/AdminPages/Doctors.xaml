@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dentistry.Views"
+        xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Doctors" Height="450" Width="900">
     <Grid>
@@ -12,17 +12,19 @@
             <RowDefinition Height="7*"/>
             <RowDefinition Height="355*"/>
         </Grid.RowDefinitions>
-        <Menu Style="{DynamicResource TheMainMenu}" Margin="0,0,0,22">
-            <MenuItem Header="" Height="35" Width="35" Style="{DynamicResource Items}">
+        <Menu Background="{DynamicResource PrimaryHueDarkBrush}" Margin="0,0,0,22">
+            <MenuItem Header="" Height="35" Width="35" Foreground="{DynamicResource PrimaryHueLightBrush}">
                 <MenuItem.Background>
                     <ImageBrush ImageSource="back--v1.png"/>
                 </MenuItem.Background>
             </MenuItem>
-            <MenuItem Header="Добавить нового доктора" Style="{DynamicResource Items}" Command="{Binding Add}"/>
-            <MenuItem Header="Редактировать" Style="{DynamicResource Items}"/>
-            <MenuItem Header="Удалить" Style="{DynamicResource Items}"/>
+            <MenuItem Header="Добавить нового доктора" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}" Height="39"/>
+            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39"/>
+            <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39"/>
         </Menu>
-        <DataGrid AutoGenerateColumns="False" x:Name="DoctorsList" Style="{DynamicResource DataGridsStyle}" Margin="0,35,0,0" Grid.RowSpan="3">
+        <DataGrid AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
+                              ScrollViewer.IsDeferredScrollingEnabled="True" 
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" x:Name="DoctorsList" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Margin="0,35,0,0" Grid.RowSpan="3">
             <DataGrid.Columns>
                 
                 <DataGridTextColumn Header="Имя" Binding="{Binding Path= FirstName}"/>

@@ -13,7 +13,8 @@ namespace Dentistry.Models
         [Key]
         [ForeignKey("User")]
         public int Id { get; set; }
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "Недопустимая длина имена")]
+        [StringLength(20, MinimumLength = 4, ErrorMessage = "Недопустимая длина имена")]
+       
         [Required(ErrorMessage = "Не указано имени пользователя")]
         public string FirstName { get; set; }
         [StringLength(20, MinimumLength = 6, ErrorMessage = "Недопустимая длина фамилии")]

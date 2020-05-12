@@ -13,5 +13,12 @@ namespace Dentistry
     /// </summary>
     public partial class App : Application
     {
+        public static Window AuthorizationWindow;
+        public static Window RegistrationWindow;
+
+        public static Window DoctormainWindow;
+        public static Window PatientmainWindow;
+        public static Window adminWindow;
+
     }
 }
