@@ -1,4 +1,6 @@
-﻿using Dentistry.Services;
+﻿using Dentistry.Context;
+using Dentistry.Models;
+using Dentistry.Services;
 using Dentistry.ViewModels.AdminPagesViewModel;
 using Dentistry.Views;
 using System;
@@ -45,6 +47,7 @@ namespace Dentistry.ViewModels
             }
 
         }
+      
         public event PropertyChangedEventHandler PropertyChanged; // отслеживать изменения нашего поля сразу(binding)
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {

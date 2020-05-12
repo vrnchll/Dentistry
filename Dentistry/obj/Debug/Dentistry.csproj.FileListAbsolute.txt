@@ -195,3 +195,5 @@ D:\2k2s\курсовой ооп\Dentistry\Dentistry\bin\Debug\MaterialDesignThem
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\bin\Debug\MaterialDesignColors.pdb
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\bin\Debug\MaterialDesignThemes.Wpf.pdb
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Services\Prompt.g.cs
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Services\Prompt.baml

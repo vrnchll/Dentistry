@@ -14,12 +14,16 @@ namespace Dentistry.Models
         [Key]
         [ForeignKey("User")]
         public int Id { get; set; }
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "Недопустимая длина имена")]
-        [Required(ErrorMessage = "Не указано имени пользователя")]
+        [RegularExpression(@"/^[a-zA-Zа-яёА-ЯЁ]+$/u", ErrorMessage = "Недопустимые символы в Имени!")]
+        [StringLength(20, MinimumLength = 4, ErrorMessage = "Недопустимая длина имени")]
+        [Required(ErrorMessage = "Не указано имя пользователя")]
         public string FirstName { get; set; }
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "Недопустимая длина фамилии")]
+
+        [RegularExpression(@"/^[a-zA-Zа-яёА-ЯЁ]+$/u", ErrorMessage = "Недопустимые символы в Фамилии!")]
+        [StringLength(20, MinimumLength = 4, ErrorMessage = "Недопустимая длина фамилии")]
         [Required(ErrorMessage = "Не указана фамилия пользователя")]
         public string LastName { get; set; }
+        [RegularExpression(@"/^[a-zA-Zа-яёА-ЯЁ]+$/u", ErrorMessage = "Недопустимые символы в Отчестве!")]
         [StringLength(20, MinimumLength = 6, ErrorMessage = "Недопустимая длина отчества")]
         [Required(ErrorMessage = "Не указано отчество пользователя")]
         public string MiddleName { get; set; }
@@ -28,7 +32,13 @@ namespace Dentistry.Models
         public string Gender { get; set; }
         public string City { get; set; }
         public string Street { get; set;}
+
+        [Required(ErrorMessage = "Не указан дом")]
+        [StringLength(3, MinimumLength = 1, ErrorMessage = "Недопустимое значение")]
         public string House { get; set; }
+
+        [Required(ErrorMessage = "Не указана квартира")]
+        [StringLength(3, MinimumLength = 1, ErrorMessage = "Недопустимое значение")]
         public string Flat { get; set; }
         [Required(ErrorMessage = "Не указан телефон пользователя")]
         [RegularExpression(@"^[+]375[0-9]{2}[0-9]{3}[0-9]{2}[0-9]{2}$", ErrorMessage = "Неверный формат телефона,\nВведите данные в формате +375(33)333-33-33")]

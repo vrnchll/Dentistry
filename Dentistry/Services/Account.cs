@@ -35,9 +35,9 @@ namespace Dentistry.Services
         public static void LogIn(string username, string password)
         {
             //Логика взаимодействия таблиц с пользователями и нашими данными введенными
-            
+            String tmp = Encrypt(password, username);
             UnitOfWork unitOfWork = new UnitOfWork();
-            var user = unitOfWork.Users.GetAll().FirstOrDefault(x => x.UserName == username && x.Password == password);
+            var user = unitOfWork.Users.GetAll().FirstOrDefault(x => x.UserName == username && x.Password == tmp);
             
             if (user != null)
             {
@@ -91,7 +91,7 @@ namespace Dentistry.Services
             var contextUser = new ValidationContext(user);
             var resultsPerson = new List<ValidationResult>();
             var contextPerson = new ValidationContext(person);
-            if (!Validator.TryValidateObject(user, contextUser, resultsUser, true) && !Validator.TryValidateObject(person, contextPerson, resultsPerson, true))
+            if (!Validator.TryValidateObject(user, contextUser, resultsUser, true) || !Validator.TryValidateObject(person, contextPerson, resultsPerson, true))
             {
                 foreach (var error in resultsUser)
                 {
@@ -125,7 +125,7 @@ namespace Dentistry.Services
             var contextUser = new ValidationContext(user);
             var resultsPerson = new List<ValidationResult>();
             var contextPerson = new ValidationContext(person);
-            if (!Validator.TryValidateObject(user, contextUser, resultsUser, true) && !Validator.TryValidateObject(person, contextPerson, resultsPerson, true))
+            if (!Validator.TryValidateObject(user, contextUser, resultsUser, true) || !Validator.TryValidateObject(person, contextPerson, resultsPerson, true))
             {
                 foreach (var error in resultsUser)
                 {

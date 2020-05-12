@@ -1,0 +1,24 @@
+﻿<Window x:Class="Wpf_7_8.Services.Prompt"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_7_8.Services"
+        mc:Ignorable="d"
+        Title="Prompt" Height="100" Width="300">
+  
+    <Grid Background="{DynamicResource PrimaryHueDarkBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Foreground="{DynamicResource PrimaryHueLightBrush}">Вы уверены ?</TextBlock>
+   
+
+        <WrapPanel Grid.Row="2" HorizontalAlignment="Right" Margin="0,15,0,0">
+            <Button IsDefault="True" Click="PromptAccept" MinWidth="60" Margin="0,0,10,0" Content="OK"/>
+            <Button IsCancel="True" MinWidth="60" Content="Отмена"/>
+        </WrapPanel>
+    </Grid>
+</Window>

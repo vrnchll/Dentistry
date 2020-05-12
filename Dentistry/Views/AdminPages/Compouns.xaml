@@ -43,5 +43,6 @@
                 <DataGridTextColumn Header="Врач"/>
             </DataGrid.Columns>
         </DataGrid>
+      
     </Grid>
 </Page>

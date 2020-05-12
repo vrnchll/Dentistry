@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,9 @@ namespace Dentistry.Models
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Не выбрано время начала")]
         public DateTime DateOfBeginReception { get; set; }
+        [Required(ErrorMessage = "Не выбрано время окончания")]
         public DateTime DateOfEndReception { get; set; }
 
         //?

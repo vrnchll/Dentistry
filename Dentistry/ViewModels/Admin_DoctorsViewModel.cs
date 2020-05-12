@@ -1,4 +1,6 @@
-﻿using Dentistry.Models;
+﻿using Dentistry.Context;
+using Dentistry.Models;
+using Dentistry.Services;
 using Dentistry.Views;
 using System;
 using System.Collections.Generic;
@@ -7,17 +9,25 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using Wpf_7_8.Services;
+
 
 namespace Dentistry.ViewModels
 {
     class Admin_DoctorsViewModel : INotifyPropertyChanged
     {
         public static BindingList<Doctor> Doctors;
+
+        private static ProjectContext db = new ProjectContext();
+
         private string _FirstName;
         static Admin_DoctorsViewModel()
         {
             Doctors = new BindingList<Doctor>();
+          
         }
+
         public string FirstName
         {
             get => _FirstName; set
@@ -152,6 +162,42 @@ namespace Dentistry.ViewModels
             }
 
         }
+        private Doctor selectedDoctor;
+        public Doctor SelectedDoctor
+        {
+            get
+            {
+                return selectedDoctor;
+            }
+            set
+            {
+                selectedDoctor = value;
+                OnPropertyChanged("SelectedDoctor");
+            }
+        }
+       
+        private RelayCommands _removeCommand;
+        public RelayCommands RemoveCommand
+        {
+            get
+            {
+               return _removeCommand ??
+                   (_removeCommand = new RelayCommands((selectedItem) =>
+                   {
+                       UnitOfWork unitOfWork = new UnitOfWork();
+                       MessageBoxResult result = MessageBox.Show("Вы действительно желаете удалить элемент?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                       if (selectedDoctor == null || result == MessageBoxResult.No) return;
+                      
+                       Doctor doctor = selectedDoctor as Doctor;
+                       Doctors.Remove(doctor);
+                       unitOfWork.Doctors.Delete(doctor.Id);
+                       unitOfWork.Users.Delete(doctor.Id);
+                       unitOfWork.Save();
+                       OnPropertyChanged("Remove");
+                   }));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged; // отслеживать изменения нашего поля сразу(binding)
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
