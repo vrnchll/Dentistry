@@ -30,7 +30,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                <DataGridComboBoxColumn Header="Услуга" Width="200" SelectedValueBinding="{Binding Path=Service}"></DataGridComboBoxColumn>
+               
                 <DataGridTextColumn Header="Пациент" Binding="{Binding Path=Patient}"/>
             </DataGrid.Columns>
         </DataGrid>

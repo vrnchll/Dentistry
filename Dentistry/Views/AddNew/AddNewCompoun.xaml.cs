@@ -45,7 +45,6 @@ namespace Dentistry.Views
             }
             docList.ItemsSource = doctorsName;
             patList.ItemsSource = patientsName;
-            serviceList.ItemsSource = service;
             DataContext = new AddNewServiceViewModel();
         }
     }

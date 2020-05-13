@@ -18,12 +18,13 @@ namespace Dentistry.Models
         //[RegularExpression(@"/^\d+$/", ErrorMessage = "Недопустимые символы в стоимости!")]
         public string Cost { get; set; }
 
-        public int? CompounId { get; set; }
-        public Compoun Compoun { get; set; }
+      
+        public ICollection<Reception> Receptions { get; set; }
         public ICollection<Doctor> Doctors { get; set; } 
         public Service()
         {
             Doctors = new List<Doctor>();
+            Receptions = new List<Reception>();
         }
 
       

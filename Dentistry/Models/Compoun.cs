@@ -16,11 +16,7 @@ namespace Dentistry.Models
         public string TimeOfReception { get; set; }
 
 
-        public virtual ICollection<Service> Services { get; set; }
-        public Compoun()
-        {
-            Services = new List<Service>();
-        }
+       
    
 
 

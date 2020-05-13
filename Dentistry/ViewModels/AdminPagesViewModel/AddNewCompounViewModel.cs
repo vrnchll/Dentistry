@@ -79,7 +79,7 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                {
                    
                    UnitOfWork unitOfWork = new UnitOfWork();
-                   var service = unitOfWork.Services.GetAll().FirstOrDefault(x => x.Name== Service);
+               
                    var doctor = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.LastName == LastNameDoctor);
                    var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.LastName == LastNamePatient);
                    Compoun compoun = new Compoun()
@@ -90,7 +90,7 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                        PatientId = patient.Id
 
                    };
-                   compoun.Services.Add(service);
+                  
                    unitOfWork.Compouns.Create(compoun);
                    unitOfWork.Save();
                    App.AddNewCompoun.Visibility = Visibility.Hidden;

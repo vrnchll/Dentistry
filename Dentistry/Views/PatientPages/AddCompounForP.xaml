@@ -22,7 +22,7 @@
 
         <xctk:DateTimeUpDown Format="ShortTime" Value="{Binding Time}" FormatString="hh:mm" Minimum="08:00" Maximum="18:00"  Margin="234,0,234,47" Grid.Row="2" Background="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
 
-        <ComboBox Grid.Row="3" Margin="187,0,186,48" materialDesign:HintAssist.Hint=" Услуга" Foreground="{DynamicResource PrimaryHueLightBrush}"  FontSize="14"></ComboBox>
+      
         <ComboBox Grid.Row="3" Margin="187,48,186,0" materialDesign:HintAssist.Hint=" Врач" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>
         <Button Content="Заказать" Grid.Row="4"  Style="{DynamicResource MaterialDesignRaisedDarkButton}" Background="{DynamicResource MaterialDesignDarkBackground}" Margin="234,36,234,10" Command="{Binding Add}"/>
     

@@ -103,11 +103,12 @@ namespace Dentistry.ViewModels.MainWindows
                        var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.Id == compoun.PatientId);
                        compoun.Patient = patient;
                        var doctor = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.Id == compoun.DoctorId);
+                       compoun.Doctor = doctor;
+                       Admin_CompounsViewModel.Compouns.Add(compoun);
                    }
                    
-                   var doctors = unitOfWork.Doctors.GetAll().ToList();
-                   var services = unitOfWork.Services.GetAll().ToList();
-
+                  
+                 
                    CurrentPage = Compouns;
                }));
             }
