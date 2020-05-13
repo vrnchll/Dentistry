@@ -12,9 +12,9 @@ namespace Dentistry.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Не выбрано время начала")]
-        public DateTime DateOfBeginReception { get; set; }
+        public string DateOfBeginReception { get; set; }
         [Required(ErrorMessage = "Не выбрано время окончания")]
-        public DateTime DateOfEndReception { get; set; }
+        public string DateOfEndReception { get; set; }
 
         //?
         public virtual ICollection<Service> Services { get; set; }

@@ -27,7 +27,13 @@ namespace Dentistry.Views
         {
             Admin_DoctorsViewModel admincontext = new Admin_DoctorsViewModel();
             UnitOfWork unitOfWork = new UnitOfWork();
-            Admin_DoctorsViewModel.Doctors = new BindingList<Doctor>(unitOfWork.Doctors.GetAll().ToList());
+            var doctors = unitOfWork.Doctors.GetAll().ToList();
+            foreach (var doctor in doctors)
+            {
+                var user = unitOfWork.Users.GetAll().FirstOrDefault(x => x.Id == doctor.Id);
+                doctor.User = user;
+            }
+            Admin_DoctorsViewModel.Doctors = new BindingList<Doctor>(doctors);
             InitializeComponent();
             DataContext = admincontext;
             DoctorsList.ItemsSource = Admin_DoctorsViewModel.Doctors;

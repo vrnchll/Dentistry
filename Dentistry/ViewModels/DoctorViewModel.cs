@@ -122,7 +122,7 @@ namespace Dentistry.ViewModels
                     {
                         
                         User user = new User() { UserName = Login, Password = Password, Email = Email, TypeUser = "Doctor" };
-                        Doctor person = new Doctor() {Id=user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Mужской" : "Женский",Experience=Experience,Position=Position,Cabinet=Cabinet, NumberOfPhone = NumberOfPhone };
+                        Doctor person = new Doctor() {Id=user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth.ToString(), Gender = SelectedGender == 0 ? "Mужской" : "Женский",Experience=Experience,Position=Position,Cabinet=Cabinet, NumberOfPhone = NumberOfPhone };
                         user.DoctorProfile = person;
                         Account.RegistrationDoctor(user, person);
                         if (App.AddNewDoctor != null)

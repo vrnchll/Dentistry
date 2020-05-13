@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dentistry.Views" xmlns:me="clr-namespace:Dentistry.ViewModels.AdminPagesViewModel" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Dentistry.Views" xmlns:me="clr-namespace:Dentistry.ViewModels.AdminPagesViewModel" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="AddNewCompoun" Height="350" Width="500">
     <Window.Resources>
@@ -20,9 +20,10 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="Добавление нового талона" Foreground="{DynamicResource PrimaryHueLightBrush}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Bodoni MT Black" FontSize="22"/>
         <DatePicker materialDesign:HintAssist.Hint=" Дата приема" Grid.Row="1" Margin="161,10,161,25" RenderTransformOrigin="0.617,0.655"></DatePicker>
-        <ComboBox Grid.Row="2" materialDesign:HintAssist.Hint=" Фамилия пациента" Margin="161,1,161,31" Text="{Binding LastNamePatient}" ItemsSource="{Binding Source={x:Static me:AddNewCompounViewModel.LastNamePatients}, Mode=OneWay}" />
-        <ComboBox Grid.Row="3" materialDesign:HintAssist.Hint=" Услуга" Margin="161,0,161,27" Text="{Binding Service}" ItemsSource="{Binding Source={x:Static me:AddNewCompounViewModel.Services}, Mode=OneWay}"></ComboBox>
-        <ComboBox materialDesign:HintAssist.Hint=" Врач" Grid.Row="4" Margin="161,0,161,27" Text="{Binding LastNameDoctor}" ItemsSource="{Binding Source={x:Static me:AddNewCompounViewModel.LastNameDoctors}, Mode=OneWay}"></ComboBox>
+        <ComboBox Grid.Row="2" x:Name="patList" materialDesign:HintAssist.Hint=" Фамилия пациента" Margin="161,22,161,10" Text="{Binding LastNamePatient}" ItemsSource="{Binding Source={x:Static me:AddNewCompounViewModel.LastNamePatients}, Mode=OneWay}" />
+        <xctk:DateTimeUpDown Format="ShortTime" Value="{Binding Time}" FormatString="hh:mm" Minimum="08:00" Maximum="18:00"  Margin="161,48,161,47" Grid.Row="1" Background="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Foreground="{DynamicResource PrimaryHueDarkBrush}" Grid.RowSpan="2"/>
+        <ComboBox Grid.Row="3" x:Name="docList" materialDesign:HintAssist.Hint=" Услуга" Margin="161,0,161,27" Text="{Binding Service}" ItemsSource="{Binding Source={x:Static me:AddNewCompounViewModel.Services}, Mode=OneWay}"></ComboBox>
+        <ComboBox materialDesign:HintAssist.Hint=" Врач" x:Name="serviceList" Grid.Row="4" Margin="161,0,161,27" Text="{Binding LastNameDoctor}" ItemsSource="{Binding Source={x:Static me:AddNewCompounViewModel.LastNameDoctors}, Mode=OneWay}"></ComboBox>
         <Button Content="Добавить" Grid.Row="5"  Style="{DynamicResource MaterialDesignRaisedDarkButton}" Command="{Binding Add}" Margin="161,0,161,21" Height="Auto"/>
     </Grid>
 </Window>

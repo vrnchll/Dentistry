@@ -45,8 +45,8 @@ namespace Dentistry.ViewModels
             }
         }
 
-        private DateTime _DateOfBirth;
-        public DateTime DateOfBirth
+        private string _DateOfBirth;
+        public string DateOfBirth
         {
             get => _DateOfBirth; set
             {

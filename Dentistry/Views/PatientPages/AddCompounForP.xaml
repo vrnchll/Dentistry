@@ -2,10 +2,12 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dentistry.Views.PatientPages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:Dentistry.Views.PatientPages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d"
         Title="AddCompounForP" Height="378" Width="600">
+
     <Grid Background="{DynamicResource PrimaryHueMidBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="40*"/>
@@ -13,12 +15,16 @@
             <RowDefinition Height="66*"/>
             <RowDefinition Height="61*"/>
             <RowDefinition Height="60*"/>
-           
+
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="Заказ талона" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Bodoni MT Black" FontSize="22"/>
         <DatePicker Grid.Row="1" Margin="187,18,186,37" materialDesign:HintAssist.Hint=" Дата приема" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"></DatePicker>
-        <ComboBox Grid.Row="2" Margin="187,4,186,49" materialDesign:HintAssist.Hint=" Услуга" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"></ComboBox>
-        <ComboBox Grid.Row="3" Margin="187,4,186,44" materialDesign:HintAssist.Hint=" Врач" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"></ComboBox>
-        <Button Content="Заказать" Grid.Row="4"  Style="{DynamicResource MaterialDesignRaisedDarkButton}" Background="{DynamicResource MaterialDesignDarkBackground}" Margin="234,10,234,36"/>
+
+        <xctk:DateTimeUpDown Format="ShortTime" Value="{Binding Time}" FormatString="hh:mm" Minimum="08:00" Maximum="18:00"  Margin="234,0,234,47" Grid.Row="2" Background="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+
+        <ComboBox Grid.Row="3" Margin="187,0,186,48" materialDesign:HintAssist.Hint=" Услуга" Foreground="{DynamicResource PrimaryHueLightBrush}"  FontSize="14"></ComboBox>
+        <ComboBox Grid.Row="3" Margin="187,48,186,0" materialDesign:HintAssist.Hint=" Врач" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>
+        <Button Content="Заказать" Grid.Row="4"  Style="{DynamicResource MaterialDesignRaisedDarkButton}" Background="{DynamicResource MaterialDesignDarkBackground}" Margin="234,36,234,10" Command="{Binding Add}"/>
+    
     </Grid>
 </Page>

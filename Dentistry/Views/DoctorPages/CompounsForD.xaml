@@ -3,30 +3,35 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Dentistry.Views.DoctorPages"
+      xmlns:local="clr-namespace:Dentistry.Views.DoctorPages" xmlns:t="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CompounsForD">
     <Grid>
         <DataGrid AutoGenerateColumns="False" x:Name="CompounsList" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16">
             <DataGrid.Columns>
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
+                <DataGridTemplateColumn  IsReadOnly="False" x:Name="DateOfRec">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="Дата приема"/>
                     </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Path=DateOfRes, StringFormat='dd MMM yyyy' }"  />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <DatePicker Name="DatePicker"  SelectedDate="{Binding Path=DateOfRes}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                <DataGridComboBoxColumn Header="Услуга" Width="200"></DataGridComboBoxColumn>
-                <DataGridTextColumn Header="Пациент"/>
+                <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfRec">
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock Text="Время"/>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <t:DateTimeUpDown Value="{Binding Time}" Format="ShortTime" Minimum="08:00" Maximum="18:00"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridComboBoxColumn Header="Услуга" Width="200" SelectedValueBinding="{Binding Path=Service}"></DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Пациент" Binding="{Binding Path=Patient}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

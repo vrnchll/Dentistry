@@ -36,7 +36,7 @@ namespace Dentistry.Repositories
         {
             return db.Compouns;
         }
-
+     
         public void Update(Compoun compoun)
         {
             db.Entry(compoun).State = EntityState.Modified;

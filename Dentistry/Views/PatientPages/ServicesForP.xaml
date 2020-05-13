@@ -9,11 +9,25 @@
       Title="ServicesForP">
 
     <Grid Background="{DynamicResource PrimaryHueDarkBrush}">
-        <DataGrid AutoGenerateColumns="False" Margin="0,2,0,0" Grid.Row="1" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}"  RowHeight="60" FontFamily="Tahoma" FontSize="16">
+        <DataGrid x:Name="ServicesList" AutoGenerateColumns="False" Margin="0,2,0,0" Grid.Row="1" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}"  RowHeight="60" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Services}">
             <DataGrid.Columns >
-                <DataGridTextColumn Foreground="White" Header="Название услуги" Width="200" FontSize="14" FontFamily="Tahoma"/>
-                <DataGridTextColumn Foreground="White"  FontSize="14" FontFamily="Tahoma" Header="Цена"/>
-                <DataGridTextColumn Foreground="White"  FontSize="14" FontFamily="Tahoma" Header="Врач" />
+                <DataGridTextColumn Foreground="White" Header="Название услуги" Width="200" FontSize="14" FontFamily="Tahoma" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Foreground="White"  FontSize="14" FontFamily="Tahoma" Header="Цена" Binding="{Binding Path=Cost}"/>
+                <DataGridTemplateColumn Header="Врачи">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+
+                            <ListView ItemsSource="{Binding Doctors}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding LastName}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontFamily="Tahoma" FontSize="16"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

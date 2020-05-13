@@ -10,10 +10,12 @@ namespace Dentistry.Models
     public class Compoun
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "Не выбрана дата")]
-        public DateTime DateOfReception { get; set; }
+        //[Required(ErrorMessage = "Не выбрана дата")]
+        public string DateOfReception { get; set; }
+        //[Required(ErrorMessage = "Не выбрано время")]
+        public string TimeOfReception { get; set; }
 
-        
+
         public virtual ICollection<Service> Services { get; set; }
         public Compoun()
         {

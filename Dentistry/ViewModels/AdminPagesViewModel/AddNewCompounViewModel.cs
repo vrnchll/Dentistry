@@ -25,6 +25,15 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                 OnPropertyChanged("Date");
             }
         }
+        private DateTime _Time;
+        public DateTime Time
+        {
+            get => _Time; set
+            {
+                _Time = value;
+                OnPropertyChanged("Time");
+            }
+        }
         public string _LastNamePatient;
         public string LastNamePatient
         {
@@ -54,7 +63,9 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
         }
         public AddNewCompounViewModel()
         {
-            
+            LastNamePatients = new List<string>();
+            LastNameDoctors = new List<string>();
+            Services = new List<string>();
       
         }
         private RelayCommands _add;
@@ -66,13 +77,15 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                 _add ?? (
                _add = new RelayCommands(obj =>
                {
+                   
                    UnitOfWork unitOfWork = new UnitOfWork();
                    var service = unitOfWork.Services.GetAll().FirstOrDefault(x => x.Name== Service);
                    var doctor = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.LastName == LastNameDoctor);
                    var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.LastName == LastNamePatient);
                    Compoun compoun = new Compoun()
                    {
-                       DateOfReception = Date,
+                       DateOfReception = Date.ToString(),
+                       TimeOfReception = Time.ToString(),
                        DoctorId = doctor.Id,
                        PatientId = patient.Id
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dentistry.ViewModels.PatientPagesViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace Dentistry.Views.PatientPages
         public ServicesForP()
         {
             InitializeComponent();
+            DataContext = new ServicesInPatientViewModel();
+            ServicesList.ItemsSource = ServicesInPatientViewModel.Services;
         }
     }
 }

@@ -1,5 +1,10 @@
-﻿using System;
+﻿using Dentistry.Models;
+using Dentistry.Services;
+using Dentistry.ViewModels;
+using Dentistry.ViewModels.PatientPagesViewModel;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +27,12 @@ namespace Dentistry.Views.PatientPages
     {
         public DoctorsForP()
         {
+            DoctorsInPationViewModel admincontext = new DoctorsInPationViewModel();
+            UnitOfWork unitOfWork = new UnitOfWork();
+            DoctorsInPationViewModel.Doctors = new BindingList<Doctor>(unitOfWork.Doctors.GetAll().ToList());
             InitializeComponent();
+            DataContext = admincontext;
+            DoctorsList.ItemsSource = DoctorsInPationViewModel.Doctors;
         }
     }
 }

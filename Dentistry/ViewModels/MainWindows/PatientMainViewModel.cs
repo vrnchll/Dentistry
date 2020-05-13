@@ -1,4 +1,6 @@
-﻿using Dentistry.Views.PatientPages;
+﻿using Dentistry.Services;
+using Dentistry.ViewModels.PatientPagesViewModel;
+using Dentistry.Views.PatientPages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,10 +64,10 @@ namespace Dentistry.ViewModels.MainWindows
             get
             {
                 return
-                _showDoctors ?? (
-               _showDoctors = new RelayCommands(obj =>
-               {
-                   CurrentPage = Doctors;
+                  _showDoctors ?? (
+                 _showDoctors = new RelayCommands(obj =>
+               { 
+                CurrentPage = Doctors;
                }));
             }
 
@@ -76,11 +78,25 @@ namespace Dentistry.ViewModels.MainWindows
             get
             {
                 return
-                _ShowServices ?? (
-               _ShowServices = new RelayCommands(obj =>
-               {
-                   CurrentPage = Services;
-               }));
+               _ShowServices ?? (
+              _ShowServices = new RelayCommands(obj =>
+              {
+                  UnitOfWork unitOfWork = new UnitOfWork();
+
+                  foreach (var service in unitOfWork.Services.Include())
+                  {
+
+                      foreach (var person in service.Doctors.ToList())
+                      {
+                          service.Doctors.Add(person);
+                          ServicesInPatientViewModel.Services.Add(service);
+
+                      }
+
+                  }
+
+                  CurrentPage = Services;
+              }));
             }
 
         }

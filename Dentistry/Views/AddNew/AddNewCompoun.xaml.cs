@@ -1,4 +1,5 @@
-﻿using Dentistry.ViewModels.AdminPagesViewModel;
+﻿using Dentistry.Services;
+using Dentistry.ViewModels.AdminPagesViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,30 @@ namespace Dentistry.Views
     {
         public AddNewCompoun()
         {
+            UnitOfWork unitOfWork = new UnitOfWork();
+            var patients = unitOfWork.Patients.GetAll().ToList();
+            var doctors = unitOfWork.Doctors.GetAll().ToList();
+            var services = unitOfWork.Services.GetAll().ToList();
+            List<string> patientsName = new List<string>();
+            List<string> service = new List<string>();
+            List<string> doctorsName = new List<string>();
             InitializeComponent();
-            DataContext = new AddNewCompounViewModel();
+            foreach (var i in doctors)
+            {
+                doctorsName.Add(i.LastName);
+            }
+            foreach (var i in patients)
+            {
+                patientsName.Add(i.LastName);
+            }
+            foreach (var i in services)
+            {
+                service.Add(i.Name);
+            }
+            docList.ItemsSource = doctorsName;
+            patList.ItemsSource = patientsName;
+            serviceList.ItemsSource = service;
+            DataContext = new AddNewServiceViewModel();
         }
     }
 }

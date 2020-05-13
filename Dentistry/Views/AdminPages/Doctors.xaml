@@ -50,10 +50,9 @@
                 <DataGridTextColumn Header="Стаж работы" Binding="{Binding Path=Experience}"/>
                 <DataGridTextColumn Header="Кабинет" Binding="{Binding Path=Cabinet}"/>
                 <DataGridTextColumn Header="Номер телефона" Binding="{Binding Path=NumberOfPhone}"/>
-                <DataGridTextColumn Header="Услуги" Binding="{Binding Path=Services}"/>
-                <DataGridTextColumn Header="Логин" Binding="{Binding Path=Login}"/>
-                <DataGridTextColumn Header="Пароль" Binding="{Binding Path=Password}"/>
-                <DataGridTextColumn Header="Email" Binding="{Binding Path=Email}"/>
+                <DataGridTextColumn Header="Логин" Binding="{Binding User.UserName}"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding User.Password}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding User.Email}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Margin="430,35,0,0" Grid.RowSpan="3" Background="{DynamicResource PrimaryHueLightBrush}">
