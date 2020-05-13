@@ -23,12 +23,13 @@ namespace Dentistry.Views
     {
         public AddNewCompoun()
         {
+            DataContext = new AddNewCompounViewModel();
             UnitOfWork unitOfWork = new UnitOfWork();
             var patients = unitOfWork.Patients.GetAll().ToList();
             var doctors = unitOfWork.Doctors.GetAll().ToList();
-            var services = unitOfWork.Services.GetAll().ToList();
+           
             List<string> patientsName = new List<string>();
-            List<string> service = new List<string>();
+           
             List<string> doctorsName = new List<string>();
             InitializeComponent();
             foreach (var i in doctors)
@@ -39,13 +40,10 @@ namespace Dentistry.Views
             {
                 patientsName.Add(i.LastName);
             }
-            foreach (var i in services)
-            {
-                service.Add(i.Name);
-            }
+           
             docList.ItemsSource = doctorsName;
             patList.ItemsSource = patientsName;
-            DataContext = new AddNewServiceViewModel();
+            
         }
     }
 }

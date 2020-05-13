@@ -14,9 +14,14 @@ using System.Windows;
 
 namespace Dentistry.ViewModels
 {
-    class Admin_CompounsViewModel : INotifyPropertyChanged
+    public class Admin_CompounsViewModel : INotifyPropertyChanged
     {
         public static BindingList<Compoun> Compouns;
+        public Admin_CompounsViewModel()
+
+            {
+            Compouns = new BindingList<Compoun>();
+            }
         private RelayCommands _Add;
         public RelayCommands Add
         {
@@ -29,7 +34,7 @@ namespace Dentistry.ViewModels
                    UnitOfWork unitOfWork = new UnitOfWork();
                    var patients = unitOfWork.Patients.GetAll().ToList();
                    var doctors = unitOfWork.Doctors.GetAll().ToList();
-                   var services = unitOfWork.Services.GetAll().ToList();
+                   
                    
                    foreach (var i in patients)
                    {
@@ -39,10 +44,7 @@ namespace Dentistry.ViewModels
                    {
                        AddNewCompounViewModel.LastNameDoctors.Add(i.LastName);
                    }
-                   foreach (var i in services)
-                   {
-                       AddNewCompounViewModel.Services.Add(i.Name);
-                   }
+                  
                    
                    App.AddNewCompoun = new AddNewCompoun();
                    App.AddNewCompoun.Show();

@@ -97,7 +97,7 @@ namespace Dentistry.ViewModels.MainWindows
                _ShowCompoun = new RelayCommands(obj =>
                {
                    UnitOfWork unitOfWork = new UnitOfWork();
-                   var compouns = unitOfWork.Compouns.GetAll();
+                   var compouns = unitOfWork.Compouns.GetAll().ToList();
                    foreach(var compoun in compouns)
                    {
                        var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.Id == compoun.PatientId);

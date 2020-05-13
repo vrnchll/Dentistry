@@ -20,7 +20,7 @@
         <Label Grid.Row="0" Content="Заказ талона" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Bodoni MT Black" FontSize="22"/>
         <DatePicker Grid.Row="1" Margin="187,18,186,37" materialDesign:HintAssist.Hint=" Дата приема" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"></DatePicker>
 
-        <xctk:DateTimeUpDown Format="ShortTime" Value="{Binding Time}" FormatString="hh:mm" Minimum="08:00" Maximum="18:00"  Margin="234,0,234,47" Grid.Row="2" Background="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+        <xctk:DateTimeUpDown Format="ShortTime" Value="{Binding Time}" FormatString="hh:mm"  Margin="234,0,234,47" Grid.Row="2" Background="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
 
       
         <ComboBox Grid.Row="3" Margin="187,48,186,0" materialDesign:HintAssist.Hint=" Врач" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>

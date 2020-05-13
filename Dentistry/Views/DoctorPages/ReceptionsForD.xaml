@@ -42,21 +42,21 @@
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfBeginReception">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Время"/>
+                        <TextBlock Text="Время начала"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <t:DateTimeUpDown Value="{Binding TimeOfBeginReception}" Format="ShortTime" Minimum="08:00" Maximum="18:00"/>
+                            <t:DateTimeUpDown Value="{Binding TimeOfBeginReception}" Format="ShortTime" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfEndReception">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Время"/>
+                        <TextBlock Text="Время окончания"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <t:DateTimeUpDown Value="{Binding TimeOfEndReception}" Format="ShortTime" Minimum="08:00" Maximum="18:00"/>
+                            <t:DateTimeUpDown Value="{Binding TimeOfEndReception}" Format="ShortTime" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>

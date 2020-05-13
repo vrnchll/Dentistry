@@ -34,7 +34,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <DatePicker Name="DatePicker"  SelectedDate="{Binding Path=DateOfRes}"/>
+                            <DatePicker Name="DatePicker"  SelectedDate="{Binding Path=Date}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
@@ -44,13 +44,13 @@
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <t:DateTimeUpDown Value="{Binding Time}" Format="ShortTime" Minimum="08:00" Maximum="18:00"/>
+                            <t:DateTimeUpDown Value="{Binding Time}" Format="ShortTime" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
                
-                <DataGridTextColumn Header="Пациент"/>
-                <DataGridTextColumn Header="Врач"/>
+                <DataGridTextColumn Header="Пациент" Binding="{Binding Patient.LastName}"/>
+                <DataGridTextColumn Header="Врач" Binding="{Binding Doctor.LastName}"/>
             </DataGrid.Columns>
         </DataGrid>
       

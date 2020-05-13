@@ -47,7 +47,7 @@
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <t:DateTimeUpDown Value="{Binding TimeOfBeginReception}" Format="ShortTime" Minimum="08:00" Maximum="18:00"/>
+                            <t:DateTimeUpDown Value="{Binding TimeOfBeginReception}" Format="ShortTime"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>

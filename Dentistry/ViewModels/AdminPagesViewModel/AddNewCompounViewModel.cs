@@ -15,9 +15,9 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
     {
         public static List<string> LastNamePatients = new List<string>();
         public static List<string> LastNameDoctors = new List<string>();
-        public static List<string> Services = new List<string>();
-        private DateTime _Date;
-        public DateTime Date
+      
+        private string _Date;
+        public string Date
         {
             get => _Date; set
             {
@@ -25,8 +25,8 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                 OnPropertyChanged("Date");
             }
         }
-        private DateTime _Time;
-        public DateTime Time
+        private string _Time;
+        public string Time
         {
             get => _Time; set
             {
@@ -65,7 +65,7 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
         {
             LastNamePatients = new List<string>();
             LastNameDoctors = new List<string>();
-            Services = new List<string>();
+          
       
         }
         private RelayCommands _add;
@@ -84,8 +84,8 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                    var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.LastName == LastNamePatient);
                    Compoun compoun = new Compoun()
                    {
-                       DateOfReception = Date.ToString(),
-                       TimeOfReception = Time.ToString(),
+                       DateOfReception = Date,
+                       TimeOfReception = Time,
                        DoctorId = doctor.Id,
                        PatientId = patient.Id
 
