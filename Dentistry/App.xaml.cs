@@ -18,7 +18,14 @@ namespace Dentistry
 
         public static Window DoctormainWindow;
         public static Window PatientmainWindow;
-        public static Window adminWindow;
+        public static Window AdminWindow;
 
+
+        public static Window AddNewCompoun;
+        public static Window AddNewDoctor;
+        public static Window AddNewPatient;
+        public static Window AddNewReception;
+        public static Window AddNewService;
+      
     }
 }

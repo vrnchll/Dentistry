@@ -10,11 +10,13 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Dentistry.ViewModels
 {
     class Admin_CompounsViewModel : INotifyPropertyChanged
     {
+        public static BindingList<Compoun> Compouns;
         private RelayCommands _Add;
         public RelayCommands Add
         {
@@ -41,13 +43,47 @@ namespace Dentistry.ViewModels
                    {
                        AddNewCompounViewModel.Services.Add(i.Name);
                    }
-                   AddNewCompoun newCompoun = new AddNewCompoun();
-                   newCompoun.Show();
+                   
+                   App.AddNewCompoun = new AddNewCompoun();
+                   App.AddNewCompoun.Show();
                }));
             }
 
         }
-      
+        private Compoun selectedCompoun;
+        public Compoun SelectedCompoun
+        {
+            get
+            {
+                return selectedCompoun;
+            }
+            set
+            {
+                selectedCompoun = value;
+                OnPropertyChanged("SelectedCompoun");
+            }
+        }
+
+        private RelayCommands _removeCommand;
+        public RelayCommands RemoveCommand
+        {
+            get
+            {
+                return _removeCommand ??
+                    (_removeCommand = new RelayCommands((selectedItem) =>
+                    {
+                        UnitOfWork unitOfWork = new UnitOfWork();
+                        MessageBoxResult result = MessageBox.Show("Вы действительно желаете удалить элемент?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        if (selectedCompoun == null || result == MessageBoxResult.No) return;
+
+                        Compoun compoun = selectedCompoun as Compoun;
+                        Compouns.Remove(compoun);
+                        unitOfWork.Compouns.Delete(compoun.Id);
+                        unitOfWork.Save();
+                        OnPropertyChanged("Remove");
+                    }));
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged; // отслеживать изменения нашего поля сразу(binding)
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {

@@ -1,4 +1,5 @@
 ﻿using Dentistry.Models;
+using Dentistry.Services;
 using Dentistry.Views;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Dentistry.ViewModels
 {
@@ -151,12 +153,50 @@ namespace Dentistry.ViewModels
                 _Add ?? (
                _Add = new RelayCommands(obj =>
                {
-                   AddNewPatient newPatient = new AddNewPatient();
-                   newPatient.Show();
+                   App.AddNewPatient = new AddNewPatient();
+                   App.AddNewPatient.Show();
+                   
+
                }));
             }
 
         }
+        private Patient selectedPatient;
+        public Patient SelectedPatient
+        {
+            get
+            {
+                return selectedPatient;
+            }
+            set
+            {
+                selectedPatient = value;
+                OnPropertyChanged("SelectedPatient");
+            }
+        }
+
+        private RelayCommands _removeCommand;
+        public RelayCommands RemoveCommand
+        {
+            get
+            {
+                return _removeCommand ??
+                    (_removeCommand = new RelayCommands((selectedItem) =>
+                    {
+                        UnitOfWork unitOfWork = new UnitOfWork();
+                        MessageBoxResult result = MessageBox.Show("Вы действительно желаете удалить элемент?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        if (selectedPatient == null || result == MessageBoxResult.No) return;
+
+                        Patient patient = selectedPatient as Patient;
+                        Patients.Remove(patient);
+                        unitOfWork.Doctors.Delete(patient.Id);
+                        unitOfWork.Users.Delete(patient.Id);
+                        unitOfWork.Save();
+                        OnPropertyChanged("Remove");
+                    }));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged; // отслеживать изменения нашего поля сразу(binding)
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {

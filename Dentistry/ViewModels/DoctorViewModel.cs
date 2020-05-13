@@ -1,5 +1,6 @@
 ﻿using Dentistry.Models;
 using Dentistry.Services;
+using Dentistry.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -119,10 +120,14 @@ namespace Dentistry.ViewModels
                 {
                     if (Password == ConfirmPassword)
                     {
+                        
                         User user = new User() { UserName = Login, Password = Password, Email = Email, TypeUser = "Doctor" };
-                        Doctor person = new Doctor() {Id=user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth.ToString("MM/dd/yyyy"), Gender = SelectedGender == 0 ? "Mужской" : "Женский",Experience=Experience,Position=Position,Cabinet=Cabinet, NumberOfPhone = NumberOfPhone };
+                        Doctor person = new Doctor() {Id=user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Mужской" : "Женский",Experience=Experience,Position=Position,Cabinet=Cabinet, NumberOfPhone = NumberOfPhone };
                         user.DoctorProfile = person;
                         Account.RegistrationDoctor(user, person);
+                        if (App.AddNewDoctor != null)
+                        { App.AddNewDoctor.Visibility = Visibility.Hidden; }
+                        
                     }
                     else
                     {

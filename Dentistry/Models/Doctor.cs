@@ -26,7 +26,7 @@ namespace Dentistry.Models
         [Required(ErrorMessage = "Не указано отчество пользователя")]
         public string MiddleName { get; set; }
         [Required(ErrorMessage = "Не указана дата рождения пользователя")]
-        public string DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public string Gender { get; set; }
         [Required(ErrorMessage = "Не выбрана должность")]
         public string Position { get; set; }

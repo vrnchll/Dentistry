@@ -19,9 +19,9 @@
             </MenuItem>
             <MenuItem Header="Добавить талон" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}" Height="32"/>
             <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="32"/>
-            <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="32"/>
+            <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="32" Command="{Binding RemoveCommand}"/>
         </Menu>
-        <DataGrid Margin="0,32,0,0" AutoGenerateColumns="False" x:Name="CompounsList" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16">
+        <DataGrid Margin="0,32,0,0" AutoGenerateColumns="False" x:Name="CompounsList" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Compouns}" SelectedItem="{Binding SelectedCompoun}">
             <DataGrid.Columns>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
                     <DataGridTemplateColumn.Header>

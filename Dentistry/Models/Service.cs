@@ -11,11 +11,11 @@ namespace Dentistry.Models
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "Не указано наименование услуги")]
-        [RegularExpression(@"/^[a-zA-Zа-яёА-ЯЁ]+$/u", ErrorMessage = "Недопустимые символы в наименовании!")]
+        //[RegularExpression(@"/^[a-zA-Zа-яёА-ЯЁ]+$/u", ErrorMessage = "Недопустимые символы в наименовании!")]
         [StringLength(60, MinimumLength = 5, ErrorMessage = "Недопустимая длина наименования услуги")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Не указана стоимость")]
-        [RegularExpression(@"/^\d+$/", ErrorMessage = "Недопустимые символы в стоимости!")]
+        //[RegularExpression(@"/^\d+$/", ErrorMessage = "Недопустимые символы в стоимости!")]
         public string Cost { get; set; }
 
        public ICollection<Doctor> Doctors { get; set; } 

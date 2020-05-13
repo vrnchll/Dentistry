@@ -24,7 +24,7 @@
         </Menu>
         <DataGrid AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
                               ScrollViewer.IsDeferredScrollingEnabled="True" 
-                              ScrollViewer.HorizontalScrollBarVisibility="Visible" x:Name="DoctorsList" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Margin="0,35,307,0" Grid.RowSpan="3" ItemsSource="{Binding Doctors}" SelectedItem="{Binding SelectedDoctor}">
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" x:Name="DoctorsList" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Margin="0,35,496,0" Grid.RowSpan="3" ItemsSource="{Binding Doctors}" SelectedItem="{Binding SelectedDoctor}">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Имя" Binding="{Binding Path= FirstName}"/>
@@ -56,15 +56,15 @@
                 <DataGridTextColumn Header="Email" Binding="{Binding Path=Email}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Grid Margin="593,35,0,0" Grid.RowSpan="3" Background="{DynamicResource PrimaryHueLightBrush}">
+        <Grid Margin="404,35,0,0" Grid.RowSpan="3" Background="{DynamicResource PrimaryHueLightBrush}">
             <StackPanel Orientation="Horizontal" Margin="0,0,0,317" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <materialDesign:PackIcon Kind="Search" Foreground="{DynamicResource MaterialDesignDarkBackground}" FontSize="20" Height="28" Width="40"/>
                 <TextBlock Text="Поиск" FontSize="16" Height="19" FontFamily="Yu Gothic UI Semibold" Foreground="{DynamicResource MaterialDesignDarkBackground}"/>
             </StackPanel>
-            <TextBox x:Name="NameFirst" Margin="0,143,0,236" materialDesign:HintAssist.Hint=" Имя" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>
-            <TextBox x:Name="NameLast" Margin="0,102,0,277" materialDesign:HintAssist.Hint=" Фамилия" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>
-            <TextBox x:Name="ExperienceOfWork" Margin="0,184,0,200" materialDesign:HintAssist.Hint=" Стаж" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>
-            <TextBox x:Name="DateOfBirth" Margin="0,220,0,156" materialDesign:HintAssist.Hint=" Дата Рождения" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>
+            <TextBox x:Name="NameFirst" Text="{Binding FirstNames}" Margin="0,143,0,236" materialDesign:HintAssist.Hint=" Имя" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>
+            <TextBox x:Name="NameLast" Text="{Binding LastNames}" Margin="0,102,0,277" materialDesign:HintAssist.Hint=" Фамилия" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" />
+            <TextBox x:Name="ExperienceOfWork" Text="{Binding Experiences}" Margin="0,184,0,200" materialDesign:HintAssist.Hint=" Стаж" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>
+            <TextBox x:Name="DateOfBirth" Text="{Binding DateOfBirthd}" Margin="0,220,0,156" materialDesign:HintAssist.Hint=" Дата Рождения" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>
             <Button x:Name="search" Command="{Binding SearchCommand}" Content="Найти" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="61,264,64,119"/>
         </Grid>
     </Grid>

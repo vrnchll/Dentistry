@@ -1,29 +1,7 @@
-﻿D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\GeneratedInternalTypeHelper.g.i.cs
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\App.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Services\Prompt.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AdminMainWindow.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\DoctorMainWindow.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\DoctorPages\AddNewReceptionForDoctor.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\DoctorPages\CompounsForD.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\DoctorPages\ProfileD.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\DoctorPages\ReceptionsForD.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\PatientMainWindow.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AddNew\AddNewCompoun.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AddNew\AddNewDoctor.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AddNew\AddNewPatient.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AddNew\AddNewReception.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AddNew\AddNewService.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\Authorization.xaml;;
+﻿
+
 FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AdminPages\Compouns.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AdminPages\Doctors.xaml;;
 FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AdminPages\Patients.xaml;;
 FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AdminPages\Receptions.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\PatientPages\AddCompounForP.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\PatientPages\DoctorsForP.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\PatientPages\Profile.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\PatientPages\ServicesForP.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\Registration\DoctorType.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\Registration\PatientType.xaml;;
-FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\Registration\Registration.xaml;;
 FD:\2k2s\курсовой ооп\Dentistry\Dentistry\Views\AdminPages\Services.xaml;;
 

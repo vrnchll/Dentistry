@@ -3,14 +3,10 @@ using Dentistry.Models;
 using Dentistry.Services;
 using Dentistry.Views;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using Wpf_7_8.Services;
 
 
 namespace Dentistry.ViewModels
@@ -18,6 +14,10 @@ namespace Dentistry.ViewModels
     class Admin_DoctorsViewModel : INotifyPropertyChanged
     {
         public static BindingList<Doctor> Doctors;
+        public static BindingList<string> LastNames;
+        public static BindingList<string> FirstNames;
+        public static BindingList<string> Experiences;
+        public static BindingList<string> DateOfBirthd;
 
         private static ProjectContext db = new ProjectContext();
 
@@ -25,7 +25,10 @@ namespace Dentistry.ViewModels
         static Admin_DoctorsViewModel()
         {
             Doctors = new BindingList<Doctor>();
-          
+            LastNames = new BindingList<string>();
+            FirstNames = new BindingList<string>();
+            Experiences = new BindingList<string>();
+            DateOfBirthd = new BindingList<string>();
         }
 
         public string FirstName
@@ -156,8 +159,10 @@ namespace Dentistry.ViewModels
                 _Add ?? (
                _Add = new RelayCommands(obj =>
                {
-                   AddNewDoctor newDoctor = new AddNewDoctor();
-                   newDoctor.Show();
+                   App.AddNewDoctor = new AddNewDoctor();
+                   App.AddNewDoctor.Show();
+               
+                  
                }));
             }
 
@@ -197,6 +202,50 @@ namespace Dentistry.ViewModels
                    }));
             }
         }
+
+        //private RelayCommands searchCommand;
+        //public RelayCommands SearchCommand
+        //{
+        //    get
+        //    {
+        //        return searchCommand ?? (searchCommand = new RelayCommands((selectedItem) =>
+        //        {
+        //            using (ProjectContext db = new ProjectContext())
+        //            {
+                       
+        //                IQueryable<Doctor> queryable = db.Doctors.Where(p => p.IsArchived == false);
+                       
+        //                if (!string.IsNullOrWhiteSpace(FirstNames.ToString()))
+        //                {
+                            
+        //                    queryable = queryable.Where(p => p.FirstName.Contains(FirstNames.ToString().Trim()));
+        //                }
+                    
+        //                if (!string.IsNullOrWhiteSpace(LastNames.ToString()))
+        //                {
+                          
+        //                    queryable = queryable.Where(p => p.LastName.Contains(LastNames.ToString().Trim()));
+        //                }
+                       
+        //                if (!string.IsNullOrWhiteSpace(DateOfBirthd.ToString()))
+        //                {
+                           
+        //                    int year = Convert.ToInt32(DateOfBirthd.ToString());
+        //                    queryable = queryable.Where(p => p.DateOfBirth.Year == year);
+        //                }
+                       
+        //                if (!string.IsNullOrWhiteSpace(Experiences.ToString()))
+        //                {
+                          
+        //                    queryable = queryable.Where(p => p.Experience.Contains(Experiences.ToString().Trim()));
+        //                }
+
+        //                IDoctors = queryable;
+        //            }
+        //        }));
+        //    }
+        //}
+
 
         public event PropertyChangedEventHandler PropertyChanged; // отслеживать изменения нашего поля сразу(binding)
         public void OnPropertyChanged([CallerMemberName]string prop = "")

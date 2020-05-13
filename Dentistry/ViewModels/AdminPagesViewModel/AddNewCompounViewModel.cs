@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Dentistry.ViewModels.AdminPagesViewModel
 {
@@ -79,7 +80,7 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                    compoun.Services.Add(service);
                    unitOfWork.Compouns.Create(compoun);
                    unitOfWork.Save();
-
+                   App.AddNewCompoun.Visibility = Visibility.Hidden;
                }));
             }
         }

@@ -46,8 +46,8 @@ namespace Dentistry.Services
                     case "Admin": {
                             _instance = user;
                             
-                            App.adminWindow = new AdminMainWindow();
-                            App.adminWindow.Show();
+                            App.AdminWindow = new AdminMainWindow();
+                            App.AdminWindow.Show();
                             App.Current.MainWindow.Visibility = Visibility.Hidden;
                         }
                         break;
@@ -111,8 +111,11 @@ namespace Dentistry.Services
                 unitOfWork.Patients.Create(person);
                 unitOfWork.Save();
                 Admin_PatientsViewModel.Patients.Add(person);
-                App.RegistrationWindow.Visibility = Visibility.Hidden;
-                App.Current.MainWindow.Visibility = Visibility.Visible;
+                if (App.RegistrationWindow != null)
+                {
+                    App.RegistrationWindow.Visibility = Visibility.Hidden;
+                    App.Current.MainWindow.Visibility = Visibility.Visible;
+                }
             }
           
           
@@ -145,8 +148,12 @@ namespace Dentistry.Services
                 unitOfWork.Doctors.Create(person);
                 unitOfWork.Save();
                 Admin_DoctorsViewModel.Doctors.Add(person);
-                App.RegistrationWindow.Visibility = Visibility.Hidden;
-                App.Current.MainWindow.Visibility = Visibility.Visible;
+                if (App.RegistrationWindow != null)
+                {
+                    App.RegistrationWindow.Visibility = Visibility.Hidden;
+                    App.Current.MainWindow.Visibility = Visibility.Visible;
+                }
+                
             }
         }
         public static void ProfileDoctorInfo()

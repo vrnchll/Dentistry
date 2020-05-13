@@ -3,10 +3,12 @@ using Dentistry.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Dentistry.ViewModels.AdminPagesViewModel
 {
@@ -48,19 +50,51 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                 _add ?? (
                _add = new RelayCommands(obj =>
                {
-                   UnitOfWork unitOfWork = new UnitOfWork();
-                   var doctor = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.LastName.Contains(SelectedItem));
-                   Service service = new Service()
+                   if (SelectedItem != null)
                    {
-                       Cost = Cost,
-                       Name = Name,
-                       
-                   };
-                   service.Doctors.Add(doctor);
-                   unitOfWork.Services.Create(service);
-                   unitOfWork.Save();
-                   Admin_ServicesViewModel.Services.Add(service);
+                       UnitOfWork unitOfWork = new UnitOfWork();
+                       var doctor = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.LastName.Contains(SelectedItem));
+
+                       Service service = new Service()
+                       {
+                           Cost = Cost,
+                           Name = Name,
+
+                       };
+                       var resultsService = new List<ValidationResult>();
+                       var contextService = new ValidationContext(service);
+                       var resultsDoctor = new List<ValidationResult>();
+                       var contextDoctor = new ValidationContext(doctor);
+                       if (!Validator.TryValidateObject(service, contextService, resultsService, true) || !Validator.TryValidateObject(doctor, contextDoctor, resultsDoctor, true))
+                       {
+                           foreach (var error in resultsDoctor)
+                           {
+                               MessageBox.Show(error.ErrorMessage);
+                           }
+                           foreach (var error in resultsService)
+                           {
+                               MessageBox.Show(error.ErrorMessage);
+                           }
+                       }
+                       else
+                       {
+
+                           service.Doctors.Add(doctor);
+                           unitOfWork.Services.Create(service);
+                           unitOfWork.Save();
+                           Admin_ServicesViewModel.Services.Add(service);
+                           
+                         
+                           App.AddNewService.Visibility = Visibility.Hidden;
+                       }
+                   }
+                   else
+                   {
+                       MessageBox.Show("Вы не выбрали доктора!");
+                   }
+                   
                }));
+            
             }
 
         }

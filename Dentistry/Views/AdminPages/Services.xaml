@@ -19,11 +19,11 @@
             </MenuItem>
             <MenuItem Header="Добавить новую услугу" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}" Height="27"/>
             <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="27"/>
-            <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="26"/>
+            <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="26" Command="{Binding RemoveCommand}"/>
         </Menu>
         <DataGrid Margin="0,2,0,0" Grid.Row="1" x:Name="ServiceList" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
                               ScrollViewer.IsDeferredScrollingEnabled="True" 
-                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16">
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService}">
             <DataGrid.Columns>
                
                 <DataGridTextColumn Header="Наименование услуги" Width="200" Binding="{Binding Path=Name}"/>
@@ -32,10 +32,16 @@
                 <DataGridTemplateColumn Header="Врачи">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ListView ItemsSource="{Binding DoctorsName}">
+                            <ListView ItemsSource="{Binding Service}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding DoctorsName}" />
+                                        <ListView ItemsSource="{Binding Doctors}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding LastName}" />
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>

@@ -1,5 +1,6 @@
 ﻿using Dentistry.Models;
 using Dentistry.Services;
+using Dentistry.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -155,12 +156,13 @@ namespace Dentistry.ViewModels
                         Patient person = new Patient() {Id = user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth.ToString("MM/dd/yyyy"), Gender = SelectedGender == 0 ? "Мужской" : "Женский", City = City, Street = Street, House = House, Flat = Flat, NumberOfPhone = NumberOfPhone };
                         user.PatientProfile = person;
                         Account.RegistrationPatient(user,person);
+                        App.AddNewPatient.Visibility = Visibility.Hidden;
                     }
                     else
                     {
                         MessageBox.Show("Пароли не совпадают, повторите попытку");
                     }
-
+                    
                 }));
             }
         }

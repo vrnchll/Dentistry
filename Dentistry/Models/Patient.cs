@@ -14,18 +14,22 @@ namespace Dentistry.Models
         [Key]
         [ForeignKey("User")]
         public int Id { get; set; }
-        [RegularExpression(@"/^[a-zA-Zа-яёА-ЯЁ]+$/u", ErrorMessage = "Недопустимые символы в Имени!")]
+     
         [StringLength(20, MinimumLength = 4, ErrorMessage = "Недопустимая длина имени")]
+
         [Required(ErrorMessage = "Не указано имя пользователя")]
+        //[RegularExpression(@"/^[a-zA-Zа-яёА-ЯЁ]+$/u", ErrorMessage = "Недопустимые символы в Имени!")]
         public string FirstName { get; set; }
 
-        [RegularExpression(@"/^[a-zA-Zа-яёА-ЯЁ]+$/u", ErrorMessage = "Недопустимые символы в Фамилии!")]
+      
         [StringLength(20, MinimumLength = 4, ErrorMessage = "Недопустимая длина фамилии")]
         [Required(ErrorMessage = "Не указана фамилия пользователя")]
+        //[RegularExpression(@"/^[a-zA-Zа-яёА-ЯЁ]+$/u", ErrorMessage = "Недопустимые символы в Фамилии!")]
         public string LastName { get; set; }
-        [RegularExpression(@"/^[a-zA-Zа-яёА-ЯЁ]+$/u", ErrorMessage = "Недопустимые символы в Отчестве!")]
+      
         [StringLength(20, MinimumLength = 6, ErrorMessage = "Недопустимая длина отчества")]
         [Required(ErrorMessage = "Не указано отчество пользователя")]
+        //[RegularExpression(@"/^[a-zA-Zа-яёА-ЯЁ]+$/u", ErrorMessage = "Недопустимые символы в Отчестве!")]
         public string MiddleName { get; set; }
         [Required(ErrorMessage = "Не указана дата рождения пользователя")]
         public string DateOfBirth { get; set; }
