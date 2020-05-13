@@ -10,11 +10,12 @@ namespace Dentistry.Models
     public class Reception
     {
         public int Id { get; set; }
-
+        [Required(ErrorMessage = "Не выбрана дата")]
+        public string DateOfReception { get; set; }
         [Required(ErrorMessage = "Не выбрано время начала")]
-        public string DateOfBeginReception { get; set; }
+        public string TimeOfBeginReception { get; set; }
         [Required(ErrorMessage = "Не выбрано время окончания")]
-        public string DateOfEndReception { get; set; }
+        public string TimeOfEndReception { get; set; }
 
         //?
         public virtual ICollection<Service> Services { get; set; }

@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dentistry.Views"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:Dentistry.Views" xmlns:t="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d"
         Title="ReceptionsForD" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -27,34 +27,40 @@
             <DataGrid.Columns>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Время начала приема"/>
+                        <TextBlock Text="Дата приема"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Path=DateOfRes, StringFormat='dd MMM yyyy' }"  />
+                            <TextBlock Text="{Binding Path=DateOfReception, StringFormat='dd MMM yyyy' }"  />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <DatePicker Name="DatePicker"  SelectedDate="{Binding Path=DateOfRes}"/>
+                            <DatePicker Name="DatePicker"  SelectedDate="{Binding Path=DateOfReception}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn  IsReadOnly="False">
+                <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfBeginReception">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Время окончания приема"/>
+                        <TextBlock Text="Время"/>
                     </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Path=DateOfRes, StringFormat='dd MMM yyyy' }"  />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <DatePicker Name="DatePicker"  SelectedDate="{Binding Path=DateOfRes}"/>
+                            <t:DateTimeUpDown Value="{Binding TimeOfBeginReception}" Format="ShortTime" Minimum="08:00" Maximum="18:00"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfEndReception">
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock Text="Время"/>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <t:DateTimeUpDown Value="{Binding TimeOfEndReception}" Format="ShortTime" Minimum="08:00" Maximum="18:00"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
                 <DataGridComboBoxColumn Header="Услуга"></DataGridComboBoxColumn>
                 <DataGridTextColumn Header="Стоимость"></DataGridTextColumn>
                 <DataGridTextColumn Header="Пациент"/>

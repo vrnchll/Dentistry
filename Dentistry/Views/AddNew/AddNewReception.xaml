@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="AddNewReception" Height="450" Width="800">
     <Grid Background="{DynamicResource PrimaryHueMidBrush}">
@@ -18,13 +18,15 @@
             <RowDefinition Height="60*"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" FontFamily="Bodoni MT Black" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="20" Content="Добавление нового посещения" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <DatePicker Grid.Row="1" Margin="266,7,266,10" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Время начала" Height="41"></DatePicker>
-        <DatePicker Grid.Row="2" Margin="266,7,266,10" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Время окончания" Height="42"></DatePicker>
-        <TextBox Grid.Row="3" Margin="266,0,266,10" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Фамилия пациента" />
-        <ComboBox Grid.Row="4" Margin="266,0,266,10" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Услуга" Height="43" ></ComboBox>
-        <ComboBox Grid.Row="5" Margin="266,0,266,10" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Врач" Height="43"></ComboBox>
-        <TextBox Grid.Row="6" Margin="266,0,266,20"  Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Стоимость"/>
-        <Button Content="Добавить" Grid.Row="7" Margin="326,0,324,19" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Background="{DynamicResource MaterialDesignDarkBackground}"/>
+        <DatePicker Grid.Row="1" SelectedDate="{Binding DateOfReception}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Дата приема" Height="42" Margin="266,8" />
+        <TextBlock Text="Время приема" Grid.Row="2"  Foreground="{DynamicResource PrimaryHueLightBrush}" FontFamily="Bodoni MT Black" Margin="342,0,0,0"/>
+        <xctk:DateTimeUpDown Format="ShortTime" Value="{Binding TimeOfBeginReception}" FormatString="hh:mm" Minimum="08:00" Maximum="18:00" Grid.Row="2" Margin="315,17,412,0" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Время начала" Height="42" RenderTransformOrigin="0.692,0.561"></xctk:DateTimeUpDown>
+        <xctk:DateTimeUpDown Format="ShortTime" Value="{Binding TimeOfEndReception}" FormatString="hh:mm" Minimum="08:00" Maximum="18:00" Grid.Row="2" Margin="415,17,312,0" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Время окончания" Height="42" RenderTransformOrigin="0.6,1.024"/>
+        <TextBox Grid.Row="3" Margin="266,10,266,0" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Фамилия пациента" />
+        <ComboBox Grid.Row="4" Margin="266,10,266,0" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Услуга" Height="43" />
+        <ComboBox Grid.Row="5" Margin="266,10,266,0" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Врач" Height="43"/>
+        <TextBox Grid.Row="6" Margin="266,10"  Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Стоимость"/>
+        <Button Content="Добавить" Grid.Row="7" Margin="326,11,324,10" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Background="{DynamicResource MaterialDesignDarkBackground}"/>
 
     </Grid>
 </Window>
