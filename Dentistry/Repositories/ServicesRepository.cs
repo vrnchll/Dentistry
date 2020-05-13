@@ -31,6 +31,10 @@ namespace Dentistry.Repositories
         {
             return db.Services.Find(id);
         }
+        public IEnumerable<Service> Include()
+        {
+            return db.Services.Include(t => t.Doctors);
+        }
 
         public IEnumerable<Service> GetAll()
         {

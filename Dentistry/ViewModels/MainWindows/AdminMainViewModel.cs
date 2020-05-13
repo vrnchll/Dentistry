@@ -1,4 +1,7 @@
-﻿using Dentistry.Views;
+﻿using Dentistry.Context;
+using Dentistry.Models;
+using Dentistry.Services;
+using Dentistry.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -107,6 +110,20 @@ namespace Dentistry.ViewModels.MainWindows
                 _ShowServices ?? (
                _ShowServices = new RelayCommands(obj =>
                {
+                   UnitOfWork unitOfWork = new UnitOfWork();
+                  
+                   foreach (var service in unitOfWork.Services.Include())
+                   {
+                  
+                       foreach (var person in service.Doctors.ToList())
+                       {
+                           service.Doctors.Add(person);
+                           Admin_ServicesViewModel.Services.Add(service);
+
+                       }
+                  
+                   }
+                  
                    CurrentPage = Servicess;
                }));
             }

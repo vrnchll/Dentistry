@@ -53,7 +53,7 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                    if (SelectedItem != null)
                    {
                        UnitOfWork unitOfWork = new UnitOfWork();
-                       var doctor = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.LastName.Contains(SelectedItem));
+                       var doctor = unitOfWork.Doctors.GetAll().ToList().FirstOrDefault(x => x.LastName.Contains(SelectedItem));
 
                        Service service = new Service()
                        {

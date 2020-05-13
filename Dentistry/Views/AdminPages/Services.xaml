@@ -32,19 +32,15 @@
                 <DataGridTemplateColumn Header="Врачи">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ListView ItemsSource="{Binding Service}">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
+                           
                                         <ListView ItemsSource="{Binding Doctors}">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock Text="{Binding LastName}" />
+                                        <TextBlock Text="{Binding LastName}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontFamily="Tahoma" FontSize="16"/>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
+                                  
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
