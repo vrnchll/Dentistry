@@ -22,6 +22,28 @@ namespace Dentistry.ViewModels
             {
             Compouns = new BindingList<Compoun>();
             }
+
+
+        private string _date;
+        public string DateOfReception
+        {
+            get => _date; set
+            {
+                _date = value;
+                OnPropertyChanged("MiddleName");
+            }
+        }
+
+        private string _time;
+        public string TimeOfReception
+        {
+            get => _time; set
+            {
+                _time = value;
+                OnPropertyChanged("DateOfBirth");
+            }
+        }
+
         private RelayCommands _Add;
         public RelayCommands Add
         {

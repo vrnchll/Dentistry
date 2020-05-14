@@ -36,7 +36,7 @@ namespace Dentistry.Views
                 compoun.Doctor = doctor;
                 Admin_CompounsViewModel.Compouns.Add(compoun);
             }
-
+            CompounsList.ItemsSource = Admin_CompounsViewModel.Compouns;
 
         }
     }

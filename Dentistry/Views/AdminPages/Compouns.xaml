@@ -21,7 +21,7 @@
             <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="32"/>
             <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="32" Command="{Binding RemoveCommand}"/>
         </Menu>
-        <DataGrid Margin="0,32,0,0" AutoGenerateColumns="False" x:Name="CompounsList" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueLightBrush}"  RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Compouns}" SelectedItem="{Binding SelectedCompoun}" Opacity="0.8">
+        <DataGrid Margin="0,32,0,0" AutoGenerateColumns="False" x:Name="CompounsList" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueLightBrush}"  RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16"  SelectedItem="{Binding SelectedCompoun}" Opacity="0.8">
             <DataGrid.Columns>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
                     <DataGridTemplateColumn.Header>
@@ -29,24 +29,20 @@
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Path=DateOfRes, StringFormat='dd MMM yyyy' }"  />
+                            <TextBlock Text="{Binding Path = DateOfReception}"  />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <DatePicker Name="DatePicker"  SelectedDate="{Binding Path=Date}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
+                
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfRec">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="Время"/>
                     </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellEditingTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <t:DateTimeUpDown Value="{Binding Time}" Format="ShortTime" />
+                            <TextBlock Text="{Binding Path = TimeOfReception}"  />
                         </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                
                 <DataGridTextColumn Header="Пациент" Binding="{Binding Patient.LastName}"/>
