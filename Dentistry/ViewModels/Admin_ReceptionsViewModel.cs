@@ -1,5 +1,6 @@
 ﻿using Dentistry.Models;
 using Dentistry.Services;
+using Dentistry.ViewModels.AdminPagesViewModel;
 using Dentistry.Views;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,9 @@ namespace Dentistry.ViewModels
                 _Add ?? (
                _Add = new RelayCommands(obj =>
                {
+                   UnitOfWork unitOfWork = new UnitOfWork();
+                   AddNewReceptionViewModel.ListServices = new BindingList<Service>(unitOfWork.Services.GetAll().ToList());
+
                    App.AddNewReception = new AddNewReception();
                    App.AddNewReception.Show();
                }));

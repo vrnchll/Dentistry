@@ -69,9 +69,16 @@ namespace Dentistry.ViewModels
             }
         }
 
-        private bool[] _Gender = new bool[] { true, false };
-        public bool[] Gender { get => _Gender; }
-        public int SelectedGender { get => Array.IndexOf(_Gender, true); }
+        private string _gender;
+
+        public string Gender
+        {
+            get => _gender; set
+            {
+                _gender = value;
+                OnPropertyChanged("City");
+            }
+        }
 
         private string _Position;
         public string Position

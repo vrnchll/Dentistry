@@ -43,8 +43,8 @@ namespace Dentistry.ViewModels
             }
         }
 
-        private DateTime _DateOfBirth;
-        public DateTime DateOfBirth
+        private string _DateOfBirth;
+        public string DateOfBirth
         {
             get => _DateOfBirth; set
             {
@@ -153,10 +153,10 @@ namespace Dentistry.ViewModels
                     if (Password == ConfirmPassword)
                     {
                         User user = new User() { UserName = Login, Password = Password, Email = Email, TypeUser = "Patient" };
-                        Patient person = new Patient() {Id = user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth.ToString("MM/dd/yyyy"), Gender = SelectedGender == 0 ? "Мужской" : "Женский", City = City, Street = Street, House = House, Flat = Flat, NumberOfPhone = NumberOfPhone };
+                        Patient person = new Patient() {Id = user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Мужской" : "Женский", City = City, Street = Street, House = House, Flat = Flat, NumberOfPhone = NumberOfPhone };
                         user.PatientProfile = person;
                         Account.RegistrationPatient(user,person);
-                        App.AddNewPatient.Visibility = Visibility.Hidden;
+                        if(App.AddNewPatient != null) App.AddNewPatient.Visibility = Visibility.Hidden;
                     }
                     else
                     {

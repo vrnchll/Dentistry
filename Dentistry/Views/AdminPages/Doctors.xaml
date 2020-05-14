@@ -36,16 +36,11 @@
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Path=DateOfBurth, StringFormat='dd MMM yyyy' }"  />
+                            <TextBlock Text="{Binding Path=DateOfBirth}"  />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <DatePicker Name="DatePicker"  SelectedDate="{Binding Path=DateOfBirth}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                <DataGridComboBoxColumn Header="Пол" SelectedValueBinding="{Binding Gender}"></DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Пол" Binding="{Binding Gender}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Должность" Binding="{Binding Path=Position}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Стаж работы" Binding="{Binding Path=Experience}"/>
                 <DataGridTextColumn Header="Кабинет" Binding="{Binding Path=Cabinet}"/>

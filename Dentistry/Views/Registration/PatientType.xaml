@@ -28,15 +28,14 @@
         <TextBox x:Name="FN" Text="{Binding FirstName}" materialDesign:HintAssist.Hint=" Имя" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.Row="0" Margin="10,0,427,0" />
         <TextBox x:Name="MN" Text="{Binding MiddleName}" Grid.Row="1" Margin="10,0,427,0" materialDesign:HintAssist.Hint=" Отчество" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
         <TextBox x:Name="LN" Text="{Binding LastName}" Grid.Row="2" Margin="10,0,427,0" materialDesign:HintAssist.Hint=" Фамилия" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
-        <DatePicker Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.Row="3" Margin="10,4,427,4"  DisplayDate = "12/12/2000"  DisplayDateStart = "12/12/1960"  DisplayDateEnd="12/12/2020" materialDesign:HintAssist.Hint=" Дата рождения">
-        </DatePicker>
+        <TextBox x:Name="DateOfBirth" Text="{Binding DateOfBirth}" Grid.Row="3" Margin="10,0,427,0" materialDesign:HintAssist.Hint="Дата рождения" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
         <StackPanel x:Name="Gen" Grid.Row="4" Orientation="Vertical" Margin="10,0,427,0" >
             <RadioButton Content="Мужской" FontSize="14"  Foreground="{DynamicResource PrimaryHueLightBrush}" IsChecked="{Binding Path=Gender[0], Mode=TwoWay}" Height="19"></RadioButton>
             <RadioButton Content="Женский"  FontSize="14"  Foreground="{DynamicResource PrimaryHueLightBrush}" IsChecked="{Binding Path=Gender[1], Mode=TwoWay}"></RadioButton>
         </StackPanel>
 
-        <ComboBox materialDesign:HintAssist.Hint=" Город" x:Name="City" SelectedItem="{Binding City}" Grid.Row="5" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Margin="10,3,416,3"  />
-        <ComboBox materialDesign:HintAssist.Hint=" Улица" x:Name="Street" SelectedItem="{Binding Street}" Grid.Row="5" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Margin="206,3,264,3"  />
+        <ComboBox SelectedValue="Минск"  materialDesign:HintAssist.Hint=" Город" x:Name="CityNames" SelectedItem="{Binding City}" Grid.Row="5" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Margin="10,3,416,3"  />
+        <TextBox materialDesign:HintAssist.Hint=" Улица" x:Name="Street" Text="{Binding Street}" Grid.Row="5" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Margin="206,3,264,3"  />
         <TextBox  materialDesign:HintAssist.Hint=" Дом" Text="{Binding House}" Grid.Row="5"  Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Margin="353,3,185,3"/>
         <TextBox  materialDesign:HintAssist.Hint=" Квартира" Text="{Binding Flat}" Grid.Row="5"  Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Margin="432,3,103,3"/>
 

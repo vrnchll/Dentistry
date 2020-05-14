@@ -18,8 +18,8 @@
                 <RowDefinition Height="253*"></RowDefinition>
             </Grid.RowDefinitions>
             <Label  HorizontalAlignment="Center" Grid.Row="0" Content="Пожалуйста, выберите тип пользователя!" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" FontWeight="Bold" Grid.RowSpan="3" Margin="0,91,0,0" Grid.ColumnSpan="2" />
-            <ComboBox  Foreground="{DynamicResource PrimaryHueMidBrush}" FontSize="16"  Grid.Column="1" Grid.RowSpan="2" SelectedValue="{Binding Path= SelectedItem}" Margin="31,0,133,239" Height="34" Grid.Row="1" >
-                <ComboBoxItem Content="Пациент" />
+            <ComboBox x:Name="TypeUser"  SelectedIndex="0" Foreground="{DynamicResource PrimaryHueMidBrush}" FontSize="16" materialDesign:ComboBoxAssist.ClassicMode="true"  Grid.Column="1" Grid.RowSpan="2" SelectedValue="{Binding SelectedItem}" Margin="31,0,133,239" Height="34" Grid.Row="1" >
+                <ComboBoxItem IsSelected="True" x:Name="comboboxPatient"  Content="Пациент" />
                 <ComboBoxItem Content="Доктор"/>
             </ComboBox>
             <Button Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Grid.Row="2"  Grid.Column="1" Command="{Binding ShowPage}" Margin="304,25,94,203" Height="Auto"   >
