@@ -8,7 +8,7 @@
 
         mc:Ignorable="d"
         Title="PatientType" Height="450" Width="612">
-    <Grid Background="{DynamicResource PrimaryHueMidBrush}" Opacity="0.92">
+    <Grid Background="{DynamicResource PrimaryHueMidBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="35*"/>
             <RowDefinition Height="35*"/>
@@ -23,26 +23,26 @@
             <RowDefinition Height="35*"/>
             <RowDefinition Height="35*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="SignUpButt"  Content="Зарегистрироваться" Grid.Row="11" Style="{DynamicResource MaterialDesignRaisedDarkButton}"  HorizontalAlignment="Center" Width="168" Command="{Binding RegistrationCommand}"/>
+        <Button x:Name="SignUpButt"  Content="Зарегистрироваться" Grid.Row="11" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Background="{DynamicResource MaterialDesignDarkBackground}"  HorizontalAlignment="Center" Width="168" Command="{Binding RegistrationCommand}" Margin="196,0,248,5"/>
 
-        <TextBox x:Name="FN" Text="{Binding FirstName}" materialDesign:HintAssist.Hint=" Имя" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.Row="0" Margin="10,0,427,0" />
-        <TextBox x:Name="MN" Text="{Binding MiddleName}" Grid.Row="1" Margin="10,0,427,0" materialDesign:HintAssist.Hint=" Отчество" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
-        <TextBox x:Name="LN" Text="{Binding LastName}" Grid.Row="2" Margin="10,0,427,0" materialDesign:HintAssist.Hint=" Фамилия" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
-        <TextBox x:Name="DateOfBirth" Text="{Binding DateOfBirth}" Grid.Row="3" Margin="10,0,427,0" materialDesign:HintAssist.Hint="Дата рождения" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
+        <TextBox x:Name="FN" Text="{Binding FirstName}" materialDesign:HintAssist.Hint=" Имя" Background="{DynamicResource PrimaryHueMidBrush}"  FontSize="16" Grid.Row="0" Margin="10,0,427,0" />
+        <TextBox x:Name="MN" Text="{Binding MiddleName}" Grid.Row="1" Margin="10,0,427,0" materialDesign:HintAssist.Hint=" Отчество" Background="{DynamicResource PrimaryHueMidBrush}"  FontSize="16"/>
+        <TextBox x:Name="LN" Text="{Binding LastName}" Grid.Row="2" Margin="10,0,427,0" materialDesign:HintAssist.Hint=" Фамилия" Background="{DynamicResource PrimaryHueMidBrush}"  FontSize="16"/>
+        <TextBox x:Name="DateOfBirth" Text="{Binding DateOfBirth}" Grid.Row="3" Margin="10,0,427,0" materialDesign:HintAssist.Hint="Дата рождения" Background="{DynamicResource PrimaryHueMidBrush}"  FontSize="16"/>
         <StackPanel x:Name="Gen" Grid.Row="4" Orientation="Vertical" Margin="10,0,427,0" >
-            <RadioButton Content="Мужской" FontSize="14"  Foreground="{DynamicResource PrimaryHueLightBrush}" IsChecked="{Binding Path=Gender[0], Mode=TwoWay}" Height="19"></RadioButton>
-            <RadioButton Content="Женский"  FontSize="14"  Foreground="{DynamicResource PrimaryHueLightBrush}" IsChecked="{Binding Path=Gender[1], Mode=TwoWay}"></RadioButton>
+            <RadioButton Content="Мужской" FontSize="14"  IsChecked="{Binding Path=Gender[0], Mode=TwoWay}" Height="19"></RadioButton>
+            <RadioButton Content="Женский"  FontSize="14"  IsChecked="{Binding Path=Gender[1], Mode=TwoWay}"></RadioButton>
         </StackPanel>
 
-        <ComboBox SelectedValue="Минск"  materialDesign:HintAssist.Hint=" Город" x:Name="CityNames" SelectedItem="{Binding City}" Grid.Row="5" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Margin="10,3,416,3"  />
-        <TextBox materialDesign:HintAssist.Hint=" Улица" x:Name="Street" Text="{Binding Street}" Grid.Row="5" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Margin="206,3,264,3"  />
-        <TextBox  materialDesign:HintAssist.Hint=" Дом" Text="{Binding House}" Grid.Row="5"  Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Margin="353,3,185,3"/>
-        <TextBox  materialDesign:HintAssist.Hint=" Квартира" Text="{Binding Flat}" Grid.Row="5"  Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Margin="432,3,103,3"/>
+        <ComboBox SelectedValue="Минск"  materialDesign:HintAssist.Hint=" Город" x:Name="CityNames" SelectedItem="{Binding City}" Grid.Row="5" Background="{DynamicResource PrimaryHueMidBrush}"  FontSize="16" Margin="10,3,416,3"  />
+        <TextBox materialDesign:HintAssist.Hint=" Улица" x:Name="Street" Text="{Binding Street}" Grid.Row="5" Background="{DynamicResource PrimaryHueMidBrush}"  FontSize="16" Margin="206,3,264,3"  />
+        <TextBox  materialDesign:HintAssist.Hint=" Дом" Text="{Binding House}" Grid.Row="5"  Background="{DynamicResource PrimaryHueMidBrush}" FontSize="16" Margin="353,3,185,3"/>
+        <TextBox  materialDesign:HintAssist.Hint=" Квартира" Text="{Binding Flat}" Grid.Row="5"  Background="{DynamicResource PrimaryHueMidBrush}"  FontSize="16" Margin="432,3,103,3"/>
 
-        <TextBox x:Name="NumOfPh" materialDesign:HintAssist.Hint=" Номер телефона" Text="{Binding NumberOfPhone}" Grid.Row="6" Margin="10,0,416,0" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
-        <TextBox x:Name="Login"  materialDesign:HintAssist.Hint=" Имя пользователя" Text="{Binding Login}" Grid.Row="7" Margin="10,0,416,0"  Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
-        <TextBox x:Name="Password" materialDesign:HintAssist.Hint=" Пароль" Text="{Binding Password}" Grid.Row="8" Margin="10,0,416,0"  Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
-        <TextBox x:Name="ConfPass" materialDesign:HintAssist.Hint=" Подтверждение пароля" Text="{Binding ConfirmPassword}" Grid.Row="9" Margin="10,0,416,0"  Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
-        <TextBox x:Name="Email" materialDesign:HintAssist.Hint=" Email" Text="{Binding Email}" Grid.Row="10" Margin="10,0,416,0" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"/>
+        <TextBox x:Name="NumOfPh" materialDesign:HintAssist.Hint=" Номер телефона" Text="{Binding NumberOfPhone}" Grid.Row="6" Margin="10,0,416,0" Background="{DynamicResource PrimaryHueMidBrush}"  FontSize="16"/>
+        <TextBox x:Name="Login"  materialDesign:HintAssist.Hint=" Имя пользователя" Text="{Binding Login}" Grid.Row="7" Margin="10,0,416,0"  Background="{DynamicResource PrimaryHueMidBrush}"  FontSize="16"/>
+        <TextBox x:Name="Password" materialDesign:HintAssist.Hint=" Пароль" Text="{Binding Password}" Grid.Row="8" Margin="10,0,416,0"  Background="{DynamicResource PrimaryHueMidBrush}"  FontSize="16"/>
+        <TextBox x:Name="ConfPass" materialDesign:HintAssist.Hint=" Подтверждение пароля" Text="{Binding ConfirmPassword}" Grid.Row="9" Margin="10,0,416,0"  Background="{DynamicResource PrimaryHueMidBrush}" FontSize="16"/>
+        <TextBox x:Name="Email" materialDesign:HintAssist.Hint=" Email" Text="{Binding Email}" Grid.Row="10" Margin="10,0,416,0" Background="{DynamicResource PrimaryHueMidBrush}"  FontSize="16"/>
     </Grid>
 </Page>

@@ -9,7 +9,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProfileD">
 
-    <Grid Background="{DynamicResource PrimaryHueLightBrush}">
+    <Grid Background="{DynamicResource PrimaryHueLightBrush}" Opacity="0.9">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="51*"/>
             <ColumnDefinition Width="149*"/>
@@ -32,27 +32,27 @@
         </Grid.RowDefinitions>
 
         <Label Foreground="#FF182725" Grid.Row="0" Content="Профиль" FontFamily="Bodoni MT Black" FontSize="22" VerticalAlignment="Center" Height="38" Margin="0,4,10,24" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <Label Foreground="#FF182725" Grid.Row="1" Grid.Column="0" Content="Имя" FontFamily="Bodoni MT Black"/>
-        <Label Foreground="#FF182725" Grid.Row="2" Grid.Column="0" Content="Отчество" FontFamily="Bodoni MT Black" />
-        <Label Foreground="#FF182725" Grid.Row="3" Grid.Column="0" Content="Фамилия" FontFamily="Bodoni MT Black" />
-        <Label Foreground="#FF182725" Grid.Row="4" Grid.Column="0" Content="Дата Рождения" FontFamily="Bodoni MT Black" />
-        <Label Foreground="#FF182725"  Grid.Row="5" Grid.Column="0" Content="Пол" FontFamily="Bodoni MT Black" />
-        <Label Foreground="#FF182725" Grid.Row="6" Grid.Column="0" Content="Номер телефона" FontFamily="Bodoni MT Black" />
-        <Label Grid.Row="7" Foreground="#FF182725" Grid.Column="0" Content="Должность" FontFamily="Bodoni MT Black" />
-        <Label Grid.Row="8"  Foreground="#FF182725" Grid.Column="0" Content="Стаж работы" FontFamily="Bodoni MT Black"/>
-        <Label Grid.Row="9" Grid.Column="0" Foreground="#FF182725" Content="Кабинет" FontFamily="Bodoni MT Black"/>
-        <Label Grid.Row="10" Grid.Column="0" Foreground="#FF182725" Content="Имя пользователя" FontFamily="Bodoni MT Black"/>
+        <Label Foreground="#FF182725" Grid.Row="1" Grid.Column="0" Content="Имя" FontFamily="Tahoma"/>
+        <Label Foreground="#FF182725" Grid.Row="2" Grid.Column="0" Content="Отчество" FontFamily="Tahoma" />
+        <Label Foreground="#FF182725" Grid.Row="3" Grid.Column="0" Content="Фамилия" FontFamily="Tahoma" />
+        <Label Foreground="#FF182725" Grid.Row="4" Grid.Column="0" Content="Дата Рождения" FontFamily="Tahoma" />
+        <Label Foreground="#FF182725"  Grid.Row="5" Grid.Column="0" Content="Пол" FontFamily="Tahoma" />
+        <Label Foreground="#FF182725" Grid.Row="6" Grid.Column="0" Content="Номер телефона" FontFamily="Tahoma" />
+        <Label Grid.Row="7" Foreground="#FF182725" Grid.Column="0" Content="Должность" FontFamily="Tahoma" />
+        <Label Grid.Row="8"  Foreground="#FF182725" Grid.Column="0" Content="Стаж работы" FontFamily="Tahoma"/>
+        <Label Grid.Row="9" Grid.Column="0" Foreground="#FF182725" Content="Кабинет" FontFamily="Tahoma"/>
+        <Label Grid.Row="10" Grid.Column="0" Foreground="#FF182725" Content="Имя пользователя" FontFamily="Tahoma"/>
 
-        <Label Grid.Row="1" Foreground="#FF182725" Grid.Column="1" x:Name="First" Content="{x:Static local:DoctorProfileViewModel.FirstName}" FontFamily="Bodoni MT Black"/>
-        <Label Grid.Row="2" Foreground="#FF182725" Grid.Column="1" x:Name="Middle" Content="{x:Static local:DoctorProfileViewModel.MiddleName}"  FontFamily="Bodoni MT Black"/>
-        <Label Grid.Row="3" Foreground="#FF182725" Grid.Column="1" x:Name="Last" Content="{x:Static local:DoctorProfileViewModel.LastName}" FontFamily="Bodoni MT Black"/>
-        <Label Grid.Row="4" Foreground="#FF182725" Grid.Column="1" x:Name="Date" Content="{x:Static local:DoctorProfileViewModel.DateOfBirthday}" FontFamily="Bodoni MT Black"/>
-        <Label Grid.Row="5" Foreground="#FF182725" Grid.Column="1" x:Name="Gender" Content="{x:Static local:DoctorProfileViewModel.Gender}" FontFamily="Bodoni MT Black"/>
-        <Label Grid.Row="6" Foreground="#FF182725" Grid.Column="1" x:Name="Number" Content="{x:Static local:DoctorProfileViewModel.NumberOfPhone}" FontFamily="Bodoni MT Black"/>
-        <Label Grid.Row="7" Foreground="#FF182725" Grid.Column="1" x:Name="Position" Content="{x:Static local:DoctorProfileViewModel.Position}" FontFamily="Bodoni MT Black"/>
-        <Label Grid.Row="8" Foreground="#FF182725" Grid.Column="1" x:Name="Ex" Content="{x:Static local:DoctorProfileViewModel.Experience}" FontFamily="Bodoni MT Black"/>
-        <Label Grid.Row="9" Foreground="#FF182725" Grid.Column="1" x:Name="Cab" Content="{x:Static local:DoctorProfileViewModel.Cabinet}" FontFamily="Bodoni MT Black"/>
-        <Label Grid.Row="10" Foreground="#FF182725" Grid.Column="1" x:Name="Login" Content="{x:Static local:DoctorProfileViewModel.Login}" FontFamily="Bodoni MT Black"/>
+        <Label Grid.Row="1" Foreground="#FF182725" Grid.Column="1" x:Name="First" Content="{x:Static local:DoctorProfileViewModel.FirstName}" FontFamily="Tahoma"/>
+        <Label Grid.Row="2" Foreground="#FF182725" Grid.Column="1" x:Name="Middle" Content="{x:Static local:DoctorProfileViewModel.MiddleName}"  FontFamily="Tahoma"/>
+        <Label Grid.Row="3" Foreground="#FF182725" Grid.Column="1" x:Name="Last" Content="{x:Static local:DoctorProfileViewModel.LastName}" FontFamily="Tahoma"/>
+        <Label Grid.Row="4" Foreground="#FF182725" Grid.Column="1" x:Name="Date" Content="{x:Static local:DoctorProfileViewModel.DateOfBirthday}" FontFamily="Tahoma"/>
+        <Label Grid.Row="5" Foreground="#FF182725" Grid.Column="1" x:Name="Gender" Content="{x:Static local:DoctorProfileViewModel.Gender}" FontFamily="Tahoma"/>
+        <Label Grid.Row="6" Foreground="#FF182725" Grid.Column="1" x:Name="Number" Content="{x:Static local:DoctorProfileViewModel.NumberOfPhone}" FontFamily="Tahoma"/>
+        <Label Grid.Row="7" Foreground="#FF182725" Grid.Column="1" x:Name="Position" Content="{x:Static local:DoctorProfileViewModel.Position}" FontFamily="Tahoma"/>
+        <Label Grid.Row="8" Foreground="#FF182725" Grid.Column="1" x:Name="Ex" Content="{x:Static local:DoctorProfileViewModel.Experience}" FontFamily="Tahoma"/>
+        <Label Grid.Row="9" Foreground="#FF182725" Grid.Column="1" x:Name="Cab" Content="{x:Static local:DoctorProfileViewModel.Cabinet}" FontFamily="Tahoma"/>
+        <Label Grid.Row="10" Foreground="#FF182725" Grid.Column="1" x:Name="Login" Content="{x:Static local:DoctorProfileViewModel.Login}" FontFamily="Tahoma"/>
 
     </Grid>
 </Page>

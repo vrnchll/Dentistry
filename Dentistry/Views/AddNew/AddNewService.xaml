@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="AddNewService" Height="356" Width="500">
-    <Grid Background="{DynamicResource PrimaryHueMidBrush }">
+    <Grid Background="{DynamicResource PrimaryHueLightBrush }">
         <Grid.RowDefinitions>
             <RowDefinition Height="35*"/>
             <RowDefinition Height="59*"/>
             <RowDefinition Height="114*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Добавление новой услуги"  Foreground="{DynamicResource PrimaryHueLightBrush}"  FontFamily="Bodoni MT Black" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Row="1" Margin="153,0,167,41" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}"  Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name}" materialDesign:HintAssist.Hint=" Наименование услуги"/>
-        <TextBox Grid.Row="1" Margin="153,75,167,144" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}"  Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Text="{Binding Cost}" materialDesign:HintAssist.Hint=" Стоимость" Grid.RowSpan="2"/>
-        <ComboBox Grid.Row="2" Margin="153,52,167,97" Background="{DynamicResource PrimaryHueDarkBrush}"  Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" SelectedValue="{Binding SelectedItem}" materialDesign:HintAssist.Hint=" Врач" x:Name="docList" Height="29"/>
-        <Button Content="Добавить" Grid.Row="2" Margin="180,105,206,41" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Command="{Binding add}"/>
+        <Label Grid.Row="0" Content="Добавление новой услуги"  Foreground="#FF303030"  FontFamily="Bodoni MT Black" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Row="1" Margin="153,0,167,41" FontSize="14" Background="#FF303030" Foreground="{DynamicResource PrimaryHueLightBrush}"  Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name}" materialDesign:HintAssist.Hint=" Наименование услуги" Opacity="0.8"/>
+        <TextBox Grid.Row="1" Margin="153,75,167,144"  FontSize="14" Background="#FF303030" Foreground="{DynamicResource PrimaryHueLightBrush}" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Text="{Binding Cost}" materialDesign:HintAssist.Hint=" Стоимость" Grid.RowSpan="2" Opacity="0.8"/>
+        <ComboBox Grid.Row="2" Margin="153,58,167,91" Background="#FF303030" Foreground="{DynamicResource PrimaryHueLightBrush}"  FontSize="14" SelectedValue="{Binding SelectedItem}" materialDesign:HintAssist.Hint=" Врач" x:Name="docList" Height="29" Opacity="0.8"/>
+        <Button Content="Добавить" Grid.Row="2" Margin="183,110,203,36" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Command="{Binding add}" Background="{DynamicResource MaterialDesignDarkBackground}" Opacity="0.9"/>
     </Grid>
 </Window>

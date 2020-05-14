@@ -6,24 +6,25 @@
         xmlns:local="clr-namespace:Dentistry.Views.Registration" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Registration" Height="500" Width="612" ResizeMode="NoResize" Icon="pack://application:,,,/Resourses/icons8-зуб-50.png">
-    <Grid Background="{DynamicResource PrimaryHueDarkBrush}">
+    <Grid Opacity="0.8" Background="{DynamicResource PrimaryHueLightBrush}">
+        
         <Grid Visibility="{Binding Visible}" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="133*"/>
                 <ColumnDefinition Width="653*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="123*"></RowDefinition>
-                <RowDefinition Height="9*"/>
-                <RowDefinition Height="253*"></RowDefinition>
+                <RowDefinition Height="44*"></RowDefinition>
+                <RowDefinition Height="76*"/>
+                <RowDefinition Height="351*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label  HorizontalAlignment="Center" Grid.Row="0" Content="Пожалуйста, выберите тип пользователя!" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" FontWeight="Bold" Grid.RowSpan="3" Margin="0,91,0,0" Grid.ColumnSpan="2" />
-            <ComboBox x:Name="TypeUser"  SelectedIndex="0" Foreground="{DynamicResource PrimaryHueMidBrush}" FontSize="16" materialDesign:ComboBoxAssist.ClassicMode="true"  Grid.Column="1" Grid.RowSpan="2" SelectedValue="{Binding SelectedItem}" Margin="31,0,133,239" Height="34" Grid.Row="1" >
+            <Label  HorizontalAlignment="Center" Grid.Row="0" Content="Пожалуйста, выберите тип пользователя!" Foreground="Black" FontSize="16" FontWeight="Bold" Grid.RowSpan="3" Margin="31,10,134,0" Grid.Column="1" Width="338" />
+            <ComboBox x:Name="TypeUser"  SelectedIndex="0" Foreground="Black" FontSize="16" materialDesign:ComboBoxAssist.ClassicMode="true"  Grid.Column="1" SelectedValue="{Binding SelectedItem}" Margin="31,0,133,37" VerticalAlignment="Stretch" Grid.Row="1" >
                 <ComboBoxItem IsSelected="True" x:Name="comboboxPatient"  Content="Пациент" />
                 <ComboBoxItem Content="Доктор"/>
             </ComboBox>
-            <Button Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Grid.Row="2"  Grid.Column="1" Command="{Binding ShowPage}" Margin="304,25,94,203" Height="Auto"   >
-                <materialDesign:PackIcon Kind="PageNext" Foreground="White" FontSize="40" VerticalAlignment="Center" RenderTransformOrigin="-1,0.812" >
+            <Button Style="{DynamicResource MaterialDesignFlatDarkBgButton}" BorderBrush="{x:Null}" Background="{x:Null}" Grid.Row="1"  Grid.Column="1" Command="{Binding ShowPage}" Margin="304,44,94,335" Height="Auto" RenderTransformOrigin="0.533,0.049" Grid.RowSpan="2"   >
+                <materialDesign:PackIcon Kind="PageNext" Foreground="Black" FontSize="40" VerticalAlignment="Center" RenderTransformOrigin="-1,0.812" >
                 </materialDesign:PackIcon>
             </Button>
         </Grid>

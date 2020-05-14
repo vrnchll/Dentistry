@@ -28,25 +28,19 @@
             <RowDefinition Height="35*"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="SignUpButt2"  Content="Зарегистрироваться" Grid.Row="10" HorizontalAlignment="Center" Command="{Binding RegistrationCommand}" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Background="{DynamicResource MaterialDesignDarkBackground}" Margin="189.448,0,371.552,10" Width="165" Grid.Column="2" Height="35" VerticalAlignment="Bottom" Grid.RowSpan="2" Opacity="0.8"/>
+        <Button x:Name="SignUpButt2"  Content="Зарегистрироваться" Grid.Row="10" HorizontalAlignment="Center" Command="{Binding RegistrationCommand}" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Background="{DynamicResource MaterialDesignDarkBackground}" Margin="171.448,0,389.552,10" Width="165" Grid.Column="2" Height="35" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
 
-<<<<<<< HEAD
-        <TextBox x:Name="FN2" Grid.Row="0" Text="{Binding FirstName}" materialDesign:HintAssist.Hint=" Имя" Background="#FF222E2D" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"  Grid.ColumnSpan="3" Margin="10,0,573,0"  />
-        <TextBox x:Name="MN2" Grid.Row="1" Text="{Binding MiddleName}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Отчество" Background="#FF222E2D" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="LN2" Grid.Row="2" Text="{Binding LastName}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Фамилия" Background="#FF222E2D" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.ColumnSpan="3"/>
-        <DatePicker materialDesign:HintAssist.Hint=" Дата рождения" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.Row="3" DisplayDate = "{Binding _ReportPlanningDate,Mode=TwoWay}" Background="#FF222E2D"  DisplayDateStart = "12/12/1960"  DisplayDateEnd="12/12/2010" SelectedDate="{Binding DateOfBirth}" Grid.ColumnSpan="3" Margin="10,4,573,4" />
-=======
-        <TextBox x:Name="FN2" Grid.Row="0" Text="{Binding FirstName}" materialDesign:HintAssist.Hint=" Имя" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"  Grid.ColumnSpan="3" Margin="10,0,573,0"  />
-        <TextBox x:Name="MN2" Grid.Row="1" Text="{Binding MiddleName}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Отчество" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="LN2" Grid.Row="2" Text="{Binding LastName}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Фамилия" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="DateOfBirth" Text="{Binding DateOfBirth}" Grid.Row="3" Margin="10,0,572.748,0" materialDesign:HintAssist.Hint="Дата рождения" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.ColumnSpan="3"/>
->>>>>>> 90bed32548bf6a854d26b1e29586f4e107b45a87
-        <StackPanel x:Name="Gen2" Grid.Row="4" Orientation="Vertical" Margin="10,0,573,0" Grid.ColumnSpan="3">
-            <RadioButton Content="Мужской" FontSize="14" Foreground="{DynamicResource PrimaryHueLightBrush}" IsChecked="{Binding Path=Gender[0], Mode=TwoWay}"></RadioButton>
-            <RadioButton Content="Женский" FontSize="14" Foreground="{DynamicResource PrimaryHueLightBrush}" IsChecked="{Binding Path=Gender[1], Mode=TwoWay}" Height="18"></RadioButton>
+        <TextBox x:Name="FN2" Grid.Row="0" Text="{Binding FirstName}" materialDesign:HintAssist.Hint=" Имя" FontSize="16"  Grid.ColumnSpan="3" Margin="10,0,573,0"  />
+        <TextBox x:Name="MN2" Grid.Row="1" Text="{Binding MiddleName}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Отчество"  FontSize="16" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="LN2" Grid.Row="2" Text="{Binding LastName}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Фамилия"  FontSize="16" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="DateOfBirth" Text="{Binding DateOfBirth}" Grid.Row="3" Margin="10,0,572.748,0" materialDesign:HintAssist.Hint="Дата рождения" FontSize="16" Grid.ColumnSpan="3"/>
+
+        <StackPanel x:Name="Gen2" Grid.Row="4" Orientation="Vertical" Margin="10,0,572.552,33" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <RadioButton Content="Мужской" FontSize="14"  IsChecked="{Binding Path=Gender[0], Mode=TwoWay}"></RadioButton>
+            <RadioButton Content="Женский" FontSize="14"  IsChecked="{Binding Path=Gender[1], Mode=TwoWay}" Height="20"></RadioButton>
         </StackPanel>
 
-        <ComboBox  materialDesign:HintAssist.Hint=" Должность" Text="{Binding Position}" Background="#FF222E2D" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" x:Name="Positoin" Grid.Row="5" Margin="10,5,572.552,0" Grid.ColumnSpan="3" Height="33">
+        <ComboBox  materialDesign:HintAssist.Hint=" Должность" Text="{Binding Position}"  FontSize="14" x:Name="Positoin" Grid.Row="5" Margin="10,5,572.552,0" Grid.ColumnSpan="3" Height="33">
             <ComboBoxItem IsSelected="True">Врач стоматолог- терапевт</ComboBoxItem>
             <ComboBoxItem>Врач стоматолог- хирург</ComboBoxItem>
             <ComboBoxItem>Врач стоматолог- ортодонт</ComboBoxItem>
@@ -54,12 +48,12 @@
             <ComboBoxItem>Врач хирург-имплантолог</ComboBoxItem>
             <ComboBoxItem>Врач стоматолог-ортопед</ComboBoxItem>
         </ComboBox>
-        <TextBox materialDesign:HintAssist.Hint=" Стаж работы" Background="#FF222E2D" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Text="{Binding Experience}" Grid.Row="5" Margin="171,5,292,0" Grid.Column="2"/>
+        <TextBox materialDesign:HintAssist.Hint=" Стаж работы"  FontSize="14" Text="{Binding Experience}" Grid.Row="5" Margin="171,5,292,0" Grid.Column="2"/>
 
-        <TextBox x:Name="NumOfPh2" Grid.Row="6" Text="{Binding NumberOfPhone}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Номер телефона" Background="#FF222E2D" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="Login2" Grid.Row="7" Text="{Binding Login}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Имя пользователя" Background="#FF222E2D" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="Password2" Grid.Row="8" Text="{Binding Password}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Пароль" Background="#FF222E2D" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="ConfPass2" Grid.Row="9"  Text="{Binding ConfirmPassword}"  Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Подтверждение пароля" Background="#FF222E2D" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.ColumnSpan="3"/>
-        <TextBox  x:Name="Email2" Grid.Row="10" Text="{Binding Email}" Margin="10,0,572.552,0" materialDesign:HintAssist.Hint=" Email" Background="#FF222E2D" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="NumOfPh2" Grid.Row="6" Text="{Binding NumberOfPhone}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Номер телефона"   FontSize="16" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="Login2" Grid.Row="7" Text="{Binding Login}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Имя пользователя"   FontSize="16" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="Password2" Grid.Row="8" Text="{Binding Password}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Пароль"  FontSize="16" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="ConfPass2" Grid.Row="9"  Text="{Binding ConfirmPassword}"  Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Подтверждение пароля"  FontSize="16" Grid.ColumnSpan="3"/>
+        <TextBox  x:Name="Email2" Grid.Row="10" Text="{Binding Email}" Margin="10,0,572.552,0" materialDesign:HintAssist.Hint=" Email" FontSize="16" Grid.ColumnSpan="3"/>
     </Grid>
 </Page>

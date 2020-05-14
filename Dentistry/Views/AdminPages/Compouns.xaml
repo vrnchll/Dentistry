@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:t="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d"
-        Title="Compouns" Height="400" Width="800">
+        Title="Compouns" Height="480" Width="800">
     <Grid Background="{DynamicResource Back}">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="103*"/>
         </Grid.RowDefinitions>
-        <Menu Background="{DynamicResource PrimaryHueDarkBrush}" Margin="0,0,0,33">
+        <Menu Background="#FF2C2828" Margin="0,0,0,46">
             <MenuItem Header="" Height="33" Width="35" Foreground="{DynamicResource PrimaryHueLightBrush}">
                 <MenuItem.Background>
                     <ImageBrush ImageSource="back--v1.png"/>
@@ -21,7 +21,7 @@
             <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="32"/>
             <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="32" Command="{Binding RemoveCommand}"/>
         </Menu>
-        <DataGrid Margin="0,32,0,0" AutoGenerateColumns="False" x:Name="CompounsList" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Compouns}" SelectedItem="{Binding SelectedCompoun}">
+        <DataGrid Margin="0,32,0,0" AutoGenerateColumns="False" x:Name="CompounsList" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueLightBrush}"  RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Compouns}" SelectedItem="{Binding SelectedCompoun}" Opacity="0.8">
             <DataGrid.Columns>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
                     <DataGridTemplateColumn.Header>

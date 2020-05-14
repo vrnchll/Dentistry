@@ -96,18 +96,7 @@ namespace Dentistry.ViewModels.MainWindows
                 _ShowCompoun ?? (
                _ShowCompoun = new RelayCommands(obj =>
                {
-                   UnitOfWork unitOfWork = new UnitOfWork();
-                   var compouns = unitOfWork.Compouns.GetAll().ToList();
-                   foreach(var compoun in compouns)
-                   {
-                       var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.Id == compoun.PatientId);
-                       compoun.Patient = patient;
-                       var doctor = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.Id == compoun.DoctorId);
-                       compoun.Doctor = doctor;
-                       Admin_CompounsViewModel.Compouns.Add(compoun);
-                   }
-                   
-                  
+                 
                  
                    CurrentPage = Compouns;
                }));
@@ -123,20 +112,6 @@ namespace Dentistry.ViewModels.MainWindows
                 _ShowServices ?? (
                _ShowServices = new RelayCommands(obj =>
                {
-                   UnitOfWork unitOfWork = new UnitOfWork();
-                  
-                   foreach (var service in unitOfWork.Services.Include())
-                   {
-                  
-                       foreach (var person in service.Doctors.ToList())
-                       {
-                           service.Doctors.Add(person);
-                           Admin_ServicesViewModel.Services.Add(service);
-
-                       }
-                  
-                   }
-                  
                    CurrentPage = Servicess;
                }));
             }

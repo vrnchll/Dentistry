@@ -81,20 +81,6 @@ namespace Dentistry.ViewModels.MainWindows
                _ShowServices ?? (
               _ShowServices = new RelayCommands(obj =>
               {
-                  UnitOfWork unitOfWork = new UnitOfWork();
-
-                  foreach (var service in unitOfWork.Services.Include())
-                  {
-
-                      foreach (var person in service.Doctors.ToList())
-                      {
-                          service.Doctors.Add(person);
-                          ServicesInPatientViewModel.Services.Add(service);
-
-                      }
-
-                  }
-
                   CurrentPage = Services;
               }));
             }

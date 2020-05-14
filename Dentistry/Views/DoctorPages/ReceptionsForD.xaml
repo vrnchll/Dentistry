@@ -21,13 +21,12 @@
                     <ImageBrush ImageSource="back--v1.png"/>
                 </MenuItem.Background>
             </MenuItem>
-            <MenuItem Header="Добавить новое посещение" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}" Height="39"/>
             <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39" />
             <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39"/>
         </Menu>
         <DataGrid AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
                               ScrollViewer.IsDeferredScrollingEnabled="True" 
-                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Margin="0,35,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Margin="0,35,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" Opacity="0.9">
             <DataGrid.Columns>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
                     <DataGridTemplateColumn.Header>

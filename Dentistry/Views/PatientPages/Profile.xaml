@@ -8,7 +8,7 @@
       d:DesignHeight="500" d:DesignWidth="800"
       Title="Profile">
 
-    <Grid Background="#FF455A64" >
+    <Grid Background="#FF2C2828" Opacity="0.7" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="51*"/>
             <ColumnDefinition Width="149*"/>

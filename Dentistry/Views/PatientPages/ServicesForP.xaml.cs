@@ -1,4 +1,6 @@
-﻿using Dentistry.ViewModels.PatientPagesViewModel;
+﻿using Dentistry.Services;
+using Dentistry.ViewModels;
+using Dentistry.ViewModels.PatientPagesViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +28,19 @@ namespace Dentistry.Views.PatientPages
             InitializeComponent();
             DataContext = new ServicesInPatientViewModel();
             ServicesList.ItemsSource = ServicesInPatientViewModel.Services;
+            UnitOfWork unitOfWork = new UnitOfWork();
+
+            foreach (var service in unitOfWork.Services.Include())
+            {
+
+                foreach (var person in service.Doctors.ToList())
+                {
+                    service.Doctors.Add(person);
+                    ServicesInPatientViewModel.Services.Add(service);
+
+                }
+
+            }
         }
     }
-}
+    }

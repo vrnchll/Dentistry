@@ -7,26 +7,26 @@
         mc:Ignorable="d"
         Title="DoctorMainWindow" Height="450" Width="800" Icon="pack://application:,,,/Resourses/icons8-зуб-50.png">
     <Grid>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="190" Background="{DynamicResource PrimaryHueLightBrush}">
-            <Button Height="42" Command="{Binding AddNewReception}" Opacity="0.7">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="190" Background="#FF95EAEE" Opacity="0.8">
+            <Button Height="42" Command="{Binding AddNewReception}" Background="#FF2E2A2A" Opacity="0.7">
                 <Grid Width="166">
-                    <materialDesign:PackIcon Kind="Edit" RenderTransformOrigin="-1,0.812" Height="12" Margin="-1,4,0,0" Width="11" ></materialDesign:PackIcon>
+                    <materialDesign:PackIcon Kind="Edit"  RenderTransformOrigin="-1,0.812" Height="12" Margin="-1,4,0,0" Width="11" ></materialDesign:PackIcon>
                     <TextBlock Text="Добавить посещение" Margin="7,0,0,0"/>
                 </Grid>
             </Button>
-            <Button Height="42" Command="{Binding ShowReceptions}" Opacity="0.7">
+            <Button Height="42" Command="{Binding ShowReceptions}" Background="#FF2E2A2A" Opacity="0.7">
                 <Grid Width="135">
                     <materialDesign:PackIcon Kind="ContentPaste" RenderTransformOrigin="-1,0.812" Height="13" Margin="0,3,0,0" Width="15" ></materialDesign:PackIcon>
                     <TextBlock Text="Посещения" Margin="15,0,0,0"/>
                 </Grid>
             </Button>
-            <Button Height="42" Command="{Binding ShowCompoun}" Opacity="0.7">
+            <Button Height="42" Command="{Binding ShowCompoun}" Background="#FF2E2A2A" Opacity="0.7">
                 <Grid Width="135">
                     <materialDesign:PackIcon Kind="Ticket" RenderTransformOrigin="-1,0.812" Height="13" Margin="0,3,0,0" Width="15" ></materialDesign:PackIcon>
                     <TextBlock Text="Талоны" Margin="15,0,0,0"/>
                 </Grid>
             </Button>
-            <Button Height="42"  Command="{Binding ShowProfile}" Opacity="0.7">
+            <Button Height="42"  Command="{Binding ShowProfile}" Background="#FF2E2A2A" Opacity="0.7">
                 <Grid Width="133">
                     <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" RenderTransformOrigin="-1,0.812" ></materialDesign:PackIcon>
                     <TextBlock Text="Профиль" Margin="16,0,0,0" FontSize="14"/>
@@ -34,7 +34,7 @@
             </Button>
         </StackPanel>
         <Frame Margin="190,0,0,0"   
-               Content="{Binding CurrentPage}" Background="#FFBAF5F0"/>
+               Content="{Binding CurrentPage}" Background="#FF8ADDE1" Opacity="0.8"/>
 
     </Grid>
 </Window>

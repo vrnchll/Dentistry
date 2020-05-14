@@ -1,4 +1,5 @@
-﻿using Dentistry.ViewModels;
+﻿using Dentistry.Services;
+using Dentistry.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,18 @@ namespace Dentistry.Views
             InitializeComponent();
             DataContext = new Admin_CompounsViewModel();
             CompounsList.ItemsSource = Admin_CompounsViewModel.Compouns;
+            UnitOfWork unitOfWork = new UnitOfWork();
+            var compouns = unitOfWork.Compouns.GetAll().ToList();
+            foreach (var compoun in compouns)
+            {
+                var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.Id == compoun.PatientId);
+                compoun.Patient = patient;
+                var doctor = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.Id == compoun.DoctorId);
+                compoun.Doctor = doctor;
+                Admin_CompounsViewModel.Compouns.Add(compoun);
+            }
+
+
         }
     }
 }

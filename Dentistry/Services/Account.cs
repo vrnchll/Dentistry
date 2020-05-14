@@ -16,7 +16,7 @@ using System.Windows;
 
 namespace Dentistry.Services
 {
-    class Account
+    public class Account
     {
         private Account() { }
 
