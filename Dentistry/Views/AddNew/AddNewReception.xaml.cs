@@ -22,6 +22,7 @@ namespace Dentistry.Views
         public AddNewReception()
         {
             InitializeComponent();
+            
         }
     }
 }

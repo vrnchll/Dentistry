@@ -16,6 +16,13 @@ namespace Dentistry.ViewModels
 
     {
         public static BindingList<Patient> Patients;
+
+        static Admin_PatientsViewModel()
+        {
+            Patients = new BindingList<Patient>();
+        }
+
+
         private string _FirstName;
         public string FirstName
         {
@@ -55,9 +62,17 @@ namespace Dentistry.ViewModels
             }
         }
 
-        private bool[] _Gender = new bool[] { true, false };
-        public bool[] Gender { get => _Gender; }
-        public int SelectedGender { get => Array.IndexOf(_Gender, true); }
+        private string _gender;
+
+        public string Gender
+        {
+            get => _gender; set
+            {
+                _gender = value;
+                OnPropertyChanged("City");
+            }
+        }
+     
 
         private string _City;
         public string City

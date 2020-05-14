@@ -38,7 +38,12 @@ namespace Dentistry.ViewModels
             }
         }
         private string _SelectedItem;
-        public string SelectedItem { get => _SelectedItem; set { _SelectedItem = value;
+        public string SelectedItem {
+
+            get => _SelectedItem;
+            set {
+   
+                _SelectedItem = value;
                 OnPropertyChanged("Selected Type");
             } }
         public RegistrationViewModel()

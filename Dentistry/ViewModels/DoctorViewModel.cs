@@ -36,11 +36,11 @@ namespace Dentistry.ViewModels
                 OnPropertyChanged("MiddleName");
             } }
 
-        private DateTime _DateOfBirth;
-        public DateTime DateOfBirth { get => _DateOfBirth; set
+        private string _DateOfBirth;
+        public string DateOfBirth { get => _DateOfBirth; set
             {
-                if (_DateOfBirth == DateTime.MinValue) _DateOfBirth= DateTime.Today;
-                else _DateOfBirth = value;
+             
+                 _DateOfBirth = value;
                 OnPropertyChanged("DateOfBirth");
             } }
 
@@ -122,7 +122,7 @@ namespace Dentistry.ViewModels
                     {
                         
                         User user = new User() { UserName = Login, Password = Password, Email = Email, TypeUser = "Doctor" };
-                        Doctor person = new Doctor() {Id=user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth.ToString(), Gender = SelectedGender == 0 ? "Mужской" : "Женский",Experience=Experience,Position=Position,Cabinet=Cabinet, NumberOfPhone = NumberOfPhone };
+                        Doctor person = new Doctor() {Id=user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Mужской" : "Женский",Experience=Experience,Position=Position,Cabinet=Cabinet, NumberOfPhone = NumberOfPhone };
                         user.DoctorProfile = person;
                         Account.RegistrationDoctor(user, person);
                         if (App.AddNewDoctor != null)

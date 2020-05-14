@@ -30,10 +30,17 @@
 
         <Button x:Name="SignUpButt2"  Content="Зарегистрироваться" Grid.Row="10" HorizontalAlignment="Center" Command="{Binding RegistrationCommand}" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Background="{DynamicResource MaterialDesignDarkBackground}" Margin="189.448,0,371.552,10" Width="165" Grid.Column="2" Height="35" VerticalAlignment="Bottom" Grid.RowSpan="2" Opacity="0.8"/>
 
+<<<<<<< HEAD
         <TextBox x:Name="FN2" Grid.Row="0" Text="{Binding FirstName}" materialDesign:HintAssist.Hint=" Имя" Background="#FF222E2D" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"  Grid.ColumnSpan="3" Margin="10,0,573,0"  />
         <TextBox x:Name="MN2" Grid.Row="1" Text="{Binding MiddleName}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Отчество" Background="#FF222E2D" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.ColumnSpan="3"/>
         <TextBox x:Name="LN2" Grid.Row="2" Text="{Binding LastName}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Фамилия" Background="#FF222E2D" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.ColumnSpan="3"/>
         <DatePicker materialDesign:HintAssist.Hint=" Дата рождения" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.Row="3" DisplayDate = "{Binding _ReportPlanningDate,Mode=TwoWay}" Background="#FF222E2D"  DisplayDateStart = "12/12/1960"  DisplayDateEnd="12/12/2010" SelectedDate="{Binding DateOfBirth}" Grid.ColumnSpan="3" Margin="10,4,573,4" />
+=======
+        <TextBox x:Name="FN2" Grid.Row="0" Text="{Binding FirstName}" materialDesign:HintAssist.Hint=" Имя" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16"  Grid.ColumnSpan="3" Margin="10,0,573,0"  />
+        <TextBox x:Name="MN2" Grid.Row="1" Text="{Binding MiddleName}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Отчество" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="LN2" Grid.Row="2" Text="{Binding LastName}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Фамилия" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="DateOfBirth" Text="{Binding DateOfBirth}" Grid.Row="3" Margin="10,0,572.748,0" materialDesign:HintAssist.Hint="Дата рождения" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="16" Grid.ColumnSpan="3"/>
+>>>>>>> 90bed32548bf6a854d26b1e29586f4e107b45a87
         <StackPanel x:Name="Gen2" Grid.Row="4" Orientation="Vertical" Margin="10,0,573,0" Grid.ColumnSpan="3">
             <RadioButton Content="Мужской" FontSize="14" Foreground="{DynamicResource PrimaryHueLightBrush}" IsChecked="{Binding Path=Gender[0], Mode=TwoWay}"></RadioButton>
             <RadioButton Content="Женский" FontSize="14" Foreground="{DynamicResource PrimaryHueLightBrush}" IsChecked="{Binding Path=Gender[1], Mode=TwoWay}" Height="18"></RadioButton>

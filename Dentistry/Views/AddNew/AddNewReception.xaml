@@ -12,7 +12,7 @@
             <RowDefinition Height="65*"/>
             <RowDefinition Height="66*"/>
             <RowDefinition Height="61*"/>
-            <RowDefinition Height="60*"/>
+            <RowDefinition Height="110*"/>
             <RowDefinition Height="60*"/>
             <RowDefinition Height="60*"/>
             <RowDefinition Height="60*"/>
@@ -23,7 +23,14 @@
         <xctk:DateTimeUpDown Format="ShortTime" Value="{Binding TimeOfBeginReception}" FormatString="hh:mm"  Grid.Row="2" Margin="315,17,412,0" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Время начала" Height="42" RenderTransformOrigin="0.692,0.561"></xctk:DateTimeUpDown>
         <xctk:DateTimeUpDown Format="ShortTime" Value="{Binding TimeOfEndReception}" FormatString="hh:mm" Grid.Row="2" Margin="415,17,312,0" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Время окончания" Height="42" RenderTransformOrigin="0.6,1.024"/>
         <TextBox Grid.Row="3" Margin="266,10,266,0" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Фамилия пациента" />
-        <ComboBox Grid.Row="4" Margin="266,10,266,0" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Услуга" Height="43" />
+        <ListBox ItemsSource="{Binding ListServices}" x:Name="ServiceList" Grid.Row="4" Margin="266,0,266,0" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Услуга" >
+            <ListBoxItem>
+                <CheckBox  Content="{Binding Name}" Foreground="#000"  />
+            </ListBoxItem>
+            
+            
+        
+        </ListBox>
         <ComboBox Grid.Row="5" Margin="266,10,266,0" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Врач" Height="43"/>
         <TextBox Grid.Row="6" Margin="266,10"  Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Стоимость"/>
         <Button Content="Добавить" Grid.Row="7" Margin="326,11,324,10" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Background="{DynamicResource MaterialDesignDarkBackground}"/>
