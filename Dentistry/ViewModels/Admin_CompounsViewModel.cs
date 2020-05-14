@@ -17,6 +17,25 @@ namespace Dentistry.ViewModels
     public class Admin_CompounsViewModel : INotifyPropertyChanged
     {
         public static BindingList<Compoun> Compouns;
+
+        private string _Date;
+        public string Date
+        {
+            get => _Date; set
+            {
+                _Date = value;
+                OnPropertyChanged("Date");
+            }
+        }
+        private string _Time;
+        public string Time
+        {
+            get => _Time; set
+            {
+                _Time = value;
+                OnPropertyChanged("Time");
+            }
+        }
         public Admin_CompounsViewModel()
 
             {

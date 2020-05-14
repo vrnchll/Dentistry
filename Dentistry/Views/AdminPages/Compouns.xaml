@@ -23,32 +23,8 @@
         </Menu>
         <DataGrid Margin="0,32,0,0" AutoGenerateColumns="False" x:Name="CompounsList" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueLightBrush}"  RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Compouns}" SelectedItem="{Binding SelectedCompoun}" Opacity="0.8">
             <DataGrid.Columns>
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
-                    <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Дата приема"/>
-                    </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Path=DateOfRes, StringFormat='dd MMM yyyy' }"  />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <DatePicker Name="DatePicker"  SelectedDate="{Binding Path=Date}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfRec">
-                    <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Время"/>
-                    </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <t:DateTimeUpDown Value="{Binding Time}" Format="ShortTime" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-               
+                <DataGridTextColumn Header="Дата"  Binding="{Binding Date}"/>
+                <DataGridTextColumn Header="Время" Binding="{Binding Time}"/>
                 <DataGridTextColumn Header="Пациент" Binding="{Binding Patient.LastName}"/>
                 <DataGridTextColumn Header="Врач" Binding="{Binding Doctor.LastName}"/>
             </DataGrid.Columns>

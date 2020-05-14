@@ -4,9 +4,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
      
-      xmlns:local="clr-namespace:Dentistry.ViewModels.DoctorPagesViewModel"
+      xmlns:local="clr-namespace:Dentistry.ViewModels.DoctorPagesViewModel" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="400" d:DesignWidth="800"
       Title="ProfileD">
 
     <Grid Background="{DynamicResource PrimaryHueLightBrush}" Opacity="0.9">
@@ -42,6 +42,7 @@
         <Label Grid.Row="8"  Foreground="#FF182725" Grid.Column="0" Content="Стаж работы" FontFamily="Tahoma"/>
         <Label Grid.Row="9" Grid.Column="0" Foreground="#FF182725" Content="Кабинет" FontFamily="Tahoma"/>
         <Label Grid.Row="10" Grid.Column="0" Foreground="#FF182725" Content="Имя пользователя" FontFamily="Tahoma"/>
+        <Label Grid.Row="11" Grid.Column="0" Foreground="#FF182725" Content="Пароль" FontFamily="Tahoma" Height="34" VerticalAlignment="Top"/>
 
         <Label Grid.Row="1" Foreground="#FF182725" Grid.Column="1" x:Name="First" Content="{x:Static local:DoctorProfileViewModel.FirstName}" FontFamily="Tahoma"/>
         <Label Grid.Row="2" Foreground="#FF182725" Grid.Column="1" x:Name="Middle" Content="{x:Static local:DoctorProfileViewModel.MiddleName}"  FontFamily="Tahoma"/>
@@ -53,6 +54,12 @@
         <Label Grid.Row="8" Foreground="#FF182725" Grid.Column="1" x:Name="Ex" Content="{x:Static local:DoctorProfileViewModel.Experience}" FontFamily="Tahoma"/>
         <Label Grid.Row="9" Foreground="#FF182725" Grid.Column="1" x:Name="Cab" Content="{x:Static local:DoctorProfileViewModel.Cabinet}" FontFamily="Tahoma"/>
         <Label Grid.Row="10" Foreground="#FF182725" Grid.Column="1" x:Name="Login" Content="{x:Static local:DoctorProfileViewModel.Login}" FontFamily="Tahoma"/>
-
+        <Button Content="Изменить" Grid.Column="0" Grid.Row="11" Margin="10,24.5,6,38.5" Height="Auto" Command="{Binding ShowChangingGrid}"/>
+        <Grid Grid.Row="11" Grid.Column="1" HorizontalAlignment="Right" Margin="0,1.5,0,-0.5" Width="596">
+            <TextBox Background="{DynamicResource PrimaryHueDarkBrush}" x:Name="LoginChange" Text="{x:Static local:DoctorProfileViewModel.Login}" Margin="234,-4,86,63" />
+            <TextBox materialDesign:HintAssist.Hint=" Новый пароль" Background="{DynamicResource PrimaryHueDarkBrush}" x:Name="PasswordChange" Text="{Binding Password}" Margin="234,31,86,35" />
+            <TextBox materialDesign:HintAssist.Hint=" Подтверждение пароля" Background="{DynamicResource PrimaryHueDarkBrush}" x:Name="PasswordConfirmChange" Text="{Binding ConfirmPassword}" Margin="234,59,86,6" />
+            <Button Command="{Binding Change}" Margin="510,32,0,35"  Content="Сохранить" FontSize="10" Height="Auto"/>
+        </Grid>
     </Grid>
 </Page>

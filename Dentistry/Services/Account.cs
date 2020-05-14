@@ -168,6 +168,8 @@ namespace Dentistry.Services
             DoctorProfileViewModel.Cabinet = _instance.DoctorProfile.Cabinet;
             DoctorProfileViewModel.NumberOfPhone = _instance.DoctorProfile.NumberOfPhone;
             DoctorProfileViewModel.Login = _instance.DoctorProfile.User.UserName;
+            DoctorProfileViewModel.Password = _instance.DoctorProfile.User.Password;
+           
         }
         public static void ProfilePatientInfo()
         {

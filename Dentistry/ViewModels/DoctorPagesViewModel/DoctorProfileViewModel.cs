@@ -21,5 +21,7 @@ namespace Dentistry.ViewModels.DoctorPagesViewModel
         public static string Experience;
         public static string Cabinet;
         public static string Login;
+        public static string Password;
+        public static string ConfirmPassword;
     }
 }
