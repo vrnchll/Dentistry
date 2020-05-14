@@ -19,7 +19,7 @@
             <RowDefinition Height="60*"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="Добавление нового талона" Foreground="#FF404040"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Bodoni MT Black" FontSize="22"/>
-        <DatePicker materialDesign:HintAssist.Hint=" Дата приема" Grid.Row="1" Margin="161,10,161,25" SelectedDate="{Binding Date}" RenderTransformOrigin="0.617,0.655"></DatePicker>
+        <DatePicker materialDesign:HintAssist.Hint=" Дата приема"  Grid.Row="1" Margin="161,10,161,25" SelectedDate="{Binding Date}" SelectedDateFormat="Short" RenderTransformOrigin="0.617,0.655"></DatePicker>
         <ComboBox Grid.Row="2" x:Name="patList" materialDesign:HintAssist.Hint=" Фамилия пациента" Margin="161,22,161,10" Text="{Binding LastNamePatient}" ItemsSource="{Binding Source={x:Static me:AddNewCompounViewModel.LastNamePatients}, Mode=OneWay}" />
         <xctk:DateTimeUpDown Format="ShortTime" Value="{Binding Time}" FormatString="hh:mm"  Margin="161,48,161,47" Grid.Row="1" Background="{DynamicResource MaterialDesignDarkBackground}" FontSize="14" Foreground="{DynamicResource PrimaryHueLightBrush}" Grid.RowSpan="2" BorderBrush="{x:Null}" Text="{Binding Time}"/>
         <ComboBox materialDesign:HintAssist.Hint=" Врач" x:Name="docList" Grid.Row="3" Margin="161,28,161,0" Text="{Binding LastNameDoctor}" ItemsSource="{Binding Source={x:Static me:AddNewCompounViewModel.LastNameDoctors}, Mode=OneWay}"></ComboBox>

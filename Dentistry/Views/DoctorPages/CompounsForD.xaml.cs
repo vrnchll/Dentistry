@@ -35,7 +35,7 @@ namespace Dentistry.Views.DoctorPages
             foreach (var compoun in compouns)
             {
                 var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.Id == compoun.PatientId);
-                compoun.Patient = patient;
+                compoun.Patient =  patient;
                 var doctor = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.Id == compoun.DoctorId);
                 compoun.Doctor = doctor;
                 Admin_CompounsViewModel.Compouns.Add(compoun);

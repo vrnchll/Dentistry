@@ -156,6 +156,16 @@ namespace Dentistry.Services
                 
             }
         }
+
+        public static void ChangeInformation(string NewUserName, string NewPassword)
+        {
+            String tmp = Encrypt(NewPassword,NewUserName);
+            _instance.Password = tmp;
+            _instance.UserName = NewUserName;
+            UnitOfWork unitOfWork = new UnitOfWork();
+            unitOfWork.Users.Update(_instance);
+            unitOfWork.Save();
+        }
         public static void ProfileDoctorInfo()
         {
             DoctorProfileViewModel.FirstName = _instance.DoctorProfile.FirstName;

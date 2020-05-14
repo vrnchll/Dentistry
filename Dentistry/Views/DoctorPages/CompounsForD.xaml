@@ -8,30 +8,33 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CompounsForD">
     <Grid>
-        <DataGrid AutoGenerateColumns="False" x:Name="CompounsList" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="Black" RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Opacity="0.8">
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Compouns}" x:Name="CompounsList" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="Black" RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Opacity="0.8">
             <DataGrid.Columns>
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="DateOfRec">
-                    <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Дата приема"/>
-                    </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <DatePicker Name="DatePicker"  SelectedDate="{Binding Path=DateOfRes}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfRec">
-                    <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Время"/>
-                    </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <t:DateTimeUpDown Value="{Binding Time}" Format="ShortTime" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-               
-                <DataGridTextColumn Header="Пациент" Binding="{Binding Path=Patient}"/>
+                <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
+                <DataGridTemplateColumn.Header>
+                    <TextBlock Text="Дата приема"/>
+                </DataGridTemplateColumn.Header>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path = DateOfReception, StringFormat='dd MMM yyy'}"  />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+
+
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfRec">
+                <DataGridTemplateColumn.Header>
+                    <TextBlock Text="Время"/>
+                </DataGridTemplateColumn.Header>
+
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path = TimeOfReception}"  />
+                    </DataTemplate>
+
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Пациент" Binding="{Binding Path=Patient.LastName}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -1,5 +1,6 @@
 ﻿using Dentistry.Services;
 using Dentistry.ViewModels.PatientPagesViewModel;
+using Dentistry.Views;
 using Dentistry.Views.PatientPages;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Dentistry.ViewModels.MainWindows
@@ -96,6 +98,35 @@ namespace Dentistry.ViewModels.MainWindows
                _ShowProfile = new RelayCommands(obj =>
                {
                    CurrentPage = Profile;
+               }));
+            }
+
+        }
+        private RelayCommands _Exit;
+        public RelayCommands Exit
+        {
+            get
+            {
+                return
+                _Exit ?? (
+               _Exit = new RelayCommands(obj =>
+               {
+
+                   var response = MessageBox.Show("Вы уверены, что хотите выйти?", "Выход...",
+                                   MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                   if (response == MessageBoxResult.No)
+                   {
+                       return;
+                   }
+                   else
+                   {
+                       App.AuthorizationWindow = new Authorization();
+                       App.AuthorizationWindow.Show();
+                       App.PatientmainWindow.Close();
+
+                   }
+
+
                }));
             }
 

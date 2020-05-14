@@ -25,6 +25,7 @@ namespace Dentistry.Views.DoctorPages
         {
             InitializeComponent();
             DataContext = new DoctorProfileViewModel();
+         
         }
     }
 }

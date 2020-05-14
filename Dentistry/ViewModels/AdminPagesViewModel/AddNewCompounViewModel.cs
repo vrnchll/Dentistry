@@ -85,6 +85,7 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                   
                    unitOfWork.Compouns.Create(compoun);
                    unitOfWork.Save();
+                   Admin_CompounsViewModel.Compouns.Add(compoun);
                    App.AddNewCompoun.Visibility = Visibility.Hidden;
                }));
             }

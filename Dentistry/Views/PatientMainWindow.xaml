@@ -33,6 +33,9 @@
                     <TextBlock Text="Профиль" Margin="21,0,0,0"/>
                 </Grid>
             </Button>
+            <Button Margin="0 250" HorizontalAlignment="Right" Command="{Binding Exit}" Background="{DynamicResource MaterialDesignDarkBackground}" Height="31" BorderBrush="{x:Null}">
+                <materialDesign:PackIcon Kind="ExitRun" Height="22" Width="20"/>
+            </Button>
         </StackPanel>
         <Frame Margin="159,0,0,0"  
                Content="{Binding CurrentPage}" Background="#FF8ADDE1" Opacity="0.8" />

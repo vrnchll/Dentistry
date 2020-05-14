@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Dentistry.ViewModels.MainWindows
@@ -113,6 +114,35 @@ namespace Dentistry.ViewModels.MainWindows
                _ShowServices = new RelayCommands(obj =>
                {
                    CurrentPage = Servicess;
+               }));
+            }
+
+        }
+        private RelayCommands _Exit;
+        public RelayCommands Exit
+        {
+            get
+            {
+                return
+                _Exit ?? (
+               _Exit = new RelayCommands(obj =>
+               {
+                  
+                   var response = MessageBox.Show("Вы уверены, что хотите выйти?", "Выход...",
+                                   MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                   if (response == MessageBoxResult.No)
+                   {
+                       return;
+                   }
+                   else
+                   {
+                       App.AuthorizationWindow = new Authorization();
+                       App.AuthorizationWindow.Show();
+                       App.AdminWindow.Close();
+
+                   }
+
+                 
                }));
             }
 
