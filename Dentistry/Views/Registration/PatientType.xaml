@@ -8,7 +8,7 @@
 
         mc:Ignorable="d"
         Title="PatientType" Height="450" Width="612">
-    <Grid Background="{DynamicResource PrimaryHueDarkBrush}">
+    <Grid Background="{DynamicResource PrimaryHueMidBrush}" Opacity="0.92">
         <Grid.RowDefinitions>
             <RowDefinition Height="35*"/>
             <RowDefinition Height="35*"/>

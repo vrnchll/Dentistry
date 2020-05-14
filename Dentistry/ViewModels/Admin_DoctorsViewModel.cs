@@ -202,7 +202,7 @@ namespace Dentistry.ViewModels
                    }));
             }
         }
-
+      
         //private RelayCommands searchCommand;
         //public RelayCommands SearchCommand
         //{
@@ -212,31 +212,31 @@ namespace Dentistry.ViewModels
         //        {
         //            using (ProjectContext db = new ProjectContext())
         //            {
-                       
+
         //                IQueryable<Doctor> queryable = db.Doctors.Where(p => p.IsArchived == false);
-                       
+
         //                if (!string.IsNullOrWhiteSpace(FirstNames.ToString()))
         //                {
-                            
+
         //                    queryable = queryable.Where(p => p.FirstName.Contains(FirstNames.ToString().Trim()));
         //                }
-                    
+
         //                if (!string.IsNullOrWhiteSpace(LastNames.ToString()))
         //                {
-                          
+
         //                    queryable = queryable.Where(p => p.LastName.Contains(LastNames.ToString().Trim()));
         //                }
-                       
+
         //                if (!string.IsNullOrWhiteSpace(DateOfBirthd.ToString()))
         //                {
-                           
+
         //                    int year = Convert.ToInt32(DateOfBirthd.ToString());
         //                    queryable = queryable.Where(p => p.DateOfBirth.Year == year);
         //                }
-                       
+
         //                if (!string.IsNullOrWhiteSpace(Experiences.ToString()))
         //                {
-                          
+
         //                    queryable = queryable.Where(p => p.Experience.Contains(Experiences.ToString().Trim()));
         //                }
 

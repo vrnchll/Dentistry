@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry.Views"
         mc:Ignorable="d"
-        Title="AdminMainWindow" Height="550" Width="900">
+        Title="AdminMainWindow" Height="550" Width="900" Icon="pack://application:,,,/Resourses/icons8-зуб-50.png">
     <Grid>
         <StackPanel Orientation="Vertical"  HorizontalAlignment="Left" Width="152">
             <StackPanel.Background>
@@ -20,8 +20,17 @@
             <Button Height="42" Content="Талоны" Command="{Binding ShowCompoun}"/>
             <Button Height="42" Content="Услуги" Command="{Binding ShowServices}"/>
         </StackPanel>
-        <Frame Margin="152,0,0,0"   Background="{DynamicResource PrimaryHueLightBrush}"
+        <Frame Margin="152,0,0,0"
                Content="{Binding CurrentPage}"
-               />
+               >
+            <Frame.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF090C0E"/>
+                    <GradientStop Color="#FF607D8B" Offset="0.737"/>
+                    <GradientStop Color="#FE141B1E"/>
+                    <GradientStop Color="#FE151C20"/>
+                </LinearGradientBrush>
+            </Frame.Background>
+        </Frame>
     </Grid>
 </Window>

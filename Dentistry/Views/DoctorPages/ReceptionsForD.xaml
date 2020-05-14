@@ -7,12 +7,16 @@
       mc:Ignorable="d"
         Title="ReceptionsForD" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="717*"/>
+            <ColumnDefinition Width="83*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="36*"/>
         </Grid.RowDefinitions>
-        <Menu Margin="0,0,0,16" Background="{DynamicResource PrimaryHueDarkBrush}">
-            <MenuItem Header="" Height="35" Width="35" Foreground="{DynamicResource PrimaryHueLightBrush}">
+        <Menu Margin="0,0,0,16" Background="#FF271D21" Opacity="0.6" Grid.ColumnSpan="2">
+            <MenuItem Header="" Height="35" Width="35">
                 <MenuItem.Background>
                     <ImageBrush ImageSource="back--v1.png"/>
                 </MenuItem.Background>
@@ -23,7 +27,7 @@
         </Menu>
         <DataGrid AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
                               ScrollViewer.IsDeferredScrollingEnabled="True" 
-                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Margin="0,35,0,0" Grid.RowSpan="2">
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Margin="0,35,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
                     <DataGridTemplateColumn.Header>

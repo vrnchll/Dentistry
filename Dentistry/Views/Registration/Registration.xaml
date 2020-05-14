@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry.Views.Registration" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Registration" Height="500" Width="612" ResizeMode="NoResize">
+        Title="Registration" Height="500" Width="612" ResizeMode="NoResize" Icon="pack://application:,,,/Resourses/icons8-зуб-50.png">
     <Grid Background="{DynamicResource PrimaryHueDarkBrush}">
         <Grid Visibility="{Binding Visible}" >
             <Grid.ColumnDefinitions>

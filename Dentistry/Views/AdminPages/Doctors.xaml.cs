@@ -38,5 +38,43 @@ namespace Dentistry.Views
             DataContext = admincontext;
             DoctorsList.ItemsSource = Admin_DoctorsViewModel.Doctors;
         }
+        private RelayCommands _openSearch;
+        public RelayCommands OpenSearch
+        {
+            get
+            {
+                return _openSearch ??
+                    (_openSearch = new RelayCommands((selectedItem) =>
+                    {
+                        CloseSerachPanel.Visibility = Visibility.Visible;
+                        OpenSerachPanel.Visibility = Visibility.Collapsed;
+                    }));
+            }
+        }
+        private RelayCommands _closeSearch;
+        public RelayCommands CloseSearch
+        {
+            get
+            {
+                return _closeSearch ??
+                    (_closeSearch = new RelayCommands((selectedItem) =>
+                    {
+                        OpenSerachPanel.Visibility = Visibility.Visible;
+                        CloseSerachPanel.Visibility = Visibility.Collapsed;
+                    }));
+            }
+        }
+
+        private void OpenSerachPanel_Click(object sender, RoutedEventArgs e)
+        {
+            CloseSerachPanel.Visibility = Visibility.Visible;
+            OpenSerachPanel.Visibility = Visibility.Collapsed;
+        }
+
+        private void CloseSerachPanel_Click(object sender, RoutedEventArgs e)
+        {
+            OpenSerachPanel.Visibility = Visibility.Visible;
+            CloseSerachPanel.Visibility = Visibility.Collapsed;
+        }
     }
 }

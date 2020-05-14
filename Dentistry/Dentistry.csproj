@@ -348,6 +348,12 @@
   <ItemGroup>
     <Resource Include="Views\AdminPages\back--v1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\icons8-зуб-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\cute-strong-and-happy-tooth-png_234079.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -8,24 +8,24 @@
       d:DesignHeight="450" d:DesignWidth="900"
       Title="DoctorsForP" ScrollViewer.HorizontalScrollBarVisibility="Visible">
 
-    <Grid Background="{DynamicResource PrimaryHueMidBrush}" >
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <DataGrid  x:Name="DoctorsList" ScrollViewer.CanContentScroll="True"         
                               ScrollViewer.IsDeferredScrollingEnabled="True" 
-                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Grid.Row="0" AutoGenerateColumns="False" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Doctors}">
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Grid.Row="0" AutoGenerateColumns="False" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="Black" RowHeight="60" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Doctors}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Имя" Binding="{Binding Path=FirstName}" />
-                <DataGridTextColumn Header="Отчество" Binding="{Binding Path=MiddleName}"/>
-                <DataGridTextColumn Header="Фамилия" Binding="{Binding Path=LastName}"/>
+                <DataGridTextColumn FontSize="14" FontFamily="Tahoma" Header="Имя" Binding="{Binding Path=FirstName}" />
+                <DataGridTextColumn FontSize="14" FontFamily="Tahoma" Header="Отчество" Binding="{Binding Path=MiddleName}"/>
+                <DataGridTextColumn FontSize="14" FontFamily="Tahoma" Header="Фамилия" Binding="{Binding Path=LastName}"/>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="Birth">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="Дата рождения" />
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Path=DateOfBurth, StringFormat='dd MMM yyyy' }"  />
+                            <TextBlock FontSize="14" FontFamily="Tahoma" Text="{Binding Path=DateOfBurth, StringFormat='dd MMM yyyy' }"  />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
@@ -34,11 +34,11 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                <DataGridComboBoxColumn Header="Пол" SelectedValueBinding="{Binding Path=Gender}"></DataGridComboBoxColumn>
-                <DataGridTextColumn Header="Должность" Binding="{Binding Path=Position}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Стаж работы" Binding="{Binding Path=Experience}"/>
-                <DataGridTextColumn Header="Кабинет" Binding="{Binding Path=Cabinet}"/>
-                <DataGridTextColumn Header="Номер телефона" Binding="{Binding Path=NumberOfPhone}"/>
+                <DataGridComboBoxColumn  Header="Пол" SelectedValueBinding="{Binding Path=Gender}"></DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Должность" Binding="{Binding Path=Position}" FontSize="14" FontFamily="Tahoma"></DataGridTextColumn>
+                <DataGridTextColumn Header="Стаж работы" Binding="{Binding Path=Experience}" FontSize="14" FontFamily="Tahoma"/>
+                <DataGridTextColumn Header="Кабинет" Binding="{Binding Path=Cabinet}" FontSize="14" FontFamily="Tahoma"/>
+                <DataGridTextColumn Header="Номер телефона" Binding="{Binding Path=NumberOfPhone}" FontSize="14" FontFamily="Tahoma"/>
                
             </DataGrid.Columns>
         </DataGrid>

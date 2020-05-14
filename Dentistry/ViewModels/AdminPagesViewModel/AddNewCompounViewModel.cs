@@ -52,15 +52,7 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                 OnPropertyChanged("LastNameDoctor");
             }
         }
-        public string _Service;
-        public string Service
-        {
-            get => _Service; set
-            {
-                _Service = value;
-                OnPropertyChanged("Service");
-            }
-        }
+      
         public AddNewCompounViewModel()
         {
             LastNamePatients = new List<string>();

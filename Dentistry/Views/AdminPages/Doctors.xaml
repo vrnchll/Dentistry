@@ -5,14 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Doctors" Height="450" Width="900">
+        Title="Doctors" Height="450" Width="850">
+    <Page.Resources>
+        <Storyboard x:Key="Open">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"  Storyboard.TargetName="GridSearchPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="400"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Close">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"  Storyboard.TargetName="GridSearchPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="400"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="OpenSerachPanel">
+            <BeginStoryboard Storyboard="{StaticResource Open}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="CloseSerachPanel">
+            <BeginStoryboard Storyboard="{StaticResource Close}"/>
+        </EventTrigger>
+    </Page.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="57*"/>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="355*"/>
         </Grid.RowDefinitions>
-        <Menu Background="{DynamicResource PrimaryHueDarkBrush}" Margin="0,0,0,22">
+        <Menu Background="{DynamicResource PrimaryHueDarkBrush}" Margin="0,0,108,22">
             <MenuItem Header="" Height="35" Width="35" Foreground="{DynamicResource PrimaryHueLightBrush}">
                 <MenuItem.Background>
                     <ImageBrush ImageSource="back--v1.png"/>
@@ -24,7 +46,7 @@
         </Menu>
         <DataGrid AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
                               ScrollViewer.IsDeferredScrollingEnabled="True" 
-                              ScrollViewer.HorizontalScrollBarVisibility="Visible" x:Name="DoctorsList" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Margin="0,35,470,0" Grid.RowSpan="3" ItemsSource="{Binding Doctors}" SelectedItem="{Binding SelectedDoctor}">
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" x:Name="DoctorsList" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Margin="0,35,168,0" Grid.RowSpan="3" ItemsSource="{Binding Doctors}" SelectedItem="{Binding SelectedDoctor}">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Имя" Binding="{Binding Path= FirstName}"/>
@@ -55,16 +77,24 @@
                 <DataGridTextColumn Header="Email" Binding="{Binding User.Email}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Grid Margin="430,35,0,0" Grid.RowSpan="3" Background="{DynamicResource PrimaryHueLightBrush}">
-            <StackPanel Orientation="Horizontal" Margin="104,35,191,352" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="-0.161,0.5" Width="175">
+        <Grid Width="60" Margin="0,35,108,0" HorizontalAlignment="Right" x:Name="GridSearchPanel" Grid.RowSpan="3" Background="{DynamicResource PrimaryHueLightBrush}">
+            <Grid Margin="0,0,0,352">
+                <Button x:Name="CloseSerachPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Hidden" Command="{Binding CloseSearch}"  Click="CloseSerachPanel_Click" RenderTransformOrigin="0.583,6.317">
+                    <materialDesign:PackIcon Kind="ArrowRight" Foreground="{DynamicResource PrimaryHueDarkBrush}" Height="30" Width="30"/>
+                </Button>
+                <Button x:Name="OpenSerachPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding OpenSearch}" Click="OpenSerachPanel_Click">
+                    <materialDesign:PackIcon Kind="Search" Foreground="{DynamicResource PrimaryHueDarkBrush}" Height="30" Width="30"/>
+                </Button>
+            </Grid>
+            <StackPanel Orientation="Horizontal" Margin="102,44,68,335" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="-0.161,0.5" Width="177" Height="36">
                 <materialDesign:PackIcon Kind="Search" Foreground="{DynamicResource MaterialDesignDarkBackground}" FontSize="20" Height="28" Width="40"/>
-                <TextBlock Text="Поиск" FontSize="16" Height="19" FontFamily="Yu Gothic UI Semibold" Foreground="{DynamicResource MaterialDesignDarkBackground}"/>
+                <TextBlock Text="Поиск" FontSize="20" FontFamily="Yu Gothic UI Semibold" Foreground="{DynamicResource MaterialDesignDarkBackground}" Width="105"/>
             </StackPanel>
-            <TextBox x:Name="NameFirst" Text="{Binding FirstNames}" Margin="0,143,132,236" materialDesign:HintAssist.Hint=" Имя" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>
-            <TextBox x:Name="NameLast" Text="{Binding LastNames}" Margin="0,102,132,277" materialDesign:HintAssist.Hint=" Фамилия" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" />
-            <TextBox x:Name="ExperienceOfWork" Text="{Binding Experiences}" Margin="0,184,132,200" materialDesign:HintAssist.Hint=" Стаж" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>
-            <TextBox x:Name="DateOfBirth" Text="{Binding DateOfBirthd}" Margin="0,220,132,156" materialDesign:HintAssist.Hint=" Дата Рождения" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>
-            <Button x:Name="search" Command="{Binding SearchCommand}" Content="Найти" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="61,264,204,119"/>
+            <TextBox x:Name="NameFirst" Text="{Binding FirstNames}" Margin="61,143,24,236" materialDesign:HintAssist.Hint=" Имя" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>
+            <TextBox x:Name="NameLast" Text="{Binding LastNames}" Margin="61,102,24,277" materialDesign:HintAssist.Hint=" Фамилия" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" />
+            <TextBox x:Name="ExperienceOfWork" Text="{Binding Experiences}" Margin="61,184,24,200" materialDesign:HintAssist.Hint=" Стаж" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>
+            <TextBox x:Name="DateOfBirth" Text="{Binding DateOfBirthd}" Margin="61,220,24,156" materialDesign:HintAssist.Hint=" Дата Рождения" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"/>
+            <Button x:Name="search" Command="{Binding SearchCommand}" Content="Найти" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="151,279,114,104"/>
         </Grid>
     </Grid>
 </Page>
