@@ -187,7 +187,27 @@ namespace Dentistry.ViewModels
                 OnPropertyChanged("SelectedDoctor");
             }
         }
-       
+        private RelayCommands _EditCommand;
+        public RelayCommands EditCommand
+        {
+            get
+            {
+                return _EditCommand ??
+                    (_EditCommand = new RelayCommands((selectedItem) =>
+                    {
+                        if (SelectedDoctor != null)
+                        {
+                            AddNewDoctor addNewDoctor = new AddNewDoctor(SelectedDoctor);
+                            addNewDoctor.Show();
+                            OnPropertyChanged("Edit");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Вы не выбрали элемент!");
+                        }
+                    }));
+            }
+        }
         private RelayCommands _removeCommand;
         public RelayCommands RemoveCommand
         {
@@ -203,6 +223,12 @@ namespace Dentistry.ViewModels
                        Doctor doctor = selectedDoctor as Doctor;
                        Doctors.Remove(doctor);
                        unitOfWork.Doctors.Delete(doctor.Id);
+                       var compouns = unitOfWork.Compouns.GetAll();
+                       foreach(var compoun in compouns)
+                       {
+                           if (compoun.PatientId == doctor.Id)
+                               unitOfWork.Compouns.Delete(compoun.Id);
+                       }
                        unitOfWork.Users.Delete(doctor.Id);
                        unitOfWork.Save();
                        OnPropertyChanged("Remove");

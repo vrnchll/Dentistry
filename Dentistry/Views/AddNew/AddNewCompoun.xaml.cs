@@ -1,4 +1,5 @@
-﻿using Dentistry.Services;
+﻿using Dentistry.Models;
+using Dentistry.Services;
 using Dentistry.ViewModels.AdminPagesViewModel;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,9 @@ namespace Dentistry.Views
     /// </summary>
     public partial class AddNewCompoun : Window
     {
-        public AddNewCompoun()
+        public AddNewCompoun(Compoun compoun=null)
         {
-            DataContext = new AddNewCompounViewModel();
+            DataContext = new AddNewCompounViewModel(compoun);
             UnitOfWork unitOfWork = new UnitOfWork();
             var patients = unitOfWork.Patients.GetAll().ToList();
             var doctors = unitOfWork.Doctors.GetAll().ToList();

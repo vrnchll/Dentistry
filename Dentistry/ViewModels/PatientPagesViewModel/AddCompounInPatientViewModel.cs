@@ -17,8 +17,12 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
         public static List<string> LastNamePatients = new List<string>();
         public static List<string> LastNameDoctors = new List<string>();
         public static List<string> Services = new List<string>();
-        private string _Date;
-        public string Date
+        public AddCompounInPatientViewModel()
+        {
+            Date = DateTime.Today;
+        }
+        private DateTime _Date;
+        public DateTime Date
         {
             get => _Date; set
             {
@@ -29,9 +33,9 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
         private string _Time;
         public string Time
         {
-            get => _Date; set
+            get => _Time; set
             {
-                _Date = value;
+                _Time = value;
                 OnPropertyChanged("Time");
             }
         }
@@ -70,13 +74,13 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
                    var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.LastName == LastNamePatient);
                    Compoun compoun = new Compoun()
                    {
-                       DateOfReception = Date,
+                       DateOfReception = Date.ToString("dd MMMM yyyy"),
                        TimeOfReception = Time,
                        DoctorId = doctor.Id,
                        PatientId = patient.Id
 
                    };
-
+                   PatientProfileViewModel.Compouns.Add(compoun);
                    unitOfWork.Compouns.Create(compoun);
                    unitOfWork.Save();
                    MessageBox.Show("Ваш талон заказан!");

@@ -87,6 +87,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\202005140758051_InitialCreate.cs" />
+    <Compile Include="Migrations\202005140758051_InitialCreate.designer.cs">
+      <DependentUpon>202005140758051_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005180900300_status-compoun.cs" />
+    <Compile Include="Migrations\202005180900300_status-compoun.designer.cs">
+      <DependentUpon>202005180900300_status-compoun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\CompounRepository.cs" />
     <Compile Include="Repositories\DoctorRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
@@ -323,6 +332,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202005140758051_InitialCreate.resx">
+      <DependentUpon>202005140758051_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005180900300_status-compoun.resx">
+      <DependentUpon>202005180900300_status-compoun.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

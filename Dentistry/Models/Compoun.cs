@@ -15,7 +15,7 @@ namespace Dentistry.Models
         //[Required(ErrorMessage = "Не выбрано время")]
         public string TimeOfReception { get; set; }
 
-
+        public bool Status { get; set; }
        
    
 

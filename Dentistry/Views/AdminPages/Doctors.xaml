@@ -41,7 +41,7 @@
                 </MenuItem.Background>
             </MenuItem>
             <MenuItem Header="Добавить нового доктора" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}" Height="39"/>
-            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39"/>
+            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39"  Command="{Binding EditCommand}"/>
             <MenuItem  Command="{Binding RemoveCommand}" Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39"/>
         </Menu>
         <DataGrid AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         

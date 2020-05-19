@@ -1,4 +1,5 @@
-﻿using Dentistry.ViewModels;
+﻿using Dentistry.Models;
+using Dentistry.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;

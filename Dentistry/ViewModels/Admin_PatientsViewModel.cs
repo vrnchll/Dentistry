@@ -189,7 +189,7 @@ namespace Dentistry.ViewModels
                 OnPropertyChanged("SelectedPatient");
             }
         }
-
+        
         private RelayCommands _removeCommand;
         public RelayCommands RemoveCommand
         {
@@ -204,14 +204,40 @@ namespace Dentistry.ViewModels
 
                         Patient patient = selectedPatient as Patient;
                         Patients.Remove(patient);
-                        unitOfWork.Doctors.Delete(patient.Id);
+                        unitOfWork.Patients.Delete(patient.Id);
+                        var compouns = unitOfWork.Compouns.GetAll();
+                        foreach (var compoun in compouns)
+                        {
+                            if (compoun.PatientId == patient.Id)
+                                unitOfWork.Compouns.Delete(compoun.Id);
+                        }
                         unitOfWork.Users.Delete(patient.Id);
                         unitOfWork.Save();
                         OnPropertyChanged("Remove");
                     }));
             }
         }
-
+        private RelayCommands _EditCommand;
+        public RelayCommands EditCommand
+        {
+            get
+            {
+                return _EditCommand ??
+                    (_EditCommand = new RelayCommands((selectedItem) =>
+                    {
+                        if (SelectedPatient != null)
+                        {
+                            AddNewPatient addNewPatient = new AddNewPatient(SelectedPatient);
+                            addNewPatient.Show(); 
+                            OnPropertyChanged("Edit");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Вы не выбрали элемент!");
+                        }
+                    }));
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged; // отслеживать изменения нашего поля сразу(binding)
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {

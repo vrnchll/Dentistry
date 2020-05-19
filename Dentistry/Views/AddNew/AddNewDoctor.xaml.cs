@@ -1,4 +1,5 @@
-﻿using Dentistry.ViewModels;
+﻿using Dentistry.Models;
+using Dentistry.ViewModels;
 using Dentistry.ViewModels.AdminPagesViewModel;
 using System;
 using System.Collections.Generic;
@@ -21,10 +22,10 @@ namespace Dentistry.Views
     /// </summary>
     public partial class AddNewDoctor : Window
     {
-        public AddNewDoctor()
+        public AddNewDoctor(Doctor doctor = null)
         {
             InitializeComponent();
-            DataContext = new DoctorViewModel();
+            DataContext = new DoctorViewModel(doctor);
         }
     }
 }

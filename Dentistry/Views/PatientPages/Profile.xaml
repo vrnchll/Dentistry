@@ -37,14 +37,41 @@
         <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="7" Grid.Column="0" Content="Адрес" FontFamily="Tahoma" />
         <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="9" Grid.Column="0" Content="Имя пользователя" FontFamily="Tahoma"/>
         <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="9" Content="История заказов" FontFamily="Tahoma"  Margin="0,42,0,0"/>
-        <DataGrid Grid.Row="9" Background="{DynamicResource PrimaryHueLightBrush}" Grid.ColumnSpan="2" Margin="0,70,0,0">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Дата заказа" Width="140"></DataGridTextColumn>
-                <DataGridTextColumn Header="Услуга" Width="200"></DataGridTextColumn>
-                <DataGridTextColumn Header="Врач" Width="100"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Grid Grid.Row="9" Grid.ColumnSpan="2" Margin="0,70,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="131*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="cancel" Grid.Row="0" Content="Отменить заказ" Margin="0,-10,490,0" Height="Auto" Command="{ Binding CancelOrder}"/>
+            <DataGrid Grid.Row="1" x:Name="CompounsList" AutoGenerateColumns="False" SelectedItem="{Binding SelectedCompoun}" ItemsSource="{Binding Compouns}"  Background="{DynamicResource PrimaryHueLightBrush}">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Text="Дата приема"/>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path = DateOfReception, StringFormat='dd MMM yyy'}"  />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfRec">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Text="Время"/>
+                        </DataGridTemplateColumn.Header>
 
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path = TimeOfReception}"  />
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Врач" Width="100"  Binding="{Binding Doctor.LastName}"></DataGridTextColumn>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
         <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="1" Grid.Column="1" x:Name="First" Content="{x:Static local:PatientProfileViewModel.FirstName}" FontFamily="Tahoma"/>
         <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="2" Grid.Column="1" x:Name="Middle" Content="{x:Static local:PatientProfileViewModel.MiddleName}" FontFamily="Tahoma"/>
         <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="3" Grid.Column="1" x:Name="Last" Content="{x:Static local:PatientProfileViewModel.LastName}"  FontFamily="Tahoma"/>

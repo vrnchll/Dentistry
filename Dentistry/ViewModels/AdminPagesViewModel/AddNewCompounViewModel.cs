@@ -16,8 +16,8 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
         public static List<string> LastNamePatients = new List<string>();
         public static List<string> LastNameDoctors = new List<string>();
       
-        private string _Date;
-        public string Date
+        private DateTime _Date;
+        public DateTime Date
         {
             get => _Date; set
             {
@@ -57,9 +57,22 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
         {
             LastNamePatients = new List<string>();
             LastNameDoctors = new List<string>();
-          
+            Date = DateTime.Today;
       
         }
+        public readonly Compoun _compoun;
+        public AddNewCompounViewModel(Compoun compoun = null)
+        {
+            if (compoun != null)
+            {
+                Date = DateTime.Parse(compoun.DateOfReception);
+                Time = compoun.TimeOfReception;
+                LastNameDoctor = compoun.Doctor.LastName;
+                LastNamePatient = compoun.Patient.LastName;
+            }
+            _compoun = compoun;
+        }
+
         private RelayCommands _add;
         public RelayCommands Add
         {
@@ -71,22 +84,38 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                {
                    
                    UnitOfWork unitOfWork = new UnitOfWork();
-               
                    var doctor = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.LastName == LastNameDoctor);
                    var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.LastName == LastNamePatient);
-                   Compoun compoun = new Compoun()
+                   var compouns = unitOfWork.Compouns.GetAll().Where(x => x.PatientId == patient.Id && x.DoctorId == doctor.Id);
+                   if (compouns!=null)
                    {
-                       DateOfReception = Date,
-                       TimeOfReception = Time,
-                       DoctorId = doctor.Id,
-                       PatientId = patient.Id
+                       Compoun compoun = new Compoun()
+                       {
+                           DateOfReception = Date.ToString("dd MMMM yyyy"),
+                           TimeOfReception = Time,
+                           DoctorId = doctor.Id,
+                           PatientId = patient.Id
 
-                   };
-                  
-                   unitOfWork.Compouns.Create(compoun);
-                   unitOfWork.Save();
-                   Admin_CompounsViewModel.Compouns.Add(compoun);
-                   App.AddNewCompoun.Visibility = Visibility.Hidden;
+                       };
+                       Account.EditInformationCompoun(compoun,_compoun);
+                       if (App.AddNewCompoun != null) App.AddNewCompoun.Visibility = Visibility.Hidden;
+                   }
+                   else 
+                   {
+                       Compoun compoun = new Compoun()
+                       {
+                           DateOfReception = Date.ToString("dd MMMM yyyy"),
+                           TimeOfReception = Time,
+                           DoctorId = doctor.Id,
+                           PatientId = patient.Id
+
+                       };
+
+                       unitOfWork.Compouns.Create(compoun);
+                       unitOfWork.Save();
+                       Admin_CompounsViewModel.Compouns.Add(compoun);
+                       App.AddNewCompoun.Visibility = Visibility.Hidden;
+                   }
                }));
             }
         }

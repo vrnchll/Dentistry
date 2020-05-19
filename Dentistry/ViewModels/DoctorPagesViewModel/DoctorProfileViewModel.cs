@@ -92,7 +92,7 @@ namespace Dentistry.ViewModels.DoctorPagesViewModel
                 _Change ?? (
                _Change = new RelayCommands(obj =>
                {
-                   if (NewPassword == NewConfirmPassword)
+                   if (NewPassword.ToString() == NewConfirmPassword.ToString())
                    {
                        Account.ChangeInformation(NewLogin, NewPassword);
                        ChangePanel = Visibility.Hidden;

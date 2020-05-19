@@ -25,7 +25,7 @@ namespace Dentistry.Views
         {
             InitializeComponent();
             DataContext = new Admin_CompounsViewModel();
-            CompounsList.ItemsSource = Admin_CompounsViewModel.Compouns;
+          
             UnitOfWork unitOfWork = new UnitOfWork();
             var compouns = unitOfWork.Compouns.GetAll().ToList();
             foreach (var compoun in compouns)

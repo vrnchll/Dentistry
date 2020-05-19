@@ -1,4 +1,5 @@
-﻿using Dentistry.Models;
+﻿using Dentistry.Context;
+using Dentistry.Models;
 using Dentistry.ViewModels;
 using Dentistry.ViewModels.DoctorPagesViewModel;
 using Dentistry.ViewModels.PatientPagesViewModel;
@@ -6,7 +7,11 @@ using Dentistry.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Core.Mapping;
+using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
+using System.Data.SqlTypes;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -157,7 +162,7 @@ namespace Dentistry.Services
             }
         }
 
-        public static void ChangeInformation(string NewUserName, string NewPassword)
+        public static void ChangeInformation(string NewPassword, string NewUserName)
         {
             String tmp = Encrypt(NewPassword,NewUserName);
             _instance.Password = tmp;
@@ -166,6 +171,99 @@ namespace Dentistry.Services
             unitOfWork.Users.Update(_instance);
             unitOfWork.Save();
         }
+        public static void EditInformationPatient (Patient patient, User user,Patient SelectedItem, string password)
+        {
+            if(user.Password!=password)
+            {
+                String tmp = Encrypt(user.Password, user.UserName);
+                user.Password = tmp;
+            }
+           
+            var resultsUser = new List<ValidationResult>();
+            var contextUser = new ValidationContext(user);
+            var resultsPerson = new List<ValidationResult>();
+            var contextPerson = new ValidationContext(patient);            if (!Validator.TryValidateObject(user, contextUser, resultsUser, true) || !Validator.TryValidateObject(patient, contextPerson, resultsPerson, true))
+            {
+                foreach (var error in resultsUser)
+                {
+                    MessageBox.Show(error.ErrorMessage);
+                }
+                foreach (var error in resultsPerson)
+                {
+                    MessageBox.Show(error.ErrorMessage);
+                }
+            } 
+            else
+            {
+                
+                UnitOfWork unitOfWork = new UnitOfWork();
+            
+                unitOfWork.Patients.Update(patient);
+             
+                unitOfWork.Users.Update(user);
+                unitOfWork.Save();
+                var item = Admin_PatientsViewModel.Patients.FirstOrDefault(x => x.Id == patient.Id);
+                
+                Admin_PatientsViewModel.Patients[Admin_PatientsViewModel.Patients.IndexOf(SelectedItem)] = patient;
+           
+
+            }
+        }
+        public static void EditInformationDoctor(Doctor doctor, User user, Doctor SelectedItem, string password)
+        {
+            if (user.Password != password)
+            {
+                String tmp = Encrypt(user.Password, user.UserName);
+                user.Password = tmp;
+            }
+
+            var resultsUser = new List<ValidationResult>();
+            var contextUser = new ValidationContext(user);
+            var resultsPerson = new List<ValidationResult>();
+            var contextPerson = new ValidationContext(doctor); if (!Validator.TryValidateObject(user, contextUser, resultsUser, true) || !Validator.TryValidateObject(doctor, contextPerson, resultsPerson, true))
+            {
+                foreach (var error in resultsUser)
+                {
+                    MessageBox.Show(error.ErrorMessage);
+                }
+                foreach (var error in resultsPerson)
+                {
+                    MessageBox.Show(error.ErrorMessage);
+                }
+            }
+            else
+            {
+
+                UnitOfWork unitOfWork = new UnitOfWork();
+
+                unitOfWork.Doctors.Update(doctor);
+
+                unitOfWork.Users.Update(user);
+                unitOfWork.Save();
+                var item = Admin_DoctorsViewModel.Doctors.FirstOrDefault(x => x.Id == doctor.Id);
+
+                Admin_DoctorsViewModel.Doctors[Admin_DoctorsViewModel.Doctors.IndexOf(SelectedItem)] = doctor;
+
+
+            }
+        }
+        public static void EditInformationCompoun(Compoun compoun, Compoun SelectedItem)
+        {
+           
+                UnitOfWork unitOfWork = new UnitOfWork();
+             
+                unitOfWork.Compouns.Update(compoun);
+              
+               
+                unitOfWork.Save();
+                var item = Admin_CompounsViewModel.Compouns.FirstOrDefault(x => x.Id == compoun.Id);
+
+                Admin_CompounsViewModel.Compouns[Admin_CompounsViewModel.Compouns.IndexOf(SelectedItem)] = compoun;
+
+
+            
+        }
+
         public static void ProfileDoctorInfo()
         {
             DoctorProfileViewModel.FirstName = _instance.DoctorProfile.FirstName;

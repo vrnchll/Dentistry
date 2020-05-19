@@ -142,6 +142,26 @@ namespace Dentistry.ViewModels
                 OnPropertyChanged("Email");
             }
         }
+        public readonly Patient _patient;
+        public PatientViewModel(Patient patient=null)
+        {
+            if (patient != null) { 
+            FirstName = patient.FirstName;
+            LastName = patient.LastName;
+            MiddleName = patient.MiddleName;
+            DateOfBirth = patient.DateOfBirth;
+            City = patient.City;
+            Street = patient.Street;
+            House = patient.House;
+            Flat = patient.Flat;
+            Email = patient.User.Email;
+            NumberOfPhone = patient.NumberOfPhone;
+            Login = patient.User.UserName;
+           
+            }
+            _patient = patient;
+        }
+      
         private RelayCommands registrationCommand;
         public RelayCommands RegistrationCommand
         {
@@ -150,17 +170,32 @@ namespace Dentistry.ViewModels
                 return registrationCommand ??
                 (registrationCommand = new RelayCommands(obj =>
                 {
-                    if (Password == ConfirmPassword)
+                    UnitOfWork unitOfWork = new UnitOfWork();
+                    var users = unitOfWork.Users.GetAll().FirstOrDefault(x => x.UserName == Login);
+                    if (users != null)
                     {
-                        User user = new User() { UserName = Login, Password = Password, Email = Email, TypeUser = "Patient" };
-                        Patient person = new Patient() {Id = user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Мужской" : "Женский", City = City, Street = Street, House = House, Flat = Flat, NumberOfPhone = NumberOfPhone };
-                        user.PatientProfile = person;
-                        Account.RegistrationPatient(user,person);
-                        if(App.AddNewPatient != null) App.AddNewPatient.Visibility = Visibility.Hidden;
+                       
+                            User user = new User() { Id = users.Id, UserName = Login, Password = Password==null?users.Password:Password, Email = Email, TypeUser = "Patient" };
+                            Patient person = new Patient() { Id = users.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Мужской" : "Женский", City = City, Street = Street, House = House, Flat = Flat, NumberOfPhone = NumberOfPhone };
+                            user.PatientProfile = person;
+                            Account.EditInformationPatient(person, user, _patient, users.Password);
+                            if (App.AddNewPatient != null) App.AddNewPatient.Visibility = Visibility.Hidden;
+                        
                     }
                     else
                     {
-                        MessageBox.Show("Пароли не совпадают, повторите попытку");
+                        if (Password == ConfirmPassword)
+                        {
+                            User user = new User() { UserName = Login, Password = Password, Email = Email, TypeUser = "Patient" };
+                            Patient person = new Patient() { Id = user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Мужской" : "Женский", City = City, Street = Street, House = House, Flat = Flat, NumberOfPhone = NumberOfPhone };
+                            user.PatientProfile = person;
+                            Account.RegistrationPatient(user, person);
+                            if (App.AddNewPatient != null) App.AddNewPatient.Visibility = Visibility.Hidden;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Пароли не совпадают, повторите попытку");
+                        }
                     }
                     
                 }));

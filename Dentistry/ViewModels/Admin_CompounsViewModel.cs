@@ -17,32 +17,10 @@ namespace Dentistry.ViewModels
     public class Admin_CompounsViewModel : INotifyPropertyChanged
     {
         public static BindingList<Compoun> Compouns;
-
-        private string _Date;
-        public string Date
+        static Admin_CompounsViewModel()
         {
-            get => _Date; set
-            {
-                _Date = value;
-                OnPropertyChanged("Date");
-            }
-        }
-        private string _Time;
-        public string Time
-        {
-            get => _Time; set
-            {
-                _Time = value;
-                OnPropertyChanged("Time");
-            }
-        }
-        public Admin_CompounsViewModel()
-
-            {
             Compouns = new BindingList<Compoun>();
-            }
-
-
+        }
         private string _date;
         public string DateOfReception
         {
@@ -50,6 +28,17 @@ namespace Dentistry.ViewModels
             {
                 _date = value;
                 OnPropertyChanged("DateOfReception");
+            }
+        }
+
+        private bool _status;
+        public bool Status
+        {
+            get => _status;
+            set
+            {
+                _status = value;
+                OnPropertyChanged("Status");
             }
         }
 
@@ -106,7 +95,27 @@ namespace Dentistry.ViewModels
                 OnPropertyChanged("SelectedCompoun");
             }
         }
-
+        private RelayCommands _EditCommand;
+        public RelayCommands EditCommand
+        {
+            get
+            {
+                return _EditCommand ??
+                    (_EditCommand = new RelayCommands((selectedItem) =>
+                    {
+                        if (SelectedCompoun != null)
+                        {
+                            AddNewCompoun addNewCompoun = new AddNewCompoun(SelectedCompoun);
+                            addNewCompoun.Show();
+                            OnPropertyChanged("Edit");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Вы не выбрали элемент!");
+                        }
+                    }));
+            }
+        }
         private RelayCommands _removeCommand;
         public RelayCommands RemoveCommand
         {

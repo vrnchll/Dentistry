@@ -40,15 +40,16 @@
                 </MenuItem.Background>
             </MenuItem>
             <MenuItem Header="Добавить нового пациента" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}" Height="30"/>
-            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="36"/>
+            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="36"  Command="{Binding EditCommand}"/>
             <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="30" Command="{Binding RemoveCommand}"/>
         </Menu>
         <DataGrid AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
                               ScrollViewer.IsDeferredScrollingEnabled="True" 
+                  IsReadOnly="True"
                               ScrollViewer.HorizontalScrollBarVisibility="Visible" Margin="0,36,127,0" x:Name="PatientsList" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueLightBrush}"  RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectedPatient}" Opacity="0.8">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Имя" Binding="{Binding Path= FirstName}"/>
+                <DataGridTextColumn  Header="Имя" Binding="{Binding Path= FirstName}"/>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Path= MiddleName}"/>
                 <DataGridTextColumn Header="Отчество" Binding="{Binding Path= LastName}"/>
                 <DataGridTemplateColumn  IsReadOnly="False" x:Name="Birth">

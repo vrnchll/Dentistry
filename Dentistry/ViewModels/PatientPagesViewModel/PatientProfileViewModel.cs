@@ -1,4 +1,5 @@
-﻿using Dentistry.Services;
+﻿using Dentistry.Models;
+using Dentistry.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,42 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
 {
     public class PatientProfileViewModel : INotifyPropertyChanged
     {
+        public static BindingList<Compoun> Compouns;
+        static PatientProfileViewModel()
+        {
+            Compouns = new BindingList<Compoun>();
+        }
+        private string _date;
+        public string DateOfReception
+        {
+            get => _date; set
+            {
+                _date = value;
+                OnPropertyChanged("DateOfReception");
+            }
+        }
+
+        private bool _status;
+        public bool Status
+        {
+            get => _status;
+            set
+            {
+                _status = value;
+                OnPropertyChanged("Status");
+            }
+        }
+
+        private string _time;
+        public string TimeOfReception
+        {
+            get => _time; set
+            {
+                _time = value;
+                OnPropertyChanged("TimeOfReception");
+            }
+        }
+
         public static string FirstName;
         public static string MiddleName;
         public static string LastName;
@@ -90,15 +127,51 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
                 _Change ?? (
                _Change = new RelayCommands(obj =>
                {
-                   if (NewPassword == NewConfirmPassword)
+                   if (NewPassword.ToString() == NewConfirmPassword.ToString())
                    {
-                       Account.ChangeInformation(NewLogin, NewPassword);
+                       Account.ChangeInformation(NewPassword, NewLogin);
                        ChangePanel = Visibility.Hidden;
                    }
                    else
                    {
                        MessageBox.Show("Пароли не совпадают!");
                    }
+               }));
+            }
+
+        }
+        private Compoun selectedCompoun;
+        public Compoun SelectedCompoun
+        {
+            get
+            {
+                return selectedCompoun;
+            }
+            set
+            {
+                selectedCompoun = value;
+                OnPropertyChanged("SelectedCompoun");
+            }
+        }
+
+        private RelayCommands _cancelOrder;
+        public RelayCommands CancelOrder
+        {
+            get
+            {
+                return
+                _cancelOrder ?? (
+               _cancelOrder = new RelayCommands(obj =>
+               {
+                   UnitOfWork unitOfWork = new UnitOfWork();
+                   MessageBoxResult result = MessageBox.Show("Вы действительно желаете отменить заказ?", "Отмена", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                   if (selectedCompoun == null || result == MessageBoxResult.No) return;
+
+                   Compoun compoun = selectedCompoun as Compoun;
+                   Compouns.Remove(compoun);
+                   unitOfWork.Compouns.Delete(compoun.Id);
+                   unitOfWork.Save();
+                   OnPropertyChanged("Cancel");
                }));
             }
 

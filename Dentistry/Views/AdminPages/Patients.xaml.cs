@@ -36,34 +36,8 @@ namespace Dentistry.Views
             InitializeComponent();
             DataContext = admincontext;
             PatientsList.ItemsSource = Admin_PatientsViewModel.Patients;
-
+           
         }
-        //private RelayCommands _openSearch;
-        //public RelayCommands OpenSearch
-        //{
-        //    get
-        //    {
-        //        return _openSearch ??
-        //            (_openSearch = new RelayCommands((selectedItem) =>
-        //            {
-        //                CloseSerachPanel.Visibility = Visibility.Visible;
-        //                OpenSerachPanel.Visibility = Visibility.Collapsed;
-        //            }));
-        //    }
-        //}
-        //private RelayCommands _closeSearch;
-        //public RelayCommands CloseSearch
-        //{
-        //    get
-        //    {
-        //        return _closeSearch ??
-        //            (_closeSearch = new RelayCommands((selectedItem) =>
-        //            {
-        //                OpenSerachPanel.Visibility = Visibility.Visible;
-        //                CloseSerachPanel.Visibility = Visibility.Collapsed;
-        //            }));
-        //    }
-        //}
 
         private void OpenSerachPanel_Click(object sender, RoutedEventArgs e)
         {

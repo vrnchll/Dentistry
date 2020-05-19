@@ -3,6 +3,7 @@ using Dentistry.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +44,7 @@ namespace Dentistry.Repositories
 
         public void Update(Service service)
         {
-            db.Entry(service).State = EntityState.Modified;
+            db.Services.AddOrUpdate(service);
         }
     }
 }

@@ -10,7 +10,7 @@
     <Grid>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Compouns}" x:Name="CompounsList" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="Black" RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Opacity="0.8">
             <DataGrid.Columns>
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
+                <DataGridTemplateColumn  IsReadOnly="True" x:Name="EndDate">
                 <DataGridTemplateColumn.Header>
                     <TextBlock Text="Дата приема"/>
                 </DataGridTemplateColumn.Header>
@@ -22,19 +22,32 @@
 
 
             </DataGridTemplateColumn>
-            <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfRec">
+            <DataGridTemplateColumn  IsReadOnly="True" x:Name="TimeOfRec">
                 <DataGridTemplateColumn.Header>
                     <TextBlock Text="Время"/>
                 </DataGridTemplateColumn.Header>
 
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path = TimeOfReception}"  />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn IsReadOnly="True" Header="Пациент" Binding="{Binding Path=Patient.LastName}"/>
+                
+                <DataGridTemplateColumn  IsReadOnly="False" x:Name="Status">
+                <DataGridTemplateColumn.Header>
+                    <TextBlock Text="Выполнено"/>
+                </DataGridTemplateColumn.Header>
+
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Path = TimeOfReception}"  />
+                        <CheckBox IsChecked="{Binding Path = Status}" Command="{Binding StatusChange}"  />
                     </DataTemplate>
 
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Пациент" Binding="{Binding Path=Patient.LastName}"/>
+              
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

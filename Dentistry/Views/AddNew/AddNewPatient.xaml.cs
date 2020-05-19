@@ -1,4 +1,6 @@
-﻿using Dentistry.ViewModels;
+﻿using Dentistry.Models;
+using Dentistry.ViewModels;
+using Dentistry.ViewModels.AdminPagesViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,11 +23,13 @@ namespace Dentistry.Views
     /// </summary>
     public partial class AddNewPatient : Window
     {
-        public AddNewPatient()
+        public AddNewPatient(Patient patient=null)
         {
+            
             InitializeComponent();
             CityNames.ItemsSource = GetCities();
-            DataContext = new PatientViewModel();
+            DataContext = new PatientViewModel(patient);
+
         }
         public List<string> GetCities()
         {

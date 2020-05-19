@@ -1,4 +1,5 @@
-﻿using Dentistry.Views.Registration;
+﻿using Dentistry.Models;
+using Dentistry.Views.Registration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
