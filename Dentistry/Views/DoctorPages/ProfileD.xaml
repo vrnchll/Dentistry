@@ -6,7 +6,7 @@
      
       xmlns:local="clr-namespace:Dentistry.ViewModels.DoctorPagesViewModel" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="400" d:DesignWidth="800"
+      d:DesignHeight="400" d:DesignWidth="800" Height="auto" Width="auto"
       Title="ProfileD">
 
     <Grid Background="{DynamicResource PrimaryHueLightBrush}" Opacity="0.9">
@@ -53,12 +53,12 @@
         <Label Grid.Row="7" Foreground="#FF182725" Grid.Column="1" x:Name="Position" Content="{x:Static local:DoctorProfileViewModel.Position}" FontFamily="Tahoma"/>
         <Label Grid.Row="8" Foreground="#FF182725" Grid.Column="1" x:Name="Ex" Content="{x:Static local:DoctorProfileViewModel.Experience}" FontFamily="Tahoma"/>
         <Label Grid.Row="9" Foreground="#FF182725" Grid.Column="1" x:Name="Cab" Content="{x:Static local:DoctorProfileViewModel.Cabinet}" FontFamily="Tahoma"/>
-        <Button Content="Изменить" Grid.Column="0" Grid.Row="11" Margin="6,27.27,10,34.73" Height="Auto" Command="{Binding ShowChangingGrid}"/>
+        <Button Content="Изменить" Grid.Column="0" Grid.Row="11" Margin="6,27.5,10,30.5"  HorizontalContentAlignment="Center" Height="37" Command="{Binding ShowChangingGrid}"/>
         <Grid Visibility="{Binding ChangePanel}" x:Name="Change"  Grid.Row="11" Grid.Column="1" HorizontalAlignment="Right" Margin="0,1.5,0,-0.5" Width="596">
-            <TextBox Background="{DynamicResource PrimaryHueDarkBrush}" x:Name="LoginChange" Text="{Binding NewLogin}" Margin="234,-4,86,63" />
-            <TextBox materialDesign:HintAssist.Hint=" Новый пароль" Background="{DynamicResource PrimaryHueDarkBrush}" x:Name="PasswordChange" Text="{Binding NewPassword}" Margin="234,31,86,35" />
-            <TextBox materialDesign:HintAssist.Hint=" Подтверждение пароля" Background="{DynamicResource PrimaryHueDarkBrush}" x:Name="PasswordConfirmChange" Text="{Binding NewConfirmPassword}" Margin="234,59,86,6" />
-            <Button Command="{Binding Change}" Margin="510,32,0,35"  Content="Сохранить" FontSize="10" Height="Auto"/>
+            <TextBox Background="{DynamicResource PrimaryHueDarkBrush}" Height="30" x:Name="LoginChange" Text="{Binding NewLogin}" Margin="234,-4,86,63" />
+            <TextBox materialDesign:HintAssist.Hint=" Новый пароль" Height="30" Background="{DynamicResource PrimaryHueDarkBrush}" x:Name="PasswordChange" Text="{Binding NewPassword}" Margin="234,31,86,35" />
+            <TextBox materialDesign:HintAssist.Hint=" Подтверждение пароля" Height="30" Background="{DynamicResource PrimaryHueDarkBrush}" x:Name="PasswordConfirmChange" Text="{Binding NewConfirmPassword}" Margin="234,59,86,6" />
+            <Button Command="{Binding Change}" Margin="510,32,0,35" Height="30"  Content="Сохранить" FontSize="10" />
         </Grid>
     </Grid>
 </Page>

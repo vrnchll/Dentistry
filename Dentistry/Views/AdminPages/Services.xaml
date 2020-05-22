@@ -5,23 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Services" Height="480" Width="800">
+        Title="Services" Height="auto" Width="auto">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="23*"/>
-            <RowDefinition Height="396*"/>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="300*"/>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0" Margin="0,0,0,452" Grid.RowSpan="2" Background="#FF2C2828">
+        <Menu Grid.Row="0" Background="#FF2C2828" Margin="0,0,-710,0">
             <MenuItem Header="" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="25" Width="33">
                 <MenuItem.Background>
                     <ImageBrush ImageSource="back--v1.png"/>
                 </MenuItem.Background>
             </MenuItem>
             <MenuItem Header="Добавить новую услугу" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}" Height="27"/>
-            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="27"/>
+            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="27"  Command="{Binding EditCommand}"/>
             <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="26" Command="{Binding RemoveCommand}"/>
+
         </Menu>
-        <DataGrid Margin="0,2,0,0" Grid.Row="1" x:Name="ServiceList" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0" Margin="0,0,-710,0" Width="274">
+            <TextBox Background="White" Text="{Binding Search}" Width="169"/>
+            <Button Command="{Binding SearchCommand}">
+                <materialDesign:PackIcon Kind="Search" Foreground="White"/>
+            </Button>
+            <Button Command="{Binding Clear}">
+                <materialDesign:PackIcon Kind="Clear" Foreground="White"/>
+            </Button>
+        </StackPanel>
+        <DataGrid Margin="0,0,-710,27" Grid.Row="1" x:Name="ServiceList" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
                               ScrollViewer.IsDeferredScrollingEnabled="True" 
                               ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService}" Opacity="0.8">
             <DataGrid.Columns>

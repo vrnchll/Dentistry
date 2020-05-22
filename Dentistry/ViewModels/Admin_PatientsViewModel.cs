@@ -176,6 +176,81 @@ namespace Dentistry.ViewModels
             }
 
         }
+
+        //Search
+
+        private string _FirstNames;
+        public string FirstNames
+        {
+            get
+            {
+                return _FirstNames;
+            }
+            set
+            {
+                _FirstNames = value;
+                OnPropertyChanged("FirstNames");
+            }
+        }
+        private string _LastNames;
+        public string LastNames
+        {
+            get
+            {
+                return _LastNames;
+            }
+            set
+            {
+                _LastNames = value;
+                OnPropertyChanged("LastNames");
+            }
+        }
+        private string _Number;
+        public string Number
+        {
+            get
+            {
+                return _Number;
+            }
+            set
+            {
+                _Number = value;
+                OnPropertyChanged("Number");
+            }
+        }
+        private string _DateOfBirthd;
+        public string DateOfBirthd
+        {
+            get
+            {
+                return _DateOfBirthd;
+            }
+            set
+            {
+                _DateOfBirthd = value;
+                OnPropertyChanged("DateOfBirthd");
+            }
+        }
+
+
+        private RelayCommands _SearchCommand;
+        public RelayCommands SearchCommand
+        {
+            get
+            {
+                return
+                _SearchCommand ?? (
+               _SearchCommand = new RelayCommands(obj =>
+               {
+                   Search.SearchPatients(FirstNames,LastNames,NumberOfPhone,DateOfBirthd);
+               }));
+            }
+
+        }
+
+        //------------------------------
+
+
         private Patient selectedPatient;
         public Patient SelectedPatient
         {

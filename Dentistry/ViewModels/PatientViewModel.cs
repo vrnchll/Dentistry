@@ -1,6 +1,7 @@
 ﻿using Dentistry.Models;
 using Dentistry.Services;
 using Dentistry.Views;
+using Dentistry.Views.Registration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -161,7 +162,22 @@ namespace Dentistry.ViewModels
             }
             _patient = patient;
         }
-      
+        private RelayCommands _ReturnBack;
+        public RelayCommands ReturnBack
+        {
+            get
+            {
+                return
+                _ReturnBack ?? (
+               _ReturnBack = new RelayCommands(obj =>
+               {
+                   App.RegistrationWindow = new Registration();
+                   App.RegistrationWindow.Show();
+                   App.Current.MainWindow.Close();
+               }));
+            }
+
+        }
         private RelayCommands registrationCommand;
         public RelayCommands RegistrationCommand
         {

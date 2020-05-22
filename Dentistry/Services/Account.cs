@@ -263,6 +263,17 @@ namespace Dentistry.Services
 
             
         }
+        public static void EditInformationService(Service service, Service SelectedItem)
+        {
+
+            UnitOfWork unitOfWork = new UnitOfWork();
+            unitOfWork.Services.Update(service);
+            unitOfWork.Save();
+            var item = Admin_ServicesViewModel.Services.FirstOrDefault(x => x.Id == service.Id);
+            Admin_ServicesViewModel.Services[Admin_ServicesViewModel.Services.IndexOf(SelectedItem)] = service;
+
+
+        }
 
         public static void ProfileDoctorInfo()
         {

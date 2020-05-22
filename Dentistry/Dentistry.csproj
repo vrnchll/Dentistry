@@ -104,6 +104,7 @@
     <Compile Include="Repositories\ServicesRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Services\Account.cs" />
+    <Compile Include="Services\Search.cs" />
     <Compile Include="Services\UnitOfWork.cs" />
     <Compile Include="ViewModels\AdminPagesViewModel\AddNewCompounViewModel.cs" />
     <Compile Include="ViewModels\AdminPagesViewModel\AddNewReceptionViewModel.cs" />

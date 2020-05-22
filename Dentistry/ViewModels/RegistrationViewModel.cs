@@ -1,4 +1,5 @@
 ﻿using Dentistry.Models;
+using Dentistry.Views;
 using Dentistry.Views.Registration;
 using System;
 using System.Collections.Generic;
@@ -69,7 +70,22 @@ namespace Dentistry.ViewModels
             }
             
         }
+        private RelayCommands _ReturnBack;
+        public RelayCommands ReturnBack
+        {
+            get
+            {
+                return
+                _ReturnBack ?? (
+               _ReturnBack = new RelayCommands(obj =>
+               {
+                   App.AuthorizationWindow = new Authorization();
+                   App.AuthorizationWindow.Show();
+                   App.RegistrationWindow.Close();
+               }));
+            }
 
+        }
         public Page GetPage()
         {
          

@@ -23,6 +23,9 @@
             <RowDefinition Height="35*"/>
             <RowDefinition Height="35*"/>
         </Grid.RowDefinitions>
+        <Button Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,6,33,6" VerticalAlignment="Top" HorizontalAlignment="Right" Command="{Binding ReturnBack}">
+            <materialDesign:PackIcon Kind="ArrowBack" Foreground="#FF333333" FontSize="20" Height="22" Width="36"/>
+        </Button>
         <Button x:Name="SignUpButt"  Content="Зарегистрироваться" Grid.Row="11" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Background="{DynamicResource MaterialDesignDarkBackground}"  HorizontalAlignment="Center" Width="168" Command="{Binding RegistrationCommand}" Margin="196,0,248,5"/>
 
         <TextBox x:Name="FN" Text="{Binding FirstName}" materialDesign:HintAssist.Hint=" Имя" Background="{DynamicResource PrimaryHueMidBrush}"  FontSize="16" Grid.Row="0" Margin="10,0,427,0" />

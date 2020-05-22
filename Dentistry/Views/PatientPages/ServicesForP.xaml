@@ -5,11 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Dentistry.Views.PatientPages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="800" Width="auto" Height="auto"
       Title="ServicesForP">
 
     <Grid>
-        <DataGrid x:Name="ServicesList" AutoGenerateColumns="False" Margin="0,2,0,0" Grid.Row="1" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="Black"  RowHeight="60" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Services}" Opacity="0.9">
+        <DataGrid x:Name="ServicesList" HorizontalScrollBarVisibility="Visible" AutoGenerateColumns="False" Margin="0,2,0,0" Grid.Row="1" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="Black"  RowHeight="60" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Services}" Opacity="0.9">
             <DataGrid.Columns >
                 <DataGridTextColumn Header="Название услуги" Width="200" FontSize="14" FontFamily="Tahoma" Binding="{Binding Path=Name}"/>
                 <DataGridTextColumn FontSize="14" FontFamily="Tahoma" Header="Цена" Binding="{Binding Path=Cost}"/>

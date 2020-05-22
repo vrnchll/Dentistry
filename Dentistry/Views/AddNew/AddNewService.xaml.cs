@@ -1,4 +1,5 @@
-﻿using Dentistry.Services;
+﻿using Dentistry.Models;
+using Dentistry.Services;
 using Dentistry.ViewModels.AdminPagesViewModel;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace Dentistry.Views
     /// </summary>
     public partial class AddNewService : Window
     {
-        public AddNewService()
+        public AddNewService(Service service = null)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
             var doctors = unitOfWork.Doctors.GetAll().ToList();
@@ -32,7 +33,7 @@ namespace Dentistry.Views
                 doctorsName.Add(i.LastName);
             }
             docList.ItemsSource = doctorsName;
-            DataContext = new AddNewServiceViewModel();
+            DataContext = new AddNewServiceViewModel(service);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Dentistry.ViewModels
         public Admin_ServicesViewModel()
         {
             Services = new BindingList<Service>();
-       
+
         }
         private string _Name;
         public string Name
@@ -40,8 +40,8 @@ namespace Dentistry.ViewModels
                 OnPropertyChanged("Cost");
             }
         }
-        
-        
+
+
         private RelayCommands _Add;
         public RelayCommands Add
         {
@@ -92,6 +92,57 @@ namespace Dentistry.ViewModels
                     }));
             }
         }
+        private RelayCommands _EditCommand;
+        public RelayCommands EditCommand
+        {
+            get
+            {
+                return _EditCommand ??
+                    (_EditCommand = new RelayCommands((selectedItem) =>
+                    {
+                        if (SelectedService != null)
+                        {
+
+                            App.AddNewService = new AddNewService(SelectedService);
+                            App.AddNewService.Show();
+                            OnPropertyChanged("Edit");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Вы не выбрали элемент!");
+                        }
+                    }));
+            }
+        }
+        private string _Search;
+        public string Search
+        {
+            get
+            {
+                return _Search;
+            }
+            set
+            {
+                _Search = value;
+                OnPropertyChanged("SelectedService");
+            }
+        }
+        //private RelayCommands _SearchCommand;
+        //public RelayCommands SearchCommand
+        //{
+        //    get
+        //    {
+        //        return
+        //        _SearchCommand ?? (
+        //       _SearchCommand = new RelayCommands(obj =>
+        //       {
+        //           UnitOfWork unitOfWork = new UnitOfWork();
+
+        //           Search.SearchServices(Search);
+        //       }));
+        //    }
+
+        //}
         public event PropertyChangedEventHandler PropertyChanged; // отслеживать изменения нашего поля сразу(binding)
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {

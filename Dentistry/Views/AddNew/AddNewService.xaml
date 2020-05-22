@@ -8,14 +8,20 @@
         Title="AddNewService" Height="356" Width="500">
     <Grid Background="{DynamicResource PrimaryHueLightBrush }">
         <Grid.RowDefinitions>
-            <RowDefinition Height="35*"/>
-            <RowDefinition Height="59*"/>
-            <RowDefinition Height="114*"/>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="131*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Добавление новой услуги"  Foreground="#FF303030"  FontFamily="Bodoni MT Black" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Row="1" Margin="153,0,167,41" FontSize="14" Background="#FF303030" Foreground="{DynamicResource PrimaryHueLightBrush}"  Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name}" materialDesign:HintAssist.Hint=" Наименование услуги" Opacity="0.8"/>
-        <TextBox Grid.Row="1" Margin="153,75,167,144"  FontSize="14" Background="#FF303030" Foreground="{DynamicResource PrimaryHueLightBrush}" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Text="{Binding Cost}" materialDesign:HintAssist.Hint=" Стоимость" Grid.RowSpan="2" Opacity="0.8"/>
-        <ComboBox Grid.Row="2" Margin="153,58,167,91" Background="#FF303030" Foreground="{DynamicResource PrimaryHueLightBrush}"  FontSize="14" SelectedValue="{Binding SelectedItem}" materialDesign:HintAssist.Hint=" Врач" x:Name="docList" Height="29" Opacity="0.8"/>
-        <Button Content="Добавить" Grid.Row="2" Margin="183,110,203,36" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Command="{Binding add}" Background="{DynamicResource MaterialDesignDarkBackground}" Opacity="0.9"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0"  Grid.Row="0" Content="Добавление новой услуги"  Foreground="#FF303030"  FontFamily="Bodoni MT Black" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Column="0" Grid.Row="1"  FontSize="14" Background="#FF303030" Foreground="{DynamicResource PrimaryHueLightBrush}"  Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name}" materialDesign:HintAssist.Hint=" Наименование услуги" Opacity="0.8" HorizontalAlignment="Center" Width="164" />
+        <TextBox Grid.Column="0" Grid.Row="3"  FontSize="14" Background="#FF303030" Foreground="{DynamicResource PrimaryHueLightBrush}" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Text="{Binding Cost}" materialDesign:HintAssist.Hint=" Стоимость" Opacity="0.8" HorizontalAlignment="Center" Width="164" />
+        <ComboBox Grid.Column="0" Grid.Row="4" Background="#FF303030" Foreground="{DynamicResource PrimaryHueLightBrush}"  FontSize="14" SelectedValue="{Binding SelectedItem}" materialDesign:HintAssist.Hint=" Врач" x:Name="docList" HorizontalAlignment="Center" Opacity="0.8"  Width="164" />
+        <Button Grid.Column="0" Content="Добавить" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Command="{Binding add}" Background="{DynamicResource MaterialDesignDarkBackground}" Opacity="0.9"/>
     </Grid>
 </Window>

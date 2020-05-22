@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:t="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d"
-        Title="Receptions" Height="480" Width="800">
+        Title="Receptions" Height="auto" Width="auto">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>

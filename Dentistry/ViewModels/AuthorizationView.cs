@@ -58,9 +58,11 @@ namespace Dentistry.ViewModels
                 return signUpCommand ??
                   (signUpCommand = new RelayCommands(obj =>
                   {
+                     
                     App.RegistrationWindow = new Registration();
                       App.RegistrationWindow.Show();
-                      App.Current.MainWindow.Visibility = Visibility.Hidden;
+                      App.Current.MainWindow.Close();
+                     
 
                   }));
             }

@@ -27,6 +27,9 @@
                 <materialDesign:PackIcon Kind="PageNext" Foreground="Black" FontSize="40" VerticalAlignment="Center" RenderTransformOrigin="-1,0.812" >
                 </materialDesign:PackIcon>
             </Button>
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,6,33,6" VerticalAlignment="Top" HorizontalAlignment="Left" Command="{Binding ReturnBack}">
+                <materialDesign:PackIcon Kind="ArrowBack" Foreground="#FF333333" FontSize="20" Height="22" Width="36"/>
+            </Button>
         </Grid>
         <Frame x:Name="frame" 
             Content="{Binding CurrentPage}"

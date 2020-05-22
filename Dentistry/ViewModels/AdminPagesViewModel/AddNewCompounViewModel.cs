@@ -110,7 +110,6 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                            PatientId = patient.Id
 
                        };
-
                        unitOfWork.Compouns.Create(compoun);
                        unitOfWork.Save();
                        Admin_CompounsViewModel.Compouns.Add(compoun);

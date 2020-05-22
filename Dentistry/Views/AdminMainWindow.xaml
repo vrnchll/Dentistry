@@ -13,7 +13,7 @@
             <Button Height="42" Content="Посещения" Command="{Binding ShowReceptions}" Background="#FF2E2A2A"/>
             <Button Height="42" Content="Талоны" Command="{Binding ShowCompoun}" Background="#FF2E2A2A"/>
             <Button Height="42" Content="Услуги" Command="{Binding ShowServices}" Background="#FF2E2A2A"/>
-            <Button Margin="0 250" HorizontalAlignment="Right" Command="{Binding Exit}" Background="{DynamicResource MaterialDesignDarkBackground}" Height="31" BorderBrush="{x:Null}">
+            <Button Margin="0 250" HorizontalAlignment="Right" VerticalAlignment="Stretch" Command="{Binding Exit}" Background="{DynamicResource MaterialDesignDarkBackground}" Height="31" BorderBrush="{x:Null}">
                 <materialDesign:PackIcon Kind="ExitRun" Height="22" Width="20"/>
             </Button>
         </StackPanel>

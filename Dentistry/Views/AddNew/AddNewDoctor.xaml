@@ -59,11 +59,11 @@
             <ComboBoxItem>203</ComboBoxItem>
             <ComboBoxItem>205</ComboBoxItem>
         </ComboBox>
-        <Label Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Пользователь" Style="{DynamicResource Heading}" FontFamily="Bodoni MT Black" FontSize="16" Foreground="#FF454545"  Width="182" Margin="212,6,134,6"/>
+        <Label Grid.Row="11" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Пользователь" Style="{DynamicResource Heading}" FontFamily="Bodoni MT Black" FontSize="16" Foreground="#FF454545"/>
         <TextBox x:Name="Login2" Grid.Row="12" Text="{Binding Login}"  FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Имя пользователя" Margin="89,0,51,0"/>
         <TextBox x:Name="Password2" Grid.Row="13" Text="{Binding Password}"  FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Пароль" Margin="89,0,51,0"/>
         <TextBox x:Name="ConfPass2" Grid.Row="14"  Text="{Binding ConfirmPassword}"    FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Подтверждение пароля" Margin="89,0,51,0"/>
         <TextBox x:Name="Email2" Grid.Row="15" Text="{Binding Email}"   FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Email" Margin="89,0,51,0"/>
-        <Button Content="Add" Command="{Binding RegistrationCommand}" Grid.Row="16" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Background="{DynamicResource MaterialDesignDarkBackground}" Margin="212,0,160,4" Height="Auto" />
+        <Button Content="Add" Command="{Binding RegistrationCommand}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="16" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Background="{DynamicResource MaterialDesignDarkBackground}" Width="100" Height="Auto" />
     </Grid>
 </Window>
