@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Dentistry.Services;
+using Dentistry.ViewModels;
+using Dentistry.ViewModels.DoctorPagesViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +25,18 @@ namespace Dentistry.Views
         public ReceptionsForD()
         {
             InitializeComponent();
+            DataContext = new ReceptionsForDViewModel();
+            UnitOfWork unitOfWork = new UnitOfWork();
+            var receptions = unitOfWork.Receptions.GetAll().Where(x => x.DoctorId == Account.GetInstance().Id).ToList();
+            foreach (var rec in receptions)
+            {
+                var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.Id == rec.PatientId);
+                rec.Patient = patient;
+                var service = unitOfWork.Services.GetAll().FirstOrDefault(x => x.Id == rec.ServiceId);
+                rec.Service = service;
+                ReceptionsForDViewModel.Receptions.Add(rec);
+            }
+            ReceptionList.ItemsSource = ReceptionsForDViewModel.Receptions;
         }
     }
 }

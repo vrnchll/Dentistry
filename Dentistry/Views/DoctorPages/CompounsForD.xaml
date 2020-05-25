@@ -8,24 +8,31 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CompounsForD" Height="auto" Width="auto">
     <Grid>
-        <DataGrid AutoGenerateColumns="False" HorizontalScrollBarVisibility="Visible" ItemsSource="{Binding Compouns}" x:Name="CompounsList" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="Black" RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Opacity="0.8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="103*"/>
+        </Grid.RowDefinitions>
+        <Menu Background="#FF2C2828" Grid.Row="0" VerticalAlignment="Top" Height="48">
+            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding EditCommand}"/>
+        </Menu>
+        <DataGrid AutoGenerateColumns="False" HorizontalScrollBarVisibility="Visible" ItemsSource="{Binding Compouns}" x:Name="CompounsList" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="Black" RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Opacity="0.8" Margin="0,48,0,0" Grid.RowSpan="2"  SelectedItem="{Binding SelectedCompoun}">
             <DataGrid.Columns>
                 <DataGridTemplateColumn  IsReadOnly="True" x:Name="EndDate">
-                <DataGridTemplateColumn.Header>
-                    <TextBlock Text="Дата приема"/>
-                </DataGridTemplateColumn.Header>
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Path = DateOfReception, StringFormat='dd MMM yyy'}"  />
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock Text="Дата приема"/>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path = DateOfReception, StringFormat='dd MMM yyy'}"  />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
 
 
-            </DataGridTemplateColumn>
-            <DataGridTemplateColumn  IsReadOnly="True" x:Name="TimeOfRec">
-                <DataGridTemplateColumn.Header>
-                    <TextBlock Text="Время"/>
-                </DataGridTemplateColumn.Header>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn  IsReadOnly="True" x:Name="TimeOfRec">
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock Text="Время"/>
+                    </DataGridTemplateColumn.Header>
 
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -34,20 +41,9 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn IsReadOnly="True" Header="Пациент" Binding="{Binding Path=Patient.LastName}"/>
-                
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="Status">
-                <DataGridTemplateColumn.Header>
-                    <TextBlock Text="Выполнено"/>
-                </DataGridTemplateColumn.Header>
 
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <CheckBox IsChecked="{Binding Path = Status}" Command="{Binding StatusChange}"  />
-                    </DataTemplate>
+                <DataGridTextColumn  IsReadOnly="True" Header="Статус" x:Name="Status" Binding="{Binding Status}"/>
 
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
-              
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

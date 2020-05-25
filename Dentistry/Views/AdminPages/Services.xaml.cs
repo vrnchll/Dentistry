@@ -29,7 +29,7 @@ namespace Dentistry.Views
 
             foreach (var service in unitOfWork.Services.Include())
             {
-
+              
                 foreach (var person in service.Doctors.ToList())
                 {
                     service.Doctors.Add(person);

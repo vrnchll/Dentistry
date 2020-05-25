@@ -189,7 +189,6 @@ D:\Dentistry\Dentistry\obj\Debug\Dentistry.csproj.CopyComplete
 D:\Dentistry\Dentistry\obj\Debug\Dentistry.exe
 D:\Dentistry\Dentistry\obj\Debug\Dentistry.pdb
 D:\Dentistry\Dentistry\obj\Debug\GeneratedInternalTypeHelper.g.cs
-D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\bin\Debug\MaterialDesignColors.dll
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\bin\Debug\MaterialDesignThemes.Wpf.dll
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\bin\Debug\MaterialDesignColors.pdb
@@ -305,3 +304,7 @@ A:\Dentistry\Dentistry\obj\Debug\Dentistry.exe
 A:\Dentistry\Dentistry\obj\Debug\Dentistry.pdb
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.InitialCreate.resources
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.statuscompoun.resources
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.AddStatusMigration.resources
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.AddIsOrderMigration.resources
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.AddReceptionMigration.resources
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.ValidationPatient.resources

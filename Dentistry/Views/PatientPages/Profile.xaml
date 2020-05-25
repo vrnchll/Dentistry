@@ -45,7 +45,7 @@
             <Button x:Name="cancel" Grid.Row="0" Content="Отменить заказ" Margin="0,-10,490,0" Height="Auto" Command="{ Binding CancelOrder}"/>
             <DataGrid Grid.Row="1" x:Name="CompounsList" AutoGenerateColumns="False" SelectedItem="{Binding SelectedCompoun}" ItemsSource="{Binding Compouns}"  Background="{DynamicResource PrimaryHueLightBrush}">
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
+                    <DataGridTemplateColumn  IsReadOnly="True" x:Name="EndDate">
                         <DataGridTemplateColumn.Header>
                             <TextBlock Text="Дата приема"/>
                         </DataGridTemplateColumn.Header>
@@ -55,7 +55,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfRec">
+                    <DataGridTemplateColumn  IsReadOnly="True" x:Name="TimeOfRec">
                         <DataGridTemplateColumn.Header>
                             <TextBlock Text="Время"/>
                         </DataGridTemplateColumn.Header>
@@ -67,7 +67,8 @@
 
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Врач" Width="100"  Binding="{Binding Doctor.LastName}"></DataGridTextColumn>
+                    <DataGridTextColumn IsReadOnly="True" Header="Врач" Width="100"  Binding="{Binding Doctor.LastName}"></DataGridTextColumn>
+                    <DataGridTextColumn  IsReadOnly="True" Header="Статус" x:Name="Status" Binding="{Binding Status}"/>
                 </DataGrid.Columns>
 
             </DataGrid>
@@ -83,12 +84,14 @@
         <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="7" Grid.Column="1" x:Name="House" Content="{x:Static local:PatientProfileViewModel.House}" FontFamily="Tahoma" Margin="0,32,394,0"/>
         <Label Foreground="{StaticResource PrimaryHueLightBrush}" Grid.Row="7" Grid.Column="1" x:Name="Flat" Content="{x:Static local:PatientProfileViewModel.Flat}" FontFamily="Tahoma" Margin="207,32,0,0"/>
 
-        <Button Content="Изменить" VerticalContentAlignment="Top" Grid.Column="1" Grid.Row="9" Margin="0,0,330,161"  Height="70" Command="{Binding ShowChangingGrid}"/>
+        <Button VerticalContentAlignment="Top" Grid.Row="7" Margin="0,32,71,0"  Height="30" Command="{Binding ShowChangingGrid}" VerticalAlignment="Top" Background="#FF64D6CC">
+            <materialDesign:PackIcon Kind="Edit" Height="27" Width="22" Foreground="Black" ></materialDesign:PackIcon>
+        </Button>
         <Grid HorizontalAlignment="Right"  Visibility="{Binding ChangePanel}" x:Name="Change"  Grid.Column="1" Margin="262,37,-54,1" Grid.Row="7" Grid.RowSpan="3">
-            <TextBox Background="{DynamicResource PrimaryHueDarkBrush}" Width="300" Height="50" x:Name="LoginChange" Text="{Binding NewLogin}" Margin="0,0,0,162" />
+            <TextBox materialDesign:HintAssist.Hint=" Имя пользователя" Background="{DynamicResource PrimaryHueDarkBrush}" Width="300" Height="50" x:Name="LoginChange" Text="{Binding NewLogin}" Margin="0,0,0,162" />
             <TextBox materialDesign:HintAssist.Hint=" Новый пароль" Width="300"  Height="50" Background="{DynamicResource PrimaryHueDarkBrush}" x:Name="PasswordChange" Text="{Binding NewPassword}" Margin="0,58,0,96"  />
             <TextBox materialDesign:HintAssist.Hint=" Подтверждение пароля" Width="300"  Height="50" Background="{DynamicResource PrimaryHueDarkBrush}" x:Name="PasswordConfirmChange" Text="{Binding NewConfirmPassword}" Margin="0,124,0,26" />
-            <Button Command="{Binding Change}"   Content="Сохранить" FontSize="10" Width="100"  Height="50" Margin="51,174,83,10"/>
+            <Button Command="{Binding Change}"   Content="Сохранить" FontSize="10" Width="100"  Height="50" Margin="51,174,83,10" Background="#FF272424"/>
         </Grid>
     </Grid>
 </Page>

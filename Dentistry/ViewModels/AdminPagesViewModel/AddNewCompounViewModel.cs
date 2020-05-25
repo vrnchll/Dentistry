@@ -15,12 +15,21 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
     {
         public static List<string> LastNamePatients = new List<string>();
         public static List<string> LastNameDoctors = new List<string>();
-      
+
+
+        public Compoun CurrentCompoun; 
         private DateTime _Date;
         public DateTime Date
         {
-            get => _Date; set
+            get {
+                if (_Date == DateTime.MinValue)
+                    return DateTime.Today;
+
+                return _Date; }  
+            set
             {
+           
+    
                 _Date = value;
                 OnPropertyChanged("Date");
             }
@@ -52,27 +61,42 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                 OnPropertyChanged("LastNameDoctor");
             }
         }
-      
-        public AddNewCompounViewModel()
+        public string _Status;
+        public string Status
         {
-            LastNamePatients = new List<string>();
-            LastNameDoctors = new List<string>();
-            Date = DateTime.Today;
-      
+            get => _Status; set
+            {
+                _Status = value;
+                OnPropertyChanged("Status");
+            }
         }
+
         public readonly Compoun _compoun;
         public AddNewCompounViewModel(Compoun compoun = null)
         {
+            LastNamePatients = new List<string>();
+            LastNameDoctors = new List<string>();
             if (compoun != null)
             {
+                CurrentCompoun = compoun;
                 Date = DateTime.Parse(compoun.DateOfReception);
                 Time = compoun.TimeOfReception;
+                Status = compoun.Status;
                 LastNameDoctor = compoun.Doctor.LastName;
                 LastNamePatient = compoun.Patient.LastName;
             }
             _compoun = compoun;
         }
-
+        private bool _ordered;
+        public bool Order
+        {
+            get { return _ordered; }
+            set
+            {
+                _ordered = value;
+                OnPropertyChanged("Order");
+            }
+        }
         private RelayCommands _add;
         public RelayCommands Add
         {
@@ -82,39 +106,56 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                 _add ?? (
                _add = new RelayCommands(obj =>
                {
-                   
+                  
                    UnitOfWork unitOfWork = new UnitOfWork();
                    var doctor = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.LastName == LastNameDoctor);
                    var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.LastName == LastNamePatient);
-                   var compouns = unitOfWork.Compouns.GetAll().Where(x => x.PatientId == patient.Id && x.DoctorId == doctor.Id);
-                   if (compouns!=null)
+                   var compouns = unitOfWork.Compouns.GetAll().ToList().FindAll(x => x.IsOrder == false);
+                   var comp = compouns.Find(x => x.IsOrder == false);
+                   if (comp != null)
                    {
-                       Compoun compoun = new Compoun()
+                       if (CurrentCompoun != null)
                        {
-                           DateOfReception = Date.ToString("dd MMMM yyyy"),
-                           TimeOfReception = Time,
-                           DoctorId = doctor.Id,
-                           PatientId = patient.Id
+                           Compoun compoun = new Compoun()
+                           {
+                               DateOfReception = Date.ToString("dd.MM.yyyy"),
+                               Status = Status,
+                               IsOrder = true,
+                               TimeOfReception = Time,
+                               DoctorId = doctor.Id,
+                               PatientId = patient.Id
 
-                       };
-                       Account.EditInformationCompoun(compoun,_compoun);
-                       if (App.AddNewCompoun != null) App.AddNewCompoun.Visibility = Visibility.Hidden;
-                   }
-                   else 
+                           };
+                           Account.EditInformationCompoun(compoun, _compoun, doctor, patient);
+                           if (App.addNewCompoun != null) App.addNewCompoun.Visibility = Visibility.Hidden;
+                       }
+                       else
+                       {
+
+                           Compoun compoun = new Compoun()
+                           {
+                               DateOfReception = Date.ToString("dd.MM.yyyy"),
+                               Status = Status,
+                               IsOrder = true,
+                               TimeOfReception = Time,
+                               DoctorId = doctor.Id,
+                               PatientId = patient.Id
+
+                           };
+                           unitOfWork.Compouns.Create(compoun);
+                           unitOfWork.Save();
+                           Admin_CompounsViewModel.Compouns.Add(compoun);
+                           if (App.addNewCompoun != null) App.addNewCompoun.Visibility = Visibility.Hidden;
+
+
+                      
+                       }
+                       }
+                   else
                    {
-                       Compoun compoun = new Compoun()
-                       {
-                           DateOfReception = Date.ToString("dd MMMM yyyy"),
-                           TimeOfReception = Time,
-                           DoctorId = doctor.Id,
-                           PatientId = patient.Id
-
-                       };
-                       unitOfWork.Compouns.Create(compoun);
-                       unitOfWork.Save();
-                       Admin_CompounsViewModel.Compouns.Add(compoun);
-                       App.AddNewCompoun.Visibility = Visibility.Hidden;
+                       MessageBox.Show("Свободных талонов на эту дату больше нет!");
                    }
+
                }));
             }
         }

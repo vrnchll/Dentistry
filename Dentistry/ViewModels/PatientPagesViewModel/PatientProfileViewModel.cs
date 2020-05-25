@@ -28,8 +28,8 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
             }
         }
 
-        private bool _status;
-        public bool Status
+        private string _status;
+        public string Status
         {
             get => _status;
             set
@@ -112,7 +112,14 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
                 _ShowChangingGrid ?? (
                _ShowChangingGrid = new RelayCommands(obj =>
                {
-                   ChangePanel = Visibility.Visible;
+                   if (ChangePanel == Visibility.Hidden)
+                   {
+                       ChangePanel = Visibility.Visible;
+                   }
+                   else
+                   {
+                       ChangePanel = Visibility.Hidden;
+                   }
 
                }));
             }
@@ -127,14 +134,21 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
                 _Change ?? (
                _Change = new RelayCommands(obj =>
                {
-                   if (NewPassword.ToString() == NewConfirmPassword.ToString())
+                   if (NewLogin != null && NewPassword != null && NewConfirmPassword != null)
                    {
-                       Account.ChangeInformation(NewPassword, NewLogin);
-                       ChangePanel = Visibility.Hidden;
+                       if (NewPassword.ToString() == NewConfirmPassword.ToString())
+                       {
+                           Account.ChangeInformation(NewPassword, NewLogin);
+                           ChangePanel = Visibility.Hidden;
+                       }
+                       else
+                       {
+                           MessageBox.Show("Пароли не совпадают!");
+                       }
                    }
                    else
                    {
-                       MessageBox.Show("Пароли не совпадают!");
+                       MessageBox.Show("Не все поля введены!");
                    }
                }));
             }
@@ -166,12 +180,18 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
                    UnitOfWork unitOfWork = new UnitOfWork();
                    MessageBoxResult result = MessageBox.Show("Вы действительно желаете отменить заказ?", "Отмена", MessageBoxButton.YesNo, MessageBoxImage.Question);
                    if (selectedCompoun == null || result == MessageBoxResult.No) return;
-
-                   Compoun compoun = selectedCompoun as Compoun;
-                   Compouns.Remove(compoun);
-                   unitOfWork.Compouns.Delete(compoun.Id);
-                   unitOfWork.Save();
-                   OnPropertyChanged("Cancel");
+                   if (SelectedCompoun.Status.Contains("Не выполнено"))
+                   {
+                       Compoun compoun = selectedCompoun as Compoun;
+                       Compouns.Remove(compoun);
+                       unitOfWork.Compouns.Delete(compoun.Id);
+                       unitOfWork.Save();
+                       OnPropertyChanged("Cancel");
+                   }
+                   else
+                   {
+                       MessageBox.Show("Вы не можете отменить данный талон!");
+                   }
                }));
             }
 

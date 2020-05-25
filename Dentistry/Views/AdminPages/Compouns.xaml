@@ -6,24 +6,41 @@
         xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:t="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d"
         Title="Compouns" Height="auto" Width="auto">
+    <Page.Resources>
+        <Storyboard x:Key="Open">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"  Storyboard.TargetName="GridSearchPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="400"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Close">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"  Storyboard.TargetName="GridSearchPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="400"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="OpenSerachPanel">
+            <BeginStoryboard Storyboard="{StaticResource Open}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="CloseSerachPanel">
+            <BeginStoryboard Storyboard="{StaticResource Close}"/>
+        </EventTrigger>
+    </Page.Triggers>
     <Grid Background="{DynamicResource Back}">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="103*"/>
         </Grid.RowDefinitions>
-        <Menu Background="#FF2C2828" Margin="0,0,0,46">
-            <MenuItem Header="" Height="33" Width="35" Foreground="{DynamicResource PrimaryHueLightBrush}">
-                <MenuItem.Background>
-                    <ImageBrush ImageSource="back--v1.png"/>
-                </MenuItem.Background>
-            </MenuItem>
-            <MenuItem Header="Добавить талон" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}" Height="32"/>
-            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="32"  Command="{Binding EditCommand}"/>
-            <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="32" Command="{Binding RemoveCommand}"/>
+        <Menu Background="#FF2C2828" Grid.Row="0" VerticalAlignment="Top" Height="48">
+            <MenuItem Header="Добавить новый талон" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}"/>
+            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding EditCommand}"/>
+            <MenuItem  Command="{Binding RemoveCommand}" Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" />
         </Menu>
-        <DataGrid Margin="0,32,0,0" AutoGenerateColumns="False" x:Name="CompounsList" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueLightBrush}"  RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16"  SelectedItem="{Binding SelectedCompoun}" Opacity="0.8">
+        <DataGrid Margin="0,49,0,0" AutoGenerateColumns="False" x:Name="CompounsList" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueLightBrush}"  RowHeight="60" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16"  SelectedItem="{Binding SelectedCompoun}" Opacity="0.8">
             <DataGrid.Columns>
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
+                <DataGridTemplateColumn  IsReadOnly="True">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="Дата приема"/>
                     </DataGridTemplateColumn.Header>
@@ -35,7 +52,7 @@
 
 
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfRec">
+                <DataGridTemplateColumn  IsReadOnly="True" x:Name="TimeOfRec">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="Время"/>
                     </DataGridTemplateColumn.Header>
@@ -47,22 +64,35 @@
 
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Пациент" Binding="{Binding Patient.LastName}"/>
-                <DataGridTextColumn Header="Врач" Binding="{Binding Doctor.LastName}"/>
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="Status">
-                    <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Выполнено"/>
-                    </DataGridTemplateColumn.Header>
+                <DataGridTextColumn IsReadOnly="True" Header="Пациент" Binding="{Binding Patient.LastName}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Врач" Binding="{Binding Doctor.LastName}"/>
+                <DataGridTextColumn  IsReadOnly="True" Header="Статус" x:Name="Status" Binding="{Binding Status}"/>
 
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <CheckBox IsChecked="{Binding Path = Status}"  />
-                        </DataTemplate>
 
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+
             </DataGrid.Columns>
         </DataGrid>
+        <Grid Width="60" HorizontalAlignment="Right" x:Name="GridSearchPanel" Grid.RowSpan="2"  Background="#FF2E2A2A" Opacity="0.9" Margin="0,0,0,-1" >
+            <Grid Margin="0,0,0,352">
+                <Button x:Name="CloseSerachPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Hidden" Command="{Binding CloseSearch}"  Click="CloseSerachPanel_Click" RenderTransformOrigin="0.583,6.317">
+                    <materialDesign:PackIcon Kind="ArrowRight" Foreground="{DynamicResource PrimaryHueDarkBrush}" Height="30" Width="30"/>
+                </Button>
+                <Button x:Name="OpenSerachPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding OpenSearch}" Click="OpenSerachPanel_Click">
+                    <materialDesign:PackIcon Kind="Search" Foreground="{DynamicResource PrimaryHueDarkBrush}" Height="30" Width="30"/>
+                </Button>
+            </Grid>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Height="47" Command="{Binding Clear}" >
+                <materialDesign:PackIcon Kind="Broom" Height="37" Width="31" />
+            </Button>
+            <StackPanel Orientation="Horizontal" Margin="102,44,68,335" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="-0.161,0.5" Width="177" Height="36">
+                <materialDesign:PackIcon Kind="Search" Foreground="{DynamicResource MaterialDesignLightBackground}" FontSize="20" Height="28" Width="40"/>
+                <TextBlock Text="Поиск" FontSize="20" FontFamily="Yu Gothic UI Semibold" Foreground="{DynamicResource MaterialDesignLightBackground}" Width="105"/>
+            </StackPanel>
+            <TextBox Text="{Binding DateOfR}" Margin="61,112,24,302" materialDesign:HintAssist.Hint=" Дата приема" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Height="31"/>
+            <TextBox Text="{Binding PatientLN}" Margin="61,148,24,266" materialDesign:HintAssist.Hint=" Фамилия пациента" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Height="31" />
+            <TextBox Text="{Binding DoctorLN}" Margin="61,184,24,230" materialDesign:HintAssist.Hint=" Фамилия врача" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Height="31"/>
+            <Button x:Name="search" Command="{Binding SearchCommand}" Content="Найти" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="146,279,118,134" Height="31"/>
+        </Grid>
     </Grid>
-    
+
 </Page>

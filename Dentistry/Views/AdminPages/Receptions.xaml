@@ -6,67 +6,99 @@
         xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:t="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d"
         Title="Receptions" Height="auto" Width="auto">
+    <Page.Resources>
+        <Storyboard x:Key="Open">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"  Storyboard.TargetName="GridSearchPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="400"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Close">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"  Storyboard.TargetName="GridSearchPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="400"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="OpenSerachPanel">
+            <BeginStoryboard Storyboard="{StaticResource Open}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="CloseSerachPanel">
+            <BeginStoryboard Storyboard="{StaticResource Close}"/>
+        </EventTrigger>
+    </Page.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="36*"/>
         </Grid.RowDefinitions>
         <Menu Margin="0,0,0,24" Background="#FF2C2828">
-            <MenuItem Header="" Height="35" Width="35" Foreground="{DynamicResource PrimaryHueLightBrush}">
-                <MenuItem.Background>
-                    <ImageBrush ImageSource="back--v1.png"/>
-                </MenuItem.Background>
-            </MenuItem>
             <MenuItem Header="Добавить новое посещение" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}" Height="39"/>
-            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39" />
+            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39" Command="{Binding EditCommand}"/>
             <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39" Command="{Binding RemoveCommand}"/>
         </Menu>
         <DataGrid AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
                               ScrollViewer.IsDeferredScrollingEnabled="True" 
-                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}"  FontFamily="Tahoma" FontSize="16" Margin="0,35,0,0" Grid.RowSpan="2" ItemsSource="{Binding Receptions}" SelectedItem="{Binding SelectedReception}" Opacity="0.8">
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" x:Name="ReceptionList" Background="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}"  FontFamily="Tahoma" FontSize="16" Margin="0,35,0,0" Grid.RowSpan="2" ItemsSource="{Binding Receptions}" SelectedItem="{Binding SelectedReception}" Opacity="0.8">
             <DataGrid.Columns>
-
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
+                <DataGridTemplateColumn  IsReadOnly="True">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="Дата приема"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Path=DateOfReception, StringFormat='dd MMM yyyy' }"  />
+                            <TextBlock Text="{Binding Path = DateOfReception, StringFormat='dd MMM yyy'}"  />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <DatePicker Name="DatePicker"  SelectedDate="{Binding Path=DateOfReception}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfBeginReception">
+                <DataGridTemplateColumn  IsReadOnly="True">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Время начала"/>
+                        <TextBlock Text="Время начала приема"/>
                     </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <t:DateTimeUpDown Value="{Binding TimeOfBeginReception}" Format="ShortTime"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfEndReception">
-                    <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Время окончания"/>
-                    </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <t:DateTimeUpDown Value="{Binding TimeOfEndReception}" Format="ShortTime" Minimum="08:00" Maximum="18:00"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
 
-                <DataGridComboBoxColumn Header="Услуга"></DataGridComboBoxColumn>
-                <DataGridTextColumn Header="Стоимость"></DataGridTextColumn>
-                <DataGridTextColumn Header="Пациент"/>
-                <DataGridTextColumn Header="Врач"/>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path = TimeOfBeginReception}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn  IsReadOnly="True">
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock Text="Время окончания приема"/>
+                    </DataGridTemplateColumn.Header>
+
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path = TimeOfEndReception}"  />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Услуга" Binding="{Binding Service.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Пациент" Binding="{Binding Patient.LastName}"/>
+                <DataGridTextColumn Header="Врач" Binding="{Binding Doctor.LastName}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Grid Width="60" HorizontalAlignment="Right" x:Name="GridSearchPanel" Grid.RowSpan="2"  Background="#FF2E2A2A" Opacity="0.9" Margin="0,0,0,-1" >
+            <Grid Margin="0,0,0,352">
+                <Button x:Name="CloseSerachPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Hidden" Command="{Binding CloseSearch}"  Click="CloseSerachPanel_Click" RenderTransformOrigin="0.583,6.317">
+                    <materialDesign:PackIcon Kind="ArrowRight" Foreground="{DynamicResource PrimaryHueDarkBrush}" Height="30" Width="30"/>
+                </Button>
+                <Button x:Name="OpenSerachPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding OpenSearch}" Click="OpenSerachPanel_Click">
+                    <materialDesign:PackIcon Kind="Search" Foreground="{DynamicResource PrimaryHueDarkBrush}" Height="30" Width="30"/>
+                </Button>
+            </Grid>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Height="47" Command="{Binding Clear}" >
+                <materialDesign:PackIcon Kind="Broom" Height="37" Width="31" />
+            </Button>
+            <StackPanel Orientation="Horizontal" Margin="102,44,68,335" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="-0.161,0.5" Width="177" Height="36">
+                <materialDesign:PackIcon Kind="Search" Foreground="{DynamicResource MaterialDesignLightBackground}" FontSize="20" Height="28" Width="40"/>
+                <TextBlock Text="Поиск" FontSize="20" FontFamily="Yu Gothic UI Semibold" Foreground="{DynamicResource MaterialDesignLightBackground}" Width="105"/>
+            </StackPanel>
+            <TextBox Text="{Binding NamesService}" Margin="61,112,24,302" materialDesign:HintAssist.Hint=" Наименование услуги" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Height="31"/>
+            <TextBox Text="{Binding PatientLN}" Margin="61,148,24,266" materialDesign:HintAssist.Hint=" Фамилия пациента" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Height="31" />
+            <TextBox Text="{Binding DoctorLN}" Margin="61,184,24,230" materialDesign:HintAssist.Hint=" Фамилия врача" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Height="31"/>
+            <Button x:Name="search" Command="{Binding SearchCommand}" Content="Найти" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="146,279,118,134" Height="31"/>
+        </Grid>
     </Grid>
 </Page>

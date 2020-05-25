@@ -95,6 +95,22 @@
     <Compile Include="Migrations\202005180900300_status-compoun.designer.cs">
       <DependentUpon>202005180900300_status-compoun.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005231129033_AddStatusMigration.cs" />
+    <Compile Include="Migrations\202005231129033_AddStatusMigration.designer.cs">
+      <DependentUpon>202005231129033_AddStatusMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005231452078_AddIsOrderMigration.cs" />
+    <Compile Include="Migrations\202005231452078_AddIsOrderMigration.designer.cs">
+      <DependentUpon>202005231452078_AddIsOrderMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005232041149_AddReceptionMigration.cs" />
+    <Compile Include="Migrations\202005232041149_AddReceptionMigration.designer.cs">
+      <DependentUpon>202005232041149_AddReceptionMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005241500323_ValidationPatient.cs" />
+    <Compile Include="Migrations\202005241500323_ValidationPatient.designer.cs">
+      <DependentUpon>202005241500323_ValidationPatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\CompounRepository.cs" />
     <Compile Include="Repositories\DoctorRepository.cs" />
@@ -103,6 +119,7 @@
     <Compile Include="Repositories\ReceptionRepository.cs" />
     <Compile Include="Repositories\ServicesRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Resourses\Validation.cs" />
     <Compile Include="Services\Account.cs" />
     <Compile Include="Services\Search.cs" />
     <Compile Include="Services\UnitOfWork.cs" />
@@ -115,7 +132,9 @@
     <Compile Include="ViewModels\Admin_ReceptionsViewModel.cs" />
     <Compile Include="ViewModels\Admin_ServicesViewModel.cs" />
     <Compile Include="ViewModels\AuthorizationView.cs" />
+    <Compile Include="ViewModels\DoctorPagesViewModel\AddNewReceptionForDoctorViewModel.cs" />
     <Compile Include="ViewModels\DoctorPagesViewModel\DoctorProfileViewModel.cs" />
+    <Compile Include="ViewModels\DoctorPagesViewModel\ReceptionsForDViewModel.cs" />
     <Compile Include="ViewModels\DoctorViewModel.cs" />
     <Compile Include="ViewModels\MainWindows\AdminMainViewModel.cs" />
     <Compile Include="ViewModels\MainWindows\DoctorMainViewModel.cs" />
@@ -339,6 +358,18 @@
     <EmbeddedResource Include="Migrations\202005180900300_status-compoun.resx">
       <DependentUpon>202005180900300_status-compoun.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005231129033_AddStatusMigration.resx">
+      <DependentUpon>202005231129033_AddStatusMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005231452078_AddIsOrderMigration.resx">
+      <DependentUpon>202005231452078_AddIsOrderMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005232041149_AddReceptionMigration.resx">
+      <DependentUpon>202005232041149_AddReceptionMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005241500323_ValidationPatient.resx">
+      <DependentUpon>202005241500323_ValidationPatient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -372,6 +403,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resourses\detskaja_stomatologija_pamjatka5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

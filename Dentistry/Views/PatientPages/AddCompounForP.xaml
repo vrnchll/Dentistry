@@ -4,27 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dentistry.Views.PatientPages" xmlns:me="clr-namespace:Dentistry.ViewModels.PatientPagesViewModel" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:Dentistry.Views.PatientPages" xmlns:me="clr-namespace:Dentistry.ViewModels.PatientPagesViewModel" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:System="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d"
         Title="AddCompounForP" Height="auto" Width="auto">
 
     <Grid Background="{DynamicResource PrimaryHueLightBrush}" Opacity="0.9">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="65*"/>
-            <RowDefinition Height="66*"/>
-            <RowDefinition Height="61*"/>
-            <RowDefinition Height="60*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="59*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="56*"/>
+            <RowDefinition Height="0*"/>
 
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="Заказ талона" Foreground="#FF303030" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Bodoni MT Black" FontSize="22"/>
-        <DatePicker Grid.Row="1" Margin="187,18,186,37" materialDesign:HintAssist.Hint=" Дата приема" Foreground="Black" FontSize="14" Background="{DynamicResource PrimaryHueLightBrush}" SelectedDate="{Binding Path=Date,Mode=TwoWay, StringFormat='dd/MM/yyy'}"></DatePicker>
+        <DatePicker Grid.Row="1" Margin="187,10,186,4" materialDesign:HintAssist.Hint=" Дата приема" Foreground="Black" FontSize="14" Background="{DynamicResource PrimaryHueLightBrush}" SelectedDate="{Binding Path=Date,Mode=TwoWay, StringFormat='dd/MM/yyy'}"  DisplayDateStart = "{x:Static System:DateTime.Today}"  DisplayDateEnd="12/12/2022" Height="28"/>
 
-        <xctk:DateTimeUpDown Format="ShortTime" Value="{Binding Time}" FormatString="hh:mm"  Margin="234,0,234,47" Grid.Row="2" Height="40" Background="#FF2E2E2E" FontSize="14" Foreground="{DynamicResource PrimaryHueLightBrush}" Opacity="0.9" Text="{Binding Time}"/>
-        <ComboBox Grid.Row="2" x:Name="patList" materialDesign:HintAssist.Hint=" Фамилия пациента" Margin="187,57,186,0" Text="{Binding LastNamePatient}" ItemsSource="{Binding Source={x:Static me:AddCompounInPatientViewModel.LastNamePatients}, Mode=OneWay}" Foreground="Black" FontSize="14"/>
+        <xctk:DateTimeUpDown Format="ShortTime" Value="09:00" Text="{Binding Time}" FormatString="hh:mm" Minimum="09:00" Maximum="18:00" Margin="234,0,234,10" Grid.Row="2" Height="35" Background="#FF2E2E2E" FontSize="14" Foreground="{DynamicResource PrimaryHueLightBrush}" Opacity="0.9"/>
+        <ComboBox Grid.Row="3" x:Name="patList" SelectedValue="{Binding SelectedPat}" materialDesign:HintAssist.Hint=" Фамилия пациента" Margin="187,0,186,32" Text="{Binding LastNamePatient}" ItemsSource="{Binding Source={x:Static me:AddCompounInPatientViewModel.LastNamePatients}, Mode=OneWay}" Foreground="Black" FontSize="14" Height="38"/>
 
-        <ComboBox Grid.Row="3"  x:Name="docList" Margin="187,10,186,38" materialDesign:HintAssist.Hint=" Врач" Text="{Binding LastNameDoctor}" ItemsSource="{Binding Source={x:Static me:AddCompounInPatientViewModel.LastNameDoctors}, Mode=OneWay}" Foreground="Black" FontSize="14" Background="{DynamicResource PrimaryHueLightBrush}" Opacity="1.5"/>
-        <Button Content="Заказать"  Grid.Row="4"  Style="{DynamicResource MaterialDesignRaisedDarkButton}"  Background="{DynamicResource MaterialDesignDarkBackground}" Margin="234,0,234,46" Command="{Binding Add}"/>
-
+        <ComboBox Grid.Row="4"  x:Name="docList" SelectedValue="{Binding SelectedDoc}"  Margin="187,10,186,1" materialDesign:HintAssist.Hint=" Врач" Text="{Binding LastNameDoctor}" ItemsSource="{Binding Source={x:Static me:AddCompounInPatientViewModel.LastNameDoctors}, Mode=OneWay}" Foreground="Black" FontSize="14" Background="{DynamicResource PrimaryHueLightBrush}" Opacity="1.5" Height="30"/>
+        <Button Content="Заказать"  Grid.Row="6"  Style="{DynamicResource MaterialDesignRaisedDarkButton}"  Background="{DynamicResource MaterialDesignDarkBackground}" Margin="234,1,234,7" Command="{Binding Add}" Height="30" Width="100"/>
+        <ComboBox  materialDesign:HintAssist.Hint="Статус" Text="{Binding Status}" Background="{x:Null}" HorizontalContentAlignment="Center"  FontSize="14" x:Name="Positoin" Grid.Row="5" Margin="187,14,186,10" Height="32">
+            <ComboBoxItem IsSelected="True">Не выполнено</ComboBoxItem>
+        </ComboBox>
     </Grid>
 </Page>

@@ -247,7 +247,7 @@ namespace Dentistry.Services
 
             }
         }
-        public static void EditInformationCompoun(Compoun compoun, Compoun SelectedItem)
+        public static void EditInformationCompoun(Compoun compoun, Compoun SelectedItem, Doctor doctor , Patient patient)
         {
            
                 UnitOfWork unitOfWork = new UnitOfWork();
@@ -256,12 +256,29 @@ namespace Dentistry.Services
               
                
                 unitOfWork.Save();
+            compoun.Doctor = doctor;
+            compoun.Patient = patient;
                 var item = Admin_CompounsViewModel.Compouns.FirstOrDefault(x => x.Id == compoun.Id);
 
                 Admin_CompounsViewModel.Compouns[Admin_CompounsViewModel.Compouns.IndexOf(SelectedItem)] = compoun;
 
 
             
+        }
+        public static void EditInformationReception(Reception reception, Reception SelectedItem, Doctor doctor, Patient patient, Service service)
+        {
+
+            UnitOfWork unitOfWork = new UnitOfWork();
+            unitOfWork.Receptions.Update(reception);
+            unitOfWork.Save();
+            reception.Doctor = doctor;
+            reception.Patient = patient;
+            reception.Service = service;
+            var item = Admin_ReceptionsViewModel.Receptions.FirstOrDefault(x => x.Id == reception.Id);
+            Admin_ReceptionsViewModel.Receptions[Admin_ReceptionsViewModel.Receptions.IndexOf(SelectedItem)] = reception;
+
+
+
         }
         public static void EditInformationService(Service service, Service SelectedItem)
         {
@@ -270,8 +287,8 @@ namespace Dentistry.Services
             unitOfWork.Services.Update(service);
             unitOfWork.Save();
             var item = Admin_ServicesViewModel.Services.FirstOrDefault(x => x.Id == service.Id);
-            Admin_ServicesViewModel.Services[Admin_ServicesViewModel.Services.IndexOf(SelectedItem)] = service;
-
+           Admin_ServicesViewModel.Services[Admin_ServicesViewModel.Services.IndexOf(SelectedItem)] = service;
+            
 
         }
 

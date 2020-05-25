@@ -51,8 +51,8 @@ namespace Dentistry.ViewModels
                 _Add ?? (
                _Add = new RelayCommands(obj =>
                {
-                   App.AddNewService = new AddNewService();
-                   App.AddNewService.Show();
+                   App.addNewService = new AddNewService();
+                   App.addNewService.Show();
                }));
             }
 
@@ -103,8 +103,8 @@ namespace Dentistry.ViewModels
                         if (SelectedService != null)
                         {
 
-                            App.AddNewService = new AddNewService(SelectedService);
-                            App.AddNewService.Show();
+                            App.addNewService = new AddNewService(SelectedService);
+                            App.addNewService.Show();
                             OnPropertyChanged("Edit");
                         }
                         else
@@ -114,36 +114,61 @@ namespace Dentistry.ViewModels
                     }));
             }
         }
-        private string _Search;
-        public string Search
+        private string _SearchS;
+        public string SearchS
         {
             get
             {
-                return _Search;
+                return _SearchS;
             }
             set
             {
-                _Search = value;
+                _SearchS = value;
                 OnPropertyChanged("SelectedService");
             }
         }
-        //private RelayCommands _SearchCommand;
-        //public RelayCommands SearchCommand
-        //{
-        //    get
-        //    {
-        //        return
-        //        _SearchCommand ?? (
-        //       _SearchCommand = new RelayCommands(obj =>
-        //       {
-        //           UnitOfWork unitOfWork = new UnitOfWork();
+        private RelayCommands _SearchCommand;
+        public RelayCommands SearchCommand
+        {
+            get
+            {
+                return
+                _SearchCommand ?? (
+               _SearchCommand = new RelayCommands(obj =>
+               {
+                   Search.SearchServices(SearchS == "" ? null : SearchS);
+               }));
+            }
 
-        //           Search.SearchServices(Search);
-        //       }));
-        //    }
+        }
+        private RelayCommands _Clear;
+        public RelayCommands Clear
+        {
+            get
+            {
+                return
+                _Clear ?? (
+               _Clear = new RelayCommands(obj =>
+               {
+                   UnitOfWork unitOfWork = new UnitOfWork();
+               
+                   Services.Clear();
+                   foreach (var service in unitOfWork.Services.Include())
+                   {
+                       foreach (var person in service.Doctors.ToList())
+                       {
 
-        //}
-        public event PropertyChangedEventHandler PropertyChanged; // отслеживать изменения нашего поля сразу(binding)
+                           service.Doctors.Add(person);
+                           
+
+                       }
+                       Services.Add(service);
+                   }
+               }));
+            }
+
+        }
+        public event PropertyChangedEventHandler PropertyChanged; 
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             if (PropertyChanged != null)

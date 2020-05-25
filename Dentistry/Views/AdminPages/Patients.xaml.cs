@@ -33,11 +33,6 @@ namespace Dentistry.Views
                 patient.User = user;
                     }
             Admin_PatientsViewModel.Patients = new BindingList<Patient>(patients);
-            //Admin_PatientsViewModel.Patients.Clear();
-            //foreach(var patient in patients)
-            //{
-            //    Admin_PatientsViewModel.Patients.Add(patient);
-            //}
             InitializeComponent();
             DataContext = admincontext;
             PatientsList.ItemsSource = Admin_PatientsViewModel.Patients;

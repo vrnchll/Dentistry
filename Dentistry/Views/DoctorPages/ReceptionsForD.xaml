@@ -16,57 +16,46 @@
             <RowDefinition Height="36*"/>
         </Grid.RowDefinitions>
         <Menu Margin="0,0,0,16" Background="#FF271D21" Opacity="0.6" Grid.ColumnSpan="2">
-            <MenuItem Header="" Height="35" Width="35">
-                <MenuItem.Background>
-                    <ImageBrush ImageSource="back--v1.png"/>
-                </MenuItem.Background>
-            </MenuItem>
-            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39" />
-            <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39"/>
+            <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39" Command="{Binding RemoveCommand}"/>
         </Menu>
         <DataGrid AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
                               ScrollViewer.IsDeferredScrollingEnabled="True" 
-                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Margin="0,35,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" Opacity="0.9">
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="{DynamicResource PrimaryHueLightBrush}"  x:Name="ReceptionList" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" Margin="0,35,0,0" ItemsSource="{Binding Receptions}" SelectedItem="{Binding SelectedReception}" Grid.RowSpan="2" Grid.ColumnSpan="2" Opacity="0.9">
             <DataGrid.Columns>
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="EndDate">
+                <DataGridTemplateColumn  IsReadOnly="True">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="Дата приема"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Path=DateOfReception, StringFormat='dd MMM yyyy' }"  />
+                            <TextBlock Text="{Binding Path = DateOfReception, StringFormat='dd MMM yyy'}"  />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <DatePicker Name="DatePicker"  SelectedDate="{Binding Path=DateOfReception}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfBeginReception">
+                <DataGridTemplateColumn  IsReadOnly="True">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Время начала"/>
+                        <TextBlock Text="Время начала приема"/>
                     </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <t:DateTimeUpDown Value="{Binding TimeOfBeginReception}" Format="ShortTime" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn  IsReadOnly="False" x:Name="TimeOfEndReception">
-                    <DataGridTemplateColumn.Header>
-                        <TextBlock Text="Время окончания"/>
-                    </DataGridTemplateColumn.Header>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <t:DateTimeUpDown Value="{Binding TimeOfEndReception}" Format="ShortTime" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
 
-                <DataGridComboBoxColumn Header="Услуга"></DataGridComboBoxColumn>
-                <DataGridTextColumn Header="Стоимость"></DataGridTextColumn>
-                <DataGridTextColumn Header="Пациент"/>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path = TimeOfBeginReception}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn  IsReadOnly="True">
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock Text="Время окончания приема"/>
+                    </DataGridTemplateColumn.Header>
+
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path = TimeOfEndReception}"  />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Услуга" Binding="{Binding Service.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Пациент" Binding="{Binding Patient.LastName}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

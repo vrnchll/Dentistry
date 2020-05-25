@@ -32,6 +32,7 @@ namespace Dentistry.Repositories
         {
             return db.Receptions.Find(id);
         }
+     
 
         public IEnumerable<Reception> GetAll()
         {

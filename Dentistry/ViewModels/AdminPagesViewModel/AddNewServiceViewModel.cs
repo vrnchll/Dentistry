@@ -85,7 +85,7 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                            unitOfWork.Doctors.Update(doctor);
                            unitOfWork.Save();
                            Account.EditInformationService(service, _service);
-                           if (App.AddNewService != null) App.AddNewService.Visibility = Visibility.Hidden;
+                           if (App.addNewService != null) App.addNewService.Visibility = Visibility.Hidden;
                        }
                        else
                        {
@@ -119,7 +119,7 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                                Admin_ServicesViewModel.Services.Add(service);
 
 
-                               if (App.AddNewService != null) App.AddNewService.Visibility = Visibility.Hidden;
+                               if (App.addNewService != null) App.addNewService.Visibility = Visibility.Hidden;
                            }
                        }
                    }

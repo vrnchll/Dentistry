@@ -13,10 +13,41 @@ using System.Windows;
 
 namespace Dentistry.ViewModels
 {
-    class Admin_ReceptionsViewModel : INotifyPropertyChanged
+    public class Admin_ReceptionsViewModel : INotifyPropertyChanged
 
     {
         public static BindingList<Reception> Receptions;
+        private string _date;
+        public string DateOfReception
+        {
+            get => _date; set
+            {
+                _date = value;
+                OnPropertyChanged("DateOfReception");
+            }
+        }
+        private string _time;
+        public string TimeOfBeginReception
+        {
+            get => _time; set
+            {
+                _time = value;
+                OnPropertyChanged("TimeOfBeggining");
+            }
+        }
+        private string _timeE;
+        public string TimeOfEndReception
+        {
+            get => _timeE; set
+            {
+                _timeE = value;
+                OnPropertyChanged("TimeOfEnding");
+            }
+        }
+        static Admin_ReceptionsViewModel()
+        {
+            Receptions = new BindingList<Reception>();
+        }
         private RelayCommands _Add;
         public RelayCommands Add
         {
@@ -27,10 +58,23 @@ namespace Dentistry.ViewModels
                _Add = new RelayCommands(obj =>
                {
                    UnitOfWork unitOfWork = new UnitOfWork();
-                   AddNewReceptionViewModel.ListServices = new BindingList<Service>(unitOfWork.Services.GetAll().ToList());
-
-                   App.AddNewReception = new AddNewReception();
-                   App.AddNewReception.Show();
+                   var patients = unitOfWork.Patients.GetAll().ToList();
+                   var doctors = unitOfWork.Doctors.GetAll().ToList();
+                   var services = unitOfWork.Services.GetAll().ToList();
+                   foreach (var i in patients)
+                   {
+                       AddNewReceptionViewModel.LastNamePatients.Add(i.LastName);
+                   }
+                   foreach (var i in doctors)
+                   {
+                       AddNewReceptionViewModel.LastNameDoctors.Add(i.LastName);
+                   }
+                   foreach (var i in services)
+                   {
+                       AddNewReceptionViewModel.ServicesNames.Add(i.Name);
+                   }
+                   App.addNewReception = new AddNewReception();
+                   App.addNewReception.Show();
                }));
             }
 
@@ -48,7 +92,27 @@ namespace Dentistry.ViewModels
                 OnPropertyChanged("SelectedReseption");
             }
         }
-
+        private RelayCommands _EditCommand;
+        public RelayCommands EditCommand
+        {
+            get
+            {
+                return _EditCommand ??
+                    (_EditCommand = new RelayCommands((selectedItem) =>
+                    {
+                        if (SelectedReception != null)
+                        {
+                            App.addNewReception = new AddNewReception(SelectedReception);
+                            App.addNewReception.Show();
+                            OnPropertyChanged("Edit");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Вы не выбрали элемент!");
+                        }
+                    }));
+            }
+        }
         private RelayCommands _removeCommand;
         public RelayCommands RemoveCommand
         {
@@ -70,6 +134,90 @@ namespace Dentistry.ViewModels
             }
         }
 
+        //Search
+
+        private string _NamesService;
+        public string NamesService
+        {
+            get
+            {
+                return _NamesService;
+            }
+            set
+            {
+                _NamesService = value;
+                OnPropertyChanged("NamesService");
+            }
+        }
+        private string _PatientLN;
+        public string PatientLN
+        {
+            get
+            {
+                return _PatientLN;
+            }
+            set
+            {
+                _PatientLN = value;
+                OnPropertyChanged("PatientLN");
+            }
+        }
+        private string _DoctorLN;
+        public string DoctorLN
+        {
+            get
+            {
+                return _DoctorLN;
+            }
+            set
+            {
+                _DoctorLN = value;
+                OnPropertyChanged("DoctorLN");
+            }
+        }
+
+        private RelayCommands _SearchCommand;
+        public RelayCommands SearchCommand
+        {
+            get
+            {
+                return
+                _SearchCommand ?? (
+               _SearchCommand = new RelayCommands(obj =>
+               {
+                   Search.SearchReception(NamesService == "" ? null : NamesService, PatientLN == "" ? null : PatientLN, DoctorLN == "" ? null : DoctorLN);
+               }));
+
+            }
+
+        }
+        private RelayCommands _Clear;
+        public RelayCommands Clear
+        {
+            get
+            {
+                return
+                _Clear ?? (
+               _Clear = new RelayCommands(obj =>
+               {
+                   UnitOfWork unitOfWork = new UnitOfWork();
+                   Receptions.Clear();
+                   var receptions = unitOfWork.Receptions.GetAll().ToList();
+                   foreach (var rec in receptions)
+                   {
+                       var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.Id == rec.PatientId);
+                       rec.Patient = patient;
+                       var doctor = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.Id == rec.DoctorId);
+                       rec.Doctor = doctor;
+                       var service = unitOfWork.Services.GetAll().FirstOrDefault(x => x.Id == rec.ServiceId);
+                       rec.Service = service;
+                       Receptions.Add(rec);
+                   }
+               }));
+            }
+
+        }
+        //------------------------------
         public event PropertyChangedEventHandler PropertyChanged; // отслеживать изменения нашего поля сразу(binding)
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {

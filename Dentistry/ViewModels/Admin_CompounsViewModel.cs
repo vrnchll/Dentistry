@@ -52,6 +52,7 @@ namespace Dentistry.ViewModels
             }
         }
 
+
         private RelayCommands _Add;
         public RelayCommands Add
         {
@@ -76,8 +77,8 @@ namespace Dentistry.ViewModels
                    }
                   
                    
-                   App.AddNewCompoun = new AddNewCompoun();
-                   App.AddNewCompoun.Show();
+                   App.addNewCompoun = new AddNewCompoun();
+                   App.addNewCompoun.Show();
                }));
             }
 
@@ -105,8 +106,8 @@ namespace Dentistry.ViewModels
                     {
                         if (SelectedCompoun != null)
                         {
-                            AddNewCompoun addNewCompoun = new AddNewCompoun(SelectedCompoun);
-                            addNewCompoun.Show();
+                            App.addNewCompoun = new AddNewCompoun(SelectedCompoun);
+                            App.addNewCompoun.Show();
                             OnPropertyChanged("Edit");
                         }
                         else
@@ -136,6 +137,85 @@ namespace Dentistry.ViewModels
                     }));
             }
         }
+        //Search
+
+        private string _DateOfR;
+        public string DateOfR
+        {
+            get
+            {
+                return _DateOfR;
+            }
+            set
+            {
+                _DateOfR = value;
+                OnPropertyChanged("DateOfR");
+            }
+        }
+        private string _PatientLN;
+        public string PatientLN
+        {
+            get
+            {
+                return _PatientLN;
+            }
+            set
+            {
+                _PatientLN = value;
+                OnPropertyChanged("PatientLN");
+            }
+        }
+        private string _DoctorLN;
+        public string DoctorLN
+        {
+            get
+            {
+                return _DoctorLN;
+            }
+            set
+            {
+                _DoctorLN = value;
+                OnPropertyChanged("DoctorLN");
+            }
+        }
+      
+        private RelayCommands _SearchCommand;
+        public RelayCommands SearchCommand
+        {
+            get
+            {
+                return
+                _SearchCommand ?? (
+               _SearchCommand = new RelayCommands(obj =>
+               {
+                   Search.SearchCompouns(DateOfR == "" ? null : DateOfR, PatientLN == "" ? null : PatientLN, DoctorLN == "" ? null : DoctorLN);
+               }));
+
+            }
+
+        }
+        private RelayCommands _Clear;
+        public RelayCommands Clear
+        {
+            get
+            {
+                return
+                _Clear ?? (
+               _Clear = new RelayCommands(obj =>
+               {
+                   UnitOfWork unitOfWork = new UnitOfWork();
+                   var compouns = unitOfWork.Compouns.GetAll().ToList();
+                   Admin_CompounsViewModel.Compouns.Clear();
+                   foreach (var com in compouns)
+                   {
+                       Compouns.Add(com);
+                   }
+               }));
+            }
+
+        }
+        //------------------------------
+
         public event PropertyChangedEventHandler PropertyChanged; // отслеживать изменения нашего поля сразу(binding)
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {

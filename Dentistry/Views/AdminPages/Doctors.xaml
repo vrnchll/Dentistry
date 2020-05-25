@@ -80,6 +80,9 @@
                     <materialDesign:PackIcon Kind="Search" Foreground="{DynamicResource PrimaryHueDarkBrush}" Height="30" Width="30"/>
                 </Button>
             </Grid>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Height="47" Command="{Binding Clear}" >
+                <materialDesign:PackIcon Kind="Broom" Height="37" Width="31" />
+            </Button>
             <StackPanel Orientation="Horizontal" Margin="102,44,68,335" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="-0.161,0.5" Width="177" Height="36">
                 <materialDesign:PackIcon Kind="Search" Foreground="{DynamicResource MaterialDesignLightBackground}" FontSize="20" Height="28" Width="40"/>
                 <TextBlock Text="Поиск" FontSize="20" FontFamily="Yu Gothic UI Semibold" Foreground="{DynamicResource MaterialDesignLightBackground}" Width="105"/>

@@ -18,17 +18,17 @@ namespace Dentistry.Models
         [StringLength(20, MinimumLength = 4, ErrorMessage = "Недопустимая длина имени")]
          [Required(ErrorMessage = "Не указано имя пользователя")]
 
-        //[RegularExpression(@"^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/u", ErrorMessage = "Недопустимые символы в Имени!")]
+        [RegularExpression(@"/^[А-Я]{1}[а-я]{1,20}$/", ErrorMessage = "Недопустимые символы в Имени!")]
         public string FirstName { get; set; }
 
         [StringLength(20, MinimumLength = 4, ErrorMessage = "Недопустимая длина фамилии")]
         [Required(ErrorMessage = "Не указана фамилия пользователя")]
-        //[RegularExpression(@"^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/u", ErrorMessage = "Недопустимые символы в Фамилии!")]
+        [RegularExpression(@"/^[А-Я]{1}[а-я]{1,20}$/", ErrorMessage = "Недопустимые символы в Фамилии!")]
         public string LastName { get; set; }
     
         [StringLength(20, MinimumLength = 6, ErrorMessage = "Недопустимая длина отчества")]
         [Required(ErrorMessage = "Не указано отчество пользователя")]
-        //[RegularExpression(@"^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/u", ErrorMessage = "Недопустимые символы в Отчестве!")]
+        [RegularExpression(@"/^[А-Я]{1}[а-я]{1,20}$/", ErrorMessage = "Недопустимые символы в Отчестве!")]
 
         public string MiddleName { get; set; }
         [Required(ErrorMessage = "Не указана дата рождения пользователя")]
@@ -37,18 +37,18 @@ namespace Dentistry.Models
         public string DateOfBirth { get; set; }
 
         public string Gender { get; set; }
-
+        [Required(ErrorMessage = "Не указан город")]
         public string City { get; set; }
-
+        [Required(ErrorMessage = "Не указана улица")]
+        [StringLength(25, MinimumLength = 2, ErrorMessage = "Недопустимое значение")]
+        [RegularExpression(@"/^[А-Я]{1}[а-я]{1,25}$/", ErrorMessage = "Недопустимые символы в названии улицы!")]
         public string Street { get; set;}
 
         [Required(ErrorMessage = "Не указан дом")]
         [StringLength(3, MinimumLength = 1, ErrorMessage = "Недопустимое значение")]
         public string House { get; set; }
 
-        [Required(ErrorMessage = "Не указана квартира")]
         [StringLength(3, MinimumLength = 1, ErrorMessage = "Недопустимое значение")]
-
         public string Flat { get; set; }
         [Required(ErrorMessage = "Не указан телефон пользователя")]
         [RegularExpression(@"^[+]375[0-9]{2}[0-9]{3}[0-9]{2}[0-9]{2}$", ErrorMessage = "Неверный формат телефона,\nВведите данные в формате +375(33)333-33-33")]

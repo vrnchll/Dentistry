@@ -39,5 +39,16 @@ namespace Dentistry.Views
             CompounsList.ItemsSource = Admin_CompounsViewModel.Compouns;
 
         }
+        private void OpenSerachPanel_Click(object sender, RoutedEventArgs e)
+        {
+            CloseSerachPanel.Visibility = Visibility.Visible;
+            OpenSerachPanel.Visibility = Visibility.Collapsed;
+        }
+
+        private void CloseSerachPanel_Click(object sender, RoutedEventArgs e)
+        {
+            OpenSerachPanel.Visibility = Visibility.Visible;
+            CloseSerachPanel.Visibility = Visibility.Collapsed;
+        }
     }
 }

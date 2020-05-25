@@ -77,7 +77,14 @@ namespace Dentistry.ViewModels.DoctorPagesViewModel
                 _ShowChangingGrid ?? (
                _ShowChangingGrid = new RelayCommands(obj =>
                {
-                   ChangePanel = Visibility.Visible;
+                   if (ChangePanel == Visibility.Hidden)
+                   {
+                       ChangePanel = Visibility.Visible;
+                   }
+                   else
+                   {
+                       ChangePanel = Visibility.Hidden;
+                   }
 
                }));
             }
@@ -92,6 +99,8 @@ namespace Dentistry.ViewModels.DoctorPagesViewModel
                 _Change ?? (
                _Change = new RelayCommands(obj =>
                {
+               if (NewLogin != null && NewPassword != null && NewConfirmPassword != null)
+               {
                    if (NewPassword.ToString() == NewConfirmPassword.ToString())
                    {
                        Account.ChangeInformation(NewLogin, NewPassword);
@@ -100,6 +109,11 @@ namespace Dentistry.ViewModels.DoctorPagesViewModel
                    else
                    {
                        MessageBox.Show("Пароли не совпадают!");
+                   }
+                   }
+                   else
+                   {
+                       MessageBox.Show("Не все поля введены!");
                    }
                }));
             }

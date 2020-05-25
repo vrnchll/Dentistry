@@ -195,7 +195,7 @@ namespace Dentistry.ViewModels
                             Patient person = new Patient() { Id = users.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Мужской" : "Женский", City = City, Street = Street, House = House, Flat = Flat, NumberOfPhone = NumberOfPhone };
                             user.PatientProfile = person;
                             Account.EditInformationPatient(person, user, _patient, users.Password);
-                            if (App.AddNewPatient != null) App.AddNewPatient.Visibility = Visibility.Hidden;
+                            if (App.addNewPatient != null) App.addNewPatient.Visibility = Visibility.Hidden;
                         
                     }
                     else
@@ -206,7 +206,7 @@ namespace Dentistry.ViewModels
                             Patient person = new Patient() { Id = user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Мужской" : "Женский", City = City, Street = Street, House = House, Flat = Flat, NumberOfPhone = NumberOfPhone };
                             user.PatientProfile = person;
                             Account.RegistrationPatient(user, person);
-                            if (App.AddNewPatient != null) App.AddNewPatient.Visibility = Visibility.Hidden;
+                            if (App.addNewPatient != null) App.addNewPatient.Visibility = Visibility.Hidden;
                         }
                         else
                         {

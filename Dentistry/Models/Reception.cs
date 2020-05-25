@@ -17,13 +17,10 @@ namespace Dentistry.Models
         [Required(ErrorMessage = "Не выбрано время окончания")]
         public string TimeOfEndReception { get; set; }
 
-        //?
-        public virtual ICollection<Service> Services { get; set; }
-        public Reception()
-        {
-            Services = new List<Service>();
-        }
+        
 
+        public int ServiceId { get; set; }
+        public Service Service { get; set; }
         public int? PatientId { get; set; }
         public Patient Patient { get; set; }
 

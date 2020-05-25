@@ -11,7 +11,7 @@
             <RowDefinition Height="17*"/>
             <RowDefinition Height="300*"/>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0" Background="#FF2C2828" Margin="0,0,-710,0">
+        <Menu Grid.Row="0" Background="#FF2C2828" Margin="0,0,-710,91" Grid.RowSpan="2">
             <MenuItem Header="" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="25" Width="33">
                 <MenuItem.Background>
                     <ImageBrush ImageSource="back--v1.png"/>
@@ -22,16 +22,16 @@
             <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="26" Command="{Binding RemoveCommand}"/>
 
         </Menu>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0" Margin="0,0,-710,0" Width="274">
-            <TextBox Background="White" Text="{Binding Search}" Width="169"/>
-            <Button Command="{Binding SearchCommand}">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0"  Width="984" Margin="0,0,-710,0">
+            <TextBox Background="White" Text="{Binding SearchS}" Width="169" Height="36"/>
+            <Button Command="{Binding SearchCommand}" Height="34">
                 <materialDesign:PackIcon Kind="Search" Foreground="White"/>
             </Button>
-            <Button Command="{Binding Clear}">
-                <materialDesign:PackIcon Kind="Clear" Foreground="White"/>
+            <Button Command="{Binding Clear}" Height="35">
+                <materialDesign:PackIcon Kind="Broom" Foreground="White"/>
             </Button>
         </StackPanel>
-        <DataGrid Margin="0,0,-710,27" Grid.Row="1" x:Name="ServiceList" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
+        <DataGrid Margin="0,5,-710,27" Grid.Row="1" x:Name="ServiceList" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
                               ScrollViewer.IsDeferredScrollingEnabled="True" 
                               ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService}" Opacity="0.8">
             <DataGrid.Columns>

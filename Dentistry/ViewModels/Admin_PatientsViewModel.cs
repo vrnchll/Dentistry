@@ -168,8 +168,8 @@ namespace Dentistry.ViewModels
                 _Add ?? (
                _Add = new RelayCommands(obj =>
                {
-                   App.AddNewPatient = new AddNewPatient();
-                   App.AddNewPatient.Show();
+                   App.addNewPatient = new AddNewPatient();
+                   App.addNewPatient.Show();
                    
 
                }));
@@ -234,7 +234,7 @@ namespace Dentistry.ViewModels
 
 
         private RelayCommands _SearchCommand;
-        public RelayCommands SearchCommand
+        public RelayCommands SearchCommand 
         {
             get
             {
@@ -242,12 +242,32 @@ namespace Dentistry.ViewModels
                 _SearchCommand ?? (
                _SearchCommand = new RelayCommands(obj =>
                {
-                   Search.SearchPatients(FirstNames,LastNames,NumberOfPhone,DateOfBirthd);
+                   Search.SearchPatients(FirstNames==""?null:FirstNames,LastNames==""?null:LastNames,NumberOfPhone==""?null:NumberOfPhone,DateOfBirthd == ""?null:DateOfBirth);
+               }));
+                
+            }
+
+        }
+        private RelayCommands _Clear;
+        public RelayCommands Clear
+        {
+            get
+            {
+                return
+                _Clear ?? (
+               _Clear = new RelayCommands(obj =>
+               {
+                   UnitOfWork unitOfWork = new UnitOfWork();
+                   var paients = unitOfWork.Patients.GetAll().ToList();
+                   Admin_PatientsViewModel.Patients.Clear();
+                   foreach (var pat in paients)
+                   {
+                       Patients.Add(pat);
+                   }
                }));
             }
 
         }
-
         //------------------------------
 
 

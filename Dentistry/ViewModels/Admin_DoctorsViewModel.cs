@@ -14,10 +14,7 @@ namespace Dentistry.ViewModels
     class Admin_DoctorsViewModel : INotifyPropertyChanged
     {
         public static BindingList<Doctor> Doctors;
-        public static BindingList<string> LastNames;
-        public static BindingList<string> FirstNames;
-        public static BindingList<string> Experiences;
-        public static BindingList<string> DateOfBirthd;
+      
 
         private static ProjectContext db = new ProjectContext();
 
@@ -25,10 +22,6 @@ namespace Dentistry.ViewModels
         static Admin_DoctorsViewModel()
         {
             Doctors = new BindingList<Doctor>();
-            LastNames = new BindingList<string>();
-            FirstNames = new BindingList<string>();
-            Experiences = new BindingList<string>();
-            DateOfBirthd = new BindingList<string>();
         }
 
         public string FirstName
@@ -166,8 +159,8 @@ namespace Dentistry.ViewModels
                 _Add ?? (
                _Add = new RelayCommands(obj =>
                {
-                   App.AddNewDoctor = new AddNewDoctor();
-                   App.AddNewDoctor.Show();
+                   App.addNewDoctor = new AddNewDoctor();
+                   App.addNewDoctor.Show();
                
                   
                }));
@@ -197,8 +190,8 @@ namespace Dentistry.ViewModels
                     {
                         if (SelectedDoctor != null)
                         {
-                            AddNewDoctor addNewDoctor = new AddNewDoctor(SelectedDoctor);
-                            addNewDoctor.Show();
+                            App.addNewDoctor = new AddNewDoctor(SelectedDoctor);
+                            App.addNewDoctor.Show();
                             OnPropertyChanged("Edit");
                         }
                         else
@@ -235,49 +228,99 @@ namespace Dentistry.ViewModels
                    }));
             }
         }
-      
-        //private RelayCommands searchCommand;
-        //public RelayCommands SearchCommand
-        //{
-        //    get
-        //    {
-        //        return searchCommand ?? (searchCommand = new RelayCommands((selectedItem) =>
-        //        {
-        //            using (ProjectContext db = new ProjectContext())
-        //            {
 
-        //                IQueryable<Doctor> queryable = db.Doctors.Where(p => p.IsArchived == false);
+        //Search
 
-        //                if (!string.IsNullOrWhiteSpace(FirstNames.ToString()))
-        //                {
+        private string _FirstNames;
+        public string FirstNames
+        {
+            get
+            {
+                return _FirstNames;
+            }
+            set
+            {
+                _FirstNames = value;
+                OnPropertyChanged("FirstNames");
+            }
+        }
+        private string _LastNames;
+        public string LastNames
+        {
+            get
+            {
+                return _LastNames;
+            }
+            set
+            {
+                _LastNames = value;
+                OnPropertyChanged("LastNames");
+            }
+        }
+        private string _Experiences;
+        public string Experiences
+        {
+            get
+            {
+                return _Experiences;
+            }
+            set
+            {
+                _Experiences = value;
+                OnPropertyChanged("Experiences");
+            }
+        }
+        private string _DateOfBirthd;
+        public string DateOfBirthd
+        {
+            get
+            {
+                return _DateOfBirthd;
+            }
+            set
+            {
+                _DateOfBirthd = value;
+                OnPropertyChanged("DateOfBirthd");
+            }
+        }
 
-        //                    queryable = queryable.Where(p => p.FirstName.Contains(FirstNames.ToString().Trim()));
-        //                }
 
-        //                if (!string.IsNullOrWhiteSpace(LastNames.ToString()))
-        //                {
+        private RelayCommands _SearchCommand;
+        public RelayCommands SearchCommand
+        {
+            get
+            {
+                return
+                _SearchCommand ?? (
+               _SearchCommand = new RelayCommands(obj =>
+               {
+                   Search.SearchDoctor(FirstNames == "" ? null : FirstNames, LastNames == "" ? null : LastNames, Experiences == "" ? null : Experiences, DateOfBirthd == "" ? null : DateOfBirth);
+               }));
 
-        //                    queryable = queryable.Where(p => p.LastName.Contains(LastNames.ToString().Trim()));
-        //                }
+            }
 
-        //                if (!string.IsNullOrWhiteSpace(DateOfBirthd.ToString()))
-        //                {
+        }
+        private RelayCommands _Clear;
+        public RelayCommands Clear
+        {
+            get
+            {
+                return
+                _Clear ?? (
+               _Clear = new RelayCommands(obj =>
+               {
+                   UnitOfWork unitOfWork = new UnitOfWork();
+                   var doctors = unitOfWork.Doctors.GetAll().ToList();
+                   Admin_DoctorsViewModel.Doctors.Clear();
+                   foreach (var doctor in doctors)
+                   {
+                       Doctors.Add(doctor);
+                   }
+               }));
+            }
 
-        //                    int year = Convert.ToInt32(DateOfBirthd.ToString());
-        //                    queryable = queryable.Where(p => p.DateOfBirth.Year == year);
-        //                }
-
-        //                if (!string.IsNullOrWhiteSpace(Experiences.ToString()))
-        //                {
-
-        //                    queryable = queryable.Where(p => p.Experience.Contains(Experiences.ToString().Trim()));
-        //                }
-
-        //                IDoctors = queryable;
-        //            }
-        //        }));
-        //    }
-        //}
+        }
+        //------------------------------
 
 
         public event PropertyChangedEventHandler PropertyChanged; // отслеживать изменения нашего поля сразу(binding)

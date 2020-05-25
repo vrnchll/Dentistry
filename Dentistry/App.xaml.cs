@@ -21,11 +21,11 @@ namespace Dentistry
         public static Window AdminWindow;
 
 
-        public static Window AddNewCompoun;
-        public static Window AddNewDoctor;
-        public static Window AddNewPatient;
-        public static Window AddNewReception;
-        public static Window AddNewService;
+        public static Window addNewCompoun;
+        public static Window addNewDoctor;
+        public static Window addNewPatient;
+        public static Window addNewReception;
+        public static Window addNewService;
       
     }
 }

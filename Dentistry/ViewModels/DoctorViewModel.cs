@@ -20,8 +20,10 @@ namespace Dentistry.ViewModels
         public DateTime _ReportPlanningDate = DateTime.Today;
         public string FirstName { get => _FirstName; set
             {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Имя не может быть пустым");
                 _FirstName = value;
-                OnPropertyChanged("FirstName");
+                
             } }
 
         private string _LastName;
@@ -162,7 +164,7 @@ namespace Dentistry.ViewModels
                         Doctor person = new Doctor() { Id = user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Mужской" : "Женский", Experience = Experience, Position = Position, Cabinet = Cabinet, NumberOfPhone = NumberOfPhone };
                         user.DoctorProfile = person;
                         Account.EditInformationDoctor(person, user, _doctor, users.Password);
-                        if (App.AddNewDoctor != null) App.AddNewDoctor.Visibility = Visibility.Hidden;
+                        if (App.addNewDoctor != null) App.addNewDoctor.Visibility = Visibility.Hidden;
 
                     }
                     else
@@ -174,8 +176,8 @@ namespace Dentistry.ViewModels
                             Doctor person = new Doctor() { Id = user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Mужской" : "Женский", Experience = Experience, Position = Position, Cabinet = Cabinet, NumberOfPhone = NumberOfPhone };
                             user.DoctorProfile = person;
                             Account.RegistrationDoctor(user, person);
-                            if (App.AddNewDoctor != null)
-                            { App.AddNewDoctor.Visibility = Visibility.Hidden; }
+                            if (App.addNewDoctor != null)
+                            { App.addNewDoctor.Visibility = Visibility.Hidden; }
 
                         }
                         else
