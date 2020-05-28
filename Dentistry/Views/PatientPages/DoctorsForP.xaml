@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <DataGrid  x:Name="DoctorsList" ScrollViewer.CanContentScroll="True"         
                               ScrollViewer.IsDeferredScrollingEnabled="True" 
-                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Grid.Row="0" AutoGenerateColumns="False" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="Black" RowHeight="60" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Doctors}" Opacity="0.9">
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Grid.Row="0" AutoGenerateColumns="False" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="Black" RowHeight="60" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Doctors}" Opacity="0.8">
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="14" FontFamily="Tahoma" Header="Имя" Binding="{Binding Path=FirstName}" />
                 <DataGridTextColumn FontSize="14" FontFamily="Tahoma" Header="Отчество" Binding="{Binding Path=MiddleName}"/>

@@ -7,7 +7,7 @@
 
         mc:Ignorable="d"
         Title="DoctorType" Height="450" Width="800">
-    <Grid Background="{DynamicResource PrimaryHueMidBrush}" Opacity="0.9">
+    <Grid Background="{DynamicResource PrimaryHueMidBrush}" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="31*"/>
             <ColumnDefinition Width="42*"/>
@@ -27,24 +27,24 @@
             <RowDefinition Height="35*"/>
             <RowDefinition Height="35*"/>
         </Grid.RowDefinitions>
-        <Button Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,6,0.552,0" VerticalAlignment="Top" HorizontalAlignment="Right" Command="{Binding ReturnBack}" Width="69" RenderTransformOrigin="9.461,0.344" Grid.Column="2">
+        <Button Background="{x:Null}" BorderBrush="{x:Null}"  VerticalAlignment="Top" HorizontalAlignment="Right" Command="{Binding ReturnBack}" Width="176" RenderTransformOrigin="9.461,0.344"  Grid.Row="0" Grid.Column="2" Height="38" Margin="0,0,231.552,0">
             <materialDesign:PackIcon Kind="ArrowBack" Foreground="#FF333333" FontSize="20" Height="22" Width="36"/>
         </Button>
         <Button x:Name="SignUpButt2"  Content="Зарегистрироваться" Grid.Row="10" HorizontalAlignment="Center" Command="{Binding RegistrationCommand}" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Background="{DynamicResource MaterialDesignDarkBackground}" Margin="171.448,0,389.552,10" Width="165" Grid.Column="2" Height="35" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
 
-        <TextBox x:Name="FN2" Grid.Row="0" materialDesign:HintAssist.Hint=" Имя" FontSize="16"  Grid.ColumnSpan="3" Margin="10,0,573,0"  >
-          
+        <TextBox x:Name="FN2" Grid.Row="0" Text="{Binding FirstName}" materialDesign:HintAssist.Hint=" Имя" FontSize="16"  Grid.ColumnSpan="3" Margin="10,0,573,0" BorderBrush="White"  >
+
         </TextBox>
-        <TextBox x:Name="MN2" Grid.Row="1" Text="{Binding MiddleName}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Отчество"  FontSize="16" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="LN2" Grid.Row="2" Text="{Binding LastName}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Фамилия"  FontSize="16" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="DateOfBirth" Text="{Binding DateOfBirth}" Grid.Row="3" Margin="10,0,572.748,0" materialDesign:HintAssist.Hint="Дата рождения" FontSize="16" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="MN2" Grid.Row="1" Text="{Binding MiddleName}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Отчество"  FontSize="16" Grid.ColumnSpan="3" BorderBrush="White"/>
+        <TextBox x:Name="LN2" Grid.Row="2" Text="{Binding LastName}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Фамилия"  FontSize="16" Grid.ColumnSpan="3" BorderBrush="White"/>
+        <TextBox x:Name="DateOfBirth" Text="{Binding DateOfBirth}" Grid.Row="3" Margin="10,0,572.748,0" materialDesign:HintAssist.Hint="Дата рождения" FontSize="16" Grid.ColumnSpan="3" BorderBrush="White"/>
 
         <StackPanel x:Name="Gen2" Grid.Row="4" Orientation="Vertical" Margin="10,0,572.552,33" Grid.ColumnSpan="3" Grid.RowSpan="2">
             <RadioButton Content="Мужской" FontSize="14"  IsChecked="{Binding Path=Gender[0], Mode=TwoWay}"></RadioButton>
             <RadioButton Content="Женский" FontSize="14"  IsChecked="{Binding Path=Gender[1], Mode=TwoWay}" Height="20"></RadioButton>
         </StackPanel>
 
-        <ComboBox  materialDesign:HintAssist.Hint=" Должность" Text="{Binding Position}"  FontSize="14" x:Name="Positoin" Grid.Row="5" Margin="10,5,572.552,0" Grid.ColumnSpan="3" Height="33">
+        <ComboBox  materialDesign:HintAssist.Hint=" Должность" Text="{Binding Position}"  FontSize="14" x:Name="Positoin" Grid.Row="5" Margin="10,5,572.552,0" Grid.ColumnSpan="3" Height="33" BorderBrush="White">
             <ComboBoxItem IsSelected="True">Врач стоматолог- терапевт</ComboBoxItem>
             <ComboBoxItem>Врач стоматолог- хирург</ComboBoxItem>
             <ComboBoxItem>Врач стоматолог- ортодонт</ComboBoxItem>
@@ -52,12 +52,12 @@
             <ComboBoxItem>Врач хирург-имплантолог</ComboBoxItem>
             <ComboBoxItem>Врач стоматолог-ортопед</ComboBoxItem>
         </ComboBox>
-        <TextBox materialDesign:HintAssist.Hint=" Стаж работы"  FontSize="14" Text="{Binding Experience}" Grid.Row="5" Margin="171,5,292,0" Grid.Column="2"/>
+        <TextBox materialDesign:HintAssist.Hint=" Стаж работы"  FontSize="14" Text="{Binding Experience}" Grid.Row="5" Margin="171,5,292,0" Grid.Column="2" BorderBrush="White"/>
 
-        <TextBox x:Name="NumOfPh2" Grid.Row="6" Text="{Binding NumberOfPhone}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Номер телефона"   FontSize="16" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="Login2" Grid.Row="7" Text="{Binding Login}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Имя пользователя"   FontSize="16" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="Password2" Grid.Row="8" Text="{Binding Password}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Пароль"  FontSize="16" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="ConfPass2" Grid.Row="9"  Text="{Binding ConfirmPassword}"  Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Подтверждение пароля"  FontSize="16" Grid.ColumnSpan="3"/>
-        <TextBox  x:Name="Email2" Grid.Row="10" Text="{Binding Email}" Margin="10,0,572.552,0" materialDesign:HintAssist.Hint=" Email" FontSize="16" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="NumOfPh2" Grid.Row="6" Text="{Binding NumberOfPhone}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Номер телефона"   FontSize="16" Grid.ColumnSpan="3" BorderBrush="White"/>
+        <TextBox x:Name="Login2" Grid.Row="7" Text="{Binding Login}" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Имя пользователя"   FontSize="16" Grid.ColumnSpan="3" BorderBrush="White"/>
+        <PasswordBox x:Name="Password2" Grid.Row="8" PasswordChanged="PasswordBox_PasswordChanged"   Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Пароль"  FontSize="16" Grid.ColumnSpan="3" BorderBrush="White"/>
+        <PasswordBox x:Name="ConfPass2" Grid.Row="9"  PasswordChanged="PasswordBox_ConfirmPasswordChanged" Margin="10,0,573,0" materialDesign:HintAssist.Hint=" Подтверждение пароля"  FontSize="16" Grid.ColumnSpan="3" BorderBrush="White"/>
+        <TextBox  x:Name="Email2" Grid.Row="10" Text="{Binding Email}" Margin="10,0,572.552,0" materialDesign:HintAssist.Hint=" Email" FontSize="16" Grid.ColumnSpan="3" BorderBrush="White"/>
     </Grid>
 </Page>

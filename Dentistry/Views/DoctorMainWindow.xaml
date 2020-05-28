@@ -5,34 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="DoctorMainWindow" Height="450" Width="800" Icon="pack://application:,,,/Resourses/icons8-зуб-50.png">
+        Title="DoctorMainWindow" Height="650" Width="1200" Icon="pack://application:,,,/Resourses/icons8-зуб-50.png" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Style.Setters>
+                <Setter Property="FontFamily" Value="Tahoma"></Setter>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Background" Value="#FF2E2A2A"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="LightCoral" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="190" Background="#FF95EAEE" Opacity="0.8">
-            <Button Height="42" Command="{Binding AddNewReception}" Background="#FF2E2A2A" Opacity="0.7">
+            <Button Height="42" Command="{Binding AddNewReception}">
                 <Grid Width="166">
                     <materialDesign:PackIcon Kind="Edit"  RenderTransformOrigin="-1,0.812" Height="12" Margin="-1,4,0,0" Width="11" ></materialDesign:PackIcon>
                     <TextBlock Text="Добавить посещение" Margin="7,0,0,0"/>
                 </Grid>
             </Button>
-            <Button Height="42" Command="{Binding ShowReceptions}" Background="#FF2E2A2A" Opacity="0.7">
+            <Button Height="42" Command="{Binding ShowReceptions}">
                 <Grid Width="135">
                     <materialDesign:PackIcon Kind="ContentPaste" RenderTransformOrigin="-1,0.812" Height="13" Margin="0,3,0,0" Width="15" ></materialDesign:PackIcon>
                     <TextBlock Text="Посещения" Margin="15,0,0,0"/>
                 </Grid>
             </Button>
-            <Button Height="42" Command="{Binding ShowCompoun}" Background="#FF2E2A2A" Opacity="0.7">
+            <Button Height="42" Command="{Binding ShowCompoun}" >
                 <Grid Width="135">
                     <materialDesign:PackIcon Kind="Ticket" RenderTransformOrigin="-1,0.812" Height="13" Margin="0,3,0,0" Width="15" ></materialDesign:PackIcon>
                     <TextBlock Text="Талоны" Margin="15,0,0,0"/>
                 </Grid>
             </Button>
-            <Button Height="42"  Command="{Binding ShowProfile}" Background="#FF2E2A2A" Opacity="0.7">
+            <Button Height="42"  Command="{Binding ShowProfile}">
                 <Grid Width="133">
                     <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" RenderTransformOrigin="-1,0.812" ></materialDesign:PackIcon>
                     <TextBlock Text="Профиль" Margin="16,0,0,0" FontSize="14"/>
                 </Grid>
             </Button>
-            <Button Margin="0 200" HorizontalAlignment="Right" Command="{Binding Exit}" Background="{DynamicResource MaterialDesignDarkBackground}" Height="31" BorderBrush="{x:Null}">
+            <Button HorizontalAlignment="Right" Command="{Binding Exit}" Background="{DynamicResource MaterialDesignDarkBackground}" Height="31" BorderBrush="{x:Null}">
                 <materialDesign:PackIcon Kind="ExitRun" Height="22" Width="20"/>
             </Button>
         </StackPanel>

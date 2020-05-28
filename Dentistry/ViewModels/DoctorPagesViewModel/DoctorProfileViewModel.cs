@@ -99,21 +99,22 @@ namespace Dentistry.ViewModels.DoctorPagesViewModel
                 _Change ?? (
                _Change = new RelayCommands(obj =>
                {
-               if (NewLogin != null && NewPassword != null && NewConfirmPassword != null)
-               {
-                   if (NewPassword.ToString() == NewConfirmPassword.ToString())
+                   if (!String.IsNullOrEmpty(NewPassword) && !String.IsNullOrEmpty(NewConfirmPassword))
                    {
-                       Account.ChangeInformation(NewLogin, NewPassword);
+                       if (NewPassword == NewConfirmPassword)
+                       {
+                           Account.ChangeInformation(NewPassword, NewLogin);
+                           ChangePanel = Visibility.Hidden;
+                       }
+                       else
+                       {
+                           MessageBox.Show("Пароли не совпадают");
+                       }
+                   }
+                   else
+                   {
+                       Account.ChangeInformation(NewPassword, NewLogin);
                        ChangePanel = Visibility.Hidden;
-                   }
-                   else
-                   {
-                       MessageBox.Show("Пароли не совпадают!");
-                   }
-                   }
-                   else
-                   {
-                       MessageBox.Show("Не все поля введены!");
                    }
                }));
             }

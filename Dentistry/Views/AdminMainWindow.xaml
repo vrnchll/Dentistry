@@ -5,15 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AdminMainWindow" Height="550" Width="900" Icon="pack://application:,,,/Resourses/icons8-зуб-50.png">
+        Title="AdminMainWindow" WindowStartupLocation="CenterScreen" Height="650" Width="1200" Icon="pack://application:,,,/Resourses/icons8-зуб-50.png">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Style.Setters>
+                <Setter Property="FontFamily" Value="Tahoma"></Setter>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Background" Value="#FF2E2A2A"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="LightCoral" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical"  HorizontalAlignment="Left" Width="152" Background="#FF95EAEE" Opacity="0.8">
-            <Button Height="42" Content="Пациенты" Command="{Binding ShowPatients}" Background="#FF2E2A2A"/>
-            <Button Height="42" Content="Доктора" Command="{Binding ShowDoctors}" Background="#FF2E2A2A"/>
-            <Button Height="42" Content="Посещения" Command="{Binding ShowReceptions}" Background="#FF2E2A2A"/>
-            <Button Height="42" Content="Талоны" Command="{Binding ShowCompoun}" Background="#FF2E2A2A"/>
-            <Button Height="42" Content="Услуги" Command="{Binding ShowServices}" Background="#FF2E2A2A"/>
-            <Button Margin="0 250" HorizontalAlignment="Right" VerticalAlignment="Stretch" Command="{Binding Exit}" Background="{DynamicResource MaterialDesignDarkBackground}" Height="31" BorderBrush="{x:Null}">
+            <Button Height="42"  Command="{Binding ShowPatients}" >
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Human" Margin=" 0 0 5 0"/>
+                    <TextBlock Text="Пациенты"/>
+                </StackPanel>
+            </Button>
+            <Button Height="42" Command="{Binding ShowDoctors}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Doctor" Margin=" 0 0 5 0"/>
+                    <TextBlock Text="Доктора"/>
+                </StackPanel>
+            </Button>
+            <Button Height="42" Command="{Binding ShowReceptions}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Receipt" Margin=" 0 0 5 0"/>
+                    <TextBlock Text="Посещения"/>
+                </StackPanel>
+            </Button>
+            <Button Height="42" Command="{Binding ShowCompoun}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Ticket" Margin=" 0 0 5 0"/>
+                    <TextBlock Text="Талоны"/>
+                </StackPanel>
+            </Button>
+            <Button Height="42" Command="{Binding ShowServices}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Toothbrush" Margin=" 0 0 5 0"/>
+                    <TextBlock Text="Услуги"/>
+                </StackPanel>
+            </Button>
+            <Button HorizontalAlignment="Right" VerticalAlignment="Stretch" Command="{Binding Exit}" Background="{DynamicResource MaterialDesignDarkBackground}" Height="31" BorderBrush="{x:Null}">
                 <materialDesign:PackIcon Kind="ExitRun" Height="22" Width="20"/>
             </Button>
         </StackPanel>

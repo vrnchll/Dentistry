@@ -134,22 +134,25 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
                 _Change ?? (
                _Change = new RelayCommands(obj =>
                {
-                   if (NewLogin != null && NewPassword != null && NewConfirmPassword != null)
+                  
+                       if (!String.IsNullOrEmpty(NewPassword) && !String.IsNullOrEmpty(NewConfirmPassword))
                    {
-                       if (NewPassword.ToString() == NewConfirmPassword.ToString())
-                       {
+                       if(NewPassword == NewConfirmPassword) { 
                            Account.ChangeInformation(NewPassword, NewLogin);
                            ChangePanel = Visibility.Hidden;
                        }
                        else
                        {
-                           MessageBox.Show("Пароли не совпадают!");
+                           MessageBox.Show("Пароли не совпадают");
                        }
                    }
-                   else
-                   {
-                       MessageBox.Show("Не все поля введены!");
+                       else
+                       {
+                       Account.ChangeInformation(NewPassword, NewLogin);
+                       ChangePanel = Visibility.Hidden;
                    }
+                   
+                
                }));
             }
 
@@ -177,6 +180,8 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
                 _cancelOrder ?? (
                _cancelOrder = new RelayCommands(obj =>
                {
+               if (SelectedCompoun != null)
+                   { 
                    UnitOfWork unitOfWork = new UnitOfWork();
                    MessageBoxResult result = MessageBox.Show("Вы действительно желаете отменить заказ?", "Отмена", MessageBoxButton.YesNo, MessageBoxImage.Question);
                    if (selectedCompoun == null || result == MessageBoxResult.No) return;
@@ -191,6 +196,11 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
                    else
                    {
                        MessageBox.Show("Вы не можете отменить данный талон!");
+                   }
+               }
+                     else
+                   {
+                       MessageBox.Show("Вы не выбрали элемент!");
                    }
                }));
             }

@@ -5,40 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800" Icon="pack://application:,,,/Resourses/icons8-зуб-50.png">
+        Title="MainWindow" Height="650" Width="1200" Icon="pack://application:,,,/Resourses/icons8-зуб-50.png" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Style.Setters>
+                <Setter Property="FontFamily" Value="Tahoma"></Setter>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Background" Value="#FF2E2A2A"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="LightCoral" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="159" Background="#FF95EAEE" Opacity="0.8">
 
-            <Button Height="42" Command="{Binding AddNewCompoun}" Background="#FF2E2A2A" Opacity="0.7">
+            <Button Height="42" Command="{Binding AddNewCompoun}"  Opacity="0.7">
                 <Grid>
                     <materialDesign:PackIcon Kind="Edit"  RenderTransformOrigin="-1,0.812" ></materialDesign:PackIcon>
                     <TextBlock Text="Заказать талон" Margin="21,0,0,0"/>
                 </Grid>
             </Button>
-            <Button Height="42" Command="{Binding ShowDoctors}" Background="#FF2E2A2A" Opacity="0.7">
+            <Button Height="42" Command="{Binding ShowDoctors}" Opacity="0.7">
                 <Grid>
                     <materialDesign:PackIcon Kind="Doctor" RenderTransformOrigin="-1,0.812" ></materialDesign:PackIcon>
                     <TextBlock Text="Врачи" Margin="21,0,0,0"/>
                 </Grid>
             </Button>
-            <Button Height="42" Command="{Binding ShowServices}" Background="#FF2E2A2A" Opacity="0.7">
+            <Button Height="42" Command="{Binding ShowServices}" Opacity="0.7">
                 <Grid>
                     <materialDesign:PackIcon Kind="ServiceToolbox" RenderTransformOrigin="-1,0.812" ></materialDesign:PackIcon>
                     <TextBlock Text="Услуги" Margin="21,0,0,0"/>
                 </Grid>
             </Button>
-            <Button Height="42" Command="{Binding ShowProfile}" Background="#FF2E2A2A" Opacity="0.7">
+            <Button Height="42" Command="{Binding ShowProfile}"  Opacity="0.7">
                 <Grid>
                     <materialDesign:PackIcon Kind="Account" RenderTransformOrigin="-1,0.812" ></materialDesign:PackIcon>
                     <TextBlock Text="Профиль" Margin="21,0,0,0"/>
                 </Grid>
             </Button>
-            <Button Margin="0 250" HorizontalAlignment="Right" Command="{Binding Exit}" Background="{DynamicResource MaterialDesignDarkBackground}" Height="31" BorderBrush="{x:Null}">
+            <Button HorizontalAlignment="Right" Command="{Binding Exit}" Background="{DynamicResource MaterialDesignDarkBackground}" Height="31" BorderBrush="{x:Null}">
                 <materialDesign:PackIcon Kind="ExitRun" Height="22" Width="20"/>
             </Button>
         </StackPanel>
         <Frame Margin="159,0,0,0"  
-               Content="{Binding CurrentPage}" Background="#FF8ADDE1" Opacity="0.8" />
+               Content="{Binding CurrentPage}" Background="#FFB2F6F9"  />
 
     </Grid>
 </Window>

@@ -13,6 +13,8 @@ namespace Dentistry.Models
         
         public int Id { get; set; }
         public string TypeUser { get; set; }
+
+       
         [StringLength(20, MinimumLength = 6, ErrorMessage = "Недопустимая длина логина")]
         [Required(ErrorMessage = "Не указано логин пользователя")]
         public string UserName { get; set; }

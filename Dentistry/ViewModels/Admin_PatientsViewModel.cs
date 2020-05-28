@@ -293,6 +293,8 @@ namespace Dentistry.ViewModels
                 return _removeCommand ??
                     (_removeCommand = new RelayCommands((selectedItem) =>
                     {
+                    if (SelectedPatient != null)
+                    {
                         UnitOfWork unitOfWork = new UnitOfWork();
                         MessageBoxResult result = MessageBox.Show("Вы действительно желаете удалить элемент?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
                         if (selectedPatient == null || result == MessageBoxResult.No) return;
@@ -306,9 +308,20 @@ namespace Dentistry.ViewModels
                             if (compoun.PatientId == patient.Id)
                                 unitOfWork.Compouns.Delete(compoun.Id);
                         }
-                        unitOfWork.Users.Delete(patient.Id);
+                         var recep = unitOfWork.Receptions.GetAll();
+                            foreach (var rec in recep)
+                            {
+                                if (rec.PatientId == patient.Id)
+                                    unitOfWork.Receptions.Delete(rec.Id);
+                            }
+                            unitOfWork.Users.Delete(patient.Id);
                         unitOfWork.Save();
                         OnPropertyChanged("Remove");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Вы не выбрали элемент!");
+                        }
                     }));
             }
         }
@@ -322,8 +335,8 @@ namespace Dentistry.ViewModels
                     {
                         if (SelectedPatient != null)
                         {
-                            AddNewPatient addNewPatient = new AddNewPatient(SelectedPatient);
-                            addNewPatient.Show(); 
+                            App.addNewPatient = new AddNewPatient(SelectedPatient);
+                            App.addNewPatient.Show(); 
                             OnPropertyChanged("Edit");
                         }
                         else

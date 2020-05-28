@@ -79,16 +79,24 @@ namespace Dentistry.ViewModels
                 return _removeCommand ??
                     (_removeCommand = new RelayCommands((selectedItem) =>
                     {
-                        UnitOfWork unitOfWork = new UnitOfWork();
-                        MessageBoxResult result = MessageBox.Show("Вы действительно желаете удалить элемент?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                        if (selectedService == null || result == MessageBoxResult.No) return;
+                        if (SelectedService != null)
+                        {
 
-                        Service service = selectedService as Service;
-                        Services.Remove(service);
-                        unitOfWork.Services.Delete(service.Id);
-                        //unitOfWork.Doctors.Delete(service.Id);
-                        unitOfWork.Save();
-                        OnPropertyChanged("Remove");
+                            UnitOfWork unitOfWork = new UnitOfWork();
+                            MessageBoxResult result = MessageBox.Show("Вы действительно желаете удалить элемент?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                            if (selectedService == null || result == MessageBoxResult.No) return;
+
+                            Service service = selectedService as Service;
+                            Services.Remove(service);
+                            unitOfWork.Services.Delete(service.Id);
+                            //unitOfWork.Doctors.Delete(service.Id);
+                            unitOfWork.Save();
+                            OnPropertyChanged("Remove");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Вы не выбрали элемент!");
+                        }
                     }));
             }
         }

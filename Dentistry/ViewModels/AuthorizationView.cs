@@ -47,6 +47,8 @@ namespace Dentistry.ViewModels
                           return;
                       Password = passwordBox.Password;
                       Account.LogIn(UserName, Password);
+                  
+                      
                   }));
             }
         }
@@ -58,10 +60,20 @@ namespace Dentistry.ViewModels
                 return signUpCommand ??
                   (signUpCommand = new RelayCommands(obj =>
                   {
-                     
-                    App.RegistrationWindow = new Registration();
-                      App.RegistrationWindow.Show();
-                      App.Current.MainWindow.Close();
+                    
+                      if (App.RegistrationWindow != null)
+                      {
+                          App.RegistrationWindow.Visibility = Visibility.Visible;
+                          (App.RegistrationWindow.DataContext as RegistrationViewModel).CurrentPage = null;
+                          (App.RegistrationWindow.DataContext as RegistrationViewModel).Visible = Visibility.Visible;
+                      }
+                      else
+                      {
+                          App.RegistrationWindow = new Registration();
+                          App.RegistrationWindow.Show();
+                      }
+
+                      App.Current.MainWindow.Visibility = Visibility.Hidden;
                      
 
                   }));

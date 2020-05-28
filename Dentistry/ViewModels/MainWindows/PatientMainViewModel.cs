@@ -120,9 +120,10 @@ namespace Dentistry.ViewModels.MainWindows
                    }
                    else
                    {
-                       App.AuthorizationWindow = new Authorization();
-                       App.AuthorizationWindow.Show();
+                      
                        App.PatientmainWindow.Close();
+                       App.Current.MainWindow.Visibility = Visibility.Visible;
+                       PatientProfileViewModel.Compouns.Clear();
 
                    }
 

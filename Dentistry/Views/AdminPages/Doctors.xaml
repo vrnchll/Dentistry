@@ -34,11 +34,6 @@
             <RowDefinition Height="133*"/>
         </Grid.RowDefinitions>
         <Menu Background="#FF2C2828" Grid.Row="0" VerticalAlignment="Top" Height="48">
-            <MenuItem Header="" Height="35" Width="35" Foreground="{DynamicResource PrimaryHueLightBrush}">
-                <MenuItem.Background>
-                    <ImageBrush ImageSource="back--v1.png"/>
-                </MenuItem.Background>
-            </MenuItem>
             <MenuItem Header="Добавить нового доктора" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}"/>
             <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding EditCommand}"/>
             <MenuItem  Command="{Binding RemoveCommand}" Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" />

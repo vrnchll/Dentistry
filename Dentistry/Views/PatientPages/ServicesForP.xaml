@@ -9,7 +9,7 @@
       Title="ServicesForP">
 
     <Grid>
-        <DataGrid x:Name="ServicesList" HorizontalScrollBarVisibility="Visible" AutoGenerateColumns="False" Margin="0,2,0,0" Grid.Row="1" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="Black"  RowHeight="60" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Services}" Opacity="0.9">
+        <DataGrid x:Name="ServicesList" HorizontalScrollBarVisibility="Visible" AutoGenerateColumns="False" Margin="0,2,0,0" Grid.Row="1" Background="{DynamicResource PrimaryHueLightBrush}" Foreground="Black"  RowHeight="60" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Services}" Opacity="0.8">
             <DataGrid.Columns >
                 <DataGridTextColumn Header="Название услуги" Width="200" FontSize="14" FontFamily="Tahoma" Binding="{Binding Path=Name}"/>
                 <DataGridTextColumn FontSize="14" FontFamily="Tahoma" Header="Цена" Binding="{Binding Path=Cost}"/>

@@ -1,8 +1,10 @@
 ﻿using Dentistry.Models;
 using Dentistry.Services;
+using Dentistry.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -16,7 +18,17 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
         public static List<string> LastNamePatients = new List<string>();
         public static List<string> LastNameDoctors = new List<string>();
 
-
+        private string _ChangeContentLabel = "Добавление нового талона";
+    
+        public string ChangeContentLabel
+        {
+            get => _ChangeContentLabel; set
+            {
+                _ChangeContentLabel = value;
+                OnPropertyChanged("ChangeContentLabel");
+            }
+        }
+        string regNames = @"^[a-zA-Zа-яА-Я]{2,25}$";
         public Compoun CurrentCompoun; 
         private DateTime _Date;
         public DateTime Date
@@ -37,7 +49,13 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
         private string _Time;
         public string Time
         {
-            get => _Time; set
+            get {
+                if (_Time == null) return "9:00";
+                
+                
+                return _Time; }
+            
+            set
             {
                 _Time = value;
                 OnPropertyChanged("Time");
@@ -84,6 +102,9 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                 Status = compoun.Status;
                 LastNameDoctor = compoun.Doctor.LastName;
                 LastNamePatient = compoun.Patient.LastName;
+                SelectedPatient = LastNamePatient;
+                SelectedDoctor = LastNameDoctor;
+                ChangeContentLabel = "Редактирование талона";
             }
             _compoun = compoun;
         }
@@ -97,6 +118,43 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                 OnPropertyChanged("Order");
             }
         }
+        private RelayCommands _Exit;
+        public RelayCommands Exit
+        {
+            get
+            {
+                return
+                _Exit ?? (
+               _Exit = new RelayCommands(obj =>
+               {
+                   if (App.addNewCompoun != null)
+                   {
+                       App.addNewCompoun.Close();
+                   }
+               }));
+            }
+
+        }
+        private string _SelectedDoctor;
+        public string SelectedDoctor
+        {
+            get => _SelectedDoctor;
+            set
+            {
+                _SelectedDoctor = value;
+                OnPropertyChanged("Selected Type");
+            }
+        }
+        private string _SelectedPatient;
+        public string SelectedPatient
+        {
+            get => _SelectedPatient;
+            set
+            {
+                _SelectedPatient = value;
+                OnPropertyChanged("Selected Type");
+            }
+        }
         private RelayCommands _add;
         public RelayCommands Add
         {
@@ -106,18 +164,19 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                 _add ?? (
                _add = new RelayCommands(obj =>
                {
-                  
+              
                    UnitOfWork unitOfWork = new UnitOfWork();
                    var doctor = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.LastName == LastNameDoctor);
                    var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.LastName == LastNamePatient);
                    var compouns = unitOfWork.Compouns.GetAll().ToList().FindAll(x => x.IsOrder == false);
-                   var comp = compouns.Find(x => x.IsOrder == false);
-                   if (comp != null)
+
+                   if (CurrentCompoun != null)
                    {
-                       if (CurrentCompoun != null)
+                       if (SelectedDoctor != null && SelectedPatient != null)
                        {
                            Compoun compoun = new Compoun()
                            {
+                               Id = CurrentCompoun.Id,
                                DateOfReception = Date.ToString("dd.MM.yyyy"),
                                Status = Status,
                                IsOrder = true,
@@ -126,12 +185,38 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                                PatientId = patient.Id
 
                            };
-                           Account.EditInformationCompoun(compoun, _compoun, doctor, patient);
-                           if (App.addNewCompoun != null) App.addNewCompoun.Visibility = Visibility.Hidden;
+                           var resultsDoctor = new List<ValidationResult>();
+                           var contextDoctor = new ValidationContext(doctor);
+                           var resultsPatient = new List<ValidationResult>();
+                           var contextPatientr = new ValidationContext(patient);
+                           if (!Validator.TryValidateObject(doctor, contextDoctor, resultsDoctor, true) || !Validator.TryValidateObject(patient, contextPatientr, resultsPatient, true))
+                           {
+                               foreach (var error in resultsDoctor)
+                               {
+                                   MessageBox.Show(error.ErrorMessage);
+                               }
+                               foreach (var error in resultsPatient)
+                               {
+                                   MessageBox.Show(error.ErrorMessage);
+                               }
+                           }
+                           else
+                           {
+                               Account.EditInformationCompoun(compoun, _compoun, doctor, patient);
+                               if (App.addNewCompoun != null) App.addNewCompoun.Visibility = Visibility.Hidden;
+                           }
+
                        }
                        else
                        {
-
+                           MessageBox.Show("Вы не выбрали элемент(ы)!");
+                       }
+                       
+                   }
+                   else
+                   {
+                       if (SelectedDoctor != null && SelectedPatient != null)
+                       {
                            Compoun compoun = new Compoun()
                            {
                                DateOfReception = Date.ToString("dd.MM.yyyy"),
@@ -142,20 +227,34 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                                PatientId = patient.Id
 
                            };
-                           unitOfWork.Compouns.Create(compoun);
-                           unitOfWork.Save();
-                           Admin_CompounsViewModel.Compouns.Add(compoun);
-                           if (App.addNewCompoun != null) App.addNewCompoun.Visibility = Visibility.Hidden;
+                           var resultsCompoun = new List<ValidationResult>();
+                           var contextCompoun = new ValidationContext(compoun);
+
+                           if (!Validator.TryValidateObject(compoun, contextCompoun, resultsCompoun, true))
+                           {
+
+                               foreach (var error in resultsCompoun)
+                               {
+                                   MessageBox.Show(error.ErrorMessage);
+                               }
+                           }
+                           else
+                           {
+
+                               OrderManager.OrderCompounAdmin(doctor, compoun, patient);
+                           }
+                       }
+                       else
+                       {
+                           MessageBox.Show("Вы не выбрали элемент(ы)!");
+                       }
+                       
 
 
-                      
-                       }
-                       }
-                   else
-                   {
-                       MessageBox.Show("Свободных талонов на эту дату больше нет!");
                    }
 
+                   
+               
                }));
             }
         }

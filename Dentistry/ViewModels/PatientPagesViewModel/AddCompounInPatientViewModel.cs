@@ -3,6 +3,7 @@ using Dentistry.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -21,7 +22,12 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
         private DateTime _Date;
         public DateTime Date
         {
-            get => _Date; set
+            get {
+                if (_Date == DateTime.MinValue)
+                    return DateTime.Today;
+
+                return _Date;
+            } set
             {
                 _Date = value;
                 OnPropertyChanged("Date");
@@ -30,7 +36,14 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
         private string _Time;
         public string Time
         {
-            get => _Time; set
+            get
+            {
+                if (_Time == null) return "9:00";
+
+
+                return _Time;
+            }
+            set
             {
                 _Time = value;
                 OnPropertyChanged("Time");
@@ -74,16 +87,7 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
                 OnPropertyChanged("Selected Type");
             }
         }
-        private string _SelectedPat;
-        public string SelectedPat
-        {
-            get => _SelectedPat;
-            set
-            {
-                _SelectedPat = value;
-                OnPropertyChanged("Selected Type");
-            }
-        }
+       
         private RelayCommands _add;
         public RelayCommands Add
         {
@@ -93,33 +97,43 @@ namespace Dentistry.ViewModels.PatientPagesViewModel
                 _add ?? (
                _add = new RelayCommands(obj =>
                {
-                   if (SelectedPat != null && SelectedDoc != null)
+                   if ( SelectedDoc != null)
                    {
 
                        UnitOfWork unitOfWork = new UnitOfWork();
 
                        var doctor = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.LastName == LastNameDoctor);
-                       var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.LastName == LastNamePatient);
+            
 
                        Compoun compoun = new Compoun()
                        {
-                           DateOfReception = Date.ToString("dd MMMM yyyy"),
+                           DateOfReception = Date.ToString("dd.MM.yyyy"),
                            TimeOfReception = Time,
-                           Status = Status,
+                           Status = "Не выполнено",
                            DoctorId = doctor.Id,
-                           PatientId = patient.Id
+                           PatientId = Account.GetInstance().Id
 
                        };
+                       var resultsCompoun = new List<ValidationResult>();
+                       var contextCompoun = new ValidationContext(compoun);
+                   
+                       if (!Validator.TryValidateObject(compoun, contextCompoun, resultsCompoun, true))
+                       {
+                          
+                           foreach (var error in resultsCompoun)
+                           {
+                               MessageBox.Show(error.ErrorMessage);
+                           }
+                       }
+                       else
+                       {
 
-                       PatientProfileViewModel.Compouns.Add(compoun);
-
-                       unitOfWork.Compouns.Create(compoun);
-                       unitOfWork.Save();
-                       MessageBox.Show("Ваш талон заказан!");
+                           OrderManager.OrderCompoun(doctor,compoun);
+                       }
                    }
                    else
                    {
-                       MessageBox.Show("Вы не выбрали элемент!");
+                       MessageBox.Show("Вы не выбрали элемент(ы)!");
                    }
                }));
             

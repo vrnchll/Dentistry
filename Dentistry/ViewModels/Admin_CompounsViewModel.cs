@@ -125,6 +125,8 @@ namespace Dentistry.ViewModels
                 return _removeCommand ??
                     (_removeCommand = new RelayCommands((selectedItem) =>
                     {
+                    if (SelectedCompoun != null)
+                    {
                         UnitOfWork unitOfWork = new UnitOfWork();
                         MessageBoxResult result = MessageBox.Show("Вы действительно желаете удалить элемент?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
                         if (selectedCompoun == null || result == MessageBoxResult.No) return;
@@ -134,6 +136,11 @@ namespace Dentistry.ViewModels
                         unitOfWork.Compouns.Delete(compoun.Id);
                         unitOfWork.Save();
                         OnPropertyChanged("Remove");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Вы не выбрали элемент!");
+                        }
                     }));
             }
         }
@@ -208,6 +215,10 @@ namespace Dentistry.ViewModels
                    Admin_CompounsViewModel.Compouns.Clear();
                    foreach (var com in compouns)
                    {
+                       var patient = unitOfWork.Patients.GetAll().FirstOrDefault(x => x.Id == com.PatientId);
+                       com.Patient = patient;
+                       var doctor = unitOfWork.Doctors.GetAll().FirstOrDefault(x => x.Id == com.DoctorId);
+                       com.Doctor = doctor;
                        Compouns.Add(com);
                    }
                }));

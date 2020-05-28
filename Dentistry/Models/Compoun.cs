@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,11 @@ namespace Dentistry.Models
 {
     public class Compoun
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        //[Required(ErrorMessage = "Не выбрана дата")]
+        [Required(ErrorMessage = "Не выбрана дата")]
         public string DateOfReception { get; set; }
-        //[Required(ErrorMessage = "Не выбрано время")]
+        [Required(ErrorMessage = "Не выбрано время")]
         public string TimeOfReception { get; set; }
 
         public string Status { get; set; }

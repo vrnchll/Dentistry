@@ -104,7 +104,7 @@ namespace Dentistry.ViewModels
                         {
                             App.addNewReception = new AddNewReception(SelectedReception);
                             App.addNewReception.Show();
-                            OnPropertyChanged("Edit");
+                            
                         }
                         else
                         {
@@ -121,6 +121,8 @@ namespace Dentistry.ViewModels
                 return _removeCommand ??
                     (_removeCommand = new RelayCommands((selectedItem) =>
                     {
+                    if (SelectedReception != null)
+                    {
                         UnitOfWork unitOfWork = new UnitOfWork();
                         MessageBoxResult result = MessageBox.Show("Вы действительно желаете удалить элемент?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
                         if (selectedReception == null || result == MessageBoxResult.No) return;
@@ -130,6 +132,11 @@ namespace Dentistry.ViewModels
                         unitOfWork.Receptions.Delete(reception.Id);
                         unitOfWork.Save();
                         OnPropertyChanged("Remove");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Вы не выбрали элемент!");
+                        }
                     }));
             }
         }

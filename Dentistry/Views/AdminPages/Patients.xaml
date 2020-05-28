@@ -34,11 +34,7 @@
             <RowDefinition Height="133*"/>
         </Grid.RowDefinitions>
         <Menu Margin="0,0,0,15" Background="#FF2C2828" Grid.Row="0" VerticalAlignment="Top" Height="48">
-            <MenuItem Header="" Height="35" Width="35" Foreground="{DynamicResource PrimaryHueLightBrush}">
-                <MenuItem.Background>
-                    <ImageBrush ImageSource="back--v1.png"/>
-                </MenuItem.Background>
-            </MenuItem>
+
             <MenuItem Header="Добавить нового пациента" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}" Height="30"/>
             <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="36"  Command="{Binding EditCommand}"/>
             <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="30" Command="{Binding RemoveCommand}"/>
@@ -46,7 +42,7 @@
         <DataGrid AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
                               ScrollViewer.IsDeferredScrollingEnabled="True" 
                   IsReadOnly="True"
-                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Margin="0,48,0,-1" x:Name="PatientsList" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueLightBrush}"  RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectedPatient}" Opacity="0.8">
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Margin="0,48,0,-1" x:Name="PatientsList" Grid.RowSpan="2" Background="#FF80CBC4"  RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectedPatient}" Opacity="0.995">
             <DataGrid.Columns>
 
                 <DataGridTextColumn  Header="Имя" Binding="{Binding Path= FirstName}"/>
@@ -89,11 +85,11 @@
                 <materialDesign:PackIcon Kind="Search" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="20" Height="31" Width="37"/>
                 <TextBlock Text="Поиск" FontSize="22" FontFamily="Yu Gothic UI Semibold" Foreground="{DynamicResource PrimaryHueLightBrush}"/>
             </StackPanel>
-            <TextBox x:Name="NameFirst" Text="{Binding FirstNames}" Margin="84,161,0,272" materialDesign:HintAssist.Hint=" Имя" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Height="31"/>
-            <TextBox x:Name="NameLast" Text="{Binding LastNames}" Margin="84,117,0,314" materialDesign:HintAssist.Hint=" Фамилия" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"  Height="31"/>
-            <TextBox x:Name="Numb" Text="{Binding Number}" Margin="84,207,0,221" materialDesign:HintAssist.Hint="Номер телефона" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Height="31"/>
-            <TextBox x:Name="DateOfBirthd" Text="{Binding DateOfBirthd}" Margin="84,257,0,174" materialDesign:HintAssist.Hint=" Дата Рождения" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Height="31"/>
-            <Button x:Name="search" Command="{Binding SearchCommand}" Content="Найти" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="156,280,66,103"/>
+            <TextBox x:Name="NameFirst" Text="{Binding FirstNames}" Margin="84,161,26,272" materialDesign:HintAssist.Hint=" Имя" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Height="31"/>
+            <TextBox x:Name="NameLast" Text="{Binding LastNames}" Margin="84,118,26,315" materialDesign:HintAssist.Hint=" Фамилия" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14"  Height="31"/>
+            <TextBox x:Name="Numb" Text="{Binding Number}" Margin="84,210,26,224" materialDesign:HintAssist.Hint="Номер телефона" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Height="31"/>
+            <TextBox x:Name="DateOfBirthd" Text="{Binding DateOfBirthd}" Margin="84,258,26,175" materialDesign:HintAssist.Hint=" Дата Рождения" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueLightBrush}" FontSize="14" Height="31"/>
+            <Button x:Name="search" Command="{Binding SearchCommand}" Content="Найти" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Margin="156,305,94,128"/>
         </Grid>
     </Grid>
 </Page>

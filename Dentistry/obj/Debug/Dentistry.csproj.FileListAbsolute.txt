@@ -308,3 +308,10 @@ D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migratio
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.AddIsOrderMigration.resources
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.AddReceptionMigration.resources
 D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.ValidationPatient.resources
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.IdentityGenerate.resources
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.Key.resources
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.PatientKey.resources
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.UserId.resources
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.PatientRegex.resources
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.PatValid.resources
+D:\2k2s\курсовой ооп\Dentistry\Dentistry\obj\Debug\Dentistry.Migrations.fixvalid.resources

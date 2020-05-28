@@ -5,23 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AddNewService" Height="356" Width="500">
+        Title="AddNewService" Height="301" Width="450" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="{DynamicResource PrimaryHueLightBrush }">
         <Grid.RowDefinitions>
-            <RowDefinition Height="55*"/>
-            <RowDefinition Height="45*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="44*"/>
             <RowDefinition Height="43*"/>
-            <RowDefinition Height="48*"/>
-            <RowDefinition Height="131*"/>
+            <RowDefinition Height="86*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Column="0"  Grid.Row="0" Content="Добавление новой услуги"  Foreground="#FF303030"  FontFamily="Bodoni MT Black" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Column="0" Grid.Row="1"  FontSize="14" Background="#FF303030" Foreground="{DynamicResource PrimaryHueLightBrush}"  Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name}" materialDesign:HintAssist.Hint=" Наименование услуги" Opacity="0.8" HorizontalAlignment="Center" Width="164" />
-        <TextBox Grid.Column="0" Grid.Row="3"  FontSize="14" Background="#FF303030" Foreground="{DynamicResource PrimaryHueLightBrush}" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Text="{Binding Cost}" materialDesign:HintAssist.Hint=" Стоимость" Opacity="0.8" HorizontalAlignment="Center" Width="164" />
-        <ComboBox Grid.Column="0" Grid.Row="4" Background="#FF303030" Foreground="{DynamicResource PrimaryHueLightBrush}"  FontSize="14" SelectedValue="{Binding SelectedItem}" materialDesign:HintAssist.Hint=" Врач" x:Name="docList" HorizontalAlignment="Center" Opacity="0.8"  Width="164" />
-        <Button Grid.Column="0" Content="Добавить" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Command="{Binding add}" Background="{DynamicResource MaterialDesignDarkBackground}" Opacity="0.9"/>
+        <Button Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#FF404040" Command="{Binding Exit}" Width="48">
+            <materialDesign:PackIcon Kind="PresenceExit"/>
+        </Button>
+        <Label Grid.Column="0"  Grid.Row="0" Content="{Binding ChangeContentLabel}"  Foreground="#FF303030"  FontFamily="Bodoni MT Black" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="52,0,48,0"/>
+        <TextBox Grid.Column="0" Grid.Row="1"  FontSize="14" Background="#FFD2EDEA" Foreground="#FF38403F"  Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name}" materialDesign:HintAssist.Hint=" Наименование услуги" Opacity="0.8" HorizontalAlignment="Center" Width="233" Margin="110,0,99,0" />
+        <TextBox Grid.Column="0" Grid.Row="3"  FontSize="14" Background="#FFE6F5F3" Foreground="#FF38403F" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Text="{Binding Cost}" materialDesign:HintAssist.Hint=" Стоимость" Opacity="0.8" HorizontalAlignment="Center" Width="233" Margin="110,0,99,0" />
+        <ComboBox Grid.Column="0" Grid.Row="4" Background="#FFE6F5F3" Foreground="#FF38403F"  FontSize="14" SelectedValue="{Binding SelectedItem}" materialDesign:HintAssist.Hint=" Врач" x:Name="docList" HorizontalAlignment="Center" Opacity="0.8"  Width="233" Height="36" Margin="110,7,99,0" />
+        <Button Grid.Column="0" Content="Добавить" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Command="{Binding add}" Background="{DynamicResource MaterialDesignDarkBackground}" Opacity="0.9" Margin="175,10,171,0" Width="96"/>
     </Grid>
 </Window>

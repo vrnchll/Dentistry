@@ -111,6 +111,34 @@
     <Compile Include="Migrations\202005241500323_ValidationPatient.designer.cs">
       <DependentUpon>202005241500323_ValidationPatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005251324042_IdentityGenerate.cs" />
+    <Compile Include="Migrations\202005251324042_IdentityGenerate.designer.cs">
+      <DependentUpon>202005251324042_IdentityGenerate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005251341346_Key.cs" />
+    <Compile Include="Migrations\202005251341346_Key.designer.cs">
+      <DependentUpon>202005251341346_Key.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005251508289_PatientKey.cs" />
+    <Compile Include="Migrations\202005251508289_PatientKey.designer.cs">
+      <DependentUpon>202005251508289_PatientKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005251516241_UserId.cs" />
+    <Compile Include="Migrations\202005251516241_UserId.designer.cs">
+      <DependentUpon>202005251516241_UserId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005251749510_PatientRegex.cs" />
+    <Compile Include="Migrations\202005251749510_PatientRegex.designer.cs">
+      <DependentUpon>202005251749510_PatientRegex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005251810043_PatValid.cs" />
+    <Compile Include="Migrations\202005251810043_PatValid.designer.cs">
+      <DependentUpon>202005251810043_PatValid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005251833168_fixvalid.cs" />
+    <Compile Include="Migrations\202005251833168_fixvalid.designer.cs">
+      <DependentUpon>202005251833168_fixvalid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\CompounRepository.cs" />
     <Compile Include="Repositories\DoctorRepository.cs" />
@@ -119,8 +147,8 @@
     <Compile Include="Repositories\ReceptionRepository.cs" />
     <Compile Include="Repositories\ServicesRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
-    <Compile Include="Resourses\Validation.cs" />
     <Compile Include="Services\Account.cs" />
+    <Compile Include="Services\OrderManager.cs" />
     <Compile Include="Services\Search.cs" />
     <Compile Include="Services\UnitOfWork.cs" />
     <Compile Include="ViewModels\AdminPagesViewModel\AddNewCompounViewModel.cs" />
@@ -370,10 +398,32 @@
     <EmbeddedResource Include="Migrations\202005241500323_ValidationPatient.resx">
       <DependentUpon>202005241500323_ValidationPatient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005251324042_IdentityGenerate.resx">
+      <DependentUpon>202005251324042_IdentityGenerate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005251341346_Key.resx">
+      <DependentUpon>202005251341346_Key.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005251508289_PatientKey.resx">
+      <DependentUpon>202005251508289_PatientKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005251516241_UserId.resx">
+      <DependentUpon>202005251516241_UserId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005251749510_PatientRegex.resx">
+      <DependentUpon>202005251749510_PatientRegex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005251810043_PatValid.resx">
+      <DependentUpon>202005251810043_PatValid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005251833168_fixvalid.resx">
+      <DependentUpon>202005251833168_fixvalid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

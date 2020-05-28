@@ -27,7 +27,7 @@ namespace Dentistry.Views.PatientPages
             var patients = unitOfWork.Patients.GetAll().ToList();
             var doctors = unitOfWork.Doctors.GetAll().ToList();
 
-            List<string> patientsName = new List<string>();
+    
 
             List<string> doctorsName = new List<string>();
             InitializeComponent();
@@ -35,13 +35,10 @@ namespace Dentistry.Views.PatientPages
             {
                 doctorsName.Add(i.LastName);
             }
-            foreach (var i in patients)
-            {
-                patientsName.Add(i.LastName);
-            }
+         
 
             docList.ItemsSource = doctorsName;
-            patList.ItemsSource = patientsName;
+      
         }
     }
 }

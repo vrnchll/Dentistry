@@ -79,9 +79,11 @@ namespace Dentistry.ViewModels
                 _ReturnBack ?? (
                _ReturnBack = new RelayCommands(obj =>
                {
-                   App.AuthorizationWindow = new Authorization();
-                   App.AuthorizationWindow.Show();
-                   App.RegistrationWindow.Close();
+
+
+                   App.Current.MainWindow.Visibility = Visibility.Visible;
+                   App.RegistrationWindow.Visibility = Visibility.Hidden;
+                   
                }));
             }
 

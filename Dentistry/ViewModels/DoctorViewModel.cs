@@ -9,6 +9,7 @@ using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -16,57 +17,72 @@ namespace Dentistry.ViewModels
 {
     public class DoctorViewModel : INotifyPropertyChanged
     {
+        string regNames = @"^[a-zA-Zа-яА-Я]{2,25}$";
+        string regDOfBirs = @"([0-2]\d|3[01])\.(0\d|1[012])\.(\d{4})";
+        string regInt = @"^[0-9]{1,2}$";
         private string _FirstName;
         public DateTime _ReportPlanningDate = DateTime.Today;
         public string FirstName { get => _FirstName; set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("Имя не может быть пустым");
-                _FirstName = value;
-                
+                if (Regex.IsMatch(value, regNames, RegexOptions.IgnoreCase))
+                    _FirstName = value;
+                else
+                    MessageBox.Show("Недопустимые символы в имени");
+                OnPropertyChanged("FirstName");
             } }
 
         private string _LastName;
         public string LastName { get => _LastName; set
             {
-                _LastName = value;
+                if (Regex.IsMatch(value, regNames, RegexOptions.IgnoreCase))
+                    _LastName = value;
+                else
+                    MessageBox.Show("Недопустимые символы в фамилии");
                 OnPropertyChanged("LastName");
             } }
         private string _MiddleName;
         public string MiddleName { get => _MiddleName; set
             {
-                _MiddleName = value;
+                if (Regex.IsMatch(value, regNames, RegexOptions.IgnoreCase))
+                    _MiddleName = value;
+                else
+                    MessageBox.Show("Недопустимые символы в отчестве");
                 OnPropertyChanged("MiddleName");
             } }
 
         private string _DateOfBirth;
         public string DateOfBirth { get => _DateOfBirth; set
             {
-             
-                 _DateOfBirth = value;
+                if (Regex.IsMatch(value, regDOfBirs, RegexOptions.IgnoreCase))
+                    _DateOfBirth = value;
+                else
+                    MessageBox.Show("Неверный формат даты, введите в формате dd.MM.yyyy");
                 OnPropertyChanged("DateOfBirth");
             } }
 
         private bool[] _Gender = new bool[] { true, false };
-        public bool[] Gender { get=>_Gender; }
+        public bool[] Gender { get => _Gender; }
         public int SelectedGender { get => Array.IndexOf(_Gender, true); }
 
         private string _Position;
-        public string Position { get=>_Position; set
+        public string Position { get => _Position; set
             {
                 _Position = value;
                 OnPropertyChanged("Position");
             } }
         private string _Experience;
-        public string Experience { get=>_Experience; set
+        public string Experience { get => _Experience; set
             {
-                _Experience = value;
+                if (Regex.IsMatch(value, regInt, RegexOptions.IgnoreCase))
+                    _Experience = value;
+                else
+                    MessageBox.Show("Стаж работы должен содержать только цифры");
                 OnPropertyChanged("Experience");
             }
         }
 
         private string _NumberOfPhone;
-        public string NumberOfPhone { get=>_NumberOfPhone; set
+        public string NumberOfPhone { get => _NumberOfPhone; set
             {
                 _NumberOfPhone = value;
                 OnPropertyChanged("NumberOfPhone");
@@ -74,7 +90,7 @@ namespace Dentistry.ViewModels
         }
 
         private string _Cabinet;
-        public string Cabinet { get=>_Cabinet; set
+        public string Cabinet { get => _Cabinet; set
             {
                 _Cabinet = value;
                 OnPropertyChanged("Cabinet");
@@ -82,29 +98,16 @@ namespace Dentistry.ViewModels
         }
 
         private string _Login;
-        public string Login { get=>_Login; set
+        public string Login { get => _Login; set
             {
                 _Login = value;
                 OnPropertyChanged("Login");
             }
         }
 
-        private string _Password;
-        public string Password { get=>_Password; set
-            {
-                _Password = value;
-                OnPropertyChanged("Password");
-            }
-        }
-        private string _ConfirmPassword;
-        public string ConfirmPassword
-        {
-            get => _ConfirmPassword; set
-            {
-                _ConfirmPassword = value;
-                OnPropertyChanged("ConfirmPassword");
-            }
-        }
+        public string Password {private get; set; }
+        public string ConfirmPassword { private get ; set; }
+       
         private RelayCommands _ReturnBack;
         public RelayCommands ReturnBack
         {
@@ -114,18 +117,27 @@ namespace Dentistry.ViewModels
                 _ReturnBack ?? (
                _ReturnBack = new RelayCommands(obj =>
                {
-                   App.RegistrationWindow = new Registration();
-                   App.RegistrationWindow.Show();
-                   App.Current.MainWindow.Close();
+                   App.Current.MainWindow.Visibility = Visibility.Visible;
+                   App.RegistrationWindow.Visibility = Visibility.Hidden;
                }));
             }
 
         }
         private string _Email;
-        public string Email { get=>_Email; set
+        public string Email { get => _Email; set
             {
                 _Email = value;
                 OnPropertyChanged("Email");
+            }
+        }
+        private string _ChangeContentLabel = "Добавление нового врача";
+
+        public string ChangeContentLabel
+        {
+            get => _ChangeContentLabel; set
+            {
+                _ChangeContentLabel = value;
+                OnPropertyChanged("ChangeContentLabel");
             }
         }
         public readonly Doctor _doctor;
@@ -143,6 +155,7 @@ namespace Dentistry.ViewModels
                 Email = doctor.User.Email;
                 NumberOfPhone = doctor.NumberOfPhone;
                 Login = doctor.User.UserName;
+                ChangeContentLabel = "Редактирование врача";
 
             }
             _doctor = doctor;
@@ -155,12 +168,12 @@ namespace Dentistry.ViewModels
                 return registrationCommand ??
                 (registrationCommand = new RelayCommands(obj =>
                 {
-                UnitOfWork unitOfWork = new UnitOfWork();
-                var users = unitOfWork.Users.GetAll().FirstOrDefault(x => x.UserName == Login);
+                    UnitOfWork unitOfWork = new UnitOfWork();
+                    var users = unitOfWork.Users.GetAll().FirstOrDefault(x => x.UserName == Login);
                     if (users != null)
                     {
 
-                        User user = new User() { UserName = Login, Password = Password == null ? users.Password : Password, Email = Email, TypeUser = "Doctor" };
+                        User user = new User() {Id=users.Id, UserName = Login, Password = Password == null ? users.Password : Password, Email = Email, TypeUser = "Doctor" };
                         Doctor person = new Doctor() { Id = user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Mужской" : "Женский", Experience = Experience, Position = Position, Cabinet = Cabinet, NumberOfPhone = NumberOfPhone };
                         user.DoctorProfile = person;
                         Account.EditInformationDoctor(person, user, _doctor, users.Password);
@@ -176,9 +189,8 @@ namespace Dentistry.ViewModels
                             Doctor person = new Doctor() { Id = user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Mужской" : "Женский", Experience = Experience, Position = Position, Cabinet = Cabinet, NumberOfPhone = NumberOfPhone };
                             user.DoctorProfile = person;
                             Account.RegistrationDoctor(user, person);
-                            if (App.addNewDoctor != null)
-                            { App.addNewDoctor.Visibility = Visibility.Hidden; }
-
+                          
+                           
                         }
                         else
                         {
@@ -188,7 +200,24 @@ namespace Dentistry.ViewModels
                 }));
             }
         }
+      
+        private RelayCommands _Exit;
+        public RelayCommands Exit
+        {
+            get
+            {
+                return
+                _Exit ?? (
+               _Exit = new RelayCommands(obj =>
+               {
+                   if (App.addNewDoctor != null)
+                   {
+                       App.addNewDoctor.Close();
+                   }
+               }));
+            }
 
+        }
         public event PropertyChangedEventHandler PropertyChanged; // отслеживать изменения нашего поля сразу(binding)
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AddNewPatient" Height="450" Width="800">
+        Title="AddNewPatient" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Background="{DynamicResource PrimaryHueLightBrush}" Opacity="0.9">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -24,25 +24,28 @@
             <RowDefinition Height="27*"/>
             <RowDefinition Height="26*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" FontFamily="Bodoni MT Black" Foreground="#FF303030" FontSize="20" Content="Добавление нового пациента" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Row="1" Width="500" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding FirstName}"  FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Имя" Opacity="0.905"></TextBox>
-        <TextBox Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Отчество" Text="{Binding MiddleName}" Width="500" Opacity="0.9"/>
-        <TextBox Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Фамилия" Text="{Binding LastName}" Opacity="0.9"/>
-        <TextBox x:Name="DateOfBirth" Text="{Binding DateOfBirth}" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" materialDesign:HintAssist.Hint="Дата рождения" Background="{DynamicResource PrimaryHueDarkBrush}"  FontSize="14" Opacity="0.9"/>
+        <Button Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#FF404040" Command="{Binding Exit}">
+            <materialDesign:PackIcon Kind="PresenceExit"/>
+        </Button>
+        <Label Grid.Row="0" FontFamily="Bodoni MT Black" Foreground="#FF303030" FontSize="20" Content="{Binding ChangeContentLabel}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,48,0"/>
+        <TextBox Grid.Row="1" Width="500" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding FirstName}"  FontSize="14" Background="White" materialDesign:HintAssist.Hint=" Имя" Opacity="0.905"></TextBox>
+        <TextBox Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Background="White" materialDesign:HintAssist.Hint=" Отчество" Text="{Binding MiddleName}" Width="500" Opacity="0.9"/>
+        <TextBox Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" FontSize="14" Background="White" materialDesign:HintAssist.Hint=" Фамилия" Text="{Binding LastName}" Opacity="0.9"/>
+        <TextBox x:Name="DateOfBirth" Text="{Binding DateOfBirth}" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" materialDesign:HintAssist.Hint="Дата рождения" Background="White"  FontSize="14" Opacity="0.9"/>
         <StackPanel Orientation="Vertical" Grid.Row="5" Width="500" >
             <RadioButton Content="Мужской" Style="{DynamicResource RadioBttn}" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Path=Gender[0], Mode=TwoWay}"/>
             <RadioButton Content="Женский" Style="{DynamicResource RadioBttn}" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding Path=Gender[1], Mode=TwoWay}"/>
         </StackPanel>
-        <ComboBox SelectedValue="Минск"  materialDesign:HintAssist.Hint=" Город" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="CityNames" SelectedItem="{Binding City}" Grid.Row="6" Background="{DynamicResource PrimaryHueDarkBrush}"  FontSize="14" Margin="84,2,499,1" Opacity="0.9" Height="31"  />
-        <TextBox materialDesign:HintAssist.Hint=" Улица" x:Name="Street" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Street}" Grid.Row="6" Background="{DynamicResource PrimaryHueDarkBrush}"  FontSize="16" Margin="269,2,373,1" Opacity="0.9" Height="31"   />
-        <TextBox Grid.Row="6" Margin="424,2,218,1" Text="{Binding House}" Width="150" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Дом" Opacity="0.9" Height="31"  />
-        <TextBox Grid.Row="6" Margin="578,2,64,0" Text="{Binding Flat}" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Квартира" Opacity="0.9" Height="32" />
-        <TextBox Grid.Row="7" Width="500" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Номер телефона" Text="{Binding NumberOfPhone}" Opacity="0.9"/>
+        <ComboBox SelectedValue="Минск"  materialDesign:HintAssist.Hint=" Город" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="CityNames" SelectedItem="{Binding City}" Grid.Row="6" Background="White"  FontSize="14" Margin="84,2,499,1" Opacity="0.9" Height="31"  />
+        <TextBox materialDesign:HintAssist.Hint=" Улица" x:Name="Street" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Street}" Grid.Row="6" Background="White"  FontSize="16" Margin="269,2,373,1" Opacity="0.9" Height="31"   />
+        <TextBox Grid.Row="6" Margin="424,2,218,1" Text="{Binding House}" Width="150" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Background="White" materialDesign:HintAssist.Hint=" Дом" Opacity="0.9" Height="31"  />
+        <TextBox Grid.Row="6" Margin="578,2,64,0" Text="{Binding Flat}" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Background="White" materialDesign:HintAssist.Hint=" Квартира" Opacity="0.9" Height="32" />
+        <TextBox Grid.Row="7" Width="500" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" materialDesign:HintAssist.Hint=" Номер телефона" Text="{Binding NumberOfPhone}" Opacity="0.9"/>
         <Label Grid.Row="9" Content="Пользователь" FontFamily="Bodoni MT Black" Foreground="#FF303030" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="Login2" Grid.Row="10" Text="{Binding Login}" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Имя пользователя" Width="500" Opacity="0.9"/>
-        <TextBox x:Name="Password2" Grid.Row="11" Text="{Binding Password}" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Пароль" Width="500" Opacity="0.9"/>
-        <TextBox x:Name="ConfPass2" Grid.Row="12"  Text="{Binding ConfirmPassword}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Подтверждение пароля" Width="500" Opacity="0.9"/>
-        <TextBox x:Name="Email2" Grid.Row="13" Text="{Binding Email}"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource PrimaryHueDarkBrush}" materialDesign:HintAssist.Hint=" Email" Width="500" Opacity="0.9"/>
+        <TextBox x:Name="Login2" Grid.Row="10" Text="{Binding Login}" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="14" Background="White" materialDesign:HintAssist.Hint=" Имя пользователя" Width="500" Opacity="0.9"/>
+        <PasswordBox x:Name="Password2" Grid.Row="11" PasswordChanged="PasswordBox_PasswordChanged" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="14" Background="White" materialDesign:HintAssist.Hint=" Пароль" Width="500" Opacity="0.9"/>
+        <PasswordBox x:Name="ConfPass2" Grid.Row="12"  PasswordChanged="PasswordBox_ConfirmPasswordChanged" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Background="White" materialDesign:HintAssist.Hint=" Подтверждение пароля" Width="500" Opacity="0.9"/>
+        <TextBox x:Name="Email2" Grid.Row="13" Text="{Binding Email}"  FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" materialDesign:HintAssist.Hint=" Email" Width="500" Opacity="0.9"/>
         <Button Content="Добавить" Grid.Row="14" HorizontalAlignment="Center" Width="100" VerticalAlignment="Center" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Background="{DynamicResource MaterialDesignDarkBackground}" Command="{Binding RegistrationCommand}" Height="Auto"/>
     </Grid>
 </Window>

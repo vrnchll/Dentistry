@@ -17,18 +17,14 @@ namespace Dentistry.Models
      
         [StringLength(20, MinimumLength = 4, ErrorMessage = "Недопустимая длина имени")]
          [Required(ErrorMessage = "Не указано имя пользователя")]
-
-        [RegularExpression(@"/^[А-Я]{1}[а-я]{1,20}$/", ErrorMessage = "Недопустимые символы в Имени!")]
         public string FirstName { get; set; }
 
         [StringLength(20, MinimumLength = 4, ErrorMessage = "Недопустимая длина фамилии")]
         [Required(ErrorMessage = "Не указана фамилия пользователя")]
-        [RegularExpression(@"/^[А-Я]{1}[а-я]{1,20}$/", ErrorMessage = "Недопустимые символы в Фамилии!")]
         public string LastName { get; set; }
     
         [StringLength(20, MinimumLength = 6, ErrorMessage = "Недопустимая длина отчества")]
         [Required(ErrorMessage = "Не указано отчество пользователя")]
-        [RegularExpression(@"/^[А-Я]{1}[а-я]{1,20}$/", ErrorMessage = "Недопустимые символы в Отчестве!")]
 
         public string MiddleName { get; set; }
         [Required(ErrorMessage = "Не указана дата рождения пользователя")]
@@ -41,7 +37,6 @@ namespace Dentistry.Models
         public string City { get; set; }
         [Required(ErrorMessage = "Не указана улица")]
         [StringLength(25, MinimumLength = 2, ErrorMessage = "Недопустимое значение")]
-        [RegularExpression(@"/^[А-Я]{1}[а-я]{1,25}$/", ErrorMessage = "Недопустимые символы в названии улицы!")]
         public string Street { get; set;}
 
         [Required(ErrorMessage = "Не указан дом")]

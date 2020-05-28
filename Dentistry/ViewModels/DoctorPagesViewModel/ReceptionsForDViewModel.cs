@@ -69,16 +69,23 @@ namespace Dentistry.ViewModels.DoctorPagesViewModel
             {
                 return _removeCommand ??
                     (_removeCommand = new RelayCommands((selectedItem) =>
-                    {
-                        UnitOfWork unitOfWork = new UnitOfWork();
-                        MessageBoxResult result = MessageBox.Show("Вы действительно желаете удалить элемент?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                        if (selectedReception == null || result == MessageBoxResult.No) return;
+                    { if (selectedReception != null)
+                        {
+                            UnitOfWork unitOfWork = new UnitOfWork();
+                            MessageBoxResult result = MessageBox.Show("Вы действительно желаете удалить элемент?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                            if (selectedReception == null || result == MessageBoxResult.No) return;
 
-                        Reception reception = selectedReception as Reception;
-                        Receptions.Remove(reception);
-                        unitOfWork.Receptions.Delete(reception.Id);
-                        unitOfWork.Save();
-                        OnPropertyChanged("Remove");
+                            Reception reception = selectedReception as Reception;
+                            Receptions.Remove(reception);
+                            unitOfWork.Receptions.Delete(reception.Id);
+                            unitOfWork.Save();
+                            OnPropertyChanged("Remove");
+                        }
+                    else
+                        {
+                                MessageBox.Show("Вы не выбрали элемент!");
+                            
+                        }
                     }));
             }
         }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dentistry.ViewModels;
+using Dentistry.Views.Registration;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -18,9 +20,13 @@ namespace Dentistry
 
         public static Window DoctormainWindow;
         public static Window PatientmainWindow;
+        public static RegistrationViewModel registrationViewModel;
         public static Window AdminWindow;
 
-
+        static App()
+        {
+           
+        }
         public static Window addNewCompoun;
         public static Window addNewDoctor;
         public static Window addNewPatient;

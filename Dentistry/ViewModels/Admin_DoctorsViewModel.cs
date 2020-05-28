@@ -209,6 +209,8 @@ namespace Dentistry.ViewModels
                return _removeCommand ??
                    (_removeCommand = new RelayCommands((selectedItem) =>
                    {
+                   if (SelectedDoctor != null)
+                   {
                        UnitOfWork unitOfWork = new UnitOfWork();
                        MessageBoxResult result = MessageBox.Show("Вы действительно желаете удалить элемент?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
                        if (selectedDoctor == null || result == MessageBoxResult.No) return;
@@ -219,12 +221,24 @@ namespace Dentistry.ViewModels
                        var compouns = unitOfWork.Compouns.GetAll();
                        foreach(var compoun in compouns)
                        {
-                           if (compoun.PatientId == doctor.Id)
+                           if (compoun.DoctorId == doctor.Id)
                                unitOfWork.Compouns.Delete(compoun.Id);
                        }
-                       unitOfWork.Users.Delete(doctor.Id);
+                           var recep = unitOfWork.Receptions.GetAll();
+                           foreach (var rec in recep)
+                           {
+                               if (rec.DoctorId == doctor.Id)
+                                   unitOfWork.Receptions.Delete(rec.Id);
+                           }
+
+                           unitOfWork.Users.Delete(doctor.Id);
                        unitOfWork.Save();
                        OnPropertyChanged("Remove");
+                       }
+                       else
+                       {
+                           MessageBox.Show("Вы не выбрали элемент!");
+                       }
                    }));
             }
         }

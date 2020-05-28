@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Dentistry.ViewModels.MainWindows
 {
@@ -47,7 +48,19 @@ namespace Dentistry.ViewModels.MainWindows
             Servicess = new ServicesAdmin();
             CurrentPage = Patients;
         }
-
+        private string _ChangeColor;
+        public string ChangeColor
+        {
+            get
+            {
+                return _ChangeColor;
+            }
+            set
+            {
+                _ChangeColor = value;
+                OnPropertyChanged("ChangeColor");
+            }
+        }
         private RelayCommands _ShowPatients;
         public RelayCommands ShowPatients
         {
@@ -58,6 +71,7 @@ namespace Dentistry.ViewModels.MainWindows
                _ShowPatients = new RelayCommands(obj =>
                {
                    CurrentPage = Patients;
+   
                }));
             }
         }
@@ -136,10 +150,11 @@ namespace Dentistry.ViewModels.MainWindows
                    }
                    else
                    {
-                       App.AuthorizationWindow = new Authorization();
-                       App.AuthorizationWindow.Show();
-                       App.AdminWindow.Close();
+                     
 
+                       App.AdminWindow.Close();
+                       Admin_CompounsViewModel.Compouns.Clear();
+                       App.Current.MainWindow.Visibility = Visibility.Visible;
                    }
 
                  

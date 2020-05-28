@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Dentistry.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 
         mc:Ignorable="d"
-        Title="Authorization" Height="327.334" Width="400" ResizeMode="NoResize" Icon="pack://application:,,,/Resourses/icons8-зуб-50.png">
+        Title="Authorization" Height="327.334" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="pack://application:,,,/Resourses/icons8-зуб-50.png">
     <Grid RenderTransformOrigin="0.507,0.813">
         <Grid.Background>
             <ImageBrush ImageSource="/Dentistry;component/Resourses/cute-strong-and-happy-tooth-png_234079.jpg"/>

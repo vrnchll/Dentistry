@@ -4,6 +4,7 @@ using Dentistry.ViewModels;
 using Dentistry.ViewModels.DoctorPagesViewModel;
 using Dentistry.ViewModels.PatientPagesViewModel;
 using Dentistry.Views;
+using Dentistry.Views.Registration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -112,14 +113,23 @@ namespace Dentistry.Services
                 String tmp = Encrypt(user.Password, user.UserName);
                 user.Password = tmp;
                 UnitOfWork unitOfWork = new UnitOfWork();
-                unitOfWork.Users.Create(user);
-                unitOfWork.Patients.Create(person);
-                unitOfWork.Save();
-                Admin_PatientsViewModel.Patients.Add(person);
-                if (App.RegistrationWindow != null)
+                var userExist = unitOfWork.Users.GetAll().FirstOrDefault(x => x.UserName == user.UserName);
+                if (userExist == null)
                 {
-                    App.RegistrationWindow.Visibility = Visibility.Hidden;
-                    App.Current.MainWindow.Visibility = Visibility.Visible;
+                    unitOfWork.Users.Create(user);
+                    unitOfWork.Patients.Create(person);
+                    unitOfWork.Save();
+                    Admin_PatientsViewModel.Patients.Add(person);
+                    if (App.RegistrationWindow != null)
+                    {
+                        App.RegistrationWindow.Visibility = Visibility.Hidden;
+                        App.Current.MainWindow.Visibility = Visibility.Visible;
+                    }
+                    if (App.addNewPatient != null) App.addNewPatient.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    MessageBox.Show("Такой пользователь уже существует");
                 }
             }
           
@@ -149,27 +159,50 @@ namespace Dentistry.Services
                 String tmp = Encrypt(user.Password, user.UserName);
                 user.Password = tmp;
                 UnitOfWork unitOfWork = new UnitOfWork();
-                unitOfWork.Users.Create(user);
+                var userExist = unitOfWork.Users.GetAll().FirstOrDefault(x => x.UserName == user.UserName);
+                if (userExist == null)
+                {
+                    unitOfWork.Users.Create(user);
                 unitOfWork.Doctors.Create(person);
                 unitOfWork.Save();
+                      if (App.addNewDoctor != null)
+                            { App.addNewDoctor.Visibility = Visibility.Hidden;}
                 Admin_DoctorsViewModel.Doctors.Add(person);
-                if (App.RegistrationWindow != null)
-                {
-                    App.RegistrationWindow.Visibility = Visibility.Hidden;
-                    App.Current.MainWindow.Visibility = Visibility.Visible;
+                    if (App.RegistrationWindow != null)
+                    {
+                        App.Current.MainWindow.Visibility = Visibility.Visible;
+                        App.RegistrationWindow.DataContext = new RegistrationViewModel();
+                        App.RegistrationWindow.Close();
+
+                    }
                 }
-                
+                else
+                {
+                    MessageBox.Show("Такой пользователь уже существует");
+                }
             }
         }
 
         public static void ChangeInformation(string NewPassword, string NewUserName)
         {
-            String tmp = Encrypt(NewPassword,NewUserName);
-            _instance.Password = tmp;
-            _instance.UserName = NewUserName;
             UnitOfWork unitOfWork = new UnitOfWork();
-            unitOfWork.Users.Update(_instance);
-            unitOfWork.Save();
+            if (NewUserName != null)
+            {
+                _instance.Password = Encrypt(Decrypt(_instance.Password, _instance.UserName), NewUserName);
+                _instance.UserName = NewUserName;
+               
+                unitOfWork.Users.Update(_instance);
+                unitOfWork.Save();
+            }
+            if (!String.IsNullOrEmpty(NewPassword))
+            {
+                String tmp = Encrypt(NewPassword, NewUserName == null ? _instance.UserName : NewUserName);
+                _instance.Password = tmp;
+                
+                unitOfWork.Users.Update(_instance);
+                unitOfWork.Save();
+            }
+            
         }
         public static void EditInformationPatient (Patient patient, User user,Patient SelectedItem, string password)
         {
@@ -202,6 +235,7 @@ namespace Dentistry.Services
              
                 unitOfWork.Users.Update(user);
                 unitOfWork.Save();
+                if (App.addNewPatient != null) App.addNewPatient.Visibility = Visibility.Hidden;
                 var item = Admin_PatientsViewModel.Patients.FirstOrDefault(x => x.Id == patient.Id);
                 
                 Admin_PatientsViewModel.Patients[Admin_PatientsViewModel.Patients.IndexOf(SelectedItem)] = patient;
@@ -213,7 +247,7 @@ namespace Dentistry.Services
         {
             if (user.Password != password)
             {
-                String tmp = Encrypt(user.Password, user.UserName);
+                String tmp = Encrypt(password, user.UserName);
                 user.Password = tmp;
             }
 
@@ -235,9 +269,7 @@ namespace Dentistry.Services
             {
 
                 UnitOfWork unitOfWork = new UnitOfWork();
-
                 unitOfWork.Doctors.Update(doctor);
-
                 unitOfWork.Users.Update(user);
                 unitOfWork.Save();
                 var item = Admin_DoctorsViewModel.Doctors.FirstOrDefault(x => x.Id == doctor.Id);
@@ -280,10 +312,13 @@ namespace Dentistry.Services
 
 
         }
-        public static void EditInformationService(Service service, Service SelectedItem)
+        public static void EditInformationService(Service service, Service SelectedItem, Doctor doctor)
         {
-
             UnitOfWork unitOfWork = new UnitOfWork();
+            service.Doctors.Add(doctor);
+            doctor.Services.Add(service);
+            unitOfWork.Doctors.Update(doctor);
+            
             unitOfWork.Services.Update(service);
             unitOfWork.Save();
             var item = Admin_ServicesViewModel.Services.FirstOrDefault(x => x.Id == service.Id);
@@ -355,7 +390,39 @@ namespace Dentistry.Services
             symmK.Clear();
             return Convert.ToBase64String(cipherTextBytes);
         }
-        
+        private static string Decrypt(string ciphText, string pass, string sol = "dentistry", string cryptographicAlgorithm = "SHA1", int passIter = 2, string initVec = "a8doSuDitOz1hZe#", int keySize = 256)
+        {
+            if (string.IsNullOrEmpty(ciphText))
+                return "";
+
+            byte[] initVecB = Encoding.ASCII.GetBytes(initVec);
+            byte[] solB = Encoding.ASCII.GetBytes(sol);
+            byte[] cipherTextBytes = Convert.FromBase64String(ciphText);
+
+            PasswordDeriveBytes derivPass = new PasswordDeriveBytes(pass, solB, cryptographicAlgorithm, passIter);
+            byte[] keyBytes = derivPass.GetBytes(keySize / 8);
+
+            RijndaelManaged symmK = new RijndaelManaged();
+            symmK.Mode = CipherMode.CBC;
+
+            byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+            int byteCount = 0;
+
+            using (ICryptoTransform decryptor = symmK.CreateDecryptor(keyBytes, initVecB))
+            {
+                using (MemoryStream mSt = new MemoryStream(cipherTextBytes))
+                {
+                    using (CryptoStream cryptoStream = new CryptoStream(mSt, decryptor, CryptoStreamMode.Read))
+                    {
+                        byteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+                        mSt.Close();
+                        cryptoStream.Close();
+                    }
+                }
+            }
+            symmK.Clear();
+            return Encoding.UTF8.GetString(plainTextBytes, 0, byteCount);
+        }
 
     }
 }

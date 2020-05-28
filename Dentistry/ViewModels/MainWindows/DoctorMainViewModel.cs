@@ -1,4 +1,5 @@
-﻿using Dentistry.Views;
+﻿using Dentistry.ViewModels.DoctorPagesViewModel;
+using Dentistry.Views;
 using Dentistry.Views.DoctorPages;
 using System;
 using System.Collections.Generic;
@@ -126,10 +127,12 @@ namespace Dentistry.ViewModels.MainWindows
                    }
                    else
                    {
-                       App.AuthorizationWindow = new Authorization();
-                       App.AuthorizationWindow.Show();
+                     
+                  
                        App.DoctormainWindow.Close();
-
+                       App.Current.MainWindow.Visibility = Visibility.Visible;
+                       ReceptionsForDViewModel.Receptions.Clear();
+                       Admin_CompounsViewModel.Compouns.Clear();
                    }
 
 

@@ -5,26 +5,25 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Dentistry.Views.DoctorPages" xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:me="clr-namespace:Dentistry.ViewModels.DoctorPagesViewModel"
       mc:Ignorable="d" d:DesignWidth="600"
-      Title="AddNewReceptionForDoctor" Width="auto" Height="auto">
+      Title="AddNewReceptionForDoctor" Width="600" Height="450">
 
-    <Grid Background="{DynamicResource PrimaryHueLightBrush}">
+    <Grid Background="#FF8ADDE1">
         <Grid.RowDefinitions>
             <RowDefinition Height="32*"/>
-            <RowDefinition Height="64*"/>
-            <RowDefinition Height="60*"/>
-            <RowDefinition Height="56*"/>
-            <RowDefinition Height="60*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="40*"/>
             <RowDefinition Height="49*"/>
+            <RowDefinition Height="0*"/>
             <RowDefinition Height="55*"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" FontFamily="Bodoni MT Black" Foreground="#FF303030" FontSize="20" Content="Добавление нового посещения" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <DatePicker Grid.Row="1" SelectedDate="{Binding DateOfReception}" DisplayDateStart = "{x:Static System:DateTime.Today}"  DisplayDateEnd="{x:Static System:DateTime.Today}" Foreground="{DynamicResource PrimaryHueDarkBrush}" FontSize="14"  materialDesign:HintAssist.Hint=" Дата приема" Height="37" Margin="192,11,192,16" Opacity="0.8" Background="#FFB9E4D4" />
-        <TextBlock HorizontalAlignment="Center" Text="Время приема" Grid.Row="1"   FontFamily="Bodoni MT Black" Margin="253,53,244,21" Foreground="#FF303030" Width="103" Grid.RowSpan="2"/>
-        <xctk:DateTimeUpDown Format="ShortTime" Text="{Binding TimeOfBeggining}" Value="09:00" FormatString="hh:mm" Minimum="09:00" Maximum="18:00" HorizontalContentAlignment="Center"  Grid.Row="2" Background="{DynamicResource MaterialDesignDarkBackground}"  FontSize="14" Foreground="{DynamicResource PrimaryHueLightBrush}" BorderBrush="{x:Null}" Margin="192,0,331,0"  />
-        <xctk:DateTimeUpDown Format="ShortTime" Text="{Binding TimeOfEnding}" Value="10:00" FormatString="hh:mm" Minimum="10:00" Maximum="18:00" HorizontalContentAlignment="Center"  Grid.Row="2" Background="{DynamicResource MaterialDesignDarkBackground}"  FontSize="14" Foreground="{DynamicResource PrimaryHueLightBrush}" BorderBrush="{x:Null}" Margin="341,0,192,0" />
-        <ComboBox Grid.Row="3" x:Name="patList" HorizontalContentAlignment="Center" materialDesign:HintAssist.Hint=" Фамилия пациента" Text="{Binding LastNamePatient}" ItemsSource="{Binding Source={x:Static me:AddNewReceptionForDoctorViewModel.LastNamePatients}, Mode=OneWay}" Background="{x:Null}" Height="28" Margin="192,11,192,10" />
-        <ComboBox Grid.Row="4" x:Name="serList" HorizontalContentAlignment="Center" materialDesign:HintAssist.Hint=" Услуга" Text="{Binding Services}" ItemsSource="{Binding Source={x:Static me:AddNewReceptionForDoctorViewModel.ServicesNames}, Mode=OneWay}" Background="{x:Null}" Height="28" Margin="192,11,192,10" />
-        <Button Content="Добавить" Grid.Row="6"  Style="{DynamicResource MaterialDesignRaisedDarkButton}" Command="{Binding Add}" Background="{DynamicResource MaterialDesignDarkBackground}" Margin="253,0,229,28" Height="Auto"/>
+        <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" Content="Время приема" Grid.Row="1"   FontFamily="Bodoni MT Black" Margin="0,10,0,8" FontSize="16" Foreground="#FF303030" Width="600"/>
+        <xctk:DateTimeUpDown Format="ShortTime" Width="80" Height="30" Text="{Binding TimeOfBeggining}" Value="09:00" FormatString="hh:mm" Minimum="09:00" Maximum="18:00" HorizontalContentAlignment="Center"  Grid.Row="2" Background="{DynamicResource MaterialDesignDarkBackground}"  FontSize="14" Foreground="{DynamicResource PrimaryHueLightBrush}" BorderBrush="{x:Null}" Margin="192,0,331,0"  />
+        <xctk:DateTimeUpDown Format="ShortTime" Height="30" Text="{Binding TimeOfEnding}" Value="10:00" FormatString="hh:mm" Minimum="10:00" Maximum="19:00" HorizontalContentAlignment="Center"  Grid.Row="2" Background="{DynamicResource MaterialDesignDarkBackground}"  FontSize="14" Foreground="{DynamicResource PrimaryHueLightBrush}" BorderBrush="{x:Null}" Margin="341,0,185,0" />
+        <ComboBox Grid.Row="3" x:Name="patList" Style="{DynamicResource MaterialDesignFloatingHintComboBox}" Width="200" HorizontalContentAlignment="Center" materialDesign:HintAssist.Hint=" Фамилия пациента" Text="{Binding LastNamePatient}" ItemsSource="{Binding Source={x:Static me:AddNewReceptionForDoctorViewModel.LastNamePatients}, Mode=OneWay}" Margin="192,10" SelectedValue="{Binding SelectedPatient}" Height="41"/>
+        <ComboBox Grid.Row="4" x:Name="serList" Style="{DynamicResource MaterialDesignFloatingHintComboBox}" Width="200" HorizontalContentAlignment="Center" materialDesign:HintAssist.Hint=" Услуга" Text="{Binding Services}" ItemsSource="{Binding Source={x:Static me:AddNewReceptionForDoctorViewModel.ServicesNames}, Mode=OneWay}" Margin="192,10,192,0" SelectedValue="{Binding SelectedService}" Height="41"/>
+        <Button Content="Добавить" Grid.Row="6"  Style="{DynamicResource MaterialDesignRaisedDarkButton}" Width="120" Command="{Binding Add}" Background="{DynamicResource MaterialDesignDarkBackground}" Margin="253,18,229,10" Height="35"/>
 
     </Grid>
 </Page>

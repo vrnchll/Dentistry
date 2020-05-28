@@ -11,32 +11,27 @@
             <RowDefinition Height="17*"/>
             <RowDefinition Height="300*"/>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0" Background="#FF2C2828" Margin="0,0,-710,91" Grid.RowSpan="2">
-            <MenuItem Header="" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="25" Width="33">
-                <MenuItem.Background>
-                    <ImageBrush ImageSource="back--v1.png"/>
-                </MenuItem.Background>
-            </MenuItem>
-            <MenuItem Header="Добавить новую услугу" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}" Height="27"/>
-            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="27"  Command="{Binding EditCommand}"/>
-            <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="26" Command="{Binding RemoveCommand}"/>
+        <Menu Grid.Row="0" Background="#FF2C2828" Margin="0,0,-517,97" Grid.RowSpan="2">
+            <MenuItem Header="Добавить новую услугу" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}" Height="44"/>
+            <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="52"  Command="{Binding EditCommand}"/>
+            <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="49" Command="{Binding RemoveCommand}"/>
 
         </Menu>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0"  Width="984" Margin="0,0,-710,0">
-            <TextBox Background="White" Text="{Binding SearchS}" Width="169" Height="36"/>
-            <Button Command="{Binding SearchCommand}" Height="34">
+            <TextBox Background="White" Text="{Binding SearchS}" Width="169" Height="42"/>
+            <Button Command="{Binding SearchCommand}" Height="40">
                 <materialDesign:PackIcon Kind="Search" Foreground="White"/>
             </Button>
-            <Button Command="{Binding Clear}" Height="35">
+            <Button Command="{Binding Clear}" Height="41">
                 <materialDesign:PackIcon Kind="Broom" Foreground="White"/>
             </Button>
         </StackPanel>
-        <DataGrid Margin="0,5,-710,27" Grid.Row="1" x:Name="ServiceList" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
+        <DataGrid Margin="0,10,-517,27" Grid.Row="1" x:Name="ServiceList" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
                               ScrollViewer.IsDeferredScrollingEnabled="True" 
-                              ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService}" Opacity="0.8">
+                              ScrollViewer.VerticalScrollBarVisibility="Visible" Background="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}" FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService}" Opacity="1" HorizontalGridLinesBrush="{x:Null}" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="None">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Наименование услуги" Width="200" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Header="Наименование услуги" Width="Auto" Binding="{Binding Path=Name}"/>
                 <DataGridTextColumn Header="Стоимость" Binding="{Binding Path=Cost}"/>
 
                 <DataGridTemplateColumn Header="Врачи">

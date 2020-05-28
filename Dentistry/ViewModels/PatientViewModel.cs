@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -15,12 +16,18 @@ namespace Dentistry.ViewModels
 {
     public class PatientViewModel : INotifyPropertyChanged
     {
+        string regNames = @"^[a-zA-Zа-яА-Я]{2,25}$";
+        string regDOfBirs = @"([0-2]\d|3[01])\.(0\d|1[012])\.(\d{4})";
+        string regInt = @"^[0-9]{1,3}$";
         private string _FirstName;
         public string FirstName
         {
             get => _FirstName; set
             {
-                _FirstName = value;
+                if (Regex.IsMatch(value, regNames, RegexOptions.IgnoreCase))
+                    _FirstName = value;
+                else
+                    MessageBox.Show("Недопустимые символы в имени");
                 OnPropertyChanged("FirstName");
             }
         }
@@ -30,7 +37,10 @@ namespace Dentistry.ViewModels
         {
             get => _LastName; set
             {
-                _LastName = value;
+                if (Regex.IsMatch(value, regNames, RegexOptions.IgnoreCase))
+                    _LastName = value;
+                else
+                    MessageBox.Show("Недопустимые символы в фамилии");
                 OnPropertyChanged("LastName");
             }
         }
@@ -39,7 +49,10 @@ namespace Dentistry.ViewModels
         {
             get => _MiddleName; set
             {
-                _MiddleName = value;
+                if (Regex.IsMatch(value, regNames, RegexOptions.IgnoreCase))
+                    _MiddleName = value;
+                 else
+                    MessageBox.Show("Недопустимые символы в отчестве");
                 OnPropertyChanged("MiddleName");
             }
         }
@@ -49,7 +62,10 @@ namespace Dentistry.ViewModels
         {
             get => _DateOfBirth; set
             {
-                _DateOfBirth = value;
+                if (Regex.IsMatch(value, regDOfBirs, RegexOptions.IgnoreCase))
+                    _DateOfBirth = value;
+                else
+                    MessageBox.Show("Неверный формат даты, введите в формате dd.MM.yyyy");
                 OnPropertyChanged("DateOfBirth");
             }
         }
@@ -63,7 +79,9 @@ namespace Dentistry.ViewModels
         {
             get => _City; set
             {
-                _City = value;
+                
+                    _City = value;
+                
                 OnPropertyChanged("City");
             }
         }
@@ -73,7 +91,10 @@ namespace Dentistry.ViewModels
         {
             get => _Street; set
             {
-                _Street = value;
+                if (Regex.IsMatch(value, regNames, RegexOptions.IgnoreCase))
+                    _Street = value;
+                else
+                    MessageBox.Show("Недопустимые символы в улице");
                 OnPropertyChanged("Street");
             }
         }
@@ -82,7 +103,10 @@ namespace Dentistry.ViewModels
         {
             get => _House; set
             {
-                _House = value;
+                if (Regex.IsMatch(value, regInt, RegexOptions.IgnoreCase))
+                    _House = value;
+                else
+                    MessageBox.Show("Дом должен содержать только цифры");
                 OnPropertyChanged("House");
             }
         }
@@ -91,7 +115,10 @@ namespace Dentistry.ViewModels
         {
             get => _Flat; set
             {
-                _Flat = value;
+                if (Regex.IsMatch(value, regInt, RegexOptions.IgnoreCase))
+                    _Flat = value;
+                else
+                    MessageBox.Show("Дом должен содержать только цифры");
                 OnPropertyChanged("Flat");
             }
         }
@@ -115,24 +142,8 @@ namespace Dentistry.ViewModels
             }
         }
 
-        private string _Password;
-        public string Password
-        {
-            get => _Password; set
-            {
-                _Password = value;
-                OnPropertyChanged("Password");
-            }
-        }
-        private string _ConfirmPassword;
-        public string ConfirmPassword
-        {
-            get => _ConfirmPassword; set
-            {
-                _ConfirmPassword = value;
-                OnPropertyChanged("ConfirmPassword");
-            }
-        }
+        public string Password { private get; set; }
+        public string ConfirmPassword { private get; set; }
 
         private string _Email;
         public string Email
@@ -143,10 +154,22 @@ namespace Dentistry.ViewModels
                 OnPropertyChanged("Email");
             }
         }
+        public Patient CurrentPatient;
+        private string _ChangeContentLabel = "Добавление нового пациента";
+
+        public string ChangeContentLabel
+        {
+            get => _ChangeContentLabel; set
+            {
+                _ChangeContentLabel = value;
+                OnPropertyChanged("ChangeContentLabel");
+            }
+        }
         public readonly Patient _patient;
         public PatientViewModel(Patient patient=null)
         {
-            if (patient != null) { 
+            if (patient != null) {
+            CurrentPatient = patient;
             FirstName = patient.FirstName;
             LastName = patient.LastName;
             MiddleName = patient.MiddleName;
@@ -158,7 +181,8 @@ namespace Dentistry.ViewModels
             Email = patient.User.Email;
             NumberOfPhone = patient.NumberOfPhone;
             Login = patient.User.UserName;
-           
+            ChangeContentLabel = "Редактирование пациента";
+
             }
             _patient = patient;
         }
@@ -171,9 +195,11 @@ namespace Dentistry.ViewModels
                 _ReturnBack ?? (
                _ReturnBack = new RelayCommands(obj =>
                {
-                   App.RegistrationWindow = new Registration();
-                   App.RegistrationWindow.Show();
-                   App.Current.MainWindow.Close();
+
+                   App.Current.MainWindow.Visibility = Visibility.Visible;
+                   App.RegistrationWindow.Visibility = Visibility.Hidden;
+
+
                }));
             }
 
@@ -188,25 +214,28 @@ namespace Dentistry.ViewModels
                 {
                     UnitOfWork unitOfWork = new UnitOfWork();
                     var users = unitOfWork.Users.GetAll().FirstOrDefault(x => x.UserName == Login);
-                    if (users != null)
+                    if (CurrentPatient != null)
                     {
                        
                             User user = new User() { Id = users.Id, UserName = Login, Password = Password==null?users.Password:Password, Email = Email, TypeUser = "Patient" };
                             Patient person = new Patient() { Id = users.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Мужской" : "Женский", City = City, Street = Street, House = House, Flat = Flat, NumberOfPhone = NumberOfPhone };
                             user.PatientProfile = person;
                             Account.EditInformationPatient(person, user, _patient, users.Password);
-                            if (App.addNewPatient != null) App.addNewPatient.Visibility = Visibility.Hidden;
+                           
                         
                     }
                     else
                     {
                         if (Password == ConfirmPassword)
                         {
-                            User user = new User() { UserName = Login, Password = Password, Email = Email, TypeUser = "Patient" };
-                            Patient person = new Patient() { Id = user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Мужской" : "Женский", City = City, Street = Street, House = House, Flat = Flat, NumberOfPhone = NumberOfPhone };
-                            user.PatientProfile = person;
-                            Account.RegistrationPatient(user, person);
-                            if (App.addNewPatient != null) App.addNewPatient.Visibility = Visibility.Hidden;
+                           
+                                User user = new User() { UserName = Login, Password = Password, Email = Email, TypeUser = "Patient" };
+                                Patient person = new Patient() { Id = user.Id, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, DateOfBirth = DateOfBirth, Gender = SelectedGender == 0 ? "Мужской" : "Женский", City = City, Street = Street, House = House, Flat = Flat, NumberOfPhone = NumberOfPhone };
+                                user.PatientProfile = person;
+                                Account.RegistrationPatient(user, person);
+                               
+                              
+                            
                         }
                         else
                         {
@@ -216,6 +245,23 @@ namespace Dentistry.ViewModels
                     
                 }));
             }
+        }
+        private RelayCommands _Exit;
+        public RelayCommands Exit
+        {
+            get
+            {
+                return
+                _Exit ?? (
+               _Exit = new RelayCommands(obj =>
+               {
+                   if (App.addNewPatient != null)
+                   {
+                       App.addNewPatient.Close();
+                   }
+               }));
+            }
+
         }
         public event PropertyChangedEventHandler PropertyChanged; // отслеживать изменения нашего поля сразу(binding)
         public void OnPropertyChanged([CallerMemberName]string prop = "")

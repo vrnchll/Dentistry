@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -14,16 +15,16 @@ namespace Dentistry.Models
         [ForeignKey("User")]
         public int Id { get; set; }
         
-        //[RegularExpression(@"/^[a-zA-Zа-яёА-ЯЁ]+$/u", ErrorMessage = "Недопустимые символы в Имени!")]
+       
         [StringLength(20, MinimumLength = 4, ErrorMessage = "Недопустимая длина имена")]
-        [Required(ErrorMessage = "Не указано имени пользователя")]
+        [Required(ErrorMessage = "Не указано имя пользователя")]
         public string FirstName { get; set; }
-        //[RegularExpression(@"/^([А-ЯЁ]{1}[а-яё]{29})", ErrorMessage = "Недопустимые символы в Фамилии!")]
+     
 
         [StringLength(20, MinimumLength = 4, ErrorMessage = "Недопустимая длина фамилии")]
         [Required(ErrorMessage = "Не указана фамилия пользователя")]
         public string LastName { get; set; }
-        //[RegularExpression(@"/^([А-ЯЁ]{1}[а-яё]{29})", ErrorMessage = "Недопустимые символы в Отчестве!")]
+    
 
         [StringLength(20, MinimumLength = 6, ErrorMessage = "Недопустимая длина отчества")]
         [Required(ErrorMessage = "Не указано отчество пользователя")]
@@ -38,7 +39,7 @@ namespace Dentistry.Models
         public string Position { get; set; }
 
         [Required(ErrorMessage = "Не указан стаж работы")]
-        //[RegularExpression(@"/(^|\s)[0-2]\d?(\s|$)/", ErrorMessage = "Некорректные данные, проверьте введенное значение стажа")]
+ 
         public string Experience { get; set; }
 
         [Required(ErrorMessage = "Не указан телефон пользователя")]
@@ -59,5 +60,6 @@ namespace Dentistry.Models
         }
         public User User { get; set; }
 
+      
     }
 }

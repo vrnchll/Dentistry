@@ -30,17 +30,17 @@
     </Page.Triggers>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="36*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="64*"/>
         </Grid.RowDefinitions>
-        <Menu Margin="0,0,0,24" Background="#FF2C2828">
+        <Menu Grid.Row="0" Background="#FF2C2828" Margin="0,0,0,180">
             <MenuItem Header="Добавить новое посещение" Foreground="{DynamicResource PrimaryHueLightBrush}" Command="{Binding Add}" Height="39"/>
             <MenuItem Header="Редактировать" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39" Command="{Binding EditCommand}"/>
             <MenuItem Header="Удалить" Foreground="{DynamicResource PrimaryHueLightBrush}" Height="39" Command="{Binding RemoveCommand}"/>
         </Menu>
-        <DataGrid AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"         
+        <DataGrid AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"       
                               ScrollViewer.IsDeferredScrollingEnabled="True" 
-                              ScrollViewer.HorizontalScrollBarVisibility="Visible" x:Name="ReceptionList" Background="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}"  FontFamily="Tahoma" FontSize="16" Margin="0,35,0,0" Grid.RowSpan="2" ItemsSource="{Binding Receptions}" SelectedItem="{Binding SelectedReception}" Opacity="0.8">
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" x:Name="ReceptionList" Background="{DynamicResource PrimaryHueLightBrush}" RowHeight="50" RowHeaderStyle="{StaticResource MaterialDesignFloatingActionLightButton}"  FontFamily="Tahoma" FontSize="16" ItemsSource="{Binding Receptions}" SelectedItem="{Binding SelectedReception}" Opacity="0.8" Margin="0,58,0,0" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTemplateColumn  IsReadOnly="True">
                     <DataGridTemplateColumn.Header>

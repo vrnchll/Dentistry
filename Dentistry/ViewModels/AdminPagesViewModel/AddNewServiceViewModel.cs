@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -14,14 +15,30 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
 {
    public class AddNewServiceViewModel:INotifyPropertyChanged
     {
+        
+        string regInt = @"^[0-9]{1,10}$";
         public readonly Service _service;
+        public Service CurrentService;
+        private string _ChangeContentLabel = "Добавление новой услуги";
+
+        public string ChangeContentLabel
+        {
+            get => _ChangeContentLabel; set
+            {
+                _ChangeContentLabel = value;
+                OnPropertyChanged("ChangeContentLabel");
+            }
+        }
         public AddNewServiceViewModel(Service service = null)
         {
             if (service != null)
             {
+                CurrentService = service;
                 Name = service.Name;
                 OldName = service.Name;
                 Cost = service.Cost;
+                ChangeContentLabel = "Редактирование услуги";
+
             }
             _service = service;
         }
@@ -31,7 +48,7 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
         {
             get => _OldName; set
             {
-                _OldName = value;
+                    _OldName = value;
                 OnPropertyChanged("Name");
             }
         }
@@ -39,7 +56,7 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
         public string Name {
             get => _Name; set
             {
-                _Name = value;
+                    _Name = value;
                 OnPropertyChanged("Name");
             }
         }
@@ -48,7 +65,10 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
         {
             get => _Cost; set
             {
-                _Cost = value;
+                if (Regex.IsMatch(value, regInt, RegexOptions.IgnoreCase))
+                    _Cost = value;
+                else
+                    MessageBox.Show("Цена должна содержать только цифры");
                 OnPropertyChanged("Cost");
             }
         }
@@ -73,19 +93,35 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
                {
                    if (SelectedItem != null)
                    {
+
                        UnitOfWork unitOfWork = new UnitOfWork();
                        var doctor = unitOfWork.Doctors.GetAll().ToList().FirstOrDefault(x => x.LastName.Contains(SelectedItem));
                        var services = unitOfWork.Services.GetAll().ToList().FirstOrDefault(x => x.Name == OldName);
                        
                        if (services != null)
-                       {
-                           Service service = new Service() { Name = Name, Cost = Cost, };
-                           service.Doctors.Add(doctor);
-                           doctor.Services.Add(service);
-                           unitOfWork.Doctors.Update(doctor);
-                           unitOfWork.Save();
-                           Account.EditInformationService(service, _service);
-                           if (App.addNewService != null) App.addNewService.Visibility = Visibility.Hidden;
+                       { 
+                           Service service = new Service() {Id=CurrentService.Id, Name = Name, Cost = Cost };
+                           var resultsService = new List<ValidationResult>();
+                           var contextService = new ValidationContext(service);
+                           var resultsDoctor = new List<ValidationResult>();
+                           var contextDoctor = new ValidationContext(doctor);
+                           if (!Validator.TryValidateObject(service, contextService, resultsService, true) || !Validator.TryValidateObject(doctor, contextDoctor, resultsDoctor, true))
+                           {
+                               foreach (var error in resultsDoctor)
+                               {
+                                   MessageBox.Show(error.ErrorMessage);
+                               }
+                               foreach (var error in resultsService)
+                               {
+                                   MessageBox.Show(error.ErrorMessage);
+                               }
+                           }
+                           else
+                           {
+                             
+                               Account.EditInformationService(service, _service, doctor);
+                               if (App.addNewService != null) App.addNewService.Visibility = Visibility.Hidden;
+                           }
                        }
                        else
                        {
@@ -133,7 +169,23 @@ namespace Dentistry.ViewModels.AdminPagesViewModel
             }
 
         }
+        private RelayCommands _Exit;
+        public RelayCommands Exit
+        {
+            get
+            {
+                return
+                _Exit ?? (
+               _Exit = new RelayCommands(obj =>
+               {
+                   if (App.addNewService != null)
+                   {
+                       App.addNewService.Close();
+                   }
+               }));
+            }
 
+        }
         public event PropertyChangedEventHandler PropertyChanged; // отслеживать изменения нашего поля сразу(binding)
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
